@@ -8,7 +8,8 @@ subNum = 1;
 
 % Hardware parameters:
 global LOADING_MESSAGE refRate w gray viewDistance  TRUE FALSE 
-CS
+global NUMBER_OF_TOTAL_TRIALS TRIAL_DURATION
+
 viewDistance = 60;
 % Add functions folder to path (when we separate all functions)
 function_folder = [pwd,filesep,'functions\'];
@@ -30,13 +31,13 @@ showMessage(LOADING_MESSAGE);
 
 % path to stimuli folder
 PreFolderName = [pwd,filesep,'stimuli\'];
-cat_names = {'chars', 'faces', 'falses', 'objects'};
+cat_names = {'char', 'face', 'false', 'object'};
 ori_names = {'center', 'left', 'right'};
 gender_names = {'male', 'female'};
 % stimulus_id = {"face_1", "face_2"}
 
 cat_struct = struct('center', 1:20, 'left', 1:20, 'right', 1:20);
-texture_struct = struct('chars', cat_struct, 'faces', cat_struct, 'falses', cat_struct, 'objects', cat_struct);
+texture_struct = struct('char', cat_struct, 'face', cat_struct, 'false', cat_struct, 'object', cat_struct);
 
 
 % loops through the folders an loads all stimuli
@@ -56,17 +57,18 @@ for j = 1:length(cat_names)
     end
 end
 
-%% Define duration and stimuli order (here random)
+% open trial matrix
+MatFolderName = [pwd,filesep,'TrialMatrices\'];
+trial_mat = readtable(fullfile(MatFolderName, 'reconstructed_time_trial_mat.csv'));
 
-duration = repmat(STIM_DURATION,1,80);
-duration = duration(randperm(length(duration)));
+% get jitter
 jitter = getJitter(NUMBER_OF_TOTAL_TRIALS);
 
 
 %% Main loop
 
 showFixation('PhotodiodeOff')
-for k = 1:5
+for k = 1:length(trial_mat.trial)
     % Draw the image to the screen, unless otherwise specified PTB will draw
     % the texture full size in the center of the screen. We first draw the
     % image in its correct orientation.
@@ -75,8 +77,13 @@ for k = 1:5
     fixShown = FALSE;
     jitterLogged = FALSE;
 
-    texture = texture_struct.(cat_names{randi(4)}).(ori_names{randi(3)})(randi(20));
+    % get texture
+    vis_stim_id = trial_mat.vis_stim_id{k};
+    vis_stim_num = str2double(extractBetween(vis_stim_id,strlength(vis_stim_id)-1,strlength(vis_stim_id)));
+    texture = texture_struct.(trial_mat.vis_stim_cate{k}).(trial_mat.vis_stim_orientation{k})(vis_stim_num);
     log_struct.texture(k) = texture;
+
+    % show stimulus
     stim_time = showStimuli(texture);
     log_struct.stim_time(k) = stim_time;
 
@@ -108,7 +115,7 @@ for k = 1:5
 
 
         % Present fixation
-        if elapsedTime >= (duration(k) - refRate*(2/3)) && fixShown == FALSE
+        if elapsedTime >= (trial_mat.vis_stim_dur(k) - refRate*(2/3)) && fixShown == FALSE
            fix_time = showFixation('PhotodiodeOn');
 
             % log fixation in journal
@@ -138,6 +145,8 @@ for k = 1:5
     log_struct.trial_end(k) = GetSecs;
 end
 
+% save trial_mat table
+writetable(trial_mat,fullfile(MatFolderName, 'reconstructed_time_trial_mat.csv'))  
 
 sca;
 

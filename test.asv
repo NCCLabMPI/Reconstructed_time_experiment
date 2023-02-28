@@ -7,10 +7,9 @@ clear;
 subNum = 1;
 
 % Hardware parameters:
-global LOADING_MESSAGE REF_RATE_OPTIMAL w gray viewDistance TRIAL_DURATION TRUE FALSE 
-global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX STIM_DURATION
+global LOADING_MESSAGE refRate w gray viewDistance  TRUE FALSE 
+
 viewDistance = 60;
-refRate = REF_RATE_OPTIMAL;
 % Add functions folder to path (when we separate all functions)
 function_folder = [pwd,filesep,'functions\'];
 addpath(function_folder)
@@ -35,10 +34,9 @@ cat_names = {'chars', 'faces', 'falses', 'objects'};
 ori_names = {'center', 'left', 'right'};
 gender_names = {'male', 'female'};
 % stimulus_id = {"face_1", "face_2"}
-textureArray = [];
 
-cat_struct = struct('center', [], 'left', [], 'right', []);
-texture_struct = struct('chars', cat_struct, 'faces', cat_struct, 'falses', cat_struct, 'objects', cat_struct);
+cat_struct = struct('center', 1:20, 'left', 1:20, 'right', 1:20);
+texture_struct = struct('char', cat_struct, 'face', cat_struct, 'false', cat_struct, 'object', cat_struct);
 
 
 % loops through the folders an loads all stimuli
@@ -49,36 +47,40 @@ for j = 1:length(cat_names)
                 FolderName = fullfile(PreFolderName, cat_names{j},ori_names{jj}, gender_names{jjj});
                 new_textures = getTexturesFromHD(FolderName, w);
                 texture_struct.(cat_names{j}).(ori_names{jj})(10*jjj-9:10*jjj) = new_textures;
-                textureArray = cat(2, textureArray, new_textures); %preliminary
             end
         else
             FolderName = fullfile(PreFolderName, cat_names{j}, ori_names{jj});
             new_textures = getTexturesFromHD(FolderName, w);
             texture_struct.(cat_names{j}).(ori_names{jj})(1:20) = new_textures;
-            textureArray = cat(2, textureArray, new_textures); %preliminary
         end
     end
 end
 
-% Define duration and stimuli order (here random)
-duration = repmat(STIM_DURATION,1,80);
-duration = duration(randperm(length(duration)));
-textureArray_mixed = textureArray(randperm(length(textureArray)));
-jitter = getJitter(1440);
+% open trial matrix
+MatFolderName = [pwd,filesep,'TrialMatrices\'];
+trial_mat = readtable(fullfile(MatFolderName, 'reconstructed_time_trial_mat.csv'));
+
+% get jitter
+jitter = getJitter(NUMBER_OF_TOTAL_TRIALS);
+
+
+%% Main loop
 
 showFixation('PhotodiodeOff')
-
-
-for k = 1:5
+for k = 1:length(trial_mat.trial)
     % Draw the image to the screen, unless otherwise specified PTB will draw
     % the texture full size in the center of the screen. We first draw the
     % image in its correct orientation.
 
     % flags needs to be initialized
     fixShown = FALSE;
-
-    texture = texture_struct.(cat_names{randi(4)}).(ori_names{randi(3)})(randi(20));
+    jitterLogged = FALSE;
+    vis_stim_id = trial_mat.vis_stim_id{k};
+    vis_stim_num = extractBetween(vis_stim_id,strlength(vis_stim_id)-1,strlength(vis_stim_id));
+    texture = texture_struct.(trial_mat.vis_stim_cate{k}).(trial_mat.vis_stim_orientation{k})(vis_stim_num);
+    log_struct.texture(k) = texture;
     stim_time = showStimuli(texture);
+    log_struct.stim_time(k) = stim_time;
 
     % I then set a frame counter. The flip of the stimulus
     % presentation is frame 0. It is already the previous frame because it already occured:
@@ -88,10 +90,10 @@ for k = 1:5
     FrameIndex = PreviousFrame;
 
     % Log the stimulus presentation in the output table
-    %     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
+%     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
 
     elapsedTime = 0;
-    while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + jitter
+    while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + jitter(k)
         % In order to count the frames, I always convert the
         % time to frames by dividing it by the refresh rate:
         CurrentFrame = floor(elapsedTime/refRate);
@@ -103,51 +105,39 @@ for k = 1:5
             PreviousFrame = CurrentFrame;
         end
 
-        % Present fixation
-        if elapsedTime >= (duration(k) - refRate*(2/3)) && fixShown == FALSE
-           fix_time = showFixation('PhotodiodeOn');
-            
-            % log fixation in journal
-%             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
-            fixShown = TRUE;
-        end
-
-        % Present fixation
-        if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
-            JitOnset = showFixation('PhotodiodeOn');
-            if MEEG sendTrig(TRG_JITTER_START,LPT_OBJECT,LPT_ADDRESS); end
-            if EYE_TRACKER
-                if ~TOBII_EYETRACKER
-                    Eyelink('Message',num2str(TRG_JITTER_START));
-                else
-                    tobii_TimeCell(end+1,:) = {tobii.get_system_time_stamp,num2str(TRG_JITTER_START)};
-                end
-            end
-            % log jitter started
-            setOutputTable('Jitter', miniBlocks, miniBlockNum, tr, JitOnset);
-            jitterLogged = TRUE;
-            % For the ECoG, if we are in the jitter already,
-            % then the audio triggers for the response should
-            % not be sent anymore, to avoid conflict with the
-            % coming trigger:
-            if ECoG && ~NO_AUDIO CanSendAudioTrigger = FALSE; end
-        end
-
 
         % Here the getInput function might be placed later
 
+
+        % Present fixation
+        if elapsedTime >= (trial_mat.vis_stim_dur(k) - refRate*(2/3)) && fixShown == FALSE
+           fix_time = showFixation('PhotodiodeOn');
+
+            % log fixation in journal
+%             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
+            log_struct.fix_time(k) = fix_time;
+            fixShown = TRUE;
+        end
+
+        % Present jitter
+        if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
+            JitOnset = showFixation('PhotodiodeOn');
+
+            % log jitter started
+            %             setOutputTable('Jitter', miniBlocks, miniBlockNum, tr, JitOnset);
+            log_struct.JitOnset(k) = JitOnset;
+            jitterLogged = TRUE;
+        end
+
+        % f. Updating clock:
+        % update time since iteration begun. Subtract the time
+        % of the pause to the elapsed time, because we don't
+        % want to have it in there. If there was no pause, then
+        % pause time = 0
+        elapsedTime = GetSecs - stim_time;
+
     end
-%     WaitSecs(duration(k) - 1/refRate);
-%     timing_ctr_1(k) = toc;
-% 
-%     % Now fill the screen gray
-%     Screen('FillRect', w, gray);
-%     showFixation('PhotodiodeOff')
-%     vbl = Screen('Flip', w, [], 1);
-%     WaitSecs(2 - duration(k) - 1/refRate);
-%     texture_log(k) = texture;
-% 
-%     timing_ctr_2(k) = toc;
+    log_struct.trial_end(k) = GetSecs;
 end
 
 
