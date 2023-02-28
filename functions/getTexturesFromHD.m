@@ -1,4 +1,3 @@
-
 % GETTEXTUREFROMHD reads all textures from HD. Wasteful and should be
 % employed before the experiment is running
 % input:
@@ -10,14 +9,16 @@
 % textureArray - an array of texture pointers, corresponding to the
 % pictures in the given folder.
 
-function [ textureArray ] = getTexturesFromHD(folder)
-    global w originalHeight originalWidth FILE_POSTFIX
+function [ textureArray ] = getTexturesFromHD(folder, w)
+   global originalHeight originalWidth FILE_POSTFIX
+    FILE_POSTFIX = '*png';
 
     fileList = dir(fullfile(folder,FILE_POSTFIX));
     %disp('----------------Here comes the file list ------------');
    
 
     textureArray = [];
+    %% 
 
     for i = 1 : size(fileList,1)
         try
@@ -35,6 +36,7 @@ function [ textureArray ] = getTexturesFromHD(folder)
         else
             img(:, :, 4) = alpha;
         end
+        
         textureArray = [textureArray, Screen('MakeTexture', w, img)];
     end
 end

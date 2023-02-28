@@ -10,10 +10,10 @@
 % -------
 % stimuliTiming - the time in which the stimuli was presented
 
-function [ stimuliTiming ] = showStimuli(miniBlocks, blockNum, tr, Photodiode)
+function [ stimuliTiming ] = showStimuli(texture) % miniBlocks, blockNum, tr, Photodiode)
 
     global TRIAL1_NAME_COL PHOTODIODE
-    global stimSizeLength stimSizeHeight
+    global stimSizeLength stimSizeHeight % texture
     global gray w center  originalHeight originalWidth;
     global trial_nrs_for_additional_log_file block_nrs_for_additional_log_file textures_for_additional_log_file
 
@@ -28,7 +28,10 @@ function [ stimuliTiming ] = showStimuli(miniBlocks, blockNum, tr, Photodiode)
 
     %show stimuli
 
-    texture = getTexture(miniBlocks{blockNum,tr + TRIAL1_NAME_COL});
+    % texture = texture(trial_num);
+    % texture = getTexture(miniBlocks{blockNum,tr + TRIAL1_NAME_COL});
+
+
     % Save this information to an additional log file
     
     %display(tr, 'tr');
@@ -40,21 +43,21 @@ function [ stimuliTiming ] = showStimuli(miniBlocks, blockNum, tr, Photodiode)
     Screen('DrawTexture',w, texture,[],[x y]);
 
     drawFixation();
-    if PHOTODIODE && nargin == 3
-        drawPhotodiodBlock('on'); 
-        [~,stimuliTiming] = Screen('Flip', w,[],1);
-    elseif PHOTODIODE && nargin == 4
-        if strcmp(Photodiode,'PhotodiodeOff')
-            drawPhotodiodBlock('off'); 
-            [~,stimuliTiming] = Screen('Flip', w,[],1);
-        end
-    else
-        [~,stimuliTiming] = Screen('Flip', w, [], 1);
-    end   
+%     if PHOTODIODE && nargin == 3
+%         drawPhotodiodBlock('on'); 
+%         [~,stimuliTiming] = Screen('Flip', w,[],1);
+%     elseif PHOTODIODE && nargin == 4
+%         if strcmp(Photodiode,'PhotodiodeOff')
+%             drawPhotodiodBlock('off'); 
+%             [~,stimuliTiming] = Screen('Flip', w,[],1);
+%         end
+%     else
+[~,stimuliTiming] = Screen('Flip', w, [], 1);
+%     end   
     
-    trial_nrs_for_additional_log_file = [trial_nrs_for_additional_log_file; tr];
-    block_nrs_for_additional_log_file = [block_nrs_for_additional_log_file; blockNum];
-    textures_for_additional_log_file = [textures_for_additional_log_file, texture];
+%     trial_nrs_for_additional_log_file = [trial_nrs_for_additional_log_file; tr];
+%     block_nrs_for_additional_log_file = [block_nrs_for_additional_log_file; blockNum];
+%     textures_for_additional_log_file = [textures_for_additional_log_file, texture];
 
 %     if DEBUG disp(sprintf("\n[%d,%d]\n",stimSizeHeight,stimSizeLength)); end
 end

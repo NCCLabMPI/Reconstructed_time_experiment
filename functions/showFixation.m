@@ -11,6 +11,7 @@ function [ fixation_time ] = showFixation(Photodiode)
     % trial, before the jitter starts.
 
     global gray w PHOTODIODE
+    gray = [125, 125, 125];
 
     % Draw the fixation
     Screen('FillRect', w, gray);
