@@ -7,11 +7,11 @@ clear;
 subNum = 1;
 
 % Hardware parameters:
-global TRUE FALSE refRate w viewDistance 
+global  TRUE FALSE refRate w viewDistance 
 global MEEG EYE_TRACKER 
 global NUMBER_OF_TOTAL_TRIALS TRIAL_DURATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE
-global ABORTED RESTART_KEY NO_KEY ABORT_KEY RESPONSE_KEY
+global ABORTED RESTART_KEY NO_KEY ABORT_KEY
 
 viewDistance = 60;
 % Add functions folder to path (when we separate all functions)
@@ -63,7 +63,10 @@ try
 
     % open trial matrix
     MatFolderName = [pwd,filesep,'TrialMatrices\'];
-    trial_mat = readtable(fullfile(MatFolderName, 'SX103_TrialMatrix.csv'));
+    trial_mat = readtable(fullfile(MatFolderName, 'reconstructed_time_trial_mat.csv'));
+
+    % get jitter
+    jitter = getJitter(NUMBER_OF_TOTAL_TRIALS);
 
     % initialise log table
     log_table = table;
@@ -103,7 +106,7 @@ try
         %     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
 
         elapsedTime = 0;
-        while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + trial_mat.jitter{tr}
+        while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + jitter(tr)
             % In order to count the frames, I always convert the
             % time to frames by dividing it by the refresh rate:
             CurrentFrame = floor(elapsedTime/refRate);
@@ -184,28 +187,28 @@ try
                     log_table.trial_RT(tr) =  RT - log_table.vis_stim_time(tr);
                     hasInput = TRUE; % Flagging the input
 
-                    % Logging whether the response was correct:
-                    if key == TARGET_KEY % taget key was pressed
-                        miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
-                        if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
-                            hits = hits + 1;
-                        else
-                            fa = fa + 1;
-                        end
-                    else % other key was pressed
-                        % I take any wrong key as a legitimate button press
-                        miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
-                        if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
-                            hits = hits + 1;
-                        else
-                            fa = fa + 1;
-                        end
-                        miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = WRONG_KEY;
-                    end
-                    % log response in journal
-                    setOutputTable('Response', miniBlocks, miniBlockNum, tr, RT);
-                else % no key was pressed
-                    miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = ~isTarget(miniBlocks,miniBlockNum,tr);
+%                     % Logging whether the response was correct:
+%                     if key == TARGET_KEY % taget key was pressed
+%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
+%                         if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
+%                             hits = hits + 1;
+%                         else
+%                             fa = fa + 1;
+%                         end
+%                     else % other key was pressed
+%                         % I take any wrong key as a legitimate button press
+%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
+%                         if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
+%                             hits = hits + 1;
+%                         else
+%                             fa = fa + 1;
+%                         end
+%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = WRONG_KEY;
+%                     end
+%                     % log response in journal
+%                     setOutputTable('Response', miniBlocks, miniBlockNum, tr, RT);
+%                 else % no key was pressed
+%                     miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = ~isTarget(miniBlocks,miniBlockNum,tr);
                 end
 
 

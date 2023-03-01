@@ -19,7 +19,7 @@ function initConstantsParameters(subNum)
     % GOBAL CONSTANTS
     % -----------------------------------------------------
     % Text and messages
-    global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
+    global LAB_ID INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
     global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
     global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE
     global FEEDBACK_MESSAGES FEEDBACK_MESSAGES_PRACTICE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE PRESS_ANY_BUTTON fontType fontSize fontColor GENERAL_BREAK_MESSAGE RESTART_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE RESTART_PRACTICE_MESSAGE PROGRESS_MESSAGE PROGRESS_MESSAGE_MEG
@@ -127,6 +127,7 @@ function initConstantsParameters(subNum)
     y = j -3;
     v = floor(abs(double(y)/double(3)))*3;
     version_duration = j + int64(v);
+    
     
     NUM_TARGETS_PER_CAT = 40; 
     
@@ -278,7 +279,7 @@ function initConstantsParameters(subNum)
     FRAME_COLOR = [39,241,44];
 
     % TIMING
-    JITTER_RANGE_MEAN = 0.600;
+    JITTER_RANGE_MEAN =0.600;
     JITTER_RANGE_MIN = 0.400;
     JITTER_RANGE_MAX = 2.000;
     STIM_DURATION = [0.500 1.000 1.500]; % Planned duration in seconds. However, since every lab amy have a different refresh rate, we need to go as close as possible to it. So it will be actualized once we get the refresh rate:
@@ -354,7 +355,19 @@ function initConstantsParameters(subNum)
     BLOCK_RESTART_KEY = KbName('B');
     RESPONSE_KEY = upKey;
     ValidationKey = KbName('V');
-
+    
+%     % for fMRI?
+%     switch LAB_ID
+%         case 'SC'    % Aya, you can probably best make a case for your setup here
+%             delete(instrfind)
+%             bitsi_buttonbox = Bitsi_Scanner('com2');    %init button boxes
+%             bitsi_buttonbox.clearResponses();
+%            
+%             bitsi_scanner = Bitsi_Scanner('com3');  %init bitsis receiving scanTrigger
+%             
+%         case 'SD'
+%            
+%     end
 
     % the trigger codes for MEEG and EYE_TRACKER
     TRG_TIME_BETWEEN = 0.050; % seconds

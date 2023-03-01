@@ -13,9 +13,8 @@ global NUMBER_OF_NON_TARGET_SETS_PER_CAT NUMBER_OF_TOTAL_TRIALS NUMBER_OF_NON_TA
 %%
 % Define which miniblock has how many trials
 
-
 NUM_OF_MINI_BLOCKS_PER_BLOCK = 4; % number of mini blocks in each block
-NUM_OF_BLOCKS = 10; %number of blocks
+NUM_OF_BLOCKS = 10; % number of blocks
 TOTAL_NUM_MINIBLOCKS = NUM_OF_MINI_BLOCKS_PER_BLOCK * NUM_OF_BLOCKS;
 
 NUM_OF_TARGETS_PER_MINIBLOCK = [2 3 4 5 6]; % possible number of targets to use in miniblock
@@ -104,6 +103,11 @@ cate_vec = {repmat({'face'},1,4), repmat({'object'},1,4), repmat({'char'},1,4), 
 cate_vec = horzcat(cate_vec{:});
 cate_vec = repmat(cate_vec,1,number_of_trials_without_targets/length(cate_vec));
 trial_table_B.vis_stim_cate = cate_vec';
+
+% f) jitter
+jitter_vec = getJitter(number_of_trials_without_targets);
+trial_table_B.jitter = jitter_vec;
+
 
 % shuffle table with all variables
 trial_table_B = ShuffleRows(trial_table_B);

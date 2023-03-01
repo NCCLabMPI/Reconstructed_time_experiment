@@ -13,9 +13,8 @@ global NUMBER_OF_NON_TARGET_SETS_PER_CAT NUMBER_OF_TOTAL_TRIALS NUMBER_OF_NON_TA
 %%
 % Define which miniblock has how many trials
 
-
 NUM_OF_MINI_BLOCKS_PER_BLOCK = 4; % number of mini blocks in each block
-NUM_OF_BLOCKS = 10; %number of blocks
+NUM_OF_BLOCKS = 10; % number of blocks
 TOTAL_NUM_MINIBLOCKS = NUM_OF_MINI_BLOCKS_PER_BLOCK * NUM_OF_BLOCKS;
 
 NUM_OF_TARGETS_PER_MINIBLOCK = [2 3 4 5 6]; % possible number of targets to use in miniblock
@@ -109,17 +108,20 @@ trial_table_B.vis_stim_cate = cate_vec';
 trial_table_B = ShuffleRows(trial_table_B);
 
 % split in table for non-targets and irrelevant stimuli
-trial_table_B = sortrows(trial_table_B,'trial_type');
-trial_table_non_targets = trial_table_B(1:length(trial_table_B.trial_type)/2,:);
-trial_table_irrelevant = trial_table_B((length(trial_table_B.trial_type)/2)+1:length(trial_table_B.trial_type),:);
+trial_table_non_targets = trial_table_B(trial_table_B.trial_type == 1,:);
+trial_table_irrelevant = trial_table_B(trial_table_B.trial_type == 2,:);
 
 % split once more by category
-trial_table_non_targets = sortrows(trial_table_non_targets,'vis_stim_cate');
-trial_table_non_targets_faces = trial_table_non_targets(1:length(trial_table_non_targets.vis_stim_cate/4,:);
+trial_table_non_targets_faces = trial_table_non_targets(strcmp(trial_table_non_targets.vis_stim_cate,'face'),:);
+trial_table_non_targets_objects = trial_table_non_targets(strcmp(trial_table_non_targets.vis_stim_cate,'object'),:);
+trial_table_non_targets_chars = trial_table_non_targets(strcmp(trial_table_non_targets.vis_stim_cate,'char'),:);
+trial_table_non_targets_falses = trial_table_non_targets(strcmp(trial_table_non_targets.vis_stim_cate,'false'),:);
 
-trial_table_non_targets_faces = trial_table_non_targets(1:length(trial_table_non_targets.vis_stim_cate/4,:);
-trial_table_non_targets_faces = trial_table_non_targets(1:length(trial_table_non_targets.vis_stim_cate/4,:);
-trial_table_non_targets_faces = trial_table_non_targets(1:length(trial_table_non_targets.vis_stim_cate/4,:);
+trial_table_irrelevant_faces = trial_table_irrelevant(strcmp(trial_table_irrelevant.vis_stim_cate,'face'),:);
+trial_table_irrelevant_objects = trial_table_irrelevant(strcmp(trial_table_irrelevant.vis_stim_cate,'object'),:);
+trial_table_irrelevant_chars = trial_table_irrelevant(strcmp(trial_table_irrelevant.vis_stim_cate,'char'),:);
+trial_table_irrelevant_falses = trial_table_irrelevant(strcmp(trial_table_irrelevant.vis_stim_cate,'false'),:);
+
 
 %% balance controls
 % Since total number of trials without target (1280) cannot be divided by 3
