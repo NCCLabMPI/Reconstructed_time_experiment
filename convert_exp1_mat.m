@@ -30,8 +30,30 @@ for i=1:length(trial_mat_files)
         % Get the number of trials:
         n_trials = data{ii, trial_n_col};
         % Extract the targets:
-        tar_1 = data{ii, target_1_col};
-        tar_2 = data{ii, target_1_col};
+        tar_1 = string(data{ii, target_1_col});
+        tar_2 = string(data{ii, target_2_col});
+        % Get the ID of each:
+        if tar_1{1}(1) == '1'
+            tar_1_cate = 'face';
+        elseif tar_1{1}(1) == '2'
+            tar_1_cate = 'object';
+        elseif tar_1{1}(1) == '3'
+            tar_1_cate = 'letter';
+        elseif tar_1{1}(1) == '4'
+            tar_1_cate = 'false_font';
+        end
+        if tar_2{1}(1) == '1'
+            tar_2_cate = 'face';
+        elseif tar_2{1}(1) == '2'
+            tar_2_cate = 'object';
+        elseif tar_2{1}(1) == '3'
+            tar_2_cate = 'letter';
+        elseif tar_2{1}(1) == '4'
+            tar_2_cate = 'false_font';
+        end
+        tar_1 = char(join([tar_1_cate, string(tar_1{1}(3:4))], '_'));
+        tar_2 = char(join([tar_2_cate, string(tar_2{1}(3:4))], '_'));
+        
         % Extract all trials_ids, jitters and durations:
         trials_ids = data(ii, stim_id_col:stim_id_col+n_trials-1)';
         trials_dur = data(ii, trial_dur_col:trial_dur_col+n_trials-1)';
@@ -68,8 +90,8 @@ for i=1:length(trial_mat_files)
         end
         % Convert to long format:
         block_table = cell2table([num2cell(repmat(ii, size(trials_ids, 1), 1)) ...
-            num2cell(repmat(tar_1, size(trials_ids, 1), 1)) ...
-            num2cell(repmat(tar_2, size(trials_ids, 1), 1)) ...
+            repmat({tar_1}, size(trials_ids, 1), 1) ...
+            repmat({tar_2}, size(trials_ids, 1), 1) ...
             cate ori identity trials_dur trials_jit], ...
             'VariableNames', {'block', 'target_1', 'target_2', 'category', ...
             'orientation', 'identity', 'duration', 'stim_jit'});
