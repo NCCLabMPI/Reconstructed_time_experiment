@@ -29,11 +29,7 @@ trial_mat.trial = (1:length(trial_mat.block))';
 trial_mat = sortrows(trial_mat, {'duration', 'category', 'trial_type'});
 
 % b) SOA between visual and auditory stimulus (1-4 for onset, 5-8 for offset)
-trial_mat.SOA = repmat([0,116,232,466],1,1440/4)';
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-trial_mat.SOA_lock = repmat({[repmat({'onset'},1,4), repmat({'offset'},1,4)]},1,1440/8)';
-%%%%%%%%%%%%%%%%%%
+trial_mat.SOA = repmat(1:8,1,1440/8)';
 
 % c) Pitch of auditory stimulus (high pitch = 1100, low pitch = 1000 Hz)
 trial_mat.pitch = repmat([repmat(LOW_PITCH,1,8),repmat(HIGH_PITCH,1,8)],1,1440/16)';
@@ -41,7 +37,7 @@ trial_mat.pitch = repmat([repmat(LOW_PITCH,1,8),repmat(HIGH_PITCH,1,8)],1,1440/1
 % Shuffle vector and then sort for trials to restore original order 
 trial_mat = ShuffleRows(trial_mat);
 trial_mat = sortrows(trial_mat, 'trial');
-order = {'trial','block','target_1','target_2','trial_type','category','duration','SOA','SOA_lock','pitch','orientation','identity','stim_jit'};
+order = {'trial','block','target_1','target_2','trial_type','category','duration','SOA','pitch','orientation','identity','stim_jit'};
 trial_mat = trial_mat(:,order);
 
 

@@ -36,7 +36,8 @@ function initConstantsParameters(subNum)
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION MRI_BASELINE_PERIOD
     % -----------------------------------------------------
     % Keys parameters
-    global RESPONSE_KEY ValidationKey TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
+    global VIS_RESPONSE_KEY ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
+    global HIGH_PITCH LOW_PITCH HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
     % -----------------------------------------------------
     % Trials parameters
     global DEBUG MIN_NUM_OF_TRIALS_PER_MINI_BLOCK FIXATION TRIAL1_STIM_DUR_COL NUM_OF_STIM_TYPE_PER_MINIBLOCK NUM_OF_TARGET_TYPES_PER_MINIBLOCK
@@ -285,6 +286,10 @@ function initConstantsParameters(subNum)
     TRIAL_DURATION = 2.000; % Total trial duration in seconds, without jitter
     END_WAIT = 2.000; % time of "end of experiment" message (in s)
 
+    % Define pitches in Hz
+    HIGH_PITCH = 1100;
+    LOW_PITCH= 1000;
+
     if DEBUG == 2 %fast debug
         STIM_DURATION = [6 12 18] * (1/60); % 1/60 to allow at least one frame to appear on screen
         TRIAL_DURATION = 24 * (1/60); % leaves 3 frames for fixation
@@ -342,6 +347,7 @@ function initConstantsParameters(subNum)
     % Response params
     KbName('UnifyKeyNames');
     upKey         =  KbName('UpArrow');
+    downKey       =  KbName('DownArrow');
     RightKey      =  KbName('RightArrow');
     LeftKey       =  KbName('LeftArrow');
     PauseKey      =  KbName('Q');   
@@ -352,7 +358,10 @@ function initConstantsParameters(subNum)
     spaceBar      =  KbName('SPACE');
     MINIBLOCK_RESTART_KEY = KbName('M');
     BLOCK_RESTART_KEY = KbName('B');
-    RESPONSE_KEY = upKey;
+    VIS_RESPONSE_KEY = spaceBar;
+    AUD_RESPONSE_KEY_HIGH = upKey ;
+    AUD_RESPONSE_KEY_LOW = downKey;
+
     ValidationKey = KbName('V');
 
 
@@ -409,9 +418,11 @@ function initConstantsParameters(subNum)
     ABORT_KEY = 4;
     RESTART_KEY = 3;
     WRONG_KEY = 2;
-    TARGET_KEY = 1; % to mark if up was pressed
+    VIS_TARGET_KEY = 1; % to mark if up was pressed
     NO_KEY = 0;
-    
+    HIGH_PITCH_KEY = HIGH_PITCH;
+    LOW_PITCH_KEY = LOW_PITCH;
+
     TRUE = 1;
     FALSE = 0;
 

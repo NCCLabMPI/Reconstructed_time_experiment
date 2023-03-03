@@ -7,11 +7,11 @@ clear;
 subNum = 1;
 
 % Hardware parameters:
-global  TRUE FALSE refRate w viewDistance 
-global MEEG EYE_TRACKER 
+global TRUE FALSE refRate w viewDistance compKbDevice
+global MEEG EYE_TRACKER
 global NUMBER_OF_TOTAL_TRIALS TRIAL_DURATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE
-global ABORTED RESTART_KEY NO_KEY ABORT_KEY
+global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY
 
 viewDistance = 60;
 % Add functions folder to path (when we separate all functions)
@@ -28,56 +28,75 @@ if screenError && RESOLUTION_FORCE
     showError('WARNING: screen refresh rate is not optimal !');
 end
 
-%% Loading stimuli
+%% Initialize experimental design
 try
     ABORTED = 0;
+
+    % load stimuli
     showMessage(LOADING_MESSAGE);
+    loadStimuli()
 
-    % path to stimuli folder
-    PreFolderName = [pwd,filesep,'stimuli\'];
-    cat_names = {'char', 'face', 'false', 'object'};
-    ori_names = {'center', 'left', 'right'};
-    gender_names = {'male', 'female'};
-    % stimulus_id = {"face_1", "face_2"}
-
-    cat_struct = struct('center', 1:20, 'left', 1:20, 'right', 1:20);
-    texture_struct = struct('char', cat_struct, 'face', cat_struct, 'false', cat_struct, 'object', cat_struct);
-
-
-    % loops through the folders an loads all stimuli
-    for j = 1:length(cat_names)
-        for jj = 1:length(ori_names)
-            if j == 2 % 3rd for loop only for faces
-                for jjj = 1:length(gender_names)
-                    FolderName = fullfile(PreFolderName, cat_names{j},ori_names{jj}, gender_names{jjj});
-                    new_textures = getTexturesFromHD(FolderName, w);
-                    texture_struct.(cat_names{j}).(ori_names{jj})(10*jjj-9:10*jjj) = new_textures;
-                end
-            else
-                FolderName = fullfile(PreFolderName, cat_names{j}, ori_names{jj});
-                new_textures = getTexturesFromHD(FolderName, w);
-                texture_struct.(cat_names{j}).(ori_names{jj})(1:20) = new_textures;
-            end
-        end
-    end
-
-    % open trial matrix
+    % open trial matrix (form Experiment 1) and add auditory conditions
     MatFolderName = [pwd,filesep,'TrialMatrices\'];
-    trial_mat = readtable(fullfile(MatFolderName, 'reconstructed_time_trial_mat.csv'));
-
-    % get jitter
-    jitter = getJitter(NUMBER_OF_TOTAL_TRIALS);
+    TableName = 'SX103_TrialMatrix.csv';
+    trial_mat = readtable(fullfile(MatFolderName, TableName));
+    trial_mat = addAudStim(trial_mat);
 
     % initialise log table
     log_table = table;
 
     %% Main loop
 
+    %
+    misses = 0;
+    hits = 0;
+    fa = 0;
+    cr = 0; % correct rejection
+    previous_miniblock = 0;
+
     showFixation('PhotodiodeOff')
-    for tr = 1:length(trial_mat.trial)
+    for tr = 1:length(trial_mat.block)
         % Draw the image to the screen, unless otherwise specified PTB will draw
         % the texture full size in the center of the screen. We first draw the
         % image in its correct orientation.
+
+        %% Start of miniblock
+
+        % For every new miniblock, show target screen and send out triggers
+        current_miniblock = trial_mat.block(tr);
+        if current_miniblock > previous_miniblock
+            previous_miniblock = current_miniblock;
+
+            % Showing the miniblock begin screen. This is the target screen
+            TargetScreenOnset = showMiniBlockBeginScreen(trial_mat, tr);
+%             if MEEG %for MEEG, wait 5 seconds max
+                 KbWait(compKbDevice,3,WaitSecs(0)+5);
+%             end
+% 
+%             % Just before we really get started, the MB number is sent to
+%             % via the LPT trigger:
+%             if MEEG
+%                 sendTrig(TRG_MB_ADD+miniBlockNum, LPT_OBJECT,LPT_ADDRESS);
+%                 WaitSecs(refRate);
+%                 sendTrig(0, LPT_OBJECT,LPT_ADDRESS);
+%                 WaitSecs(refRate);
+%             end
+% 
+%             if EYE_TRACKER
+%                 if ~TOBII_EYETRACKER
+%                     Eyelink('Message',num2str(TRG_MB_ADD+miniBlockNum));
+%                 else
+%                     tobii_TimeCell(end+1,:) = {tobii.get_system_time_stamp,num2str(TRG_MB_ADD+miniBlockNum)};
+%                 end
+%             end
+
+
+              fixOnset = showFixation('PhotodiodeOff'); % 1
+              WaitSecs(rand*5)
+
+        end
+
+        %%
 
         % flags needs to be initialized
         fixShown = FALSE;
@@ -85,15 +104,16 @@ try
         hasInput = FALSE; % input flag, marks if participant already replied
         PauseTime = 0; % If the experiment is paused, the duration of the pause is stored to account for it.
 
-        % get texture
-        vis_stim_id = trial_mat.vis_stim_id{tr};
-        vis_stim_num = str2double(extractBetween(vis_stim_id,strlength(vis_stim_id)-1,strlength(vis_stim_id)));
-        texture = texture_struct.(trial_mat.vis_stim_cate{tr}).(trial_mat.vis_stim_orientation{tr})(vis_stim_num);
-        log_table.texture(tr) = texture;
+        % get texture pointer
+        vis_stim_id = trial_mat.identity{tr};
+        orientation = trial_mat.orientation{tr};
+        texture_ptr = getPointer(vis_stim_id, orientation);
+        log_table.texture(tr) = texture_ptr;
 
         % show stimulus
-        vis_stim_time = showStimuli(texture);
+        vis_stim_time = showStimuli(texture_ptr);
         log_table.vis_stim_time(tr) = vis_stim_time;
+
 
         % I then set a frame counter. The flip of the stimulus
         % presentation is frame 0. It is already the previous frame because it already occured:
@@ -105,8 +125,10 @@ try
         % Log the stimulus presentation in the output table
         %     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
 
+        %--------------------------------------------------------
+        %% TIME LOOP
         elapsedTime = 0;
-        while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + jitter(tr)
+        while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + trial_mat.stim_jit(tr)
             % In order to count the frames, I always convert the
             % time to frames by dividing it by the refresh rate:
             CurrentFrame = floor(elapsedTime/refRate);
@@ -117,7 +139,7 @@ try
                 FrameIndex = FrameIndex +1;
                 PreviousFrame = CurrentFrame;
             end
-
+            %--------------------------------------------------------
 
             if hasInput == FALSE
                 [key,RT,PauseTime] = getInput(PauseTime);
@@ -144,14 +166,14 @@ try
 
                     % If the experimenter wants to restart, log it:
                     if(keyCode(YesKey))
-                        %                 setOutputTable ('Interruption', miniBlocks, miniBlockNum, tr, secs)
+%                 setOutputTable ('Interruption', miniBlocks, miniBlockNum, tr, secs)
                         break
 
                     else % Else, continue:
                         key=NO_KEY;
                     end
                 elseif (key == ABORT_KEY) % If the experiment was aborted:
-                    %             setOutputTable ('Abortion', miniBlocks, miniBlockNum, tr, RT, PauseTime)
+%             setOutputTable ('Abortion', miniBlocks, miniBlockNum, tr, RT, PauseTime)
                     ABORTED = 1;
                     error(CLEAN_EXIT_MESSAGE);
                 end
@@ -163,12 +185,11 @@ try
                 % clicking restart)
 
                 % Log the response received:
-                log_table.trial_button_press(tr) = key;
+                log_table.trial_button_press{tr} = key;
 
                 % If the participant pressed a key:
                 if key ~= NO_KEY
 
-                    % -------------------------------------------------
                     % Sending the response triggers first to get best
                     % timing:
                     % Sending response trigger for MEEG:
@@ -187,35 +208,28 @@ try
                     log_table.trial_RT(tr) =  RT - log_table.vis_stim_time(tr);
                     hasInput = TRUE; % Flagging the input
 
-%                     % Logging whether the response was correct:
-%                     if key == TARGET_KEY % taget key was pressed
-%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
-%                         if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
-%                             hits = hits + 1;
-%                         else
-%                             fa = fa + 1;
-%                         end
-%                     else % other key was pressed
-%                         % I take any wrong key as a legitimate button press
-%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = isTarget(miniBlocks,miniBlockNum,tr);
-%                         if miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr}
-%                             hits = hits + 1;
-%                         else
-%                             fa = fa + 1;
-%                         end
-%                         miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = WRONG_KEY;
-%                     end
-%                     % log response in journal
+                    % Logging whether the response was correct:
+                    if key == VIS_TARGET_KEY % taget key was pressed
+                        log_table.trial_answer_vis(tr) = strcmp(trial_mat.trial_type{tr}, 'target');
+                        if log_table.trial_answer_vis(tr)
+                            hits = hits + 1;
+                            log_table.trial_repsonse_vis{tr} ='hit';
+                        else
+                            fa = fa + 1;
+                            log_table.trial_repsonse_vis{tr} ='fa';
+                        end
+                     end
+                    % log response in journal
 %                     setOutputTable('Response', miniBlocks, miniBlockNum, tr, RT);
-%                 else % no key was pressed
-%                     miniBlocks{miniBlockNum,TRIAL1_ANSWER_COL + tr} = ~isTarget(miniBlocks,miniBlockNum,tr);
+                else % no key was pressed
+%                     log_table.trial_answer_vis(tr) = ~strcmp(trial_mat.trial_type{tr}, 'target');
                 end
 
 
             end
 
             % Present fixation
-            if elapsedTime >= (trial_mat.vis_stim_dur(tr) - refRate*(2/3)) && fixShown == FALSE
+            if elapsedTime >= (trial_mat.duration(tr) - refRate*(2/3)) && fixShown == FALSE
                 fix_time = showFixation('PhotodiodeOn');
 
                 % log fixation in journal
@@ -234,15 +248,32 @@ try
                 jitterLogged = TRUE;
             end
 
-            % f. Updating clock:
+            % Updating clock:
             % update time since iteration begun. Subtract the time
             % of the pause to the elapsed time, because we don't
             % want to have it in there. If there was no pause, then
             % pause time = 0
             elapsedTime = GetSecs - vis_stim_time;
-
         end
         log_table.trial_end(tr) = GetSecs;
+
+        %% End of trial
+        % If the restart key was pressed, we break
+        if(key==RESTART_KEY)
+            break
+        end
+
+        % if trial ended and no input, logs as CR or miss
+        if ~strcmp(trial_mat.trial_type{tr}, 'target') && hasInput == FALSE
+            cr = cr + 1;
+            log_table.trial_repsonse_vis{tr} ='cr';
+        elseif strcmp(trial_mat.trial_type{tr}, 'target') && hasInput == FALSE
+            misses = misses + 1;
+            log_table.trial_repsonse_vis{tr} ='miss';
+        end
+
+        % write some stuff in log table
+        log_table.trial_type{tr} = trial_mat.trial_type{tr};
     end
 
     % save trial_mat table

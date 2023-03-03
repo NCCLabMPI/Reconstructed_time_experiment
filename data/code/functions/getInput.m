@@ -13,7 +13,9 @@
 % recorded to make sure we account for it when starting again!
 function [ key, Resp_Time,PauseTime ] = getInput(PauseTime)
 
-global compKbDevice abortKey PauseKey RestartKey RESPONSE_KEY TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY upKey
+global compKbDevice abortKey PauseKey RestartKey VIS_RESPONSE_KEY VIS_TARGET_KEY 
+global AUD_RESPONSE_KEY_HIGH HIGH_PITCH_KEY AUD_RESPONSE_KEY_LOW LOW_PITCH_KEY
+global WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY upKey
 key = NO_KEY;
 
 [KeyIsDown, Resp_Time, Resp1] = KbCheck(compKbDevice);
@@ -22,8 +24,12 @@ if KeyIsDown
     if Resp1(abortKey)
         key = ABORT_KEY;
         % cleanExit();
-    elseif Resp1(RESPONSE_KEY)
-        key = TARGET_KEY;
+    elseif Resp1(VIS_RESPONSE_KEY)
+        key = VIS_TARGET_KEY;
+    elseif Resp1(AUD_RESPONSE_KEY_HIGH)
+        key = HIGH_PITCH_KEY;
+    elseif Resp1(AUD_RESPONSE_KEY_LOW)
+        key = LOW_PITCH_KEY;
     elseif Resp1(PauseKey)
         key = NO_KEY; % We don't want the pause to be logged as a response, because it is not a response
         % Loop until the experimenter press the PauseKey again

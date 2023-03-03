@@ -415,7 +415,7 @@ function initConstantsParameters(subNum)
     SECRET_FOLDER = 'DONT OPEN! DEAD INSIDE!';
     
     % program codes
-    ABORT_KEY = 4;
+    ABORT_KEY = 6;
     RESTART_KEY = 3;
     WRONG_KEY = 2;
     VIS_TARGET_KEY = 1; % to mark if up was pressed
@@ -423,6 +423,7 @@ function initConstantsParameters(subNum)
     HIGH_PITCH_KEY = HIGH_PITCH;
     LOW_PITCH_KEY = LOW_PITCH;
 
+    
     TRUE = 1;
     FALSE = 0;
 
