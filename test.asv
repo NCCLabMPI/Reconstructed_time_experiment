@@ -12,6 +12,7 @@ global MEEG EYE_TRACKER
 global NUMBER_OF_TOTAL_TRIALS TRIAL_DURATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY
+global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION
 
 viewDistance = 60;
 % Add functions folder to path (when we separate all functions)
@@ -28,39 +29,14 @@ if screenError && RESOLUTION_FORCE
     showError('WARNING: screen refresh rate is not optimal !');
 end
 
-%% Loading stimuli
+%% Initialize experimental design
 try
     ABORTED = 0;
+
+    % load stimuli
     showMessage(LOADING_MESSAGE);
-
-    % path to stimuli folder
-    PreFolderName = [pwd,filesep,'stimuli\'];
-    cat_names = {'letter', 'face', 'false_font', 'object'};
-    ori_names = {'center', 'left', 'right'};
-    gender_names = {'male', 'female'};
-    % stimulus_id = {"face_1", "face_2"}
-
-    cat_struct = struct('center', 1:20, 'left', 1:20, 'right', 1:20);
-    global texture_struct
-    texture_struct = struct('letter', cat_struct, 'face', cat_struct, 'false_font', cat_struct, 'object', cat_struct);
-
-
-    % loops through the folders an loads all stimuli
-    for j = 1:length(cat_names)
-        for jj = 1:length(ori_names)
-            if j == 2 % 3rd for loop only for faces
-                for jjj = 1:length(gender_names)
-                    FolderName = fullfile(PreFolderName, cat_names{j},ori_names{jj}, gender_names{jjj});
-                    new_textures = getTexturesFromHD(FolderName, w);
-                    texture_struct.(cat_names{j}).(ori_names{jj})(10*jjj-9:10*jjj) = new_textures;
-                end
-            else
-                FolderName = fullfile(PreFolderName, cat_names{j}, ori_names{jj});
-                new_textures = getTexturesFromHD(FolderName, w);
-                texture_struct.(cat_names{j}).(ori_names{jj})(1:20) = new_textures;
-            end
-        end
-    end
+    loadStimuli() % visual
+    [high_pitch_buff, low_pitch_buff, aud_pahandle] = init_audio_pitches(PITCH_DURATION, HIGH_PITCH_FREQ,  LOW_PITCH_FREQ); % auditory
 
     % open trial matrix (form Experiment 1) and add auditory conditions
     MatFolderName = [pwd,filesep,'TrialMatrices\'];
@@ -118,7 +94,7 @@ try
 
 
               fixOnset = showFixation('PhotodiodeOff'); % 1
-              WaitSecs(rand*5))
+              WaitSecs(rand*5)
 
         end
 
@@ -126,6 +102,7 @@ try
 
         % flags needs to be initialized
         fixShown = FALSE;
+        pitchPlayed = FALSE;
         jitterLogged = FALSE;
         hasInput = FALSE; % input flag, marks if participant already replied
         PauseTime = 0; % If the experiment is paused, the duration of the pause is stored to account for it.
@@ -152,6 +129,8 @@ try
         %     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
 
         %--------------------------------------------------------
+
+        
         %% TIME LOOP
         elapsedTime = 0;
         while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + trial_mat.stim_jit(tr)
@@ -252,6 +231,15 @@ try
                 end
 
 
+            end
+
+            % Play pitch
+            if elapsedTime >= (trial_mat.SOA(tr) - refRate*(2/3)) && pitchPlayed == FALSE
+    
+                % log fixation in journal
+                %             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
+                log_table.fix_time(tr) = fix_time;
+                pitchPlayed = TRUE;
             end
 
             % Present fixation

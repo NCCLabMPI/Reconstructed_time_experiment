@@ -7,7 +7,6 @@
 
 function [ trial_mat ] = addAudStim(trial_mat)
 
-global HIGH_PITCH LOW_PITCH
 
 % a) get trial type
 for k = 1:length(trial_mat.block)
@@ -29,13 +28,13 @@ trial_mat.trial = (1:length(trial_mat.block))';
 trial_mat = sortrows(trial_mat, {'duration', 'category', 'trial_type', 'orientation'});
 
 % b) SOA between visual and auditory stimulus (1-4 for onset, 5-8 for offset)
-trial_mat.SOA = repmat([0,116,232,466],1,1440/4)';
+trial_mat.SOA = repmat([0,0.116,0.232,0.466],1,1440/4)';
 
 SOA_lock_vec = repmat({[repmat({'onset'},1,4), repmat({'offset'},1,4)]},1,1440/8);
 trial_mat.SOA_lock = horzcat(SOA_lock_vec{:})';
 
 % c) Pitch of auditory stimulus (high pitch = 1100, low pitch = 1000 Hz)
-trial_mat.pitch = repmat([repmat(LOW_PITCH,1,8),repmat(HIGH_PITCH,1,8)],1,1440/16)';
+trial_mat.pitch = repmat([repmat({'low'},1,8),repmat({'high'},1,8)],1,1440/16)';
 
 % Shuffle vector and then sort for trials to restore original order 
 trial_mat = ShuffleRows(trial_mat);

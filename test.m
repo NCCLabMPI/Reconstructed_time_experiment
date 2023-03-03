@@ -12,6 +12,7 @@ global MEEG EYE_TRACKER
 global NUMBER_OF_TOTAL_TRIALS TRIAL_DURATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY
+global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION
 
 viewDistance = 60;
 % Add functions folder to path (when we separate all functions)
@@ -34,7 +35,8 @@ try
 
     % load stimuli
     showMessage(LOADING_MESSAGE);
-    loadStimuli()
+    loadStimuli() % visual
+    [high_pitch_buff, low_pitch_buff, aud_pahandle] = init_audio_pitches(PITCH_DURATION, HIGH_PITCH_FREQ,  LOW_PITCH_FREQ); % auditory
 
     % open trial matrix (form Experiment 1) and add auditory conditions
     MatFolderName = [pwd,filesep,'TrialMatrices\'];
@@ -100,6 +102,7 @@ try
 
         % flags needs to be initialized
         fixShown = FALSE;
+        pitchPlayed = FALSE;
         jitterLogged = FALSE;
         hasInput = FALSE; % input flag, marks if participant already replied
         PauseTime = 0; % If the experiment is paused, the duration of the pause is stored to account for it.
@@ -126,6 +129,8 @@ try
         %     setOutputTable('Stimulus', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_START_TIME_COL + tr}); %setting all the trial values in the output table
 
         %--------------------------------------------------------
+
+        
         %% TIME LOOP
         elapsedTime = 0;
         while elapsedTime < TRIAL_DURATION - (refRate*(2/3)) + trial_mat.stim_jit(tr)
@@ -228,12 +233,34 @@ try
 
             end
 
+            % Play pitch
+            if elapsedTime >= (trial_mat.SOA(tr) - refRate*(2/3)) && pitchPlayed == FALSE
+
+                before_pitch = GetSecs;
+                pitch_buff = eval([trial_mat.pitch{tr},'_pitch_buff']);
+                PsychPortAudio('FillBuffer', aud_pahandle, pitch_buff);
+
+                % And then you play the buffer. The function returns a time stamp.
+                % Here I don't use it but for our purpose we will want to log it:
+                log_table.aud_stim_time(tr) = PsychPortAudio('Start',aud_pahandle, 1, 0);
+                log_table.aud_stim_time2(tr) = GetSecs;
+                log_table.aud_stim_buff(tr) = pitch_buff;
+
+                % potentially log apitch in journal
+%             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
+ 
+                pitchPlayed = TRUE;
+
+                after_pitch = GetSecs;
+                pitch_dur(tr) = after_pitch - before_pitch;
+            end
+
             % Present fixation
             if elapsedTime >= (trial_mat.duration(tr) - refRate*(2/3)) && fixShown == FALSE
                 fix_time = showFixation('PhotodiodeOn');
 
                 % log fixation in journal
-                %             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
+%             setOutputTable('Fixation', miniBlocks, miniBlockNum, tr, miniBlocks{miniBlockNum,TRIAL1_STIM_END_TIME_COL + tr}); %setting all the trial values in the output table
                 log_table.fix_time(tr) = fix_time;
                 fixShown = TRUE;
             end

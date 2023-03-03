@@ -37,7 +37,7 @@ function initConstantsParameters(subNum)
     % -----------------------------------------------------
     % Keys parameters
     global VIS_RESPONSE_KEY ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
-    global HIGH_PITCH LOW_PITCH HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
+    global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
     % -----------------------------------------------------
     % Trials parameters
     global DEBUG MIN_NUM_OF_TRIALS_PER_MINI_BLOCK FIXATION TRIAL1_STIM_DUR_COL NUM_OF_STIM_TYPE_PER_MINIBLOCK NUM_OF_TARGET_TYPES_PER_MINIBLOCK
@@ -286,9 +286,10 @@ function initConstantsParameters(subNum)
     TRIAL_DURATION = 2.000; % Total trial duration in seconds, without jitter
     END_WAIT = 2.000; % time of "end of experiment" message (in s)
 
-    % Define pitches in Hz
-    HIGH_PITCH = 1100;
-    LOW_PITCH= 1000;
+    % Define pitches in Hz and duration in sec
+    HIGH_PITCH_FREQ = 1100;
+    LOW_PITCH_FREQ = 1000;
+    PITCH_DURATION = 0.084;
 
     if DEBUG == 2 %fast debug
         STIM_DURATION = [6 12 18] * (1/60); % 1/60 to allow at least one frame to appear on screen
@@ -420,8 +421,8 @@ function initConstantsParameters(subNum)
     WRONG_KEY = 2;
     VIS_TARGET_KEY = 1; % to mark if up was pressed
     NO_KEY = 0;
-    HIGH_PITCH_KEY = HIGH_PITCH;
-    LOW_PITCH_KEY = LOW_PITCH;
+    HIGH_PITCH_KEY = HIGH_PITCH_FREQ;
+    LOW_PITCH_KEY = LOW_PITCH_FREQ;
 
     TRUE = 1;
     FALSE = 0;
