@@ -9,11 +9,13 @@ trial_mat = addAudStim(trial_mat);
 % Convert the numerical column to strings, then everything is easier to
 % handle:
 trial_mat.duration = string(trial_mat.duration);
-trial_mat.soa = string(trial_mat.SOA);
+trial_mat.SOA = string(trial_mat.SOA);
 trial_mat.pitch = string(trial_mat.pitch);
+% Remove the targets:
+trial_mat = trial_mat(~strcmp(trial_mat.trial_type, 'target'), :);
 
 % List the conditions of interest:
-conditions = ["duration", "category", "trial_type", "soa", "pitch"];
+conditions = ["duration", "category", "trial_type", "SOA", "pitch"];
 thresh = 2;
 
 %% Highest level check: counting trials for each level of each condition
@@ -59,7 +61,7 @@ for pair_i=1:length(pairs)
         tbl = trial_mat(strcmp(trial_mat.(cond_1), cond_1_lvl{lvl_1}), :);
         % Looping through the second condition:
         for lvl_2=1:length(cond_2_lvl)
-            tbl_2 = trial_mat(strcmp(tbl.(cond_2), cond_2_lvl{lvl_2}), :);
+            tbl_2 = tbl(strcmp(tbl.(cond_2), cond_2_lvl{lvl_2}), :);
             disp(sprintf("%s-%s counts: %d",  cond_1_lvl{lvl_1}, cond_2_lvl{lvl_2}, size(tbl_2, 1)));
             cts = [cts, size(tbl_2, 1)];
         end
@@ -94,10 +96,10 @@ for triplet_i=1:length(triplets)
         tbl_1 = trial_mat(strcmp(trial_mat.(cond_1), cond_1_lvl{lvl_1}), :);
         % Looping through the second condition:
         for lvl_2=1:length(cond_2_lvl)
-            tbl_2 = trial_mat(strcmp(tbl_1.(cond_2), cond_2_lvl{lvl_2}), :);
+            tbl_2 = tbl_1(strcmp(tbl_1.(cond_2), cond_2_lvl{lvl_2}), :);
             % Finally, looping through the third level:
             for lvl_3=1:length(cond_3_lvl)
-                tbl_3 = trial_mat(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
+                tbl_3 = tbl_2(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
                 disp(sprintf("%s-%s-%s counts: %d",  cond_1_lvl{lvl_1}, cond_2_lvl{lvl_2}, cond_3_lvl{lvl_3}, ...
                     size(tbl_3, 1)));
                 cts = [cts, size(tbl_3, 1)];
@@ -111,6 +113,50 @@ for triplet_i=1:length(triplets)
     end
 end
 
+
+%% Fourth level check: checking balancing across pairs of experimental conditions
+% Conditions combinations:
+quartet = nchoosek(conditions,4);
+for quintet_i=1:size(quartet, 1)
+    % Get the first and second condition:
+    cond_1 = quartet{quintet_i, 1};
+    cond_2 = quartet{quintet_i, 2};
+    cond_3 = quartet{quintet_i, 3};
+    cond_4 = quartet{quintet_i, 4};
+    disp('==================================')
+    disp(sprintf("%s-%s-%s-%s counts", cond_1, cond_2, cond_3, cond_4))
+    % Get the levels of each condition:
+    cond_1_lvl = unique(trial_mat.(cond_1));
+    cond_2_lvl = unique(trial_mat.(cond_2));
+    cond_3_lvl = unique(trial_mat.(cond_3));
+    cond_4_lvl = unique(trial_mat.(cond_4));
+    cts = [];
+    % Looping through each level of the first condition:
+    for lvl_1 = 1:length(cond_1_lvl)
+        % Extract only this condition level from the table:
+        tbl_1 = trial_mat(strcmp(trial_mat.(cond_1), cond_1_lvl{lvl_1}), :);
+        % Looping through the second condition:
+        for lvl_2=1:length(cond_2_lvl)
+            tbl_2 = tbl_1(strcmp(tbl_1.(cond_2), cond_2_lvl{lvl_2}), :);
+            % Looping through the third level:
+            for lvl_3=1:length(cond_3_lvl)
+                tbl_3 = tbl_2(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
+                % Looping through the 4th level:
+                for lvl_4=1:length(cond_4_lvl)
+                    tbl_4 = tbl_3(strcmp(tbl_3.(cond_4), cond_4_lvl{lvl_4}), :);
+                    disp(sprintf("%s-%s-%s-%s counts: %d",  cond_1_lvl{lvl_1}, cond_2_lvl{lvl_2}, cond_3_lvl{lvl_3}, ...
+                            cond_4_lvl{lvl_4}, size(tbl_4, 1)));
+                    cts = [cts, size(tbl_4, 1)];
+                end
+            end
+        end
+    end
+    % Check what differences we have:
+    max_diff = max(max(bsxfun(@minus, cts, cts')));
+    if max_diff > thresh
+        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s-%s", cond_1, cond_2, cond_3, cond_4))
+    end
+end
 
 
 %% Fifth level check: checking balancing across pairs of experimental conditions
@@ -138,13 +184,13 @@ for quintet_i=1:size(quintets, 1)
         tbl_1 = trial_mat(strcmp(trial_mat.(cond_1), cond_1_lvl{lvl_1}), :);
         % Looping through the second condition:
         for lvl_2=1:length(cond_2_lvl)
-            tbl_2 = trial_mat(strcmp(tbl_1.(cond_2), cond_2_lvl{lvl_2}), :);
+            tbl_2 = tbl_1(strcmp(tbl_1.(cond_2), cond_2_lvl{lvl_2}), :);
             % Looping through the third level:
             for lvl_3=1:length(cond_3_lvl)
-                tbl_3 = trial_mat(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
+                tbl_3 = tbl_2(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
                 % Looping through the 4th level:
                 for lvl_4=1:length(cond_4_lvl)
-                    tbl_4 = trial_mat(strcmp(tbl_3.(cond_4), cond_4_lvl{lvl_4}), :);
+                    tbl_4 = tbl_5(strcmp(tbl_3.(cond_4), cond_4_lvl{lvl_4}), :);
                     % Finally, loop through the fifth lvl:
                     for lvl_5=1:length(cond_5_lvl)
                         tbl_5 = trial_mat(strcmp(tbl_4.(cond_5), cond_5_lvl{lvl_5}), :);
