@@ -190,10 +190,10 @@ for quintet_i=1:size(quintets, 1)
                 tbl_3 = tbl_2(strcmp(tbl_2.(cond_3), cond_3_lvl{lvl_3}), :);
                 % Looping through the 4th level:
                 for lvl_4=1:length(cond_4_lvl)
-                    tbl_4 = tbl_5(strcmp(tbl_3.(cond_4), cond_4_lvl{lvl_4}), :);
+                    tbl_4 = tbl_3(strcmp(tbl_3.(cond_4), cond_4_lvl{lvl_4}), :);
                     % Finally, loop through the fifth lvl:
                     for lvl_5=1:length(cond_5_lvl)
-                        tbl_5 = trial_mat(strcmp(tbl_4.(cond_5), cond_5_lvl{lvl_5}), :);
+                        tbl_5 = tbl_4(strcmp(tbl_4.(cond_5), cond_5_lvl{lvl_5}), :);
                         disp(sprintf("%s-%s-%s-%s-%s counts: %d",  cond_1_lvl{lvl_1}, cond_2_lvl{lvl_2}, cond_3_lvl{lvl_3}, ...
                             cond_4_lvl{lvl_4}, cond_5_lvl{lvl_5}, size(tbl_5, 1)));
                         cts = [cts, size(tbl_5, 1)];
