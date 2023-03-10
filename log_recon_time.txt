@@ -1,0 +1,17 @@
+
+PsychStartup: Adding path of installed GStreamer runtime to library path. [C:\gstreamer\1.0\msvc_x86_64\bin]
+>> number_of_cali_trails = 10
+
+number_of_cali_trails =
+
+    10
+
+>> cali_ms = linspace(20,1000,number_of_cali_trails);
+>> length(cali_ms)
+
+ans =
+
+    10
+
+>> test
+
