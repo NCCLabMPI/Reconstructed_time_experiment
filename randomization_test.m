@@ -1,12 +1,8 @@
 %% Load the matrix:
-global HIGH_PITCH_FREQ LOW_PITCH_FREQ
-HIGH_PITCH_FREQ = 1000;
-LOW_PITCH_FREQ = 1100;
-
-MatFolderName = [pwd,filesep,'TrialMatrices\'];
-TableName = ['SX',num2str(subNum),'_TrialMatrix.csv'];
-trial_mat = readtable(fullfile(MatFolderName, TableName));
-
+global HIGH_PITCH LOW_PITCH
+HIGH_PITCH = 1000;
+LOW_PITCH = 1100;
+trial_mat = readtable("C:\Users\alexander.lepauvre\Documents\GitHub\Reconstructed_time_experiment\TrialMatrices\SX101_TrialMatrix.csv");
 % Add the soa and pitches:
 trial_mat = addAudStim(trial_mat);
 
@@ -15,15 +11,12 @@ trial_mat = addAudStim(trial_mat);
 trial_mat.duration = string(trial_mat.duration);
 trial_mat.SOA = string(trial_mat.SOA);
 trial_mat.pitch = string(trial_mat.pitch);
-
 % Remove the targets:
+trial_mat = trial_mat(~strcmp(trial_mat.trial_type, 'target'), :);
 
-trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'target'), :);
-trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'non-target'), :);
 % List the conditions of interest:
-conditions = ["duration", "category", "SOA", "SOA_lock", "pitch"];
+conditions = ["duration", "category", "trial_type", "SOA", "pitch"];
 thresh = 2;
-
 
 %% Highest level check: counting trials for each level of each condition
 % Counting how many trials we have for each of these conditions:
@@ -45,7 +38,7 @@ for cond_i=1:length(conditions)
     % Check what differences we have:
     max_diff = max(max(bsxfun(@minus, cts, cts')));
     if max_diff > thresh
-        warning(sprintf("The trials are not balanced up to threshold for %s. Max diff: %d", conditions{cond_i},max_diff))
+        warning(sprintf("The trials are not balanced up to threshold for %s", conditions{cond_i}))
     end
 end
 
@@ -77,7 +70,7 @@ for pair_i=1:length(pairs)
     % Check what differences we have:
     max_diff = max(max(bsxfun(@minus, cts, cts')));
     if max_diff > thresh
-        warning(sprintf("The trials are not balanced up to threshold for %s-%s counts. Max diff: %d", cond_1, cond_2,max_diff))
+        warning(sprintf("The trials are not balanced up to threshold for %s-%s counts", cond_1, cond_2))
     end
 end
 
@@ -116,7 +109,7 @@ for triplet_i=1:length(triplets)
     % Check what differences we have:
     max_diff = max(max(bsxfun(@minus, cts, cts')));
     if max_diff > thresh
-        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s. Max diff: %d", cond_1, cond_2, cond_3,max_diff))
+        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s", cond_1, cond_2, cond_3))
     end
 end
 
@@ -161,7 +154,7 @@ for quintet_i=1:size(quartet, 1)
     % Check what differences we have:
     max_diff = max(max(bsxfun(@minus, cts, cts')));
     if max_diff > thresh
-        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s-%s. Max diff: %d", cond_1, cond_2, cond_3, cond_4,max_diff))
+        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s-%s", cond_1, cond_2, cond_3, cond_4))
     end
 end
 
@@ -212,6 +205,6 @@ for quintet_i=1:size(quintets, 1)
     % Check what differences we have:
     max_diff = max(max(bsxfun(@minus, cts, cts')));
     if max_diff > thresh
-        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s-%s-%s. Max diff: %d", cond_1, cond_2, cond_3, cond_4, cond_5,max_diff))
+        warning(sprintf("The trials are not balanced up to threshold for %s-%s-%s-%s-%s", cond_1, cond_2, cond_3, cond_4, cond_5))
     end
 end
