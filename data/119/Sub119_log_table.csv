@@ -1,2 +1,0 @@
-trial,block,target_1,target_2,task_relevance,category,duration,SOA,SOA_lock,pitch,orientation,identity,stim_jit,onset_SOA,texture,vis_stim_time,time_of_resp_vis,has_repsonse_vis,trial_repsonse_vis,aud_stim_buff,aud_stim_time,aud_resp,trial_accuracy_aud,time_of_resp_aud,trial_first_button_press,trial_second_button_press,fix_time,JitOnset,trial_end,TargetScreenOnset
-1,1,letter_12,false_font_17,irrelevant,object,1.49333333333333,0.232,onset,low,center,object_03,0.553333333333333,0.232,193,3584.655021,NaN,0,cr,10,3584.8912428,0,NaN,NaN,0,0,NaN,NaN,NaN,3582.6578777

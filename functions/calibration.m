@@ -1,36 +1,45 @@
-function [  ] = calibration(number_of_cali_trails)
+function [cali_log] = calibration(number_of_cali_trails)
 
-global CALIBRATION_PITCH_FREQ ScreenHeight text w c
-cali_ms = linspace(20,1000,number_of_cali_trails);
-cali_ms = ShuffleVector(cali_ms);
+disp('WELCOME TO calibration')
+
+
+global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE
 introspec_question = 'cali';
+durations = [20,100,200,300,400,500,600,700,800,900,1000];
+cali_ms = repmat(durations,1,ceil(number_of_cali_trails/length(durations)));
+cali_ms = cali_ms(1:number_of_cali_trails);
+cali_log = table;
+cali_log.cali_ms = ShuffleVector(cali_ms)';
+cali_log.iT = nan(1,number_of_cali_trails)';
+cali_log.estimation_error = nan(1,number_of_cali_trails)';
 
 for c = 1:length(cali_ms)
 
     % show gray screen
     DrawFormattedText(w, textProcess('Wait for tone'), 'center' , ScreenHeight*(1/5), text.Color);
     Screen('Flip', w);
-    WaitSecs((rand*0.2) + 0.2)
+    WaitSecs(1);
 
     % make tone
-    [cali_pitch_buff, ~, aud_pahandle] = init_audio_pitches((cali_ms(c)/1000), CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
+    [cali_pitch_buff, ~, aud_pahandle] = init_audio_pitches((cali_log.cali_ms(c)/1000), CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
     PsychPortAudio('FillBuffer', aud_pahandle, cali_pitch_buff);
 
     % And then you play the buffer. The function returns a time stamp.
     % Here I don't use it but for our purpose we will want to log it:
     PsychPortAudio('Start',aud_pahandle, 1, 0);
-    WaitSecs(1.5)
+    WaitSecs(1.5);
 
-    [ iT ]  = run_dial(introspec_question);
-    WaitSecs(0.2)
+    cali_log.iT(c) = run_dial(introspec_question);
+    WaitSecs(0.2);
 
     % Deliver feddback
-    actual_time = ['The true duration of the tone was: ', num2str(cali_ms(c)), ' ms'];
-    estimated_time = ['Your estimated duration of the tone was: ', num2str(iT), ' ms'];
+    actual_time = ['The true duration: ', num2str(round(cali_log.cali_ms(c))), ' ms'];
+    estimated_time = ['Estimated duration: ', num2str(cali_log.iT(c)), ' ms'];
 
-    if (cali_ms(c) - iT) > 50
+    cali_log.estimation_error(c) = cali_log.cali_ms(c) - cali_log.iT(c);
+    if cali_log.estimation_error(c) > 20
         cali_feedback = 'Your estimated time was too short!';
-    elseif (cali_ms(c) - iT) < 50
+    elseif cali_log.estimation_error(c) < -20
         cali_feedback = 'Your estimated time was too long!';
     else
         cali_feedback = 'Well done!';
@@ -42,7 +51,19 @@ for c = 1:length(cali_ms)
     % Flip to the screen
     Screen('Flip', w);
 
-    WaitSecs(1)
+    elapsedTime = 0;
+    start_time = GetSecs;
+
+    while elapsedTime < 2
+
+        % to abort press ESC
+        [~, ~, Resp1] = KbCheck(compKbDevice);
+        if Resp1(abortKey)
+            error(CLEAN_EXIT_MESSAGE);
+        end
+
+        elapsedTime = GetSecs - start_time;
+    end
 
 end
 end

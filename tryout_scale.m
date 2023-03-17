@@ -7,15 +7,15 @@ global spaceBar RightKey LeftKey compKbDevice c
 function_folder = [pwd,filesep,'functions\'];
 addpath(function_folder)
 subjectNum = 118;
-iRT = 0;
 introspec_question = 'vis';
 initRuntimeParameters
 initConstantsParameters(subjectNum); % defines all constants and initilizes parameters of the program
 screenError = initPsychtooblox();
 key = 0;
 number_of_cali_trails = 10;
+% [iT] = run_dial(introspec_question);
 
-calibration(number_of_cali_trails)
+calibration(5)
 
 % while key ~= 1
 % 

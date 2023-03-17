@@ -19,11 +19,11 @@ function initConstantsParameters(subNum)
     % GOBAL CONSTANTS
     % -----------------------------------------------------
     % Text and messages
-    global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
+    global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
     global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
-    global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE
+    global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR
     global FEEDBACK_MESSAGES FEEDBACK_MESSAGES_PRACTICE AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE PRESS_ANY_BUTTON fontType fontSize fontColor 
-    global GENERAL_BREAK_MESSAGE RESTART_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE RESTART_PRACTICE_MESSAGE PROGRESS_MESSAGE PROGRESS_MESSAGE_MEG RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
+    global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE RESTART_PRACTICE_MESSAGE PROGRESS_MESSAGE PROGRESS_MESSAGE_MEG RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
     % -----------------------------------------------------
     % Matrices info
     global BLOCK_NUM_COL TRIAL1_BUTTON_PRESS_COL SUBJECT_START_TIME SUBJECT_NUMBER_COL TARGET1_COL TARGET2_COL EXPERIMENT_NAME TRIAL1_RESPONSE_TIME_COL
@@ -37,7 +37,8 @@ function initConstantsParameters(subNum)
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION MRI_BASELINE_PERIOD
     % -----------------------------------------------------
     % Keys parameters
-    global VIS_RESPONSE_KEY ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
+    global VIS_RESPONSE_KEY ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey 
+    global oneKey twoKey threeKey fourKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
     global CALIBRATION_PITCH_FREQ HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
     % -----------------------------------------------------
     % Trials parameters
@@ -290,8 +291,12 @@ function initConstantsParameters(subNum)
     % Define pitches in Hz and duration in sec
     HIGH_PITCH_FREQ = 1100;
     LOW_PITCH_FREQ = 1000;
-    CALIBRATION_PITCH_FREQ = 800;
     PITCH_DURATION = 0.084;
+
+    % calibration parameters
+    NUM_OF_TRIALS_CALIBRATION = 100;
+    CALIBRATION_PITCH_FREQ = 800;
+    DIAL_SENSITIVITY_FACTOR = 2;
 
     if DEBUG == 2 %fast debug
         STIM_DURATION = [6 12 18] * (1/60); % 1/60 to allow at least one frame to appear on screen
@@ -317,16 +322,18 @@ function initConstantsParameters(subNum)
     SAVING_MESSAGE = 'Saving...';
     CLEAN_EXIT_MESSAGE = 'Program aborted by user!';
     MINIBLOCK_TEXT = 'Press When These Appear:';
-    END_OF_BLOCK_MESSAGE = 'End of block.\n\n Press SPACE to continue...';
+    END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d.\n\n Press SPACE to continue...';
+    END_OF_BLOCK_MESSAGE = 'End of block %d out of %d.\n\n Press SPACE to continue...';
     MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
     EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press SPACE to continue...';
+    CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press SPACE to continue...';
     EYETRACKER_CALIBRATION_MESSAGE = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n\n You will see a dot that will move to different locations on screen.\n\n Your task is to keep looking at the dot at all times.\n\n Try to avoid blinking as much as possible.\n\n\n Press SPACE to proceed to calibration...';
     EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press SPACE to proceed to calibration...';
     GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press SPACE to continue...';
     FEEDBACK_MESSAGES = {'Nice job! Keep it up!','Warning: You are missing targets.','Warning: You are selecting incorrect targets.'};
     FEEDBACK_MESSAGES_PRACTICE = {'Nice job! Keep it up!','Warning: You missed x targets.','Warning: You selected x incorrect targets.'};
     AUD_FEEDBACK_MESSAGE = '\n\n\n\n Your score on the auditory task was: %s';
-    RESP_ORDER_WARNING_MESSAGE = 'Please remember to respond to the visual first and to the auditory task second';
+    RESP_ORDER_WARNING_MESSAGE = 'Please remember to \n\n respond to the visual first \n\n and to the auditory task second';
 
     INTROSPEC_QN_VIS = 'Visual task duration?';
     INTROSPEC_QN_AUD = 'Auditory task duration?';
@@ -364,11 +371,15 @@ function initConstantsParameters(subNum)
     MEGbreakKey   =  KbName('F5');
     YesKey        =  KbName('Y');
     spaceBar      =  KbName('SPACE');
+    oneKey        =  KbName('1!');
+    twoKey        =  KbName('2@');
+    threeKey      =  KbName('3#');
+    fourKey       =  KbName('4$');
     MINIBLOCK_RESTART_KEY = KbName('M');
     BLOCK_RESTART_KEY = KbName('B');
     VIS_RESPONSE_KEY = spaceBar;
-    AUD_RESPONSE_KEY_HIGH = upKey ;
-    AUD_RESPONSE_KEY_LOW = downKey;
+    AUD_RESPONSE_KEY_HIGH = twoKey;
+    AUD_RESPONSE_KEY_LOW = oneKey;
 
     ValidationKey = KbName('V');
 
@@ -475,6 +486,9 @@ function initConstantsParameters(subNum)
     INSTRUCTIONS2 = 'instructions2.png';
     INSTRUCTIONS3 = 'instructions3.png';
     INSTRUCTIONS4 = 'instructions4.png';
+    INSTRUCTIONS5 = 'instructions5.png';
+    INSTRUCTIONS6 = 'instructions6.png';
+    INSTRUCTIONS7 = 'instructions7.png';
 
     % stimuli folders addresses
     STIM_FOLDER = 'stimuli';
