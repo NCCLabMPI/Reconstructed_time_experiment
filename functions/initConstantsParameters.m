@@ -44,9 +44,9 @@ function initConstantsParameters()
     global FRAME_WIDTH MAX_VISUAL_ANGEL VIEWING_DISTANCE FRAME_COLOR  viewDistance FIXATION_COLOR FIXATION_FONT_SIZE  DIAMOUT_FIXATION DIAMIN_FIXATION
     % -----------------------------------------------------
     % Annex folders and files
-    global CODE_FOLDER FUNCTIONS_FOLDER TEMPORARY_FOLDER SECRET_FOLDER STIM_FOLDER DATA_FOLDER OBJECTS_R_FOL FALSES_R_FOL CHARS_R_FOL FACES_R_FOL
-    global OBJECTS_FOLDER FALSES_FOLDER CHARS_FOLDER FACES_FOLDER OBJECTS_C_FOL OBJECTS_L_FOL FALSES_C_FOL FALSES_L_FOL CHARS_C_FOL CHARS_L_FOL ANIMAL_REWARD_FOL
-    global FACES_C_FOL FACES_L_FOL FEMALE_FOLDER MALE_FOLDER FILE_POSTFIX PRACTICE_L_FOL PRACTICE_R_FOL PRACTICE_C_FOL FIXATION_FILE INSTRUCTIONS_FOLDER EXP_DATE
+    global CODE_FOLDER FUNCTIONS_FOLDER STIM_FOLDER DATA_FOLDER OBJECTS_R_FOL FALSES_R_FOL CHARS_R_FOL FACES_R_FOL
+    global OBJECTS_FOLDER FALSES_FOLDER CHARS_FOLDER FACES_FOLDER OBJECTS_C_FOL OBJECTS_L_FOL FALSES_C_FOL FALSES_L_FOL CHARS_C_FOL CHARS_L_FOL
+    global FACES_C_FOL FACES_L_FOL FEMALE_FOLDER MALE_FOLDER FILE_POSTFIX PRACTICE_L_FOL PRACTICE_R_FOL PRACTICE_C_FOL INSTRUCTIONS_FOLDER EXP_DATE
     % -----------------------------------------------------
     % Dummy variables
     global debugFactor
@@ -188,8 +188,6 @@ function initConstantsParameters()
     DATA_FOLDER = 'data';
     CODE_FOLDER = 'code';
     FUNCTIONS_FOLDER = 'functions';
-    TEMPORARY_FOLDER = 'temporary';
-    SECRET_FOLDER = 'DONT OPEN! DEAD INSIDE!';
     
     % program codes
     ABORT_KEY = 4;
@@ -221,7 +219,6 @@ function initConstantsParameters()
     OBJECTS_FOLDER = 'objects';
     MALE_FOLDER = 'male';
     FEMALE_FOLDER = 'female';
-    FIXATION_FILE = 'fixation.png';
     INSTRUCTIONS_FOLDER = 'instructions';
 
     % stimuli folders for each type of stimuli by left, right and center
@@ -237,8 +234,6 @@ function initConstantsParameters()
     OBJECTS_L_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'left');
     OBJECTS_C_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'center');
     OBJECTS_R_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'right');
-    
-    ANIMAL_REWARD_FOL = fullfile(pwd,'Pictures_between_miniblocks_exp1');
 
     %% Practice parameters :
     PRACTICE_START_MESSAGE = 'The practice starts now.\n\n Press SPACE to continue...';
