@@ -14,8 +14,6 @@ global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL
 global Eyetrackerdummymode DISTANCE_SCREEN_TRACKER HEAD_FIXED
 % Hardware parameters:
 global SCREEN_SIZE_CM REF_RATE_OPTIMAL viewDistanceBottomTop VIEW_DISTANCE 
-% Audio parameters:
-global BIT_DURATION
 % Debugging and code parameters:
 global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS 
 
@@ -44,9 +42,6 @@ DIOD_ON_COLOUR = 255; % Color of the photodiode when turned on (255 white, 0 bla
 DIOD_OFF_COLOUR = 1;  % Color of the photodiode when off (255 white, 0 black)
 DIOD_SIZE = 100; % Size of the square where the photodiode is presented (in pixels)
 DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
-
-%% Audio parameters:
-BIT_DURATION = 0.020; % Duration of single bit in ECoG audio triggers
 
 %% DEBUG parameters
 DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
