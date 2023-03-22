@@ -7,32 +7,24 @@
 % functions. 
 function initRuntimeParameters
 % Recording modalities:
-global ECoG MEEG fMRI Behavior EYE_TRACKER introspec
+global Behavior EYE_TRACKER introspec
 % Photodiode parameters:
 global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL
-% MEEG Parameters:
-global EEG_MACHINE_HEX 
-% ECoG parameters:
-global BIT_DURATION RESP_TRIG_ONSET
 % Eyetracker parameters:
-global Eyetrackerdummymode DISTANCE_SCREEN_TRACKER HEAD_FIXED calibration_area TOBII_EYETRACKER
+global Eyetrackerdummymode DISTANCE_SCREEN_TRACKER HEAD_FIXED
 % Hardware parameters:
 global SCREEN_SIZE_CM REF_RATE_OPTIMAL viewDistanceBottomTop VIEW_DISTANCE 
+% Audio parameters:
+global BIT_DURATION
 % Debugging and code parameters:
-global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN NO_AUDIO WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS 
-% Matrix generation 
-global MATRIX_GENERATION PREEXISTING_MATRICES
+global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS 
 
 % Legend: false = 0 | true = 1  
 
 %% Recording modalities
-MEEG = 0; % Set to 1 if recording with MEEG
-fMRI = 0; % Set to 1 if recording with fMRI
 EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
-ECoG = 0; % ; Set to 1 if recording with ECoG
 Behavior = 1; %Set to 1 if recording with Behavior only
-introspec = 1; % Set to 1 if introspective questions should be ask
-
+introspec = 0; % Set to 1 if introspective questions should be ask
 
 %% Hardware and physical parameters:
 REF_RATE_OPTIMAL = 60; % in Hz. Screen refresh rate.
@@ -44,15 +36,7 @@ viewDistanceBottomTop = [144 144]; % IN CM!! Distance between the participant he
 DISTANCE_SCREEN_TRACKER = 90; % Distance between the eyetracker lense and the computer screen. Only needed for REMOTE MODE!
 Eyetrackerdummymode = 0; % Dummy mode of the eyetracker: MUST BE SET TO 0 TO RUN THE EXPERIMENT
 HEAD_FIXED = 0; % Head fixed must be set to 0 if remote mode
-TOBII_EYETRACKER = 0; 
-calibration_area = [0.75, 0.70];
 
-%% MEEG parameters:
-EEG_MACHINE_HEX = 'DFF8';
-
-%% ECoG parameters:
-BIT_DURATION = 0.020; % Duration of single bit in ECoG audio triggers
-RESP_TRIG_ONSET=0.2; % Lower time threshold to send audio resp trigger (in seconds)
 
 %% Photodiode parameters:
 PHOTODIODE = 0; % Must be set to 1 for the photodiode to be presented
@@ -61,20 +45,19 @@ DIOD_OFF_COLOUR = 1;  % Color of the photodiode when off (255 white, 0 black)
 DIOD_SIZE = 100; % Size of the square where the photodiode is presented (in pixels)
 DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 
+%% Audio parameters:
+BIT_DURATION = 0.020; % Duration of single bit in ECoG audio triggers
+
 %% DEBUG parameters
-DEBUG = 0; % 0 = no debug | 1 = regular debug | 2 = fast debug
-VERBOSE = 0; % Yoav: Katarina, if you have the time please encase the displays in if VERBOSE disp('hello'); end
+DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
+VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
-NO_PRACTICE = 0; % skip the practice run
+NO_PRACTICE = 1; % skip the practice run
 RESOLUTION_FORCE = 0; % the program will complain if optimal refresh rate is not possible on this screen
-NO_FULLSCREEN = 0; % enable windowed mode for dubugging
+NO_FULLSCREEN = 1; % enable windowed mode for dubugging
 NO_ERROR = 0; % Disable testing program error throws
 % Q: Do I need to fill this out? Pixels? Yoav: only if you want the debug scree to be of a different size
 WINDOW_RESOLUTION = [10 10 1200 800];
 DIAL = 1; % 1 if dial is present
-
-%% Matrix generation
-MATRIX_GENERATION = 0;
-PREEXISTING_MATRICES = 0;
 
 end
