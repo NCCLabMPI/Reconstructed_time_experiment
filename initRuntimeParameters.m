@@ -7,18 +7,18 @@
 % functions. 
 function initRuntimeParameters
 % Recording modalities:
-global Behavior EYE_TRACKER introspec
+global Behavior EYE_TRACKER introspec LAB_ID
 % Photodiode parameters:
 global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL
 % Eyetracker parameters:
-global Eyetrackerdummymode DISTANCE_SCREEN_TRACKER HEAD_FIXED
+global DISTANCE_SCREEN_TRACKER HEAD_FIXED
 % Hardware parameters:
 global SCREEN_SIZE_CM REF_RATE_OPTIMAL viewDistanceBottomTop VIEW_DISTANCE 
 % Debugging and code parameters:
 global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS 
 
 % Legend: false = 0 | true = 1  
-
+LAB_ID = 'SX';
 %% Recording modalities
 EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
@@ -32,7 +32,6 @@ viewDistanceBottomTop = [144 144]; % IN CM!! Distance between the participant he
 
 %% Eyetracker parameters:
 DISTANCE_SCREEN_TRACKER = 90; % Distance between the eyetracker lense and the computer screen. Only needed for REMOTE MODE!
-Eyetrackerdummymode = 0; % Dummy mode of the eyetracker: MUST BE SET TO 0 TO RUN THE EXPERIMENT
 HEAD_FIXED = 0; % Head fixed must be set to 0 if remote mode
 
 
