@@ -16,7 +16,7 @@ end
 try
     fileStruct = dir('*.m');
 
-    directory = fullfile(pwd,DATA_FOLDER,['Sub-',num2str(subjectNum)],session_type,['Ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)],CODE_FOLDER);
 
     if ~exist(directory,'dir')
         mkdir(directory);
@@ -48,7 +48,7 @@ try
 catch
     fileStruct = dir('*.m');
 
-    directory = fullfile(pwd,DATA_FOLDER,['Sub-',num2str(subjectNum)],session_type,['Ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)],CODE_FOLDER);
 
     if ~exist(fullfile(directory,'dir'))
         mkdir(fullfile(directory));
