@@ -3,7 +3,7 @@
 function [] = initPsychtooblox()
     global DEBUG ScreenHeight stimSizeHeight ScreenWidth refRate screenScaler fontType fontSize fontColor text gray w REF_RATE_OPTIMAL center
     global WINDOW_RESOLUTION debugFactor NO_FULLSCREEN  VIEWING_DISTANCE MAX_VISUAL_ANGEL STIM_DURATION TRIAL_DURATION ppd
-    global BIT_DURATION pahandle% These are required for the sound display
+    global padhandle% These are required for the sound display
     disp('WELCOME to initPsychtooblox')
     
     %% Set preferences and open graphic window:
@@ -76,19 +76,7 @@ function [] = initPsychtooblox()
     reqlatencyclass = 1;
     freq = [];
     channels = 2;
-    pahandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
-    % Get the status of the padhandle:
-    status = PsychPortAudio('GetStatus', pahandle);
-    sr = status.SampleRate;
-    disp(sr)
-    n_samples = BIT_DURATION/(1/sr);
-    squarewave = [ones(n_samples/2, 2); -1*ones(n_samples/2,2)];
-    % Adding the square wave to the buffer:
-    trig_buffer = PsychPortAudio('CreateBuffer', pahandle, squarewave');
-    % Load the trigger into a buffer, so that it can be played during
-    % the experiment. Because we have only one buffer, we can load it
-    % only once in the beginning:
-    PsychPortAudio('FillBuffer', pahandle, trig_buffer);
+    padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
     
     %% Derive relevant parameters from setup information:
     % Extract screen parameters in pixels:

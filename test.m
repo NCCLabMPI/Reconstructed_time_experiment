@@ -11,7 +11,7 @@ global TRIAL_DURATION RUN_PRACTICE DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global YesKey ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
-global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE RESOLUTION_FORCE
+global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
 
 
 % prompt user for information
@@ -82,7 +82,7 @@ end
 %% Load and prepare the visual and audio stimuli:
 showMessage(LOADING_MESSAGE);
 loadStimuli() % visual
-[high_pitch_buff, low_pitch_buff, aud_pahandle] = init_audio_pitches(PITCH_DURATION, HIGH_PITCH_FREQ,  LOW_PITCH_FREQ); % auditory
+[high_pitch_buff, low_pitch_buff] = init_audio_pitches(PITCH_DURATION, HIGH_PITCH_FREQ,  LOW_PITCH_FREQ); % auditory
 
 %% Instructions and practice:
 % displays instructions
@@ -311,11 +311,11 @@ try
                 if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && pitchPlayed == FALSE
                     
                     pitch_buff = eval([blk_mat.pitch{tr},'_pitch_buff']);
-                    PsychPortAudio('FillBuffer', aud_pahandle, pitch_buff);
+                    PsychPortAudio('FillBuffer', padhandle, pitch_buff);
                     
                     % And then you play the buffer. The function returns a time stamp.
                     % Here I don't use it but for our purpose we will want to log it:
-                    PsychPortAudio('Start',aud_pahandle, 1, 0);
+                    PsychPortAudio('Start',padhandle, 1, 0);
                     blk_mat.aud_stim_time(tr) = GetSecs;
                     blk_mat.aud_stim_buff(tr) = pitch_buff;
                     

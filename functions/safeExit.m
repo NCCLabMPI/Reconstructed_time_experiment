@@ -1,7 +1,7 @@
 % SAFEEXIT runs all commands allowing for a safe exit.
 function [] = safeExit()
 
-global MEEG EYE_TRACKER pahandle DATA_FOLDER subjectNum EXPERIMENT_NAME NO_AUDIO TOBII_EYETRACKER CODE_FOLDER session introspec
+global MEEG EYE_TRACKER padhandle DATA_FOLDER subjectNum EXPERIMENT_NAME NO_AUDIO TOBII_EYETRACKER CODE_FOLDER session introspec
 
 if introspec
     session_type = 'Introspec';
@@ -22,7 +22,7 @@ try
     end
     % Close the audio device
     if ~NO_AUDIOy
-        PsychPortAudio('Close', pahandle);
+        PsychPortAudio('Close', padhandle);
     end
 
     % Closing everything
@@ -50,7 +50,7 @@ catch
     end
     % Close the audio device
     if ~NO_AUDIO
-        PsychPortAudio('Close', pahandle);
+        PsychPortAudio('Close', padhandle);
     end
 
     % Closing everything
