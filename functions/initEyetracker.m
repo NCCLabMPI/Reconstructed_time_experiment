@@ -1,7 +1,7 @@
 % INITEYETRACKER
 % This function initialize the eyetracker
-function [] = initEyetracker(BlockNum)
-global el edfFile w subjectNum SCREEN_SIZE_CM LAB_ID viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
+function [] = initEyetracker(blk)
+global el edfFile w subjectNum SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
 
 % Initializing eyelink
 Eyelink('Initialize');
@@ -15,17 +15,10 @@ EyelinkUpdateDefaults(el);
 
 % name and open file to record data to
 %VERY IMPORTANT: THE NAME OF THE FILE SHOULD BE SHORT (5-6 CHARACTERS), OTHERWISE IT WILL GIVE AN ERROR AND IT WON\92T SAVE THE FILE!!!
-edfFile = sprintf('%s%d%d.edf',LAB_ID,subjectNum,BlockNum);
+edfFile = sprintf('%d_%d.edf',subjectNum,blk);
 Eyelink('Openfile', edfFile);
 
-if strcmp(LAB_ID, 'SE') % Camera lens is 16 mm
-  s = Eyelink('command','camera_lens_focal_length = 17');
-  if(s ==0)
-      disp('set camera lens successfully')
-  else
-      disp('camera lens was not set successfully')
-  end
-end
+s = Eyelink('command','camera_lens_focal_length = 16');
 
 % Setting the eyetracker to binocular
 Eyelink('command','binocular_enabled = NO')

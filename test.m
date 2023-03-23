@@ -73,12 +73,6 @@ trial_mat.session((length(trial_mat.trial)/6)+1:end) = 2;
 % cut trial mat to length of session
 trial_mat = trial_mat((trial_mat.session == session),:);
 
-%% Initializing recording instruments
-% Initialize the eyetracker
-if EYE_TRACKER
-    initEyetracker(1);
-end
-
 %% Load and prepare the visual and audio stimuli:
 showMessage(LOADING_MESSAGE);
 loadStimuli() % visual
@@ -137,6 +131,12 @@ try
     %% Block loop:
     blks = unique(trial_mat.block);
     for blk = 1:length(blks)
+        
+        % Initialize the eyetracker with the block number:
+        if EYE_TRACKER
+            initEyetracker(blks(blk));
+        end
+
         % Extract the trial and log of this block only:
         blk_mat = trial_mat(trial_mat.block == blks(blk), :);
         
@@ -380,7 +380,12 @@ try
         end  % End of trial loop
 
         % Save the data of this block:
-        saveTable(blk_mat, blks(blk));    
+        saveTable(blk_mat, blks(blk));   
+        
+        % Save the eyetracker data:
+        if EYE_TRACKER
+            save_eyetracker(blks(blk));
+        end
         
         % Append the block log to the overall log:
         if blks(blk) == 1
@@ -425,9 +430,7 @@ try
     Str = CmdWinTool('getText');
     dlmwrite(dfile,Str,'delimiter','');
     
-    if DEBUG
-        disp(sprintf('Saving took : %f \n',GetSecs - ttime));
-    end
+    % Terminating teh experiment:
     safeExit()
 catch e
     % Save the data:
