@@ -1,7 +1,7 @@
 % INITEYETRACKER
 % This function initialize the eyetracker
-function [] = initEyetracker(blk)
-global el edfFile w subjectNum SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
+function [] = initEyetracker(subjectNum, blk)
+global el edfFile w SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
 
 % Initializing eyelink
 Eyelink('Initialize');

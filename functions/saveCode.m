@@ -5,7 +5,7 @@
 % This code file is saved into the code folder ("/data/code/").
 function [ ] = saveCode()
 
-global subjectNum session CODE_FOLDER DATA_FOLDER introspec FUNCTIONS_FOLDER%subject number
+global subID session CODE_FOLDER DATA_FOLDER introspec FUNCTIONS_FOLDER%subject number
 
 if introspec
     session_type = 'Introspec';
@@ -18,7 +18,7 @@ try
     fileStruct = dir('*.m');
     
     % Create the save directory:
-    directory = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-', subID],session_type,['ses-',num2str(session)],CODE_FOLDER);
     if ~exist(directory,'dir')
         mkdir(directory);
     end
@@ -49,7 +49,7 @@ try
 catch  % Try again if something went wrong:
     fileStruct = dir('*.m');
     
-    directory = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-',subID],session_type,['ses-',num2str(session)],CODE_FOLDER);
     if ~exist(fullfile(directory,'dir'))
         mkdir(fullfile(directory));
     end

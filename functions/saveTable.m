@@ -9,7 +9,7 @@
 
 function [] = saveTable(input_table, blk_num)
 
-global DATA_FOLDER subjectNum session introspec
+global DATA_FOLDER subID session introspec
 
 if introspec
     session_type = 'Introspec';
@@ -18,16 +18,16 @@ else
 end 
 
 % Creating the directories if they don't already exist:
-dir = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)]);
+dir = fullfile(pwd,DATA_FOLDER,['sub-', subID],session_type,['ses-',num2str(session)]);
 if ~exist(dir, 'dir')
     mkdir(dir);
 end
 if isnumeric(blk_num)
     blk_num = num2str(blk_num);
 end
-fileName_mat  = fullfile(dir, sprintf('sub-%d_ses-%d_run-%s_task-%s_events.mat', subjectNum, session, blk_num, session_type));
+fileName_mat  = fullfile(dir, sprintf('sub-%s_ses-%d_run-%s_task-%s_events.mat', subID, session, blk_num, session_type));
 save(fileName_mat,'input_table');
-fileName_csv  = fullfile(dir, sprintf('sub-%d_ses-%d_run-%s_task-%s_events.csv', subjectNum, session, blk_num, session_type));
+fileName_csv  = fullfile(dir, sprintf('sub-%s_ses-%d_run-%s_task-%s_events.csv', subID, session, blk_num, session_type));
 writetable(input_table,fileName_csv);
 
 end

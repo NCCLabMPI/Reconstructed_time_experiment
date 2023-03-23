@@ -6,7 +6,7 @@ clear;
 
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
-global EYE_TRACKER NO_PRACTICE subjectNum introspec session
+global EYE_TRACKER NO_PRACTICE introspec session LAB_ID subID
 global TRIAL_DURATION RUN_PRACTICE DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
@@ -49,18 +49,21 @@ Str = CmdWinTool('getText');
 dlmwrite(dfile,Str,'delimiter','');
 % To get different seeds for matlab randomization functions.
 rng('shuffle');
-% Saves a copy of code to disk
-saveCode()
 
 %% Initializing experimental parameters and PTB:
 initRuntimeParameters
 initConstantsParameters(); % defines all constants and initilizes parameters of the program
 initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
 
+% Create the subject ID by combining the lab ID with the subject name:
+subID = sprintf('%s%d', LAB_ID, subjectNum);
+
+% Saves a copy of code to disk
+saveCode()
 %% Setup the trial matrix and log:
 % open trial matrix (form Experiment 1) and add auditory conditions
 MatFolderName = [pwd,filesep,'TrialMatrices\'];
-TableName = ['SX',num2str(subjectNum),'_TrialMatrix.csv'];
+TableName = [subID,'_TrialMatrix.csv'];
 trial_mat = readtable(fullfile(MatFolderName, TableName));
 
 % add auditory stimuli
@@ -134,7 +137,7 @@ try
         
         % Initialize the eyetracker with the block number:
         if EYE_TRACKER
-            initEyetracker(blks(blk));
+            initEyetracker(subjectNum, blks(blk));
         end
 
         % Extract the trial and log of this block only:

@@ -2,8 +2,8 @@
 
 % The function sends end of block signals to the eyetracker and
 % saves it in the data folder.
-function [] = save_eyetracker(blk)
-global edfFile DATA_FOLDER subjectNum introspec
+function [] = saveEyetracker(blk)
+global edfFile DATA_FOLDER subID introspec
 
 if introspec
     session_type = 'Introspec';
@@ -17,10 +17,10 @@ Eyelink('StopRecording');
 Eyelink('CloseFile')
 
 % Generate save dir:
-save_dir = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)]);
+save_dir = fullfile(pwd,DATA_FOLDER,['sub-',subID],session_type,['ses-',num2str(session)]);
 
 % Generate file name:
-edf_file_name  = fullfile(save_dir, sprintf('sub-%d_ses-%d_run-%d_task-%s_eyetrack.edf', subjectNum, session, blk, session_type));
+edf_file_name  = fullfile(save_dir, sprintf('sub-%s_ses-%d_run-%d_task-%s_eyetrack.edf', subID, session, blk, session_type));
 
 %Retrieving the edf file from eyetracker PC
 try
@@ -36,12 +36,4 @@ catch rdf
     fprintf('Problem receiving file ''%s''\n',edfFile);
     throw(rdf);
 end
-
-% Restoring the Eyetracker to the state we found it in:
-Eyelink('Command','include "PHYSICAL.INI"')
-Eyelink('Command','include "FINAL.INI"')
-Eyelink('Command','include "PARSER.INI"')
-% Shutting down the Eyelink
-Eyelink('Shutdown')
-
 end
