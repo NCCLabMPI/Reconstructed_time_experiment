@@ -93,26 +93,6 @@ if introspec == TRUE
     saveTable(cali_log,'calibration_output')
 end
 
-if ~NO_PRACTICE
-    % Launching the practice loop:
-    RUN_PRACTICE = 1;
-    getPracticeFeedback('auditory');
-    WaitSecs(0.2);
-    RUN_PRACTICE = 1;
-    getPracticeFeedback('visual');
-    WaitSecs(0.2);
-    RUN_PRACTICE = 1;
-    getPracticeFeedback('auditory_and_visual');
-    WaitSecs(0.2);
-    RUN_PRACTICE = 1;
-    if introspec
-        RUN_PRACTICE = 1;
-        getPracticeFeedback('introspection');
-        WaitSecs(0.2);
-    end
-end
-
-
 %% Main experimental loop:
 try
     
@@ -133,15 +113,20 @@ try
     
     %% Block loop:
     blks = unique(trial_mat.block);
-    for blk = 1:length(blks)
+    if NO_PRACTICE
+        blk = 1;
+    else
+        blk = trial_mat.block(1);
+    end
+    while blk <= blks(end)
         
         % Initialize the eyetracker with the block number:
         if EYE_TRACKER
-            initEyetracker(subjectNum, blks(blk));
+            initEyetracker(subjectNum, blk);
         end
 
         % Extract the trial and log of this block only:
-        blk_mat = trial_mat(trial_mat.block == blks(blk), :);
+        blk_mat = trial_mat(trial_mat.block == blk, :);
         
         % Add the columns for logging:
         blk_mat = prepare_log(blk_mat);
@@ -155,9 +140,23 @@ try
             end
         end
         
-        % Show the target screen at the beginning of each block:
-        blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
-        KbWait(compKbDevice,3,WaitSecs(0)+5);
+        % Check whether this block is a practice or not:
+        is_practice = blk_mat.is_practice(1);
+        if is_practice
+            % Extract from table the practice type:
+            practice_type = blk_mat.practice_type(1);
+            practice_start_msg = get_practice_instructions(practice_type);
+            showMessage(practice_start_msg);
+            KbWait(compKbDevice,3);
+        else
+            % Otherwise, show the target screen:
+            practice_type = 'not_practice';
+            % Show the target screen at the beginning of each block:
+            blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
+            KbWait(compKbDevice,3,WaitSecs(0)+5);
+        end
+        
+        % Wait a random amount of time and show fixation:
         fixOnset = showFixation('PhotodiodeOff'); % 1
         WaitSecs(rand*2);
         
@@ -181,7 +180,11 @@ try
             blk_mat.texture(tr) = texture_ptr;
             
             % show stimulus
-            blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
+            if strcmp(practice_type, 'auditory')
+                blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOff'); % Do not show the 
+            else
+                blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
+            end
             
             % I then set a frame counter. The flip of the stimulus
             % presentation is frame 0. It is already the previous frame because it already occured:
@@ -293,8 +296,8 @@ try
                 %% audio stimulus
                 
                 % Play pitch
-                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && pitchPlayed == FALSE
-                    
+                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
+                        pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
                     pitch_buff = eval([blk_mat.pitch{tr},'_pitch_buff']);
                     PsychPortAudio('FillBuffer', padhandle, pitch_buff);
                     
@@ -365,15 +368,21 @@ try
         end  % End of trial loop
 
         % Save the data of this block:
-        saveTable(blk_mat, blks(blk));   
-        
+        saveTable(blk_mat, blk);   
         % Save the eyetracker data:
         if EYE_TRACKER
-            save_eyetracker(blks(blk));
+            save_eyetracker(blk);
+        end
+        
+        if is_practice
+            blk_continue = get_practice_feedback(blk_mat, practice_type);
+            blk = blk + blk_continue;
+        else
+            blk = blk + 1;
         end
         
         % Append the block log to the overall log:
-        if blks(blk) == 1
+        if blk == 1
             log_all = blk_mat;
         else
             log_all = [log_all; blk_mat];  % Not the most efficient but it is in a non critical part
@@ -420,7 +429,7 @@ try
 catch e
     % Save the data:
     try
-        saveTable(blk_mat, blks(blk)); 
+        saveTable(blk_mat, blk); 
         % If the log all already exists, save it as well:
         if exist('log_all', 'var')
             [log_all, performance_struct] = compute_performance(log_all);
