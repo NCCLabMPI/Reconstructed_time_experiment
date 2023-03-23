@@ -144,25 +144,7 @@ try
         blk_mat = trial_mat(trial_mat.block == blks(blk), :);
         
         % Add the columns for logging:
-        blk_mat.onset_SOA(:) = nan;
-        blk_mat.texture(:) = nan;
-        blk_mat.vis_stim_time(:) = nan;
-        blk_mat.time_of_resp_vis(:) = nan;
-        blk_mat.has_repsonse_vis(:) = 0;
-        blk_mat.trial_repsonse_vis{1} = 'empty';
-        blk_mat.aud_stim_buff(:) = nan;
-        blk_mat.aud_stim_time(:) = nan;
-        blk_mat.aud_resp(:) = nan;
-        blk_mat.trial_accuracy_aud(:) = nan;
-        blk_mat.time_of_resp_aud(:) = nan;
-        blk_mat.trial_first_button_press(:) = 0;
-        blk_mat.trial_second_button_press(:) = 0;
-        blk_mat.fix_time(:) = nan;
-        blk_mat.JitOnset(:) = nan;
-        blk_mat.trial_end(:) = nan;
-        blk_mat.wrong_key(:) =  nan;
-        blk_mat.wrong_key_timestemp(:) =  nan;
-        
+        blk_mat = prepare_log(blk_mat);
         log_hasInputs_vis = nan(1,length(trial_mat.trial));
         % calculate SOA from onset
         for tr = 1:length(blk_mat.trial)
