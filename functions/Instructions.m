@@ -11,7 +11,7 @@ end
 
 % Setting the slide number to 1 to initiate the while loop
 InstructionSlideNum = 1;
-% displays all instructionn screens
+% displays all instruction screens
 while InstructionSlideNum<= size(InstructionsPaths,1) % Looping until we went through all slides:
     % Showing instruction slide
     showInstructions(InstructionsPaths(InstructionSlideNum,:));
