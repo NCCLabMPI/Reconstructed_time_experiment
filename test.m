@@ -6,26 +6,25 @@ clear;
 
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
-global EYE_TRACKER NO_PRACTICE introspec session LAB_ID subID
+global EYE_TRACKER NO_PRACTICE session LAB_ID subID
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global YesKey ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
 global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
 
-
 % prompt user for information
 subjectNum = input('Subject number [101-199, default 101]: '); if isempty(subjectNum); subjectNum = 101; end
 session = input('Session number [1-6, default 1]: '); if isempty(session); session = 1; end
 viewDistance = input('View Distance in cm [default 60]: '); if isempty(viewDistance); viewDistance = 60; end
-
-%% check if participant and session exists already
-if introspec
-    session_type = 'Introspec';
+introspection = input('Introspective task [0: PRP only, 1: introspection, default 0]: '); if isempty(introspection); introspection = 0; end
+if introspection
+    task_type = 'introspection';
 else
-    session_type = 'Bev';
+    task_type = 'prp';
 end
-SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],session_type,['ses-',num2str(session)]);
+%% check if participant and session exists already
+SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],task_type,['ses-',num2str(session)]);
 ExistFlag = exist(SubSesFolder,'dir');
 if ExistFlag
     warning ('This participant number and session was already attributed!')
@@ -58,8 +57,6 @@ initPsychtooblox(); % initializes psychtoolbox window at correct resolution and 
 % Create the subject ID by combining the lab ID with the subject name:
 subID = sprintf('%s%d', LAB_ID, subjectNum);
 
-% Saves a copy of code to disk
-saveCode()
 %% Setup the trial matrix and log:
 % open trial matrix (form Experiment 1) and add auditory conditions
 MatFolderName = [pwd,filesep,'TrialMatrices\'];
@@ -69,13 +66,6 @@ trial_mat = readtable(fullfile(MatFolderName, TableName));
 % add auditory stimuli
 trial_mat = addAudStim(trial_mat);
 
-%-------------- Temporary solution with sesseion division ------------
-trial_mat.session(1:length(trial_mat.trial)/6) = 1;
-trial_mat.session((length(trial_mat.trial)/6)+1:end) = 2;
-%---------------------------------------------------------------------
-% cut trial mat to length of session
-trial_mat = trial_mat((trial_mat.session == session),:);
-
 %% Load and prepare the visual and audio stimuli:
 showMessage(LOADING_MESSAGE);
 loadStimuli() % visual
@@ -83,14 +73,14 @@ loadStimuli() % visual
 
 %% Instructions and practice:
 % displays instructions
-Instructions();
+Instructions(task_type);
 % calibration task
-if introspec == TRUE
+if strcmp(task_type, 'introspection')
     showMessage(CALIBRATION_START_MESSAGE);
     KbWait(compKbDevice,3);
     handle = PsychPowerMate('Open'); % open dial
     cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
-    saveTable(cali_log,'calibration_output')
+    saveTable(cali_log,'calibration', 1)
 end
 
 %% Main experimental loop:
@@ -118,15 +108,15 @@ try
     else
         blk = trial_mat.block(1);
     end
-    while blk <= blks(end)
-        
+    while blk <= blks(end)      
         % Initialize the eyetracker with the block number:
         if EYE_TRACKER
             initEyetracker(subjectNum, blk);
         end
-
         % Extract the trial and log of this block only:
         blk_mat = trial_mat(trial_mat.block == blk, :);
+        % Extract the task from this block:
+        task = blk_mat.task(1);
         
         % Add the columns for logging:
         blk_mat = prepare_log(blk_mat);
@@ -161,7 +151,7 @@ try
         WaitSecs(rand*2);
         
         %% Trials loop:
-        for tr = 1:length(blk_mat.trial)            
+        for tr = 1:length(blk_mat.trial)
             % flags needs to be initialized
             fixShown = FALSE;
             pitchPlayed = FALSE;
@@ -181,9 +171,16 @@ try
             
             % show stimulus
             if strcmp(practice_type, 'auditory')
-                blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOff'); % Do not show the 
+                blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOff'); % Do not show the
             else
                 blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
+            end
+            % Sending response trigger for the eyetracker
+            if EYE_TRACKER
+                trigger_str = get_et_trigger('vis_onset', blk_mat.task_relevance{tr}, ...
+                    blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                    blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                Eyelink('Message',trigger_str);
             end
             
             % I then set a frame counter. The flip of the stimulus
@@ -200,7 +197,7 @@ try
             
             % for introspective trial the jitter is moved out of the time loop
             % and comes after the questions
-            if introspec
+            if strcmp(task, 'introspection')
                 total_trial_duration = TRIAL_DURATION - (refRate*(2/3));
             else
                 total_trial_duration = TRIAL_DURATION - (refRate*(2/3)) + blk_mat.stim_jit(tr);
@@ -260,10 +257,12 @@ try
                     % If the participant pressed a key that is different to the one of the previous iteration:
                     if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr)
                         
-                        
                         % Sending response trigger for the eyetracker
                         if EYE_TRACKER
-                            Eyelink('Message',num2str(TRG_RESPONSE));
+                            trigger_str = get_et_trigger('response', blk_mat.task_relevance{tr}, ...
+                                blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                                blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                            Eyelink('Message',trigger_str);
                         end
                         
                         % logging reaction
@@ -303,8 +302,16 @@ try
                     
                     % And then you play the buffer. The function returns a time stamp.
                     % Here I don't use it but for our purpose we will want to log it:
-                    PsychPortAudio('Start',padhandle, 1, 0);
-                    blk_mat.aud_stim_time(tr) = GetSecs;
+                    audio_start = PsychPortAudio('Start',padhandle, 1, 0);
+                   
+                    % Sending response trigger for the eyetracker
+                    if EYE_TRACKER
+                        trigger_str = get_et_trigger('audio_onset', blk_mat.task_relevance{tr}, ...
+                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                        Eyelink('Message',trigger_str);
+                    end
+                    blk_mat.aud_stim_time(tr) = audio_start;
                     blk_mat.aud_stim_buff(tr) = pitch_buff;
                     
                     pitchPlayed = TRUE;
@@ -315,6 +322,13 @@ try
                 % Present fixation
                 if elapsedTime >= (blk_mat.duration(tr) - refRate*(2/3)) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
+                    % Sending response trigger for the eyetracker
+                    if EYE_TRACKER
+                        trigger_str = get_et_trigger('fixation_onset', blk_mat.task_relevance{tr}, ...
+                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                        Eyelink('Message',trigger_str);
+                    end
                     % log fixation in journal
                     blk_mat.fix_time(tr) = fix_time;
                     fixShown = TRUE;
@@ -323,6 +337,14 @@ try
                 % Present jitter
                 if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
                     JitOnset = showFixation('PhotodiodeOn');
+                    % Sending response trigger for the eyetracker
+                    if EYE_TRACKER
+                        trigger_str = get_et_trigger('jitter_onset', blk_mat.task_relevance{tr}, ...
+                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                        Eyelink('Message',trigger_str);
+                    end
+                    
                     % log jitter started
                     blk_mat.JitOnset(tr) = JitOnset;
                     jitterLogged = TRUE;
@@ -344,7 +366,7 @@ try
                 warning_response_order = 1;
             end
             
-            if introspec == TRUE
+            if strcmp(task, 'introspection')
                 WaitSecs(0.2);
                 
                 % introspective question 1 (RT visual task)
@@ -366,12 +388,12 @@ try
                 break
             end
         end  % End of trial loop
-
+        
         % Save the data of this block:
-        saveTable(blk_mat, blk);   
+        saveTable(blk_mat, task, blk);
         % Save the eyetracker data:
         if EYE_TRACKER
-            save_eyetracker(blk);
+            save_eyetracker(task, blk);
         end
         
         if is_practice
@@ -402,13 +424,14 @@ try
             block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
         end
         showMessage(block_message);
-        KbWait(compKbDevice,3);        
+        KbWait(compKbDevice,3);
     end  % End of block loop
-
+    
     %% End of experiment
     % Save the whole table:
-    saveTable(log_all, "all");
-    
+    saveTable(log_all, task, "all");
+    % Save the code:
+    saveCode(task);
     % Letting the participant that it is over:
     showMessage(END_OF_EXPERIMENT_MESSAGE);
     WaitSecs(2);
@@ -429,12 +452,15 @@ try
 catch e
     % Save the data:
     try
-        saveTable(blk_mat, blk); 
+        saveTable(blk_mat, task, blk);
+
         % If the log all already exists, save it as well:
         if exist('log_all', 'var')
             [log_all, performance_struct] = compute_performance(log_all);
-            saveTable(log_all, "all"); 
+            saveTable(log_all, task, "all");
         end
+        % Save the code:
+        saveCode(task);
         safeExit()
     catch
         warning('-----  Data could not be saved!  ------')
