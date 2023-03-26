@@ -3,7 +3,7 @@ function [cali_log] = calibration(number_of_cali_trails)
 disp('WELCOME TO calibration')
 
 
-global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE
+global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE padhandle
 introspec_question = 'cali';
 durations = [20,100,200,300,400,500,600,700,800,900,1000];
 cali_ms = repmat(durations,1,ceil(number_of_cali_trails/length(durations)));
@@ -21,12 +21,12 @@ for c = 1:length(cali_ms)
     WaitSecs(1);
 
     % make tone
-    [cali_pitch_buff, ~, aud_pahandle] = init_audio_pitches((cali_log.cali_ms(c)/1000), CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
-    PsychPortAudio('FillBuffer', aud_pahandle, cali_pitch_buff);
+    [cali_pitch_buff, ~] = init_audio_pitches((cali_log.cali_ms(c)/1000), CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
+    PsychPortAudio('FillBuffer', padhandle, cali_pitch_buff);
 
     % And then you play the buffer. The function returns a time stamp.
     % Here I don't use it but for our purpose we will want to log it:
-    PsychPortAudio('Start',aud_pahandle, 1, 0);
+    PsychPortAudio('Start',padhandle, 1, 0);
     WaitSecs(1.5);
 
     cali_log.iT(c) = run_dial(introspec_question);
