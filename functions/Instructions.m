@@ -1,9 +1,9 @@
-function [ ] = Instructions()
+function [ ] = Instructions(task_type)
 global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7
 global compKbDevice
-global RightKey LeftKey introspec
+global RightKey LeftKey
 
-if introspec
+if strcmp(task_type, 'introspection')
     InstructionsPaths = [INSTRUCTIONS1;INSTRUCTIONS2;INSTRUCTIONS3;INSTRUCTIONS5;INSTRUCTIONS6;INSTRUCTIONS7];
 else
     InstructionsPaths = [INSTRUCTIONS1;INSTRUCTIONS2;INSTRUCTIONS3;INSTRUCTIONS4];

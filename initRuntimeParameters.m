@@ -7,7 +7,7 @@
 % functions. 
 function initRuntimeParameters
 % Recording modalities:
-global Behavior EYE_TRACKER introspec LAB_ID
+global Behavior EYE_TRACKER LAB_ID
 % Photodiode parameters:
 global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL
 % Eyetracker parameters:
@@ -22,7 +22,6 @@ LAB_ID = 'SX';
 %% Recording modalities
 EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
-introspec = 0; % Set to 1 if introspective questions should be ask
 
 %% Hardware and physical parameters:
 REF_RATE_OPTIMAL = 60; % in Hz. Screen refresh rate.
