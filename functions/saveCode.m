@@ -3,22 +3,16 @@
 % output:
 % -------
 % This code file is saved into the code folder ("/data/code/").
-function [ ] = saveCode()
+function [ ] = saveCode(task)
 
-global subID session CODE_FOLDER DATA_FOLDER introspec FUNCTIONS_FOLDER%subject number
-
-if introspec
-    session_type = 'Introspec';
-else
-    session_type = 'Bev';
-end
+global subID session CODE_FOLDER DATA_FOLDER FUNCTIONS_FOLDER%subject number
 
 try
     % Get all the matlab files in the directory:
     fileStruct = dir('*.m');
     
     % Create the save directory:
-    directory = fullfile(pwd,DATA_FOLDER,['sub-', subID],session_type,['ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-', subID],task,['ses-',num2str(session)],CODE_FOLDER);
     if ~exist(directory,'dir')
         mkdir(directory);
     end
@@ -49,7 +43,7 @@ try
 catch  % Try again if something went wrong:
     fileStruct = dir('*.m');
     
-    directory = fullfile(pwd,DATA_FOLDER,['sub-',subID],session_type,['ses-',num2str(session)],CODE_FOLDER);
+    directory = fullfile(pwd,DATA_FOLDER,['sub-',subID],task,['ses-',num2str(session)],CODE_FOLDER);
     if ~exist(fullfile(directory,'dir'))
         mkdir(fullfile(directory));
     end

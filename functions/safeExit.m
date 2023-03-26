@@ -15,7 +15,6 @@ try
     sca;
     ShowCursor;
     ListenChar(0);
-    saveCode;
     
 catch
     if EYE_TRACKER
@@ -29,6 +28,5 @@ catch
     sca;
     ShowCursor;
     ListenChar(0);
-    saveCode;
 end
 end

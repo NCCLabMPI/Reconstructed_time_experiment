@@ -2,14 +2,8 @@
 
 % The function sends end of block signals to the eyetracker and
 % saves it in the data folder.
-function [] = saveEyetracker(blk)
-global edfFile DATA_FOLDER subID introspec
-
-if introspec
-    session_type = 'Introspec';
-else 
-    session_type = 'Bev';
-end 
+function [] = saveEyetracker(task, blk)
+global edfFile DATA_FOLDER subID
 
 % Stop the recording:
 Eyelink('StopRecording');
@@ -20,7 +14,7 @@ Eyelink('CloseFile')
 save_dir = fullfile(pwd,DATA_FOLDER,['sub-',subID],session_type,['ses-',num2str(session)]);
 
 % Generate file name:
-edf_file_name  = fullfile(save_dir, sprintf('sub-%s_ses-%d_run-%d_task-%s_eyetrack.edf', subID, session, blk, session_type));
+edf_file_name  = fullfile(save_dir, sprintf('sub-%s_ses-%d_run-%d_task-%s_eyetrack.edf', subID, session, blk, task));
 
 %Retrieving the edf file from eyetracker PC
 try
