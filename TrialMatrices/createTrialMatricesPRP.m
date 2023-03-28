@@ -11,7 +11,7 @@ conditions = ['task_relevance', 'duration', 'category', 'orientation', ...
 % Create a structure storing the levels of each of these conditions:
 conditions_levels = struct(...
     'task_relevance', ["non-target", "irrelevant"],...
-    'duration', [500, 1000, 1500], ...
+    'duration', [0.5, 1, 1.5], ...
     'category', ["face", "object", "letter", "false_font"], ...
     'orientation', ["center", "left", "right"], ...
     'identity', ["_01", "_02", "_03", "_04", "_05", "_06", ...
@@ -58,9 +58,9 @@ for sub=1:n_subjects
         repmat(0.2660, length(unique(pitch)) * length(unique(soa_lock)), 1); ...
         repmat(0.466, length(unique(pitch)) * length(unique(soa_lock)), 1)];
     soa = repmat(soa_tmp, total_n_trials / length(soa_tmp), 1);
-    duration_tmp = [repmat(500, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1); ...
-        repmat(1000, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1); ...
-        repmat(1500, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1)];
+    duration_tmp = [repmat(0.500, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1); ...
+        repmat(1.000, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1); ...
+        repmat(1.500, length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)), 1)];
     duration = repmat(duration_tmp, total_n_trials / length(duration_tmp), 1);
     task_relevance_tmp = [repmat("non-target", length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)) * length(unique(duration)), 1); ...
         repmat("irrelevant", length(unique(pitch)) * length(unique(soa_lock)) * length(unique(soa)) * length(unique(duration)), 1)];
@@ -421,7 +421,7 @@ for sub=1:n_subjects
                             for i=1:length(tr_inds)
                                 switch cat_u(cat)
                                     case "face"
-                                        if trs_dur(i) == 500
+                                        if trs_dur(i) == 0.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -444,7 +444,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 face_identities_counter_ti_500.(sel_id) = face_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1000
+                                        elseif trs_dur(i) == 1.000
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -466,7 +466,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 face_identities_counter_ti_1000.(sel_id) = face_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1500
+                                        elseif trs_dur(i) == 1.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -490,7 +490,7 @@ for sub=1:n_subjects
                                             end
                                         end
                                     case "object"
-                                        if trs_dur(i) == 500
+                                        if trs_dur(i) == 0.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -513,7 +513,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 object_identities_counter_ti_500.(sel_id) = object_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1000
+                                        elseif trs_dur(i) == 1.000
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -535,7 +535,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 object_identities_counter_ti_1000.(sel_id) = object_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1500
+                                        elseif trs_dur(i) == 1.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -559,7 +559,7 @@ for sub=1:n_subjects
                                             end
                                         end
                                     case "letter"
-                                        if trs_dur(i) == 500
+                                        if trs_dur(i) == 0.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -582,7 +582,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 letter_identities_counter_ti_500.(sel_id) = letter_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1000
+                                        elseif trs_dur(i) == 1.000
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -604,7 +604,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 letter_identities_counter_ti_1000.(sel_id) = letter_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1500
+                                        elseif trs_dur(i) == 1.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -628,7 +628,7 @@ for sub=1:n_subjects
                                             end
                                         end
                                     case "false_font"
-                                        if trs_dur(i) == 500
+                                        if trs_dur(i) == 0.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -651,7 +651,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 false_font_identities_counter_ti_500.(sel_id) = false_font_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1000
+                                        elseif trs_dur(i) == 1.000
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -673,7 +673,7 @@ for sub=1:n_subjects
                                                 % Update the counter:
                                                 false_font_identities_counter_ti_1000.(sel_id) = false_font_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif trs_dur(i) == 1500
+                                        elseif trs_dur(i) == 1.500
                                             if strcmp(task_rel_u(tr_ind), "non-target")
                                                 % Update the counter to keep
                                                 % only available identities:
@@ -751,11 +751,11 @@ for sub=1:n_subjects
                             tar_dur = randsample(["short", "intermediate", "long"], 1);
                             switch tar_dur
                                 case "short"
-                                    dur = 500;
+                                    dur = 0.500;
                                 case "intermediate"
-                                    dur = 1000;
+                                    dur = 1.000;
                                 case "long"
-                                    dur = 1500;
+                                    dur = 1.500;
                             end
                             if target_01_category == "face"
                                 if face_duration_ctr.(tar_dur) > 0
@@ -809,11 +809,11 @@ for sub=1:n_subjects
                             tar_dur = randsample(["short", "intermediate", "long"], 1);
                             switch tar_dur
                                 case "short"
-                                    dur = 500;
+                                    dur = 0.500;
                                 case "intermediate"
-                                    dur = 1000;
+                                    dur = 1.000;
                                 case "long"
-                                    dur = 1500;
+                                    dur = 1.500;
                             end
                             if target_01_category == "face"
                                 if object_duration_ctr.(tar_dur) > 0

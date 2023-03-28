@@ -42,7 +42,7 @@ DIOD_SIZE = 100; % Size of the square where the photodiode is presented (in pixe
 DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 
 %% DEBUG parameters
-DEBUG = 0; % 0 = no debug | 1 = regular debug | 2 = fast debug
+DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
 VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
 NO_PRACTICE = 1; % skip the practice run

@@ -1,5 +1,5000 @@
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Operation terminated by user during unique (line 103)
 
-PsychStartup: Adding path of installed GStreamer runtime to library path. [C:\gstreamer\1.0\msvc_x86_64\bin]
+In createTrialMatricesPRP (line 411)
+                        cat_u = unique(blk_mat.category); 
+>> 
+>> 
+>> blk
+blk =
+     1
+>> clear
+>> createTrialMatricesPRP
+ans =
+    60
+ans =
+    60
+ans =
+    60
+ans =
+    60
+K>> [trial_mat_final; auditory_practice; visual_practice; auditory_visual_practice];
+All tables in the bracketed expression must have the same number of variables. 
+>>     auditory_practice = makePractice_mat("auditory");
+    auditory_practice.block(:) = -2;
+    auditory_practice.is_practice(:) = 1;
+    visual_practice = makePractice_mat("visual");
+    visual_practice.block(:) = -1;
+    visual_practice.is_practice(:) = 1;
+    auditory_visual_practice = makePractice_mat("auditory_and_visual");
+    auditory_visual_practice.block(:) = 0;
+    auditory_visual_practice.is_practice(:) = 1;
+>>     trial_mat_final = table(trial_mat_final.task, trial_mat_final.is_practice, trial_mat_final.block, ...
+        trial_mat_new.trial, trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
+        trial_mat_final.category,trial_mat_final.orientation, trial_mat_final.identity, ...
+        trial_mat_final.duration, trial_mat_final.stim_jit, trial_mat_final.soa, ...
+        trial_mat_final.soa_lock, trial_mat_final.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+Unrecognized table variable name 'trial'. 
+>> blocks = unique(trial_mat_new.block);
+    trial_mat_final = [];
+    % One more constraint: there should be two face object block followed
+    % by two letter and symbol blocks. Furthermore, for half of the
+    % subjects we should start with faces object blocks and the other half
+    % should start with letter symbols:
+    blk_order_version = mod(sub, 2);
+    switch blk_order_version
+        case 0
+            blk_type_order = repmat([...
+                "face_object"; "face_object"; ...
+                "letter_false_font"; "letter_false_font";...
+                "letter_false_font"; "letter_false_font"; ...
+                "face_object"; "face_object";...
+                ], ceil(length(blocks) / 8), 1);
+        case 1
+            blk_type_order = repmat([...
+                "letter_false_font"; "letter_false_font"; ...
+                "face_object"; "face_object";...
+                "face_object"; "face_object";...
+                "letter_false_font"; "letter_false_font";...
+                ], ceil(length(blocks) / 8), 1);
+    end
+    
+    % Loop through each block:
+    for block=1:length(blocks)
+        % Getting the block type:
+        blk_type = blk_type_order(block);
+        % Get all blocks of this type:
+        blk_type_mat = trial_mat_new(strcmp(trial_mat_new.block_type, blk_type), :);
+        blk_type_num = unique(blk_type_mat.block);
+        % Randomly pick one:
+        sel_block_num = datasample(blk_type_num, 1,'Replace',false);
+        % Get the block data:
+        block_mat = trial_mat_new(trial_mat_new.block == sel_block_num, :);
+        % Randomize the order of the block:
+        block_mat = block_mat(randperm(height(block_mat)), :);
+        block_mat.block(:) = block;
+        block_mat.trial = (1:height(block_mat))';
+        if isempty(trial_mat_final)
+            trial_mat_final = block_mat;
+        else
+            trial_mat_final = [trial_mat_final; block_mat];
+        end
+        % Remove the block from the table:
+        trial_mat_new(find(trial_mat_new.block == sel_block_num), :) = [];
+    end
+    % Add columns and reorder:
+    trial_mat_final.is_practice(:) = 0;
+    trial_mat_final.task(:) = "prp";
+    trial_mat_final.trials = [];
+    % Add the jitter:
+    trial_mat_final.stim_jit = random(jitter_distribution, height(trial_mat_final), 1);
+    % Reorder:
+    trial_mat_final = table(trial_mat_final.task, trial_mat_final.is_practice, trial_mat_final.block, ...
+        trial_mat_new.trial, trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
+        trial_mat_final.category,trial_mat_final.orientation, trial_mat_final.identity, ...
+        trial_mat_final.duration, trial_mat_final.stim_jit, trial_mat_final.soa, ...
+        trial_mat_final.soa_lock, trial_mat_final.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+    
+    % Add the practice:
+    auditory_practice = makePractice_mat("auditory");
+    auditory_practice.block(:) = -2;
+    auditory_practice.is_practice(:) = 1;
+    visual_practice = makePractice_mat("visual");
+    visual_practice.block(:) = -1;
+    visual_practice.is_practice(:) = 1;
+    auditory_visual_practice = makePractice_mat("auditory_and_visual");
+    auditory_visual_practice.block(:) = 0;
+    auditory_visual_practice.is_practice(:) = 1;
+Undefined function 'height' for input arguments of type 'struct'. 
+>> for block=1:length(blocks)
+        % Getting the block type:
+        blk_type = blk_type_order(block);
+        % Get all blocks of this type:
+        blk_type_mat = trial_mat_new(strcmp(trial_mat_new.block_type, blk_type), :);
+        blk_type_num = unique(blk_type_mat.block);
+        % Randomly pick one:
+        sel_block_num = datasample(blk_type_num, 1,'Replace',false);
+        % Get the block data:
+        block_mat = trial_mat_new(trial_mat_new.block == sel_block_num, :);
+        % Randomize the order of the block:
+        block_mat = block_mat(randperm(height(block_mat)), :);
+        block_mat.block(:) = block;
+        block_mat.trial = (1:height(block_mat))';
+        if isempty(trial_mat_final)
+            trial_mat_final = block_mat;
+        else
+            trial_mat_final = [trial_mat_final; block_mat];
+        end
+        % Remove the block from the table:
+        trial_mat_new(find(trial_mat_new.block == sel_block_num), :) = [];
+    end
+    % Add columns and reorder:
+    trial_mat_final.is_practice(:) = 0;
+    trial_mat_final.task(:) = "prp";
+    trial_mat_final.trials = [];
+    % Add the jitter:
+    trial_mat_final.stim_jit = random(jitter_distribution, height(trial_mat_final), 1);
+    % Reorder:
+    trial_mat_final = table(trial_mat_final.task, trial_mat_final.is_practice, trial_mat_final.block, ...
+        trial_mat_new.trial, trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
+        trial_mat_final.category,trial_mat_final.orientation, trial_mat_final.identity, ...
+        trial_mat_final.duration, trial_mat_final.stim_jit, trial_mat_final.soa, ...
+        trial_mat_final.soa_lock, trial_mat_final.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+Undefined function 'height' for input arguments of type 'struct'. 
+>> clear
+>> createTrialMatricesPRP
+ans =
+    60
+ans =
+    60
+ans =
+    60
+ans =
+    60
+Error using createTrialMatricesPRP (line 927)
+Unrecognized table variable name 'trial'. 
+>> clear
+>> createTrialMatricesPRP
+ans =
+    60
+ans =
+    60
+ans =
+    60
+ans =
+    60
+K>> blk
+blk =
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+Fail to converge
+Failed to converge at block: 
+     1
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Error using datasample (line 165)
+Sample size K must be less than or equal to the size of the dimension from which to sample for sampling without
+replacement.
+Error in createTrialMatricesPRP (line 901)
+        sel_block_num = datasample(blk_type_num, 1,'Replace',false); 
+>> blk_type_num
+blk_type_num =
+  0×1 empty double column vector
+>> blk_type_mat
+blk_type_mat =
+  0×13 empty table
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+>> clear
+>> createTrialMatricesPRP
+Undefined function or variable 'not_pass'.
+Error in createTrialMatricesPRP (line 163)
+    while not_pass 
+>> clear
+>> createTrialMatricesPRP
+>> cler
+Undefined function or variable 'cler'. 
+Did you mean:
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+K>> [trial_mat_final; auditory_practice; visual_practice; auditory_visual_practice];
+All tables in the bracketed expression must have the same variable names. 
+>> practice_table = [auditory_practice; visual_practice; auditory_visual_practice];
+    practice_table = table(practice_table.task, practice_table.is_practice, practice_table.block,...
+        practice_table.trial, practice_table.target_01, practice_table.target_02,...
+        practice_table.task_relevance, practice_table.category, practice_table.orientation,...
+        practice_table.identity, practice_table.duration, practice_table.stim_jit,...
+        practice_table.SOA, practice_table.SOA_lock, practice_table.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+Unrecognized table variable name 'target_01'. 
+>> practice_table = table(practice_table.task, practice_table.is_practice, practice_table.block,...
+        practice_table.trial, practice_table.target_1, practice_table.target_2,...
+        practice_table.task_relevance, practice_table.category, practice_table.orientation,...
+        practice_table.identity, practice_table.duration, practice_table.stim_jit,...
+        practice_table.SOA, practice_table.SOA_lock, practice_table.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+>> trial_mat_final = [trial_mat_final; auditory_practice; visual_practice; auditory_visual_practice];
+All tables in the bracketed expression must have the same variable names. 
+>> [practice_table; trial_mat_final];
+Cannot concatenate the table variable 'pitch' because it is a cell in one table and a non-cell in another. 
+>> auditory_practice = makePractice_mat("auditory");
+    auditory_practice.block(:) = -2;
+    auditory_practice.is_practice(:) = 1;
+    visual_practice = makePractice_mat("visual");
+    visual_practice.block(:) = -1;
+    visual_practice.is_practice(:) = 1;
+    auditory_visual_practice = makePractice_mat("auditory_and_visual");
+    auditory_visual_practice.block(:) = 0;
+    auditory_visual_practice.is_practice(:) = 1;
+    % Concatenate the practices:
+    practice_table = [auditory_practice; visual_practice; auditory_visual_practice];
+    practice_table = table(practice_table.task, practice_table.is_practice, practice_table.block,...
+        practice_table.trial, practice_table.target_1, practice_table.target_2,...
+        practice_table.task_relevance, practice_table.category, practice_table.orientation,...
+        practice_table.identity, practice_table.duration, practice_table.stim_jit,...
+        practice_table.SOA, practice_table.SOA_lock, practice_table.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+>> trial_mat_final = [practice_table; trial_mat_final];
+>> clear
+>> close all
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    27
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    27
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+>> clear
+Exception "java.lang.ClassNotFoundException: com/intellij/openapi/editor/RawText"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.openapi.editor.RawText
+Exception "java.lang.ClassNotFoundException: com/intellij/openapi/editor/RawText"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.openapi.editor.RawText
+Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData
+Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData
+Exception "java.lang.ClassNotFoundException: com/intellij/openapi/editor/RawText"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.openapi.editor.RawText
+Exception "java.lang.ClassNotFoundException: com/intellij/openapi/editor/RawText"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.openapi.editor.RawText
+Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData
+Exception "java.lang.ClassNotFoundException: com/intellij/codeInsight/editorActions/FoldingData"while constructing DataFlavor for: application/x-java-jvm-local-objectref; class=com.intellij.codeInsight.editorActions.FoldingData
+>> createTrialMatricesPRP
+Error using datasample (line 165)
+Sample size K must be less than or equal to the size of the dimension from which to sample for sampling without
+replacement.
+Error in createTrialMatricesPRP (line 144)
+                                [y_cent, ind_cent] = datasample(indices_orientations, n_center,'Replace',false); 
+>> clear
+>> close all
+>> createTrialMatricesPRP
+Error using datasample (line 165)
+Sample size K must be less than or equal to the size of the dimension from which to sample for sampling without
+replacement.
+Error in createTrialMatricesPRP (line 144)
+                                [y_cent, ind_cent] = datasample(indices_orientations, n_center,'Replace',false); 
+>> indices_orientations
+indices_orientations =
+  0×1 empty double column vector
+>> y
+y =
+  0×1 empty double column vector
+>> indices
+indices =
+  0×1 empty double column vector
+>> conditions_levels.task_relevance(tr_ind)
+ans = 
+    "non-target"
+>> conditions_levels.duration(dur_ind)
+ans =
+     1
+>> clear
+>> createTrialMatricesPRP
+>> clear
+>> createTrialMatricesPRP
+Error using datasample (line 165)
+Sample size K must be less than or equal to the size of the dimension from which to sample for sampling without
+replacement.
+Error in createTrialMatricesPRP (line 144)
+                                [y_cent, ind_cent] = datasample(indices_orientations, n_center,'Replace',false); 
+>> conditions_levels.duration(dur_ind)
+ans =
+     1
+>> trial_matrix.duration
+ans =
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.5000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    0.1000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+    1.5000
+>> clear
+>> createTrialMatricesPRP
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    27
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    28
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Fail to converge
+Failed to converge at block: 
+    30
+Fail to converge
+Failed to converge at block: 
+    29
+Operation terminated by user during tabular/subsrefParens (line 44)
+
+In tabular/subsref (line 77)
+            b = t.subsrefParens(s);
+In createTrialMatricesPRP (line 404)
+                        blk_mat = task_relevance_mat(y, :); 
+>> clear
 >> test
 Subject number [101-199, default 101]: 
 Session number [1-6, default 1]: 
@@ -9,167 +5004,27 @@ WELCOME TO initConstantsParameters
 WELCOME to initPsychtooblox
 
 
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.16 - Build date: Aug  7 2019).
 PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
 PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
 PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+PTB-WARNING: Couldn't determine end-line of vertical blanking interval for your display! Trouble with beamposition queries?!?
+PTB-WARNING: Detected end-line is 1200, which is either lower or more than 1.250000 times higher than vbl startline 2400 --> Out of sane range!
 
 
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.709467 ms [59.846312 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.717272 ms [59.818372 Hz]. (50 valid samples taken, stddev=0.748546 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
-PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
-PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
-WELCOME TO loadStimuli
-       48000
-
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 444002.376184 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 444002.378713 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 444002.385812, scanline = 621
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 144, line_post_swaprequest = 166, time_post_swaprequest = 444002.379045
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 0, preflip_vbltimestamp = 444002.376494
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes:
-PTB-ERROR: Very unlikely: Something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate.
-
-PTB-ERROR: The most likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly, or swap completion signalling to PTB is broken.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: is futile. Also run OSXCompositorIdiocyTest on macOS. Also read 'help SyncTrouble' !
-Warning: -----  Data could not be saved!  ------ 
-> In test (line 478) 
-
-
-PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-
-WARNING: Failed to load GetCharJava Java class. Most likely your Matlab
-WARNING: classpath.txt file is not up to date. I will try to auto-fix this for
-WARNING: the current session by executing the PsychJavaTrouble() command.
-WARNING: This may have bad side-effects, like clearing all your scripts variables
-WARNING: and functions! If it works, please read 'help PsychJavaTrouble'
-WARNING: for a proper and permanent fix to the problem.
-
-PsychJavaTrouble: Will now try to add the PsychJava folder to Matlabs dynamic classpath...
-PsychJavaTrouble: Added PsychJava folder to dynamic class path. Psychtoolbox Java commands should work now!
-INFO: Problem may be fixed for this session. Let's see...
-INFO: Yep! Still, please fix the problem properly asap.
-Error using test
-Program aborted by user!
- 
-Error in function FillRect: 	Invalid Window (or Texture) Index provided: It doesn't correspond to an open window or texture.
-Did you close it accidentally via Screen('Close') or Screen('CloseAll') ?
-Error using Screen
-Usage:
-
-Screen('FillRect', windowPtr [,color] [,rect] )
-
-Error in showMessage (line 15)
-    Screen('FillRect', w, gray);
-
-Error in test (line 137)
-            showMessage(practice_start_msg);
-
->> test
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 60]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-
-
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.706506 ms [59.856920 Hz].
-PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) UHD Graphics 620 :: 4.6.0 - Build 26.20.100.6860
+PTB-INFO: VBL startline = 2400 , VBL Endline = 1200
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
 PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.769322 ms [59.632703 Hz]. (50 valid samples taken, stddev=0.919945 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.672994 ms [59.977230 Hz]. (50 valid samples taken, stddev=0.748066 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.949153 ms [59.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
 PTB-WARNING: ==============================================================================================================================
 PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
@@ -180,7 +5035,7 @@ PTB-WARNING: ===================================================================
 WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
 
 
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
 
 One or more internal checks (see Warnings above) indicate that synchronization
 of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
@@ -191,128 +5046,59 @@ You can force Psychtoolbox to continue, despite the severe problems, by adding t
 Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
 
 
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+
+
+----- ! PTB - WARNING: SYNCHRONIZATION TROUBLE ! ----
+
+One or more internal checks (see Warnings above) indicate that
+queries of rasterbeam position are not properly working for your setup.
+
+Psychtoolbox will work around this by using a different timing algorithm, 
+but it will cause Screen('Flip') to report less accurate/robust timestamps
+for stimulus timing.
+Read 'help BeampositionQueries' for more info and troubleshooting tips.
+
+
+PTB-INFO: Using modified PortAudio V19.6.0-devel, revision unknown
 PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Speaker/HP (Realtek High Definition Audio)
 PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
-PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
-WELCOME TO loadStimuli
-       48000
-
-WELCOME TO compute_performance
-
-ans =
-
-   4.4446e+05
-
-WELCOME TO compute_performance
-
-ans =
-
-   4.4466e+05
-
-WELCOME TO compute_performance
-
-ans =
-
-   4.4486e+05
-
-Warning: -----  Data could not be saved!  ------ 
-> In test (line 478) 
-
-
-PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-Operands to the logical AND (&&) and OR (||) operators must be convertible to logical scalar values. Use the ANY or ALL functions
-to reduce operands to logical scalar values.
-
-Error in test (line 107)
-        if blk == 1 && blk_mat.trial == 1
- 
->>  if blk == 1 && blk_mat.trial(tr) == 1 edn
-blk == 1 && blk_mat.trial(tr) == 1 
-
-end
-Unrecognized function or variable 'tr'.
- 
->> blk == 2 && blk_mat.trial(tr) == 1 
-
-ans =
-
-  logical
-
-   0
-
->> blk == 1 && blk_mat.trial(tr) == 1
-Unrecognized function or variable 'tr'.
- 
->> task_type = 'prp':
- task_type = 'prp':
-                   â†‘
-Error: Invalid expression. Check for missing or extra characters.
- 
->> task_type = 'prp';
->> session_task = ['practice_', task_type];
->> session_task = ['practice_', task_type]
-
-session_task =
-
-    'practice_prp'
-
+Error using initPsychtooblox (line 96)
+Error.
+The refresh rate is 59 and not equal to 60 hz. Make sure you set your screen refresh rate to match the latter!
+Error in test (line 60)
+initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate 
+>> clear
 >> test
 Subject number [101-199, default 101]: 
 Session number [1-6, default 1]: 
 View Distance in cm [default 60]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-
-
-
 WELCOME TO initConstantsParameters
 WELCOME to initPsychtooblox
 
 
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.16 - Build date: Aug  7 2019).
 PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
 PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
 PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+
+PTB-WARNING: Couldn't determine end-line of vertical blanking interval for your display! Trouble with beamposition queries?!?
+PTB-WARNING: Detected end-line is 1200, which is either lower or more than 1.250000 times higher than vbl startline 2400 --> Out of sane range!
 
 
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.705953 ms [59.858902 Hz].
-PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) UHD Graphics 620 :: 4.6.0 - Build 26.20.100.6860
+PTB-INFO: VBL startline = 2400 , VBL Endline = 1200
+PTB-INFO: Beamposition queries unsupported or defective on this system. Using basic timestamping as fallback.
 PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.602568 ms [60.231646 Hz]. (50 valid samples taken, stddev=0.608593 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.471084 ms [60.712460 Hz]. (55 valid samples taken, stddev=1.051409 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.949153 ms [59.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
 PTB-WARNING: ==============================================================================================================================
 PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
@@ -323,7 +5109,7 @@ PTB-WARNING: ===================================================================
 WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
 
 
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
 
 One or more internal checks (see Warnings above) indicate that synchronization
 of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
@@ -334,278 +5120,22 @@ You can force Psychtoolbox to continue, despite the severe problems, by adding t
 Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
 
 
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
-PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-Warning: This participant number and session was already attributed! 
-> In test (line 54) 
-PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
-PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
-Error in function FillRect: 	Invalid Window (or Texture) Index provided: It doesn't correspond to an open window or texture.
-Did you close it accidentally via Screen('Close') or Screen('CloseAll') ?
-Error using Screen
-Usage:
-
-Screen('FillRect', windowPtr [,color] [,rect] )
-
-Error in showMessage (line 15)
-    Screen('FillRect', w, gray);
-
-Error in test (line 68)
-showMessage(LOADING_MESSAGE);
- 
->> test
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 60]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
 
 
+----- ! PTB - WARNING: SYNCHRONIZATION TROUBLE ! ----
 
+One or more internal checks (see Warnings above) indicate that
+queries of rasterbeam position are not properly working for your setup.
 
-Warning: This participant number and session was already attributed! 
-> In test (line 50) 
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.706676 ms [59.856313 Hz].
-PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
-PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.696622 ms [59.892354 Hz]. (50 valid samples taken, stddev=0.545452 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
+Psychtoolbox will work around this by using a different timing algorithm, 
+but it will cause Screen('Flip') to report less accurate/robust timestamps
+for stimulus timing.
+Read 'help BeampositionQueries' for more info and troubleshooting tips.
 
 
 PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Speaker/HP (Realtek High Definition Audio)
 PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
-PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
 WELCOME TO loadStimuli
        48000
-
-Warning: -----  Data could not be saved!  ------ 
-> In test (line 484) 
-
-
-PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-Unable to resolve the name 'blk_mat.trial'.
-
-Error in test (line 111)
-        if blk == 1 && blk_mat.trial(tr) == 1
- 
->> test
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 60]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-
-
-
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.706733 ms [59.856108 Hz].
-PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
-PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.651622 ms [60.054210 Hz]. (50 valid samples taken, stddev=0.719376 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
-PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
-WELCOME TO loadStimuli
-       48000
-
-WELCOME TO compute_performance
-Warning: -----  Data could not be saved!  ------ 
-> In test (line 486) 
-
-
-PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-Error using test
-Program aborted by user!
- 
->> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\Reconstructed_time_experiment\data\sub-SX101\prp\ses-1\sub-SX101_ses-1_run-all_task-prp_events.mat')
->> test
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 60]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-Warning: This participant number and session was already attributed! 
-> In test (line 50) 
-Error using test
-Program aborted by user
- 
->> test
-Subject number [101-199, default 101]: 102
-Session number [1-6, default 1]: 
-View Distance in cm [default 60]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.706955 ms [59.855311 Hz].
-PTB-INFO: Beamposition queries are supported, but disabled. Using basic timestamping as fallback:
-PTB-INFO: Timestamps returned by Screen('Flip') will be therefore less robust and accurate.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.710786 ms [59.841590 Hz]. (50 valid samples taken, stddev=0.744158 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: New audio device -1 with handle 1 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/KopfhÃ¶rer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
-PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
-WELCOME TO loadStimuli
-       48000
-
 
