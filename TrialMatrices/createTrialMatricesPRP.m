@@ -20,7 +20,11 @@ conditions_levels = struct(...
     'pitch', [1000, 1100],...
     'SOA', [0,0.166,0.266,0.466], ...
     'SOA_lock', ["onset", "offset"]);
-
+jitter_mean = 1;
+jitter_min = 0.7;
+jitter_max = 2;
+exp_dist = makedist("Exponential", "mu", jitter_mean);
+jitter_distribution = truncate(exp_dist, jitter_min, jitter_max);
 % Counter balancing perfectly within the following conditions:
 counter_balance_conditions = ["task_relevance", "duration", "SOA", "SOA_lock"];
 % 40 trials within each of the counter balanced conditions:
@@ -156,481 +160,206 @@ for sub=1:n_subjects
         end
     end
     %% Adding stimuli identity.
-    trial_matrix.identity = repmat("", height(trial_matrix), 1);
-    % Identity is a bit more complicated, as it depends on the targets:
-    % Create each identities:
-    face_identities = ["face_01", "face_02", "face_03", "face_04", "face_05", ...
-        "face_06", "face_07", "face_08", "face_09", "face_10",...
-        "face_11", "face_12", "face_13", "face_14", "face_15", "face_16",...
-        "face_17", "face_18", "face_19", "face_20"];
-    object_identities = ["object_01", "object_02", "object_03", "object_04", "object_05", ...
-        "object_06", "object_07", "object_08", "object_09", "object_10",...
-        "object_11", "object_12", "object_13", "object_14", "object_15", "object_16",...
-        "object_17", "object_18", "object_19", "object_20"];
-    letter_identities = ["letter_01", "letter_02", "letter_03", "letter_04", "letter_05", ...
-        "letter_06", "letter_07", "letter_08", "letter_09", "letter_10",...
-        "letter_11", "letter_12", "letter_13", "letter_14", "letter_15", "letter_16",...
-        "letter_17", "letter_18", "letter_19", "letter_20"];
-    false_font_identities = ["false_font_01", "false_font_02", "false_font_03", "false_font_04", "false_font_05", ...
-        "false_font_06", "false_font_07", "false_font_08", "false_font_09", "false_font_10",...
-        "false_font_11", "false_font_12", "false_font_13", "false_font_14", "false_font_15", "false_font_16",...
-        "false_font_17", "false_font_18", "false_font_19", "false_font_20"];
     
-    % Create counter matrices for faces identities, to ensure that they are
-    % balanced across task relevance, duration and orientation:
-    %% Faces counters:
-    % Face task relevant 500ms:
-    face_identities_counter_tr_500_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_tr_500_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_tr_500_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    % Face task relevant 1000ms:
-    face_identities_counter_tr_1000_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_tr_1000_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_tr_1000_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    % Face task relevant 1500ms:
-    face_identities_counter_tr_1500_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_tr_1500_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_tr_1500_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    
-    % Face task irrelevant 500ms:
-    face_identities_counter_ti_500_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_ti_500_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_ti_500_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    % Face task irrelevant 1000ms:
-    face_identities_counter_ti_1000_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_ti_1000_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_ti_1000_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    % Face task irrelevant 1500ms:
-    face_identities_counter_ti_1500_center = struct("face_01", 2, "face_02", 2, "face_03", 2, "face_04", 2,...
-        "face_05", 2, "face_06", 2, "face_07", 2, "face_08", 2,...
-        "face_09", 2, "face_10", 2, "face_11", 2, "face_12", 2,...
-        "face_13", 2, "face_14", 2, "face_15", 2, "face_16", 2,...
-        "face_17", 2, "face_18", 2, "face_19", 2, "face_20", 2);
-    face_identities_counter_ti_1500_left = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    face_identities_counter_ti_1500_right = struct("face_01", 1, "face_02", 1, "face_03", 1, "face_04", 1,...
-        "face_05", 1, "face_06", 1, "face_07", 1, "face_08", 1,...
-        "face_09", 1, "face_10", 1, "face_11", 1, "face_12", 1,...
-        "face_13", 1, "face_14", 1, "face_15", 1, "face_16", 1,...
-        "face_17", 1, "face_18", 1, "face_19", 1, "face_20", 1);
-    
-    %% Objects counters:
-    % Object task relevant 500ms:
-    object_identities_counter_tr_500_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_tr_500_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_tr_500_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    % Object task relevant 1000ms:
-    object_identities_counter_tr_1000_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_tr_1000_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_tr_1000_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    % Object task relevant 1500ms:
-    object_identities_counter_tr_1500_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_tr_1500_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_tr_1500_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    % Object task irrelevant 500ms:
-    object_identities_counter_ti_500_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_ti_500_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_ti_500_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    % Object task irrelevant 1000ms:
-    object_identities_counter_ti_1000_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_ti_1000_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_ti_1000_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    % Object task irrelevant 1500ms:
-    object_identities_counter_ti_1500_center = struct("object_01", 2, "object_02", 2, "object_03", 2, "object_04", 2,...
-        "object_05", 2, "object_06", 2, "object_07", 2, "object_08", 2,...
-        "object_09", 2, "object_10", 2, "object_11", 2, "object_12", 2,...
-        "object_13", 2, "object_14", 2, "object_15", 2, "object_16", 2,...
-        "object_17", 2, "object_18", 2, "object_19", 2, "object_20", 2);
-    object_identities_counter_ti_1500_left = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    object_identities_counter_ti_1500_right = struct("object_01", 1, "object_02", 1, "object_03", 1, "object_04", 1,...
-        "object_05", 1, "object_06", 1, "object_07", 1, "object_08", 1,...
-        "object_09", 1, "object_10", 1, "object_11", 1, "object_12", 1,...
-        "object_13", 1, "object_14", 1, "object_15", 1, "object_16", 1,...
-        "object_17", 1, "object_18", 1, "object_19", 1, "object_20", 1);
-    
-    %% Letters counters:
-    % letter task relevant 500ms:
-    letter_identities_counter_tr_500_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_tr_500_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_tr_500_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    % letter task relevant 1000ms:
-    letter_identities_counter_tr_1000_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_tr_1000_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_tr_1000_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    % letter task relevant 1500ms:
-    letter_identities_counter_tr_1500_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_tr_1500_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_tr_1500_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    
-    % letter task irrelevant 500ms:
-    letter_identities_counter_ti_500_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_ti_500_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_ti_500_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    % letter task irrelevant 1000ms:
-    letter_identities_counter_ti_1000_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_ti_1000_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_ti_1000_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    % letter task irrelevant 1500ms:
-    letter_identities_counter_ti_1500_center = struct("letter_01", 2, "letter_02", 2, "letter_03", 2, "letter_04", 2,...
-        "letter_05", 2, "letter_06", 2, "letter_07", 2, "letter_08", 2,...
-        "letter_09", 2, "letter_10", 2, "letter_11", 2, "letter_12", 2,...
-        "letter_13", 2, "letter_14", 2, "letter_15", 2, "letter_16", 2,...
-        "letter_17", 2, "letter_18", 2, "letter_19", 2, "letter_20", 2);
-    letter_identities_counter_ti_1500_left = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    letter_identities_counter_ti_1500_right = struct("letter_01", 1, "letter_02", 1, "letter_03", 1, "letter_04", 1,...
-        "letter_05", 1, "letter_06", 1, "letter_07", 1, "letter_08", 1,...
-        "letter_09", 1, "letter_10", 1, "letter_11", 1, "letter_12", 1,...
-        "letter_13", 1, "letter_14", 1, "letter_15", 1, "letter_16", 1,...
-        "letter_17", 1, "letter_18", 1, "letter_19", 1, "letter_20", 1);
-    
-    
-    %% False font:
-    % false_font task relevant 500ms:
-    false_font_identities_counter_tr_500_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_tr_500_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_tr_500_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    % false_font task relevant 1000ms:
-    false_font_identities_counter_tr_1000_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_tr_1000_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_tr_1000_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    % false_font task relevant 1500ms:
-    false_font_identities_counter_tr_1500_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_tr_1500_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_tr_1500_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    % false_font task irrelevant 500ms:
-    false_font_identities_counter_ti_500_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_ti_500_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_ti_500_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    % false_font task irrelevant 1000ms:
-    false_font_identities_counter_ti_1000_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_ti_1000_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_ti_1000_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    % false_font task irrelevant 1500ms:
-    false_font_identities_counter_ti_1500_center = struct("false_font_01", 2, "false_font_02", 2, "false_font_03", 2, "false_font_04", 2,...
-        "false_font_05", 2, "false_font_06", 2, "false_font_07", 2, "false_font_08", 2,...
-        "false_font_09", 2, "false_font_10", 2, "false_font_11", 2, "false_font_12", 2,...
-        "false_font_13", 2, "false_font_14", 2, "false_font_15", 2, "false_font_16", 2,...
-        "false_font_17", 2, "false_font_18", 2, "false_font_19", 2, "false_font_20", 2);
-    false_font_identities_counter_ti_1500_left = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    false_font_identities_counter_ti_1500_right = struct("false_font_01", 1, "false_font_02", 1, "false_font_03", 1, "false_font_04", 1,...
-        "false_font_05", 1, "false_font_06", 1, "false_font_07", 1, "false_font_08", 1,...
-        "false_font_09", 1, "false_font_10", 1, "false_font_11", 1, "false_font_12", 1,...
-        "false_font_13", 1, "false_font_14", 1, "false_font_15", 1, "false_font_16", 1,...
-        "false_font_17", 1, "false_font_18", 1, "false_font_19", 1, "false_font_20", 1);
-    
-    %% Set the targets:
-    % Setting the numbers for the target:
-    n_targets_per_blk = 4;
-    min_n_targets = 2;
-    max_n_targets = 6;
-    % Determnine the total number of trials:
-    n_target_trials = (height(trial_matrix) / 32) * n_targets_per_blk;
-    % Determine the number of trials per category
-    n_target_per_cate = n_target_trials / 4;
-    % Set counters for orientation of the targets:
-    face_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
-    object_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
-    letter_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
-    false_font_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
-    % Set counters for the duration of the targets:
-    face_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
-    object_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
-    letter_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
-    false_font_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
-    
-    % We need n target trials per category. We need between 2 and 6 target
-    % trials per block. Generating vectors that go from 1 to 3 (2 to 6 when
-    % combining two target categories) and randomizing them:
-    face_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
-    face_targets_ctr = face_targets_ctr(randperm(length(face_targets_ctr)));
-    sum(face_targets_ctr)
-    object_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
-    object_targets_ctr = object_targets_ctr(randperm(length(object_targets_ctr)));
-    sum(object_targets_ctr)
-    letter_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
-    letter_targets_ctr = letter_targets_ctr(randperm(length(letter_targets_ctr)));
-    sum(letter_targets_ctr)
-    false_font_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
-    false_font_targets_ctr = false_font_targets_ctr(randperm(length(false_font_targets_ctr)));
-    sum(false_font_targets_ctr)
-    
-    % Split the data per block types:
-    block_types = unique(trial_matrix.block_type);
-    trial_mat_new = [];
-    blk_ctr = 1;
     not_pass = 1;
     while not_pass
         try
+            % Split the data per block types:
+            block_types = unique(trial_matrix.block_type);
+            trial_mat_new = [];
+            blk_ctr = 1;
+            %% Setting the counters:
+            trial_matrix.identity = repmat("", height(trial_matrix), 1);
+            % Identity is a bit more complicated, as it depends on the targets:
+            % Create each identities:
+            face_identities = ["face_01", "face_02", "face_03", "face_04", "face_05", ...
+                "face_06", "face_07", "face_08", "face_09", "face_10",...
+                "face_11", "face_12", "face_13", "face_14", "face_15", "face_16",...
+                "face_17", "face_18", "face_19", "face_20"];
+            object_identities = ["object_01", "object_02", "object_03", "object_04", "object_05", ...
+                "object_06", "object_07", "object_08", "object_09", "object_10",...
+                "object_11", "object_12", "object_13", "object_14", "object_15", "object_16",...
+                "object_17", "object_18", "object_19", "object_20"];
+            letter_identities = ["letter_01", "letter_02", "letter_03", "letter_04", "letter_05", ...
+                "letter_06", "letter_07", "letter_08", "letter_09", "letter_10",...
+                "letter_11", "letter_12", "letter_13", "letter_14", "letter_15", "letter_16",...
+                "letter_17", "letter_18", "letter_19", "letter_20"];
+            false_font_identities = ["false_font_01", "false_font_02", "false_font_03", "false_font_04", "false_font_05", ...
+                "false_font_06", "false_font_07", "false_font_08", "false_font_09", "false_font_10",...
+                "false_font_11", "false_font_12", "false_font_13", "false_font_14", "false_font_15", "false_font_16",...
+                "false_font_17", "false_font_18", "false_font_19", "false_font_20"];
+            
+            % Create counter matrices for faces identities, to ensure that they are
+            % balanced across task relevance, duration and orientation:
+            %% Faces counters:
+            % Face task relevant different durations:
+            face_identities_counter_tr_500 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            face_identities_counter_tr_1000 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            face_identities_counter_tr_1500 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            % Face task irrelevant different durations:
+            face_identities_counter_ti_500 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            face_identities_counter_ti_1000 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            face_identities_counter_ti_1500 = struct("face_01", 4, "face_02", 4, "face_03", 4, "face_04", 4,...
+                "face_05", 4, "face_06", 4, "face_07", 4, "face_08", 4,...
+                "face_09", 4, "face_10", 4, "face_11", 4, "face_12", 4,...
+                "face_13", 4, "face_14", 4, "face_15", 4, "face_16", 4,...
+                "face_17", 4, "face_18", 4, "face_19", 4, "face_20", 4);
+            
+            %% Objects counters:
+            % Face task relevant different durations:
+            object_identities_counter_tr_500 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            object_identities_counter_tr_1000 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            object_identities_counter_tr_1500 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            % Face task irrelevant different durations:
+            object_identities_counter_ti_500 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            object_identities_counter_ti_1000 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            object_identities_counter_ti_1500 = struct("object_01", 4, "object_02", 4, "object_03", 4, "object_04", 4,...
+                "object_05", 4, "object_06", 4, "object_07", 4, "object_08", 4,...
+                "object_09", 4, "object_10", 4, "object_11", 4, "object_12", 4,...
+                "object_13", 4, "object_14", 4, "object_15", 4, "object_16", 4,...
+                "object_17", 4, "object_18", 4, "object_19", 4, "object_20", 4);
+            
+            %% Letters counters:
+            % Letter task relevant different durations:
+            letter_identities_counter_tr_500 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            letter_identities_counter_tr_1000 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            letter_identities_counter_tr_1500 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            
+            % Letter task irrelevant different durations:
+            letter_identities_counter_ti_500 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            letter_identities_counter_ti_1000 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            letter_identities_counter_ti_1500 = struct("letter_01", 4, "letter_02", 4, "letter_03", 4, "letter_04", 4,...
+                "letter_05", 4, "letter_06", 4, "letter_07", 4, "letter_08", 4,...
+                "letter_09", 4, "letter_10", 4, "letter_11", 4, "letter_12", 4,...
+                "letter_13", 4, "letter_14", 4, "letter_15", 4, "letter_16", 4,...
+                "letter_17", 4, "letter_18", 4, "letter_19", 4, "letter_20", 4);
+            
+            %% False font counters:
+            % Letter task relevant different durations:
+            false_font_identities_counter_tr_500 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            false_font_identities_counter_tr_1000 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            false_font_identities_counter_tr_1500 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            % Letter task irrelevant different durations:
+            false_font_identities_counter_ti_500 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            false_font_identities_counter_ti_1000 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            false_font_identities_counter_ti_1500 = struct("false_font_01", 4, "false_font_02", 4, "false_font_03", 4, "false_font_04", 4,...
+                "false_font_05", 4, "false_font_06", 4, "false_font_07", 4, "false_font_08", 4,...
+                "false_font_09", 4, "false_font_10", 4, "false_font_11", 4, "false_font_12", 4,...
+                "false_font_13", 4, "false_font_14", 4, "false_font_15", 4, "false_font_16", 4,...
+                "false_font_17", 4, "false_font_18", 4, "false_font_19", 4, "false_font_20", 4);
+            
+            %% Set the targets:
+            % Setting the numbers for the target:
+            n_targets_per_blk = 4;
+            min_n_targets = 2;
+            max_n_targets = 6;
+            % Determnine the total number of trials:
+            n_target_trials = (height(trial_matrix) / 32) * n_targets_per_blk;
+            % Determine the number of trials per category
+            n_target_per_cate = n_target_trials / 4;
+            % Set counters for orientation of the targets:
+            face_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
+            object_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
+            letter_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
+            false_font_orientation_ctr = struct("center", n_target_per_cate * 1/2, "left", n_target_per_cate * 0.25, "right", n_target_per_cate * 0.25);
+            % Set counters for the duration of the targets:
+            face_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
+            object_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
+            letter_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
+            false_font_duration_ctr = struct("short", n_target_per_cate * 0.5, "intermediate", n_target_per_cate * 0.5, "long", n_target_per_cate * 0.5);
+            
+            % We need n target trials per category. We need between 2 and 6 target
+            % trials per block. Generating vectors that go from 1 to 3 (2 to 6 when
+            % combining two target categories) and randomizing them:
+            face_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            face_targets_ctr = face_targets_ctr(randperm(length(face_targets_ctr)));
+            object_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            object_targets_ctr = object_targets_ctr(randperm(length(object_targets_ctr)));
+            letter_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            letter_targets_ctr = letter_targets_ctr(randperm(length(letter_targets_ctr)));
+            false_font_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            false_font_targets_ctr = false_font_targets_ctr(randperm(length(false_font_targets_ctr)));
+            
             for ind=1:length(block_types)
                 block_type_mat = trial_matrix(strcmp(trial_matrix.block_type, block_types(ind)), :);
                 
@@ -692,828 +421,279 @@ for sub=1:n_subjects
                             for i=1:length(tr_inds)
                                 switch cat_u(cat)
                                     case "face"
-                                        if strcmp(trs_ori(i), "center")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_500_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity
-                                                    % and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_500_center.(sel_id) = face_identities_counter_tr_500_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_500_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_500_center.(sel_id) = face_identities_counter_ti_500_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1000_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1000_center.(sel_id) = face_identities_counter_tr_1000_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1000_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1000_center.(sel_id) = face_identities_counter_ti_1000_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1500_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1500_center.(sel_id) = face_identities_counter_tr_1500_center.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1500_center,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1500_center.(sel_id) = face_identities_counter_ti_1500_center.(sel_id) -  1;
-                                                end
+                                        if trs_dur(i) == 500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_tr_500,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity
+                                                % and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_tr_500.(sel_id) = face_identities_counter_tr_500.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_ti_500,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_ti_500.(sel_id) = face_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "left")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_500_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_500_left.(sel_id) = face_identities_counter_tr_500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_500_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_500_left.(sel_id) = face_identities_counter_ti_500_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1000_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1000_left.(sel_id) = face_identities_counter_tr_1000_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1000_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1000_left.(sel_id) = face_identities_counter_ti_1000_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1500_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1500_left.(sel_id) = face_identities_counter_tr_1500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1500_left,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1500_left.(sel_id) = face_identities_counter_ti_1500_left.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1000
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_tr_1000,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_tr_1000.(sel_id) = face_identities_counter_tr_1000.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_ti_1000,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_ti_1000.(sel_id) = face_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "right")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_500_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_500_right.(sel_id) = face_identities_counter_tr_500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_500_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_500_right.(sel_id) = face_identities_counter_ti_500_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1000_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1000_right.(sel_id) = face_identities_counter_tr_1000_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1000_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1000_right.(sel_id) = face_identities_counter_ti_1000_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_tr_1500_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_tr_1500_right.(sel_id) = face_identities_counter_tr_1500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(face_identities_counter_ti_1500_right,...
-                                                        face_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    face_identities_counter_ti_1500_right.(sel_id) = face_identities_counter_ti_1500_right.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_tr_1500,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_tr_1500.(sel_id) = face_identities_counter_tr_1500.(sel_id) -  1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(face_identities_counter_ti_1500,...
+                                                    face_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                face_identities_counter_ti_1500.(sel_id) = face_identities_counter_ti_1500.(sel_id) -  1;
                                             end
                                         end
                                     case "object"
-                                        if strcmp(trs_ori(i), "center")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_500_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_500_center.(sel_id) = object_identities_counter_tr_500_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_500_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_500_center.(sel_id) = object_identities_counter_ti_500_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1000_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1000_center.(sel_id) = object_identities_counter_tr_1000_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1000_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1000_center.(sel_id) = object_identities_counter_ti_1000_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1500_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1500_center.(sel_id) = object_identities_counter_tr_1500_center.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1500_center,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1500_center.(sel_id) = object_identities_counter_ti_1500_center.(sel_id) -  1;
-                                                end
+                                        if trs_dur(i) == 500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_tr_500,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity
+                                                % and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_tr_500.(sel_id) = object_identities_counter_tr_500.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_ti_500,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_ti_500.(sel_id) = object_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "left")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_500_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_500_left.(sel_id) = object_identities_counter_tr_500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_500_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_500_left.(sel_id) = object_identities_counter_ti_500_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1000_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1000_left.(sel_id) = object_identities_counter_tr_1000_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1000_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1000_left.(sel_id) = object_identities_counter_ti_1000_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1500_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1500_left.(sel_id) = object_identities_counter_tr_1500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1500_left,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1500_left.(sel_id) = object_identities_counter_ti_1500_left.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1000
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_tr_1000,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_tr_1000.(sel_id) = object_identities_counter_tr_1000.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_ti_1000,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_ti_1000.(sel_id) = object_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "right")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_500_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_500_right.(sel_id) = object_identities_counter_tr_500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_500_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_500_right.(sel_id) = object_identities_counter_ti_500_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1000_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1000_right.(sel_id) = object_identities_counter_tr_1000_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1000_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1000_right.(sel_id) = object_identities_counter_ti_1000_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_tr_1500_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_tr_1500_right.(sel_id) = object_identities_counter_tr_1500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(object_identities_counter_ti_1500_right,...
-                                                        object_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    object_identities_counter_ti_1500_right.(sel_id) = object_identities_counter_ti_1500_right.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_tr_1500,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_tr_1500.(sel_id) = object_identities_counter_tr_1500.(sel_id) -  1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(object_identities_counter_ti_1500,...
+                                                    object_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                object_identities_counter_ti_1500.(sel_id) = object_identities_counter_ti_1500.(sel_id) -  1;
                                             end
                                         end
                                     case "letter"
-                                        if strcmp(trs_ori(i), "center")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_500_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_500_center.(sel_id) = letter_identities_counter_tr_500_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_500_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_500_center.(sel_id) = letter_identities_counter_ti_500_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1000_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1000_center.(sel_id) = letter_identities_counter_tr_1000_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1000_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1000_center.(sel_id) = letter_identities_counter_ti_1000_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1500_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1500_center.(sel_id) = letter_identities_counter_tr_1500_center.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1500_center,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1500_center.(sel_id) = letter_identities_counter_ti_1500_center.(sel_id) -  1;
-                                                end
+                                        if trs_dur(i) == 500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_tr_500,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity
+                                                % and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_tr_500.(sel_id) = letter_identities_counter_tr_500.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_ti_500,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_ti_500.(sel_id) = letter_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "left")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_500_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_500_left.(sel_id) = letter_identities_counter_tr_500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_500_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_500_left.(sel_id) = letter_identities_counter_ti_500_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1000_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1000_left.(sel_id) = letter_identities_counter_tr_1000_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1000_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1000_left.(sel_id) = letter_identities_counter_ti_1000_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1500_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1500_left.(sel_id) = letter_identities_counter_tr_1500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1500_left,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1500_left.(sel_id) = letter_identities_counter_ti_1500_left.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1000
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_tr_1000,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_tr_1000.(sel_id) = letter_identities_counter_tr_1000.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_ti_1000,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_ti_1000.(sel_id) = letter_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "right")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_500_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_500_right.(sel_id) = letter_identities_counter_tr_500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_500_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_500_right.(sel_id) = letter_identities_counter_ti_500_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1000_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1000_right.(sel_id) = letter_identities_counter_tr_1000_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1000_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1000_right.(sel_id) = letter_identities_counter_ti_1000_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_tr_1500_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_tr_1500_right.(sel_id) = letter_identities_counter_tr_1500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(letter_identities_counter_ti_1500_right,...
-                                                        letter_identities, target_01(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    letter_identities_counter_ti_1500_right.(sel_id) = letter_identities_counter_ti_1500_right.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_tr_1500,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_tr_1500.(sel_id) = letter_identities_counter_tr_1500.(sel_id) -  1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(letter_identities_counter_ti_1500,...
+                                                    letter_identities, target_01(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                letter_identities_counter_ti_1500.(sel_id) = letter_identities_counter_ti_1500.(sel_id) -  1;
                                             end
                                         end
                                     case "false_font"
-                                        if strcmp(trs_ori(i), "center")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_500_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_500_center.(sel_id) = false_font_identities_counter_tr_500_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_500_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_500_center.(sel_id) = false_font_identities_counter_ti_500_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1000_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1000_center.(sel_id) = false_font_identities_counter_tr_1000_center.(sel_id) - 1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1000_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1000_center.(sel_id) = false_font_identities_counter_ti_1000_center.(sel_id) - 1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1500_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1500_center.(sel_id) = false_font_identities_counter_tr_1500_center.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1500_center,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1500_center.(sel_id) = false_font_identities_counter_ti_1500_center.(sel_id) -  1;
-                                                end
+                                        if trs_dur(i) == 500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_tr_500,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity
+                                                % and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_tr_500.(sel_id) = false_font_identities_counter_tr_500.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_ti_500,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_ti_500.(sel_id) = false_font_identities_counter_ti_500.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "left")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_500_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_500_left.(sel_id) = false_font_identities_counter_tr_500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_500_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_500_left.(sel_id) = false_font_identities_counter_ti_500_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1000_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1000_left.(sel_id) = false_font_identities_counter_tr_1000_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1000_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1000_left.(sel_id) = false_font_identities_counter_ti_1000_left.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1500_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1500_left.(sel_id) = false_font_identities_counter_tr_1500_left.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1500_left,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1500_left.(sel_id) = false_font_identities_counter_ti_1500_left.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1000
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_tr_1000,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_tr_1000.(sel_id) = false_font_identities_counter_tr_1000.(sel_id) - 1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_ti_1000,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_ti_1000.(sel_id) = false_font_identities_counter_ti_1000.(sel_id) - 1;
                                             end
-                                        elseif strcmp(trs_ori(i), "right")
-                                            if trs_dur(i) == 500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_500_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_500_right.(sel_id) = false_font_identities_counter_tr_500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_500_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_500_right.(sel_id) = false_font_identities_counter_ti_500_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1000
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1000_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1000_right.(sel_id) = false_font_identities_counter_tr_1000_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1000_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1000_right.(sel_id) = false_font_identities_counter_ti_1000_right.(sel_id) -  1;
-                                                end
-                                            elseif trs_dur(i) == 1500
-                                                if strcmp(task_rel_u(tr_ind), "non-target")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_tr_1500_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_tr_1500_right.(sel_id) = false_font_identities_counter_tr_1500_right.(sel_id) -  1;
-                                                elseif strcmp(task_rel_u(tr_ind), "irrelevant")
-                                                    % Update the counter to keep
-                                                    % only available identities:
-                                                    avail_ids = update_identities(false_font_identities_counter_ti_1500_right,...
-                                                        false_font_identities, target_02(blk));
-                                                    % Randomly sample one identity and add to the list:
-                                                    sel_id = randsample(avail_ids, 1);
-                                                    trial_ids = [trial_ids; sel_id];
-                                                    % Update the counter:
-                                                    false_font_identities_counter_ti_1500_right.(sel_id) = false_font_identities_counter_ti_1500_right.(sel_id) -  1;
-                                                end
+                                        elseif trs_dur(i) == 1500
+                                            if strcmp(task_rel_u(tr_ind), "non-target")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_tr_1500,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_tr_1500.(sel_id) = false_font_identities_counter_tr_1500.(sel_id) -  1;
+                                            elseif strcmp(task_rel_u(tr_ind), "irrelevant")
+                                                % Update the counter to keep
+                                                % only available identities:
+                                                avail_ids = update_identities(false_font_identities_counter_ti_1500,...
+                                                    false_font_identities, target_02(blk));
+                                                % Randomly sample one identity and add to the list:
+                                                sel_id = randsample(avail_ids, 1);
+                                                trial_ids = [trial_ids; sel_id];
+                                                % Update the counter:
+                                                false_font_identities_counter_ti_1500.(sel_id) = false_font_identities_counter_ti_1500.(sel_id) -  1;
                                             end
                                         end
                                 end
@@ -1680,6 +860,8 @@ for sub=1:n_subjects
             not_pass = 0;
         catch
             disp("Fail to converge")
+            disp("Failed to converge at block: ")
+            disp(blk)
             not_pass = 1;
         end
     end
@@ -1736,12 +918,38 @@ for sub=1:n_subjects
     trial_mat_final.is_practice(:) = 0;
     trial_mat_final.task(:) = "prp";
     trial_mat_final.trials = [];
+    % Add the jitter:
+    trial_mat_final.stim_jit = random(jitter_distribution, height(trial_mat_final), 1);
     % Reorder:
     trial_mat_final = table(trial_mat_final.task, trial_mat_final.is_practice, trial_mat_final.block, ...
-        trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
+        trial_mat_final.trial, trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
         trial_mat_final.category,trial_mat_final.orientation, trial_mat_final.identity, ...
-        trial_mat_final.duration, trial_mat_final.soa, trial_mat_final.soa_lock, trial_mat_final.pitch, ...
-        'VariableNames',["task", "is_practice", "block", "target_01", "target_02", "task_relevance", "category", "orientation","identity", "duration", "SOA", "SOA_lock", "pitch"]);
+        trial_mat_final.duration, trial_mat_final.stim_jit, trial_mat_final.soa, ...
+        trial_mat_final.soa_lock, trial_mat_final.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+    
+    % Add the practice:
+    auditory_practice = makePractice_mat("auditory");
+    auditory_practice.block(:) = -2;
+    auditory_practice.is_practice(:) = 1;
+    visual_practice = makePractice_mat("visual");
+    visual_practice.block(:) = -1;
+    visual_practice.is_practice(:) = 1;
+    auditory_visual_practice = makePractice_mat("auditory_and_visual");
+    auditory_visual_practice.block(:) = 0;
+    auditory_visual_practice.is_practice(:) = 1;
+    % Concatenate the practices:
+    practice_table = [auditory_practice; visual_practice; auditory_visual_practice];
+    practice_table = table(practice_table.task, practice_table.is_practice, practice_table.block,...
+        practice_table.trial, practice_table.target_1, practice_table.target_2,...
+        practice_table.task_relevance, practice_table.category, practice_table.orientation,...
+        practice_table.identity, practice_table.duration, practice_table.stim_jit,...
+        practice_table.SOA, practice_table.SOA_lock, practice_table.pitch, ...
+        'VariableNames',["task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
+    % Add these to the table:
+    trial_mat_final = [practice_table; trial_mat_final];
     
     % Save to file:
     % Create file name:
