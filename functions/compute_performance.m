@@ -1,6 +1,6 @@
 function [log_table, performance_struct] = compute_performance(log_table)
 
-disp('WELCOME TO compute_performance')
+disp('WELCOME TO compute_performance');
 
 global LOW_PITCH_KEY HIGH_PITCH_KEY
 
@@ -47,12 +47,12 @@ for tr = 1:length(log_table.trial)
         end 
 
         % compute correctness auditory task
-        if (log_table.aud_resp(tr) == LOW_PITCH_KEY && strcmp(log_table.pitch{tr},'low')) ||...
-                (log_table.aud_resp(tr) == HIGH_PITCH_KEY && strcmp(log_table.pitch{tr},'high'))
+        if (log_table.aud_resp(tr) == LOW_PITCH_KEY && log_table.pitch(tr) == 1000) ||...
+                (log_table.aud_resp(tr) == HIGH_PITCH_KEY && log_table.pitch(tr) == 1100)
             log_table.trial_accuracy_aud(tr) = 1;
 
-        elseif (log_table.aud_resp(tr) == HIGH_PITCH_KEY && strcmp(log_table.pitch{tr},'low')) ||...
-                (log_table.aud_resp(tr) == LOW_PITCH_KEY && strcmp(log_table.pitch{tr},'high'))
+        elseif (log_table.aud_resp(tr) == HIGH_PITCH_KEY && log_table.pitch(tr) == 1000) ||...
+                (log_table.aud_resp(tr) == LOW_PITCH_KEY && log_table.pitch(tr) == 1100)
             log_table.trial_accuracy_aud(tr) = 0;
         else
             log_table.trial_accuracy_aud(tr) = nan;

@@ -95,7 +95,6 @@ try
     
     %%  Experiment
     showFixation('PhotodiodeOff');
-    showMessage(EXPERIMET_START_MESSAGE);
     KbWait(compKbDevice,3);
     
     %% Block loop:
@@ -106,6 +105,10 @@ try
         blk = trial_mat.block(1);
     end
     while blk <= blks(end)      
+        if blk == 1 && blk_mat.trial == 1
+            showMessage(EXPERIMET_START_MESSAGE);
+        end
+
         % Initialize the eyetracker with the block number:
         if EYE_TRACKER
             initEyetracker(subjectNum, blk);
@@ -135,14 +138,19 @@ try
             practice_start_msg = get_practice_instructions(practice_type);
             showMessage(practice_start_msg);
             KbWait(compKbDevice,3);
+
         else
             % Otherwise, show the target screen:
             practice_type = 'not_practice';
-            % Show the target screen at the beginning of each block:
+            
+        end
+        
+        % Show the target screen at the beginning of each block (expect during auditory practice):
+        if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
             KbWait(compKbDevice,3,WaitSecs(0)+5);
         end
-        
+
         % Wait a random amount of time and show fixation:
         fixOnset = showFixation('PhotodiodeOff'); % 1
         WaitSecs(rand*2);
@@ -407,9 +415,9 @@ try
         end
         
         % Append the block log to the overall log:
-        if blk == 1
+        if blk == 1 
             log_all = blk_mat;
-        else
+        elseif ~blk_mat.is_practice
             log_all = [log_all; blk_mat];  % Not the most efficient but it is in a non critical part
         end
         
