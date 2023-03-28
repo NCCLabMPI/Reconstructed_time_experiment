@@ -9,11 +9,11 @@
 
 function [] = saveTable(input_table, task, blk_num)
 
-global DATA_FOLDER subID session
+global DATA_FOLDER subID session task_type
 
 % Creating the directories if they don't already exist:
 if input_table.is_practice
-    session_task = 'practice';
+    session_task = ['practice_', task_type];
     task = sprintf('%s_practice', string(task));
 else
     session_task = string(task);

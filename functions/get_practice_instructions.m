@@ -2,7 +2,7 @@ function [msg] = get_practice_instructions(practice_type)
 
 % Practice start message
 if strcmp(practice_type, 'auditory')
-    msg = 'We will start with the pratice \n\n of the auditory task. \n\n Press space to continue...';
+    msg = 'We will start with the pratice \n\n of the auditory task. \n\n Please look at the fixation cross \n\n in the middle of the screen \n\n Press space to continue...';
 elseif strcmp(practice_type, 'visual')
     msg = 'We will continue with the pratice \n\n of the visual task. \n\n Press space to continue...';
 elseif strcmp(practice_type, 'auditory_and_visual')

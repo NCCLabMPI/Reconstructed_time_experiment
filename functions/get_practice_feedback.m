@@ -19,7 +19,7 @@ end
 % Concatenate teh feedback message with the button press one:
 feedback_msg = [feedback_msg, button_press_msg];
 % Show the message:
-showMessage( feedback_msg )
+showMessage( feedback_msg );
 
 % Get the response feedback:
 accepted_key = 0;

@@ -6,7 +6,7 @@ clear;
 
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
-global EYE_TRACKER NO_PRACTICE session LAB_ID subID
+global EYE_TRACKER NO_PRACTICE session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
@@ -22,16 +22,6 @@ if introspection
     task_type = 'introspection';
 else
     task_type = 'prp';
-end
-%% check if participant and session exists already
-SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',num2str(subjectNum)],task_type,['ses-',num2str(session)]);
-ExistFlag = exist(SubSesFolder,'dir');
-if ExistFlag
-    warning ('This participant number and session was already attributed!')
-    proceedInput = questdlg({'This participant number and session was already attributed!', 'Are you sure you want to proceed?'},'RestartPrompt','yes','no','no');
-    if strcmp(proceedInput,'no')
-        error('Program aborted by user')
-    end
 end
 
 % Add functions folder to path (when we separate all functions)
@@ -49,13 +39,25 @@ dlmwrite(dfile,Str,'delimiter','');
 % To get different seeds for matlab randomization functions.
 rng('shuffle');
 
+%% check if participant and session exists already
+
+% Create the subject ID by combining the lab ID with the subject name:
+subID = sprintf('%s%d', LAB_ID, subjectNum);
+
+SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',subID],task_type,['ses-',num2str(session)]);
+ExistFlag = exist(SubSesFolder,'dir');
+if ExistFlag
+    warning ('This participant number and session was already attributed!')
+    proceedInput = questdlg({'This participant number and session was already attributed!', 'Are you sure you want to proceed?'},'RestartPrompt','yes','no','no');
+    if strcmp(proceedInput,'no')
+        error('Program aborted by user')
+    end
+end
+
 %% Initializing experimental parameters and PTB:
 initRuntimeParameters
 initConstantsParameters(); % defines all constants and initilizes parameters of the program
 initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
-
-% Create the subject ID by combining the lab ID with the subject name:
-subID = sprintf('%s%d', LAB_ID, subjectNum);
 
 %% Setup the trial matrix and log:
 % open trial matrix (form Experiment 1) and add auditory conditions
@@ -89,13 +91,13 @@ try
     Str = CmdWinTool('getText');
     dlmwrite(dfile,Str,'delimiter','');
     
-    %% Experiment Prep
-    previous_miniblock = 0;
-    warning_response_order = 0;
     
     %%  Experiment
+    % Experiment Prep
+    previous_miniblock = 0;
+    warning_response_order = 0;
+    start_message_flag = FALSE;
     showFixation('PhotodiodeOff');
-    KbWait(compKbDevice,3);
     
     %% Block loop:
     blks = unique(trial_mat.block);
@@ -104,9 +106,13 @@ try
     else
         blk = trial_mat.block(1);
     end
+    
     while blk <= blks(end)      
-        if blk == 1 && blk_mat.trial == 1
+        % in the very first trial of the actual experiment show start message
+        if blk == 1
             showMessage(EXPERIMET_START_MESSAGE);
+            KbWait(compKbDevice,3);
+            start_message_flag = TRUE;
         end
 
         % Initialize the eyetracker with the block number:
@@ -124,7 +130,7 @@ try
         % calculate SOA from onset
         for tr = 1:length(blk_mat.trial)
             if strcmp(blk_mat.SOA_lock{tr}, 'offset')
-                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr) + blk_mat.duration(tr);
+                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr) + (blk_mat.duration(tr)/1000);
             else
                 blk_mat.onset_SOA(tr) = blk_mat.SOA(tr);
             end
@@ -144,7 +150,7 @@ try
             practice_type = 'not_practice';
             
         end
-        
+       
         % Show the target screen at the beginning of each block (expect during auditory practice):
         if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
@@ -331,7 +337,7 @@ try
                 
                 %% Inter stimulus interval
                 % Present fixation
-                if elapsedTime >= (blk_mat.duration(tr) - refRate*(2/3)) && fixShown == FALSE
+                if elapsedTime >= ((blk_mat.duration(tr)/1000) - refRate*(2/3)) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
@@ -407,13 +413,6 @@ try
             save_eyetracker(task, blk);
         end
         
-        if is_practice
-            blk_continue = get_practice_feedback(blk_mat, practice_type);
-            blk = blk + blk_continue;
-        else
-            blk = blk + 1;
-        end
-        
         % Append the block log to the overall log:
         if blk == 1 
             log_all = blk_mat;
@@ -429,13 +428,23 @@ try
         end
         
         % Every 4 blocks, there is a longer break:
-        if mod(blk, 4) ==0
-            block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4);
-        else
-            block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
+        if ~is_practice
+            if mod(blk, 4) ==0
+                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4);
+            else
+                block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
+            end
+            showMessage(block_message);
+            KbWait(compKbDevice,3);
         end
-        showMessage(block_message);
-        KbWait(compKbDevice,3);
+
+        if is_practice
+            blk_continue = get_practice_feedback(blk_mat, practice_type);
+            blk = blk + blk_continue;
+        else
+            blk = blk + 1;
+        end
+
     end  % End of block loop
     
     %% End of experiment

@@ -1,5 +1,5 @@
 function [log_table, performance_struct] = compute_performance(log_table)
-
+%%
 disp('WELCOME TO compute_performance');
 
 global LOW_PITCH_KEY HIGH_PITCH_KEY
@@ -30,7 +30,7 @@ for tr = 1:length(log_table.trial)
         end
 
         % get RT visual response 
-        log_table.RT_vis(tr) = (log_table.time_of_resp_vis(tr) - log_table.vis_stim_time(tr))*1000;
+        log_table.RT_vis(tr) = log_table.time_of_resp_vis(tr) - log_table.vis_stim_time(tr);
         % make it a nan when RT is negative 
         if log_table.RT_vis(tr) < 0
             log_table.RT_vis(tr) = nan;
@@ -59,7 +59,7 @@ for tr = 1:length(log_table.trial)
         end
 
         % get RT auditory response 
-        log_table.RT_aud(tr) = (log_table.time_of_resp_aud(tr) - log_table.aud_stim_time(tr))*1000;
+        log_table.RT_aud(tr) = log_table.time_of_resp_aud(tr) - log_table.aud_stim_time(tr);
         % make it a nan when RT is negative 
         if log_table.RT_aud(tr) < 0
             log_table.RT_aud(tr) = nan;
