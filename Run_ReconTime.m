@@ -16,7 +16,7 @@ global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE 
 % prompt user for information
 subjectNum = input('Subject number [101-199, default 101]: '); if isempty(subjectNum); subjectNum = 101; end
 session = input('Session number [1-6, default 1]: '); if isempty(session); session = 1; end
-viewDistance = input('View Distance in cm [default 60]: '); if isempty(viewDistance); viewDistance = 60; end
+viewDistance = input('View Distance in cm [default 69.5]: '); if isempty(viewDistance); viewDistance = 69.5; end
 introspection = input('Introspective task [0: PRP only, 1: introspection, default 0]: '); if isempty(introspection); introspection = 0; end
 if introspection
     task_type = 'introspection';
