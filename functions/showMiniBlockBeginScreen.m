@@ -17,14 +17,14 @@ function [ time ] = showMiniBlockBeginScreen(trial_mat, trial_number)
     % get pointer for targets
     ori_names = {'center', 'left', 'right'};
 
-    target_1_id = trial_mat.target_1{trial_number};
+    target_01_id = trial_mat.target_01{trial_number};
     for ori = 1:3
-        ptr_target_1(ori) = getPointer(target_1_id, ori_names{ori});
+        ptr_target_01(ori) = getPointer(target_01_id, ori_names{ori});
     end
 
-    target_2_id = trial_mat.target_2{trial_number};
+    target_02_id = trial_mat.target_02{trial_number};
     for ori = 1:3
-        ptr_target_2(ori) = getPointer(target_2_id, ori_names{ori});
+        ptr_target_02(ori) = getPointer(target_02_id, ori_names{ori});
     end
 
     Screen('FillRect', w, gray);
@@ -43,12 +43,12 @@ function [ time ] = showMiniBlockBeginScreen(trial_mat, trial_number)
  
     DrawFormattedText(w, textProcess(MINIBLOCK_TEXT), 'center', round(ScreenHeight*(1/15)), text.Color);
     
-    Screen('DrawTexture',w, ptr_target_1(3),[],[firstStimPosition, firstStimPosition + [stimSizeLength stimSizeHeight]]);
-    Screen('DrawTexture',w, ptr_target_1(1),[],[secondStimPosition, secondStimPosition + [stimSizeLength stimSizeHeight]]);
-    Screen('DrawTexture',w, ptr_target_1(2),[],[thirdStimPosition, thirdStimPosition + [stimSizeLength stimSizeHeight]]);
-    Screen('DrawTexture',w, ptr_target_2(3),[],[fourthStimPosition, fourthStimPosition + [stimSizeLength stimSizeHeight]]);
-    Screen('DrawTexture',w, ptr_target_2(1),[],[fifthStimPosition, fifthStimPosition + [stimSizeLength stimSizeHeight]]);
-    Screen('DrawTexture',w, ptr_target_2(2),[],[sixthStimPosition, sixthStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_01(3),[],[firstStimPosition, firstStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_01(1),[],[secondStimPosition, secondStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_01(2),[],[thirdStimPosition, thirdStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_02(3),[],[fourthStimPosition, fourthStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_02(1),[],[fifthStimPosition, fifthStimPosition + [stimSizeLength stimSizeHeight]]);
+    Screen('DrawTexture',w, ptr_target_02(2),[],[sixthStimPosition, sixthStimPosition + [stimSizeLength stimSizeHeight]]);
         
     DrawFormattedText(w, textProcess(PRESS_SPACE), 'center', round((ScreenHeight*(5/6))), text.Color);
     

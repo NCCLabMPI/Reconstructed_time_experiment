@@ -60,11 +60,8 @@ subID = sprintf('%s%d', LAB_ID, subjectNum);
 %% Setup the trial matrix and log:
 % open trial matrix (form Experiment 1) and add auditory conditions
 MatFolderName = [pwd,filesep,'TrialMatrices\'];
-TableName = [subID,'_TrialMatrix.csv'];
+TableName = ['sub-',subID,'_task-', task_type,'_trials.csv'];
 trial_mat = readtable(fullfile(MatFolderName, TableName));
-
-% add auditory stimuli
-trial_mat = addAudStim(trial_mat);
 
 %% Load and prepare the visual and audio stimuli:
 showMessage(LOADING_MESSAGE);
@@ -134,7 +131,7 @@ try
         is_practice = blk_mat.is_practice(1);
         if is_practice
             % Extract from table the practice type:
-            practice_type = blk_mat.practice_type(1);
+            practice_type = blk_mat.task(1);
             practice_start_msg = get_practice_instructions(practice_type);
             showMessage(practice_start_msg);
             KbWait(compKbDevice,3);
@@ -297,9 +294,15 @@ try
                 % Play pitch
                 if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
                         pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
-                    pitch_buff = eval([blk_mat.pitch{tr},'_pitch_buff']);
+
+                    if blk_mat.pitch(tr) == 1000
+                        pitch_buff = low_pitch_buff;
+                    elseif blk_mat.pitch(tr) == 1100
+                        pitch_buff = high_pitch_buff;
+                    end
+                  
                     PsychPortAudio('FillBuffer', padhandle, pitch_buff);
-                    
+
                     % And then you play the buffer. The function returns a time stamp.
                     % Here I don't use it but for our purpose we will want to log it:
                     audio_start = PsychPortAudio('Start',padhandle, 1, 0);

@@ -45,7 +45,7 @@ DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
 VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
-NO_PRACTICE = 1; % skip the practice run
+NO_PRACTICE = 0; % skip the practice run
 RESOLUTION_FORCE = 0; % the program will complain if optimal refresh rate is not possible on this screen
 NO_FULLSCREEN = 1; % enable windowed mode for dubugging
 NO_ERROR = 0; % Disable testing program error throws
