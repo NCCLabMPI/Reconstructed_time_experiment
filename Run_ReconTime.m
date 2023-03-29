@@ -169,7 +169,6 @@ try
         else
             % Otherwise, show the target screen:
             practice_type = 'not_practice';
-            
         end
        
         % Show the target screen at the beginning of each block (expect during auditory practice):
@@ -203,7 +202,7 @@ try
             
             % show stimulus
             if strcmp(practice_type, 'auditory')
-                blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOff'); % Do not show the
+                blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOn'); % Do not show the
             else
                 blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
             end
@@ -236,58 +235,43 @@ try
             end
             
             while elapsedTime < total_trial_duration
-                % In order to count the frames, I always convert the
-                % time to frames by dividing it by the refresh rate:
-                CurrentFrame = floor(elapsedTime/refRate);
                 
-                % If the current frame number is different from the
-                % previous, then a new frame started so I send the new triggers:
-                if CurrentFrame > PreviousFrame
-                    FrameIndex = FrameIndex +1;
-                    PreviousFrame = CurrentFrame;
+                %% Play audio stimulus
+                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
+                        pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
+                    % Select the right buffer
+                    if blk_mat.pitch(tr) == 1000
+                        pitch_buff = low_pitch_buff;
+                    elseif blk_mat.pitch(tr) == 1100
+                        pitch_buff = high_pitch_buff;
+                    end
+                    % Load the buffer
+                    PsychPortAudio('FillBuffer', padhandle, pitch_buff);
+                    % Play the buffer
+                    audio_start = PsychPortAudio('Start',padhandle, 1, 0);
+                    % Get the buffer time stamp:
+                    audio_start = GetSecs();
+                    % Sending response trigger for the eyetracker
+                    if EYE_TRACKER
+                        trigger_str = get_et_trigger('audio_onset', blk_mat.task_relevance{tr}, ...
+                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                        Eyelink('Message',trigger_str);
+                    end
+                    blk_mat.aud_stim_time(tr) = audio_start;
+                    blk_mat.aud_stim_buff(tr) = pitch_buff;
+                    pitchPlayed = TRUE;
                 end
-                %--------------------------------------------------------
-                %% Repsonse assessment
+                
+                %% Get response:
                 if hasInputs < 2
+                    % Ge the response:
                     [key,Resp_Time,PauseTime] = getInput(PauseTime);
                     
-                    % If the restart key was pressed
-                    if(key == RESTART_KEY)
-                        %  Ask the experiment whether he really wishes to restart
-                        showMessage(RESTART_MESSAGE);
-                        
-                        % Wait for answer
-                        [secs, keyCode, deltaSecs] =KbWait(compKbDevice,3);
-                        
-                        % Get the restart interval (the time it took
-                        % the experimenter to say he/she wants to
-                        % restart:
-                        RestartInterval = (secs - Resp_Time) - PauseTime; % Need to take the pause time into account, otherwise, we would be counting it twice down the line!
-                        
-                        % If the experimenter wants to restart, log it:
-                        if(keyCode(YesKey))
-                            showMessage(RESTARTBLOCK_OR_MINIBLOCK_MESSAGE);
-                            % Wait for answer
-                            [~, BlkOrminiBlk_keyCode, ~] =KbWait(compKbDevice,3);
-                            break
-                            
-                        else % Else, continue:
-                            key=NO_KEY;
-                        end
-                    elseif (key == ABORT_KEY) % If the experiment was aborted:
-                        ABORTED = 1;
-                        
-                        error(CLEAN_EXIT_MESSAGE);
-                    end
-                    
-                    % -----------------------------------------------------
-                    % Responses keys treatment (needs to be separated from
-                    % above, because above can change the key input
-                    % depending on what's pressed, i.e. pursuing after
-                    % clicking restart)
-                    
-                    % If the participant pressed a key that is different to the one of the previous iteration:
-                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr)
+                    % Handling the response:
+                    % If the participant pressed a key that is different 
+                    % to the one of the previous iteration:
+                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr) % TODO: IS THIS STILL NEEDED?
                         
                         % Sending response trigger for the eyetracker
                         if EYE_TRACKER
@@ -323,39 +307,7 @@ try
                         end
                     end
                 end
-                
-                %% audio stimulus
-                
-                % Play pitch
-                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
-                        pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
-
-                    if blk_mat.pitch(tr) == 1000
-                        pitch_buff = low_pitch_buff;
-                    elseif blk_mat.pitch(tr) == 1100
-                        pitch_buff = high_pitch_buff;
-                    end
-                  
-                    PsychPortAudio('FillBuffer', padhandle, pitch_buff);
-
-                    % And then you play the buffer. The function returns a time stamp.
-                    % Here I don't use it but for our purpose we will want to log it:
-                    audio_start = PsychPortAudio('Start',padhandle, 1, 0);
-                   
-                    % Sending response trigger for the eyetracker
-                    if EYE_TRACKER
-                        trigger_str = get_et_trigger('audio_onset', blk_mat.task_relevance{tr}, ...
-                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
-                        Eyelink('Message',trigger_str);
-                    end
-                    blk_mat.aud_stim_time(tr) = audio_start;
-                    blk_mat.aud_stim_buff(tr) = pitch_buff;
-                    
-                    pitchPlayed = TRUE;
-                    
-                end
-                
+                                
                 %% Inter stimulus interval
                 % Present fixation
                 if elapsedTime >= ((blk_mat.duration(tr)) - refRate*(2/3)) && fixShown == FALSE
@@ -389,11 +341,16 @@ try
                 end
                 
                 % Updating clock:
-                % update time since iteration begun. Subtract the time
-                % of the pause to the elapsed time, because we don't
-                % want to have it in there. If there was no pause, then
-                % pause time = 0
                 elapsedTime = GetSecs - blk_mat.vis_stim_time(tr);
+                
+                % Updating the frame counter:
+                CurrentFrame = floor(elapsedTime/refRate);
+                
+                % Check if a new frame started:
+                if CurrentFrame > PreviousFrame
+                    FrameIndex = FrameIndex +1;
+                    PreviousFrame = CurrentFrame;
+                end
             end
             blk_mat.trial_end(tr) = GetSecs;
             
