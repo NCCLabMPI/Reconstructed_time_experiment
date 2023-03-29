@@ -13,7 +13,7 @@ if strcmp(practice_type, 'visual')
 elseif strcmp(practice_type, 'auditory')
     feedback_msg = ['Your auditory score is ', num2str(round(perf.aud_mean_accuracy*100)), '%'];
 elseif strcmp(practice_type, 'auditory_and_visual')
-    feedback_msg = sprintf("Your auditory score is %d \n\n You correctly detected %d out of %d visual targets \n\n You incorrectly pressed a button to %d out of %d non-targets", ...
+    feedback_msg = sprintf('Your auditory score is %d \n\n You correctly detected %d out of %d visual targets \n\n You incorrectly pressed a button to %d out of %d non-targets', ...
         round(perf.aud_mean_accuracy*100), perf.hits, perf.hits + perf.misses, perf.fa, perf.fa + perf.cr);
 end
 % Concatenate teh feedback message with the button press one:
