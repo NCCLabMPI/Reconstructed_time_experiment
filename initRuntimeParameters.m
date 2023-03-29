@@ -9,7 +9,7 @@ function initRuntimeParameters
 % Recording modalities:
 global Behavior EYE_TRACKER LAB_ID
 % Photodiode parameters:
-global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL
+global PHOTODIODE DIOD_DURATION DIOD_SIZE DIOD_ON_COLOUR DIOD_OFF_COLOUR DIAL RESPONSE_BOX
 % Eyetracker parameters:
 global DISTANCE_SCREEN_TRACKER HEAD_FIXED
 % Hardware parameters:
@@ -52,5 +52,6 @@ NO_ERROR = 0; % Disable testing program error throws
 % Q: Do I need to fill this out? Pixels? Yoav: only if you want the debug scree to be of a different size
 WINDOW_RESOLUTION = [10 10 1200 800];
 DIAL = 0; % 1 if dial is present
+RESPONSE_BOX = 1; % 1 if Cedrus RB-844 response box is present. 
 
 end

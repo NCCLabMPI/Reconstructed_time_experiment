@@ -21,7 +21,7 @@ function initConstantsParameters()
     % Text and messages
     global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
     global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
-    global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR
+    global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR RESPONSE_BOX
     global FEEDBACK_MESSAGES FEEDBACK_MESSAGES_PRACTICE AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE PRESS_ANY_BUTTON fontType fontSize fontColor 
     global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE RESTART_PRACTICE_MESSAGE PROGRESS_MESSAGE PROGRESS_MESSAGE_MEG RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
     % -----------------------------------------------------
@@ -161,8 +161,6 @@ function initConstantsParameters()
     KbName('UnifyKeyNames');
     upKey         =  KbName('UpArrow');
     downKey       =  KbName('DownArrow');
-    RightKey      =  KbName('RightArrow');
-    LeftKey       =  KbName('LeftArrow');
     PauseKey      =  KbName('Q');   
     RestartKey    =  KbName('R'); 
     abortKey      =  KbName('ESCAPE'); % ESC aborts experiment
@@ -173,13 +171,26 @@ function initConstantsParameters()
     twoKey        =  KbName('2@');
     threeKey      =  KbName('3#');
     fourKey       =  KbName('4$');
+
     MINIBLOCK_RESTART_KEY = KbName('M');
     BLOCK_RESTART_KEY = KbName('B');
-    VIS_RESPONSE_KEY = spaceBar;
-    AUD_RESPONSE_KEY_HIGH = twoKey;
-    AUD_RESPONSE_KEY_LOW = oneKey;
 
-    ValidationKey = KbName('V');
+    if RESPONSE_BOX
+        RightKey =  KbName('H');
+        LeftKey  =  KbName('G');
+        VIS_RESPONSE_KEY = KbName('B');
+        AUD_RESPONSE_KEY_HIGH = KbName('A');
+        AUD_RESPONSE_KEY_LOW = KbName('C');
+        ValidationKey = KbName('D');
+
+    else
+        RightKey =  KbName('RightArrow');
+        LeftKey  =  KbName('LeftArrow');
+        VIS_RESPONSE_KEY = spaceBar;
+        AUD_RESPONSE_KEY_HIGH = twoKey;
+        AUD_RESPONSE_KEY_LOW = oneKey;
+        ValidationKey = KbName('V');
+    end
 
     
     %%  PARAMETERS THAT SHOULD NOT BE ALTERED, BUT SHOULD BE USED AS REFERENCE
