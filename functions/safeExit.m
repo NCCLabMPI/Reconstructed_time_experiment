@@ -1,7 +1,7 @@
 % SAFEEXIT runs all commands allowing for a safe exit.
 function [] = safeExit()
 
-global EYE_TRACKER padhandle
+global EYE_TRACKER padhandle response_box_handle
 
 try
     if EYE_TRACKER
@@ -9,7 +9,10 @@ try
     end
     % Close the audio device
     PsychPortAudio('Close', padhandle);
-    
+    if  RESPONSE_BOX
+        CedrusResponseBox('Open', response_box_handle);
+    end
+
     % Closing everything
     Priority(0);
     sca;
@@ -22,7 +25,9 @@ catch
     end
     % Close the audio device
     PsychPortAudio('Close', padhandle);
-    
+    if  RESPONSE_BOX
+        CedrusResponseBox('Open', response_box_handle);
+    end
     % Closing everything
     Priority(0);
     sca;

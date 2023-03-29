@@ -3,7 +3,7 @@
 function [] = initPsychtooblox()
     global DEBUG ScreenHeight stimSizeHeight ScreenWidth refRate screenScaler fontType fontSize fontColor text gray w REF_RATE_OPTIMAL center
     global WINDOW_RESOLUTION debugFactor NO_FULLSCREEN  VIEWING_DISTANCE MAX_VISUAL_ANGEL STIM_DURATION TRIAL_DURATION ppd
-    global padhandle% These are required for the sound display
+    global padhandle RESPONSE_BOX response_box_handle % These are required for the sound display
     disp('WELCOME to initPsychtooblox')
     
     %% Set preferences and open graphic window:
@@ -77,6 +77,9 @@ function [] = initPsychtooblox()
     freq = [];
     channels = 2;
     padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
+    if  RESPONSE_BOX
+        response_box_handle = CedrusResponseBox('Open', 'COM7');
+    end
     
     %% Derive relevant parameters from setup information:
     % Extract screen parameters in pixels:
