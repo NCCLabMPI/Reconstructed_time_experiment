@@ -266,7 +266,7 @@ try
                 %% Get response:
                 if hasInputs < 2
                     % Ge the response:
-                    [key,Resp_Time,PauseTime] = getInput(PauseTime);
+                    [key,Resp_Time] = getInput();
                     
                     % Handling the response:
                     % If the participant pressed a key that is different 
