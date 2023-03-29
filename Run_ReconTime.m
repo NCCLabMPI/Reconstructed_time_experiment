@@ -2,7 +2,7 @@
 % Clearing the command window before we start saving it
 sca;
 close all;
-clear;
+clear all;
 
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
@@ -27,6 +27,10 @@ end
 % Add functions folder to path (when we separate all functions)
 function_folder = [pwd,filesep,'functions\'];
 addpath(function_folder)
+
+% initializing experimental parameters 
+initRuntimeParameters
+initConstantsParameters(); % defines all constants and initilizes parameters of the program
 
 % Logging everything that is printed into the command window! If the
 % log file already exist, delete it, otherwise the logs will be
@@ -54,9 +58,7 @@ if ExistFlag
     end
 end
 
-%% Initializing experimental parameters and PTB:
-initRuntimeParameters
-initConstantsParameters(); % defines all constants and initilizes parameters of the program
+% Initializing PTB:
 initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
 
 %% Setup the trial matrix and log:
