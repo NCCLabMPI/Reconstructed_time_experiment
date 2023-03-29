@@ -6,7 +6,7 @@ clear all;
 
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
-global EYE_TRACKER NO_PRACTICE session LAB_ID subID task_type
+global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
 global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
@@ -117,10 +117,29 @@ try
             start_message_flag = TRUE;
         end
 
-        % Initialize the eyetracker with the block number:
+        % Initialize the eyetracker with the block number and run the
+        % calibration:
         if EYE_TRACKER
+            % Initialize the eyetracker:
             initEyetracker(subjectNum, blk);
+            % Show the calibration message to give the option to perform 
+            % the eyetracker calibration if needed:
+            showMessage(EYETRACKER_CALIBRATION_MESSAGE);
+            CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
+            while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
+                [~, CalibrationResp, ~] =KbWait(compKbDevice,3);
+                if InstructionsResp(CalibrationKey)
+                    % Run the calibration:
+                    EyelinkDoTrackerSetup(el);
+                    CorrectKey = 1;
+                elseif InstructionsResp(spaceBar)
+                    CorrectKey = 1;
+                end
+            end
+            % Starting the recording
+            Eyelink('StartRecording');
         end
+        
         % Extract the trial and log of this block only:
         blk_mat = trial_mat(trial_mat.block == blk, :);
         % Extract the task from this block:
@@ -132,7 +151,7 @@ try
         % calculate SOA from onset
         for tr = 1:length(blk_mat.trial)
             if strcmp(blk_mat.SOA_lock{tr}, 'offset')
-                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr) + (blk_mat.duration(tr)/1000);
+                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr) + (blk_mat.duration(tr));
             else
                 blk_mat.onset_SOA(tr) = blk_mat.SOA(tr);
             end
@@ -339,7 +358,7 @@ try
                 
                 %% Inter stimulus interval
                 % Present fixation
-                if elapsedTime >= ((blk_mat.duration(tr)/1000) - refRate*(2/3)) && fixShown == FALSE
+                if elapsedTime >= ((blk_mat.duration(tr)) - refRate*(2/3)) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER

@@ -33,7 +33,7 @@ function initConstantsParameters()
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION
     % -----------------------------------------------------
     % Keys parameters
-    global VIS_RESPONSE_KEY ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey 
+    global VIS_RESPONSE_KEY CalibrationKey ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey 
     global oneKey twoKey threeKey fourKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
     global CALIBRATION_PITCH_FREQ HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
     % -----------------------------------------------------
@@ -125,7 +125,7 @@ function initConstantsParameters()
     MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
     EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press SPACE to continue...';
     CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press SPACE to continue...';
-    EYETRACKER_CALIBRATION_MESSAGE = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n\n You will see a dot that will move to different locations on screen.\n\n Your task is to keep looking at the dot at all times.\n\n Try to avoid blinking as much as possible.\n\n\n Press SPACE to proceed to calibration...';
+    EYETRACKER_CALIBRATION_MESSAGE = 'Press SPACE to proceed to perform the calibration \n\n Press C to skip the calibration';
     EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press SPACE to proceed to calibration...';
     GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press SPACE to continue...';
     FEEDBACK_MESSAGES = {'Nice job! Keep it up!','Warning: You are missing targets.','Warning: You are selecting incorrect targets.'};
@@ -159,6 +159,7 @@ function initConstantsParameters()
     
     % Response params
     KbName('UnifyKeyNames');
+    CalibrationKey = KbName('C');
     upKey         =  KbName('UpArrow');
     downKey       =  KbName('DownArrow');
     PauseKey      =  KbName('Q');   
