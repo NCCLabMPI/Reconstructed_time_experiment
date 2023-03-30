@@ -7,7 +7,7 @@ clear all;
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
 global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
-global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION
+global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
@@ -195,9 +195,12 @@ try
             % show stimulus
             if strcmp(practice_type, 'auditory')
                 blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOn'); % Do not show the
+                DiodFrame = 0;
             else
                 blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
+                DiodFrame = 0;
             end
+
             % Sending response trigger for the eyetracker
             if EYE_TRACKER
                 trigger_str = get_et_trigger('vis_onset', blk_mat.task_relevance{tr}, ...
@@ -309,6 +312,7 @@ try
                 % Present fixation
                 if elapsedTime >= ((blk_mat.duration(tr)) - refRate*FRAME_ANTICIPATION) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
+                    DiodFrame = CurrentFrame;
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('fixation_onset', blk_mat.task_relevance{tr}, ...
@@ -324,6 +328,7 @@ try
                 % Present jitter
                 if elapsedTime > TRIAL_DURATION  - refRate*FRAME_ANTICIPATION && jitterLogged == FALSE
                     JitOnset = showFixation('PhotodiodeOn');
+                    DiodFrame = CurrentFrame;
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('jitter_onset', blk_mat.task_relevance{tr}, ...
@@ -342,10 +347,15 @@ try
                 
                 % Updating the frame counter:
                 CurrentFrame = floor(elapsedTime/refRate);
-                
+
                 % Check if a new frame started:
                 if CurrentFrame > PreviousFrame
                     FrameIndex = FrameIndex +1;
+
+                    % turn photodiode off again after diod duration
+                    if PHOTODIODE && (CurrentFrame - DiodFrame == DIOD_DURATION - 1)
+                        turnPhotoTrigger('off');
+                    end
                     PreviousFrame = CurrentFrame;
                 end
             end
