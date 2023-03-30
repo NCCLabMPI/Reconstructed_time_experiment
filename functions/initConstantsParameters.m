@@ -26,7 +26,7 @@ function initConstantsParameters()
     global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
     % -----------------------------------------------------
     % Matrices info
-    global EXPERIMENT_NAME
+    global EXPERIMENT_NAME subjectNum
     % -----------------------------------------------------
     % Timing parameters
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION FRAME_ANTICIPATION
@@ -154,11 +154,19 @@ function initConstantsParameters()
     if RESPONSE_BOX
         RightKey =  KbName('H');
         LeftKey  =  KbName('G');
-        VIS_RESPONSE_KEY = KbName('B');
-        AUD_RESPONSE_KEY_HIGH = KbName('A');
-        AUD_RESPONSE_KEY_LOW = KbName('C');
         ValidationKey = KbName('H');
-        spaceBar =  KbName('D');
+
+        if mod(subjectNum, 2) == 0
+            VIS_RESPONSE_KEY = KbName('B');
+            AUD_RESPONSE_KEY_HIGH = KbName('A');
+            AUD_RESPONSE_KEY_LOW = KbName('C');
+            spaceBar =  KbName('D');
+        else 
+            VIS_RESPONSE_KEY = KbName('A');
+            AUD_RESPONSE_KEY_HIGH = KbName('B');
+            AUD_RESPONSE_KEY_LOW = KbName('D');
+            spaceBar =  KbName('C');            
+        end
 
     else
         RightKey =  KbName('RightArrow');
@@ -193,12 +201,17 @@ function initConstantsParameters()
 
     % instruction slides addresses
     INSTRUCTIONS_FOLDER = 'instructions';
-    INSTRUCTIONS1 = 'instructions1.png';
-    INSTRUCTIONS2 = 'instructions2.png';
-    INSTRUCTIONS3 = 'instructions3.png';
-    INSTRUCTIONS4 = 'instructions4.png';
-    INSTRUCTIONS5 = 'instructions5.png';
-    INSTRUCTIONS6 = 'instructions6.png';
-    INSTRUCTIONS7 = 'instructions7.png';
+    INSTRUCTIONS1 = 'instructions1_1.png';
+    if mod(subjectNum, 2) == 0
+        INSTRUCTIONS2 = 'instructions2_2.png';
+        INSTRUCTIONS3 = 'instructions3_2.png';
+    else
+        INSTRUCTIONS2 = 'instructions2_1.png';
+        INSTRUCTIONS3 = 'instructions3_1.png';
+    end
+    INSTRUCTIONS4 = 'instructions4_1.png';
+    INSTRUCTIONS5 = 'instructions5_1.png';
+    INSTRUCTIONS6 = 'instructions6_1.png';
+    INSTRUCTIONS7 = 'instructions7_1.png';
 
 end % end of initConstantParameters function
