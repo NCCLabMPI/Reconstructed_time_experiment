@@ -1,266 +1,3979 @@
 
 PsychStartup: Adding path of installed GStreamer runtime to library path. [C:\gstreamer\1.0\msvc_x86_64\bin]
+>> practice_mat = readtable(fullfile(pwd,filesep,'practice_mat.csv')); % <- loads the practice matrix
+Error using readtable
+Unable to find or open 'C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\practice_mat.csv'. Check the path and
+filename or file permissions.
+ 
+>> practice_mat = readtable(fullfile(pwd,filesep,'practice_mat.csv')); % <- loads the practice matrix
+>> practice_mat.duration(1) = 0.5;
+>> practice_mat.duration(39) = 1.5;
+>>  writetable(practice_mat, 'practice_mat.csv');
+>> createTrialMatricesPRP
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    24
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    24
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    22
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    24
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    24
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    23
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    25
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    24
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    26
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    28
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    27
+
+Fail to converge at:
+    29
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
+Fail to converge at:
+    30
+
 >> Run_ReconTime
 Subject number [101-199, default 101]: 
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.704041 ms [59.865754 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.685900 ms [59.930840 Hz]. (50 valid samples taken, stddev=0.419028 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
-PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-Error using CedrusResponseBox>OpenDev
-Failed to open port COM4 for Cedrus response box via IOPort()! Reason: Error opening serial port device COM4 [\\.\COM4] - No such
-serial port device exists! (2) [ENOENT].
-
-
-Error in CedrusResponseBox (line 1015)
-    dev = OpenDev(port, 115200);
-
-Error in initPsychtooblox (line 81)
-        response_box_handle = CedrusResponseBox('Open', 'COM4');
-
-Error in Run_ReconTime (line 62)
-initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
- 
-PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
-PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.706098 ms [59.858382 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.679188 ms [59.954957 Hz]. (50 valid samples taken, stddev=0.360511 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
-PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-Error using CedrusResponseBox>OpenDev
-Failed to open port COM5 for Cedrus response box via IOPort()! Reason: Error opening serial port device COM5 [\\.\COM5] - No such
-serial port device exists! (2) [ENOENT].
-
-
-Error in CedrusResponseBox (line 1015)
-    dev = OpenDev(port, 115200);
-
-Error in initPsychtooblox (line 81)
-        response_box_handle = CedrusResponseBox('Open', 'COM5');
-
-Error in Run_ReconTime (line 62)
-initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
- 
-PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
-PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
-PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: For information about paid support, support memberships and other commercial services, please type
-PTB-INFO: 'PsychPaidSupportAndServices'.
-
-PTB-INFO: Proper timing and timestamping of visual stimulus onset is not reliably supported at all
-PTB-INFO: when running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps in any case though, so windowed mode is of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.702702 ms [59.870553 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.653356 ms [60.047957 Hz]. (50 valid samples taken, stddev=0.669376 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF02145140. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
-PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
-PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
-Error using CedrusResponseBox>OpenDev
-Failed to open port COM6 for Cedrus response box via IOPort()! Reason: Error opening serial port device COM6 [\\.\COM6] - No such
-serial port device exists! (2) [ENOENT].
-
-
-Error in CedrusResponseBox (line 1015)
-    dev = OpenDev(port, 115200);
-
-Error in initPsychtooblox (line 81)
-        response_box_handle = CedrusResponseBox('Open', 'COM6');
-
-Error in Run_ReconTime (line 62)
-initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
- 
-PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
-PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> Run_ReconTime
-
-
-Subject number [101-199, default 101]: Session number [1-6, default 1]: View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
 WELCOME TO initConstantsParameters
 

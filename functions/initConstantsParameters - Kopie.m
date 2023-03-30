@@ -19,14 +19,15 @@ function initConstantsParameters()
     % GOBAL CONSTANTS
     % -----------------------------------------------------
     % Text and messages
-    global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7 TRUE FALSE SAVING_MESSAGE
+    global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7 TRUE FALSE SAVING_MESSAGE TRIGGER_DURATION_EXCEEDED_WARNING
     global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
-    global EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR RESPONSE_BOX
-    global AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE fontType fontSize fontColor 
-    global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
+    global PRACTICE_START_MESSAGE EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR RESPONSE_BOX
+    global FEEDBACK_MESSAGES FEEDBACK_MESSAGES_PRACTICE AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE PRESS_ANY_BUTTON fontType fontSize fontColor 
+    global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE RESTART_PRACTICE_MESSAGE PROGRESS_MESSAGE PROGRESS_MESSAGE_MEG RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
     % -----------------------------------------------------
     % Matrices info
     global EXPERIMENT_NAME
+    global BEHAV_FILE_NAMING BEHAV_FILE_NAMING_WHOLE BEHAV_FILE_SUMMARY_NAMING EYETRACKER_FILE_NAMING TOBII_VALIDATION_LOG_FILE_NAMING TRIG_LOG_FILE_NAMING LPTTRIG_LOG_FILE_NAMING
     % -----------------------------------------------------
     % Timing parameters
     global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION
@@ -43,19 +44,31 @@ function initConstantsParameters()
     global FRAME_WIDTH MAX_VISUAL_ANGEL VIEWING_DISTANCE FRAME_COLOR  viewDistance FIXATION_COLOR FIXATION_FONT_SIZE  DIAMOUT_FIXATION DIAMIN_FIXATION
     % -----------------------------------------------------
     % Annex folders and files
-    global CODE_FOLDER FUNCTIONS_FOLDER DATA_FOLDER FILE_POSTFIX INSTRUCTIONS_FOLDER EXP_DATE
+    global CODE_FOLDER FUNCTIONS_FOLDER STIM_FOLDER DATA_FOLDER OBJECTS_R_FOL FALSES_R_FOL CHARS_R_FOL FACES_R_FOL
+    global OBJECTS_FOLDER FALSES_FOLDER CHARS_FOLDER FACES_FOLDER OBJECTS_C_FOL OBJECTS_L_FOL FALSES_C_FOL FALSES_L_FOL CHARS_C_FOL CHARS_L_FOL
+    global FACES_C_FOL FACES_L_FOL FEMALE_FOLDER MALE_FOLDER FILE_POSTFIX PRACTICE_L_FOL PRACTICE_R_FOL PRACTICE_C_FOL INSTRUCTIONS_FOLDER EXP_DATE
     % -----------------------------------------------------
     % Dummy variables
     global debugFactor
     % -----------------------------------------------------
     % Saving parameters
     global excelFormat excelFormatSummary
+
+    % Practice
+    global MinPracticeHits MaxPracticeHits MaxPracticeFalseAlarms MaxPracticeFalseAlarms_Irrelevant Practice_aud_accuracy_cutoff
     % Diverse
-    global NO_TRIAL
+    global NO_TRIAL PRACTICE   
     
     
     %%  PARAMETERS THAT MAY BE ALTERED
     EXPERIMENT_NAME = 'ReconTime';
+    BEHAV_FILE_NAMING = '_Beh_V1_RawDurR';
+    BEHAV_FILE_NAMING_WHOLE = '_Beh_V1_RawDurWHOLE';
+    BEHAV_FILE_SUMMARY_NAMING = '_Beh_V1_SumDur';
+    LPTTRIG_LOG_FILE_NAMING = '_LPTTrigLog_V1_DurR';
+    TRIG_LOG_FILE_NAMING = '_Beh_V1_TrigDurR';
+    EYETRACKER_FILE_NAMING = '_ET_V1_DurR';
+    TOBII_VALIDATION_LOG_FILE_NAMING = '_ET_V1_Valid_sum_DurR';
     FILE_POSTFIX = '*.png';
     %add date as a separate column 5 years rewind
     t=datenum(date);
@@ -67,6 +80,10 @@ function initConstantsParameters()
     FRAME_COLOR = [39,241,44];
 
     % TIMING
+    JITTER_RANGE_MEAN = 0.600;
+    JITTER_RANGE_MIN = 0.400;
+    JITTER_RANGE_MAX = 2.000;
+    STIM_DURATION = [0.500 1.000 1.500]; % Planned duration in seconds. However, since every lab amy have a different refresh rate, we need to go as close as possible to it. So it will be actualized once we get the refresh rate:
     TRIAL_DURATION = 2.000; % Total trial duration in seconds, without jitter
     END_WAIT = 2.000; % time of "end of experiment" message (in s)
 
@@ -111,6 +128,8 @@ function initConstantsParameters()
     EYETRACKER_CALIBRATION_MESSAGE = 'Press SPACE to proceed to perform the calibration \n\n Press C to skip the calibration';
     EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press SPACE to proceed to calibration...';
     GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press SPACE to continue...';
+    FEEDBACK_MESSAGES = {'Nice job! Keep it up!','Warning: You are missing targets.','Warning: You are selecting incorrect targets.'};
+    FEEDBACK_MESSAGES_PRACTICE = {'Nice job! Keep it up!','Warning: You missed x targets.','Warning: You selected x incorrect targets.'};
     AUD_FEEDBACK_MESSAGE = '\n\n\n\n Your score on the auditory task was: %s';
     RESP_ORDER_WARNING_MESSAGE = 'Please remember to \n\n respond to the visual first \n\n and to the auditory task second';
 
@@ -118,8 +137,15 @@ function initConstantsParameters()
     INTROSPEC_QN_AUD = 'Auditory task duration?';
 
     PRESS_SPACE ='\nPress SPACE to continue...\n';
-    RESTART_MESSAGE='Are you sure you want to restart?';
+    PRESS_ANY_BUTTON ='\nPress any button to continue...\n';
 
+    TRIGGER_DURATION_EXCEEDED_WARNING = 'The duration of the processes before flipping the photodiode back to black was too long. \n The photodiode square will be on for longer!!!';
+    RESTART_MESSAGE='Are you sure you want to restart?';
+    RESTARTBLOCK_OR_MINIBLOCK_MESSAGE = 'Do you want to restart the block or the miniblock?\n Press M to restart the miniBlock \Press B to restart the block';
+    RESTART_PRACTICE_MESSAGE='\n\n It is recommended to repeat the practice.\n\n\n Experimenter: Press R to repeat or Y to proceed.';
+    PROGRESS_MESSAGE = 'Congratulations! You completed a miniblock. Well Done! \n\n Press SPACE to continue...'; 
+    
+    PROGRESS_MESSAGE_MEG = 'You completed a miniblock.';
     VIEWING_DISTANCE = viewDistance; % in centimeters
     MAX_VISUAL_ANGEL = [6,6]; % in degrees | "on a rectangular aperture at an average visual angle of 6? by 4?"
 
@@ -188,9 +214,7 @@ function initConstantsParameters()
     FALSE = 0;
 
     NO_TRIAL = nan;
-
     % instruction slides addresses
-    INSTRUCTIONS_FOLDER = 'instructions';
     INSTRUCTIONS1 = 'instructions1.png';
     INSTRUCTIONS2 = 'instructions2.png';
     INSTRUCTIONS3 = 'instructions3.png';
@@ -199,4 +223,41 @@ function initConstantsParameters()
     INSTRUCTIONS6 = 'instructions6.png';
     INSTRUCTIONS7 = 'instructions7.png';
 
+    % stimuli folders addresses
+    STIM_FOLDER = 'stimuli';
+    FACES_FOLDER = 'faces';
+    CHARS_FOLDER = 'chars';
+    FALSES_FOLDER = 'falses';
+    OBJECTS_FOLDER = 'objects';
+    MALE_FOLDER = 'male';
+    FEMALE_FOLDER = 'female';
+    INSTRUCTIONS_FOLDER = 'instructions';
+
+    % stimuli folders for each type of stimuli by left, right and center
+    FACES_L_FOL = fullfile(pwd,STIM_FOLDER,FACES_FOLDER,'left');
+    FACES_C_FOL = fullfile(pwd,STIM_FOLDER,FACES_FOLDER,'center');
+    FACES_R_FOL = fullfile(pwd,STIM_FOLDER,FACES_FOLDER,'right');
+    CHARS_L_FOL = fullfile(pwd,STIM_FOLDER,CHARS_FOLDER,'left');
+    CHARS_C_FOL = fullfile(pwd,STIM_FOLDER,CHARS_FOLDER,'center');
+    CHARS_R_FOL = fullfile(pwd,STIM_FOLDER,CHARS_FOLDER,'right');
+    FALSES_L_FOL = fullfile(pwd,STIM_FOLDER,FALSES_FOLDER,'left');
+    FALSES_C_FOL = fullfile(pwd,STIM_FOLDER,FALSES_FOLDER,'center');
+    FALSES_R_FOL = fullfile(pwd,STIM_FOLDER,FALSES_FOLDER,'right');
+    OBJECTS_L_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'left');
+    OBJECTS_C_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'center');
+    OBJECTS_R_FOL = fullfile(pwd,STIM_FOLDER,OBJECTS_FOLDER,'right');
+
+    %% Practice parameters :
+    PRACTICE_START_MESSAGE = 'The practice starts now.\n\n Press SPACE to continue...';
+
+    PRACTICE = 8000;
+    PRACTICE_L_FOL = fullfile(pwd,STIM_FOLDER,'practice','left');
+    PRACTICE_R_FOL = fullfile(pwd,STIM_FOLDER,'practice','right');
+    PRACTICE_C_FOL = fullfile(pwd,STIM_FOLDER,'practice','center');
+    
+    MinPracticeHits=4;
+    MaxPracticeHits=6;
+    MaxPracticeFalseAlarms=2;
+    MaxPracticeFalseAlarms_Irrelevant=0;
+    Practice_aud_accuracy_cutoff=0.9;        
 end % end of initConstantParameters function
