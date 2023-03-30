@@ -20,7 +20,7 @@ global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTIO
 % Legend: false = 0 | true = 1  
 LAB_ID = 'SX';
 %% Recording modalities
-EYE_TRACKER = 1; % Must be set to 1 if recording with Eyetracker
+EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
 
 %% Hardware and physical parameters:

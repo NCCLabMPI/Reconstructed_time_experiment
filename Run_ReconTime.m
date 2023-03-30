@@ -8,9 +8,9 @@ clear all;
 global TRUE FALSE refRate viewDistance compKbDevice
 global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
-global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
+global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
-global YesKey ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
+global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
 global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
 
 % prompt user for information
@@ -263,7 +263,7 @@ try
                     % Handling the response:
                     % If the participant pressed a key that is different 
                     % to the one of the previous iteration:
-                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr) % TODO: IS THIS STILL NEEDED?
+                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr) 
                         
                         % Sending response trigger for the eyetracker
                         if EYE_TRACKER
@@ -293,6 +293,9 @@ try
                         elseif (key == LOW_PITCH_KEY || key == HIGH_PITCH_KEY) && hasInput_aud == FALSE % auditory key was pressed
                             blk_mat.time_of_resp_aud(tr) =  Resp_Time;
                             hasInput_aud = TRUE;
+                        elseif (key == ABORT_KEY) % If the experiment was aborted:
+                            ABORTED = 1;
+                            error(CLEAN_EXIT_MESSAGE);
                         elseif  ~ismember(key,[VIS_TARGET_KEY, LOW_PITCH_KEY, HIGH_PITCH_KEY])
                             blk_mat.wrong_key(tr) =  key;
                             blk_mat.wrong_key_timestemp(tr) =  Resp_Time;
