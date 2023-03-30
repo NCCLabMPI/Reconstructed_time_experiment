@@ -7,7 +7,7 @@ clear all;
 % Hardware parameters:
 global TRUE FALSE refRate viewDistance compKbDevice
 global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
-global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
+global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
@@ -221,15 +221,15 @@ try
             % for introspective trial the jitter is moved out of the time loop
             % and comes after the questions
             if strcmp(task, 'introspection')
-                total_trial_duration = TRIAL_DURATION - (refRate*(2/3));
+                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION);
             else
-                total_trial_duration = TRIAL_DURATION - (refRate*(2/3)) + blk_mat.stim_jit(tr);
+                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + blk_mat.stim_jit(tr);
             end
             
             while elapsedTime < total_trial_duration
                 
                 %% Play audio stimulus
-                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
+                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*FRAME_ANTICIPATION) && ...
                         pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
                     % Select the right buffer
                     if blk_mat.pitch(tr) == 1000
@@ -272,7 +272,12 @@ try
                                 blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
                             Eyelink('Message',trigger_str);
                         end
-                        
+
+                        if key == ABORT_KEY % If the experiment was aborted:
+                            ABORTED = 1;
+                            error(CLEAN_EXIT_MESSAGE);
+                        end
+
                         % logging reaction
                         hasInputs = hasInputs + 1;
                         log_hasInputs_vis(tr) = hasInputs;
@@ -293,9 +298,6 @@ try
                         elseif (key == LOW_PITCH_KEY || key == HIGH_PITCH_KEY) && hasInput_aud == FALSE % auditory key was pressed
                             blk_mat.time_of_resp_aud(tr) =  Resp_Time;
                             hasInput_aud = TRUE;
-                        elseif (key == ABORT_KEY) % If the experiment was aborted:
-                            ABORTED = 1;
-                            error(CLEAN_EXIT_MESSAGE);
                         elseif  ~ismember(key,[VIS_TARGET_KEY, LOW_PITCH_KEY, HIGH_PITCH_KEY])
                             blk_mat.wrong_key(tr) =  key;
                             blk_mat.wrong_key_timestemp(tr) =  Resp_Time;
@@ -305,7 +307,7 @@ try
                                 
                 %% Inter stimulus interval
                 % Present fixation
-                if elapsedTime >= ((blk_mat.duration(tr)) - refRate*(2/3)) && fixShown == FALSE
+                if elapsedTime >= ((blk_mat.duration(tr)) - refRate*FRAME_ANTICIPATION) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
@@ -320,7 +322,7 @@ try
                 end
                 
                 % Present jitter
-                if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
+                if elapsedTime > TRIAL_DURATION  - refRate*FRAME_ANTICIPATION && jitterLogged == FALSE
                     JitOnset = showFixation('PhotodiodeOn');
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER

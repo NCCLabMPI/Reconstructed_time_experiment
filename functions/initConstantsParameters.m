@@ -29,7 +29,7 @@ function initConstantsParameters()
     global EXPERIMENT_NAME
     % -----------------------------------------------------
     % Timing parameters
-    global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION
+    global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION FRAME_ANTICIPATION
     % -----------------------------------------------------
     % Keys parameters
     global VIS_RESPONSE_KEY CalibrationKey ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey 
@@ -69,6 +69,7 @@ function initConstantsParameters()
     % TIMING
     TRIAL_DURATION = 2.000; % Total trial duration in seconds, without jitter
     END_WAIT = 2.000; % time of "end of experiment" message (in s)
+    FRAME_ANTICIPATION = 0.5; % used for excat timing in PTB
 
     % Define pitches in Hz and duration in sec
     HIGH_PITCH_FREQ = 1100;
@@ -156,7 +157,8 @@ function initConstantsParameters()
         VIS_RESPONSE_KEY = KbName('B');
         AUD_RESPONSE_KEY_HIGH = KbName('A');
         AUD_RESPONSE_KEY_LOW = KbName('C');
-        ValidationKey = KbName('D');
+        ValidationKey = KbName('H');
+        spaceBar =  KbName('D');
 
     else
         RightKey =  KbName('RightArrow');
