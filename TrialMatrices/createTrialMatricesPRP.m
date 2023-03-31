@@ -1,5 +1,5 @@
 %% Set constant parameters:
-n_subjects = 11;
+n_subjects = 100;
 lab_id = "SX";
 task = "prp";
 % List the tasks. Only the PRP requires randomization:
@@ -1594,7 +1594,7 @@ for sub=1:n_subjects
                         % Randomly select soa and soa loc:
                         tar_1_soa = [tar_1_soa; randsample([0, 0.116, 0.266, 0.466], 1)];
                         tar_1_soa_lock = [tar_1_soa_lock; randsample(["onset"; "offset"], 1)];
-                        tar_1_pitch = [tar_1_pitch; randsample([1.000, 1100], 1)];
+                        tar_1_pitch = [tar_1_pitch; randsample([1000, 1100], 1)];
                     end
                     
                     % Same for the second targets:
