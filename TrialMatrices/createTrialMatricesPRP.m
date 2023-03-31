@@ -18,7 +18,7 @@ conditions_levels = struct(...
     "_07", "_08", "_09", "_10", "_11", "_12", "_13", "_14",...
     "_15", "_16", "_17", "_18", "_19", "_20"], ...
     'pitch', [1000, 1100],...
-    'SOA', [0,0.166,0.232,0.466], ...
+    'SOA', [0,0.116,0.232,0.466], ...
     'SOA_lock', ["onset", "offset"]);
 % Create the jitter array:
 jitter_mean = 1;
@@ -55,7 +55,7 @@ for sub=1:n_subjects
     soa_lock_tmp = [repmat("onset", length(unique(pitch)), 1); repmat("offset", length(unique(pitch)), 1)];
     soa_lock = repmat(soa_lock_tmp, total_n_trials / length(soa_lock_tmp), 1);
     soa_tmp = [zeros(length(unique(pitch)) * length(unique(soa_lock)), 1); ...
-        repmat(0.1660, length(unique(pitch)) * length(unique(soa_lock)), 1); ...
+        repmat(0.116, length(unique(pitch)) * length(unique(soa_lock)), 1); ...
         repmat(0.232, length(unique(pitch)) * length(unique(soa_lock)), 1); ...
         repmat(0.466, length(unique(pitch)) * length(unique(soa_lock)), 1)];
     soa = repmat(soa_tmp, total_n_trials / length(soa_tmp), 1);
@@ -1592,7 +1592,7 @@ for sub=1:n_subjects
                             end
                         end
                         % Randomly select soa and soa loc:
-                        tar_1_soa = [tar_1_soa; randsample([0, 166, 266, 466], 1)];
+                        tar_1_soa = [tar_1_soa; randsample([0, 0.116, 0.266, 0.466], 1)];
                         tar_1_soa_lock = [tar_1_soa_lock; randsample(["onset"; "offset"], 1)];
                         tar_1_pitch = [tar_1_pitch; randsample([1.000, 1100], 1)];
                     end
@@ -1650,7 +1650,7 @@ for sub=1:n_subjects
                             end
                         end
                         % Randomly select soa and soa loc:
-                        tar_2_soa = [tar_2_soa; randsample([0, 166, 266, 466], 1)];
+                        tar_2_soa = [tar_2_soa; randsample([0, 0.116, 0.266, 0.466], 1)];
                         tar_2_soa_lock = [tar_2_soa_lock; randsample(["onset"; "offset"], 1)];
                         tar_2_pitch = [tar_2_pitch; randsample([1000, 1100], 1)];
                     end

@@ -48,7 +48,7 @@ rng('shuffle');
 % Create the subject ID by combining the lab ID with the subject name:
 subID = sprintf('%s%d', LAB_ID, subjectNum);
 
-SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',subID],task_type,['ses-',num2str(session)]);
+SubSesFolder = fullfile(pwd,DATA_FOLDER,['sub-',subID],['ses-',num2str(session)]);
 ExistFlag = exist(SubSesFolder,'dir');
 if ExistFlag
     warning ('This participant number and session was already attributed!')
