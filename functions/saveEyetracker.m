@@ -3,7 +3,7 @@
 % The function sends end of block signals to the eyetracker and
 % saves it in the data folder.
 function [] = saveEyetracker(task, blk)
-global edfFile DATA_FOLDER subID
+global edfFile DATA_FOLDER subID session
 
 % Stop the recording:
 Eyelink('StopRecording');
@@ -11,7 +11,7 @@ Eyelink('StopRecording');
 Eyelink('CloseFile')
 
 % Generate save dir:
-save_dir = fullfile(pwd,DATA_FOLDER,['sub-',subID],session_type,['ses-',num2str(session)]);
+save_dir = fullfile(pwd,DATA_FOLDER,['sub-',subID],['ses-',num2str(session)]);
 
 % Generate file name:
 edf_file_name  = fullfile(save_dir, sprintf('sub-%s_ses-%d_run-%d_task-%s_eyetrack.edf', subID, session, blk, task));

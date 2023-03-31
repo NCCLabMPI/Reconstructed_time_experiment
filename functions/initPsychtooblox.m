@@ -77,6 +77,7 @@ function [] = initPsychtooblox()
     freq = [];
     channels = 2;
     padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
+    PsychPortAudio('Volume', padhandle, 0.01);
     if  RESPONSE_BOX
         response_box_handle = CedrusResponseBox('Open', 'COM7');
     end

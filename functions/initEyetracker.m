@@ -15,6 +15,9 @@ EyelinkUpdateDefaults(el);
 
 % name and open file to record data to
 %VERY IMPORTANT: THE NAME OF THE FILE SHOULD BE SHORT (5-6 CHARACTERS), OTHERWISE IT WILL GIVE AN ERROR AND IT WON\92T SAVE THE FILE!!!
+if blk < 0
+   blk = blk + 100;
+end
 edfFile = sprintf('%s0%d.edf',subID,blk);
 Eyelink('Openfile', edfFile);
 

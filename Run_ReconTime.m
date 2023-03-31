@@ -7,7 +7,7 @@ clear all;
 % Hardware parameters:
 global subjectNum TRUE FALSE refRate viewDistance compKbDevice
 global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
-global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION
+global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
@@ -74,7 +74,9 @@ loadStimuli() % visual
 
 %% Instructions and practice:
 % displays instructions
-Instructions(task_type);
+if SHOW_INSTRUCTIONS
+    Instructions(task_type);
+end
 % calibration task
 if strcmp(task_type, 'introspection')
     showMessage(CALIBRATION_START_MESSAGE);
@@ -128,11 +130,11 @@ try
             CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
             while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
                 [~, CalibrationResp, ~] =KbWait(compKbDevice,3);
-                if InstructionsResp(CalibrationKey)
+                if CalibrationResp(CalibrationKey)
                     % Run the calibration:
                     EyelinkDoTrackerSetup(el);
                     CorrectKey = 1;
-                elseif InstructionsResp(spaceBar)
+                elseif CalibrationResp(spaceBar)
                     CorrectKey = 1;
                 end
             end
@@ -145,7 +147,7 @@ try
         % Extract the trial and log of this block only:
         blk_mat = trial_mat(trial_mat.block == blk, :);
         % Extract the task from this block:
-        task = blk_mat.task(1);
+        task = char(blk_mat.task(1));
         
         % Add the columns for logging:
         blk_mat = prepare_log(blk_mat);
@@ -397,7 +399,7 @@ try
         saveTable(blk_mat, task, blk);
         % Save the eyetracker data:
         if EYE_TRACKER
-            save_eyetracker(task, blk);
+            saveEyetracker(task, blk);
         end
         
         % Append the block log to the overall log:
@@ -459,8 +461,12 @@ try
 catch e
     % Save the data:
     try
+        % Save the beh data:
         saveTable(blk_mat, task, blk);
-
+        % Save the eyetracker data:
+        if EYE_TRACKER
+            saveEyetracker(task, blk);
+        end
         % If the log all already exists, save it as well:
         if exist('log_all', 'var')
             [log_all, performance_struct] = compute_performance(log_all);

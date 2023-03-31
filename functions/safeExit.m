@@ -1,7 +1,7 @@
 % SAFEEXIT runs all commands allowing for a safe exit.
 function [] = safeExit()
 
-global EYE_TRACKER padhandle response_box_handle
+global EYE_TRACKER RESPONSE_BOX padhandle response_box_handle
 
 try
     if EYE_TRACKER

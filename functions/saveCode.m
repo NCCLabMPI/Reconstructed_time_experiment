@@ -12,8 +12,8 @@ try
     fileStruct = dir('*.m');
     
     % Create the save directory:
-    directory = fullfile(pwd,DATA_FOLDER,['sub-', subID],task,['ses-',num2str(session)],CODE_FOLDER);
-    if ~exist(directory,'dir')
+    directory = fullfile(pwd,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)],CODE_FOLDER);
+    if ~exist(char(directory),'dir')
         mkdir(directory);
     end
     
@@ -44,8 +44,8 @@ catch  % Try again if something went wrong:
     fileStruct = dir('*.m');
     
     directory = fullfile(pwd,DATA_FOLDER,['sub-',subID],task,['ses-',num2str(session)],CODE_FOLDER);
-    if ~exist(fullfile(directory,'dir'))
-        mkdir(fullfile(directory));
+    if ~exist(char(directory),'dir')
+        mkdir(directory);
     end
     
     for i = 1 : length(fileStruct)
