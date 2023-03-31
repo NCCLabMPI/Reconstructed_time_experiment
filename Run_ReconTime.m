@@ -5,12 +5,12 @@ close all;
 clear all;
 
 % Hardware parameters:
-global TRUE FALSE refRate viewDistance compKbDevice
+global subjectNum TRUE FALSE refRate viewDistance compKbDevice
 global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
-global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION
-global LOADING_MESSAGE RESTART_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE RESTARTBLOCK_OR_MINIBLOCK_MESSAGE
+global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION
+global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
-global YesKey ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
+global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
 global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
 
 % prompt user for information
@@ -148,15 +148,7 @@ try
         % Add the columns for logging:
         blk_mat = prepare_log(blk_mat);
         log_hasInputs_vis = nan(1,length(trial_mat.trial));
-        % calculate SOA from onset
-        for tr = 1:length(blk_mat.trial)
-            if strcmp(blk_mat.SOA_lock{tr}, 'offset')
-                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr) + (blk_mat.duration(tr));
-            else
-                blk_mat.onset_SOA(tr) = blk_mat.SOA(tr);
-            end
-        end
-        
+
         % Check whether this block is a practice or not:
         is_practice = blk_mat.is_practice(1);
         if is_practice
@@ -203,9 +195,12 @@ try
             % show stimulus
             if strcmp(practice_type, 'auditory')
                 blk_mat.vis_stim_time(tr) = showFixation('PhotodiodeOn'); % Do not show the
+                DiodFrame = 0;
             else
                 blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
+                DiodFrame = 0;
             end
+
             % Sending response trigger for the eyetracker
             if EYE_TRACKER
                 trigger_str = get_et_trigger('vis_onset', blk_mat.task_relevance{tr}, ...
@@ -229,15 +224,15 @@ try
             % for introspective trial the jitter is moved out of the time loop
             % and comes after the questions
             if strcmp(task, 'introspection')
-                total_trial_duration = TRIAL_DURATION - (refRate*(2/3));
+                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION);
             else
-                total_trial_duration = TRIAL_DURATION - (refRate*(2/3)) + blk_mat.stim_jit(tr);
+                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + blk_mat.stim_jit(tr);
             end
             
             while elapsedTime < total_trial_duration
                 
                 %% Play audio stimulus
-                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*(2/3)) && ...
+                if elapsedTime >= (blk_mat.onset_SOA(tr) - refRate*FRAME_ANTICIPATION) && ...
                         pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
                     % Select the right buffer
                     if blk_mat.pitch(tr) == 1000
@@ -271,7 +266,7 @@ try
                     % Handling the response:
                     % If the participant pressed a key that is different 
                     % to the one of the previous iteration:
-                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr) % TODO: IS THIS STILL NEEDED?
+                    if key ~= NO_KEY && key ~= blk_mat.trial_first_button_press(tr) 
                         
                         % Sending response trigger for the eyetracker
                         if EYE_TRACKER
@@ -280,7 +275,12 @@ try
                                 blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
                             Eyelink('Message',trigger_str);
                         end
-                        
+
+                        if key == ABORT_KEY % If the experiment was aborted:
+                            ABORTED = 1;
+                            error(CLEAN_EXIT_MESSAGE);
+                        end
+
                         % logging reaction
                         hasInputs = hasInputs + 1;
                         log_hasInputs_vis(tr) = hasInputs;
@@ -310,8 +310,9 @@ try
                                 
                 %% Inter stimulus interval
                 % Present fixation
-                if elapsedTime >= ((blk_mat.duration(tr)) - refRate*(2/3)) && fixShown == FALSE
+                if elapsedTime >= ((blk_mat.duration(tr)) - refRate*FRAME_ANTICIPATION) && fixShown == FALSE
                     fix_time = showFixation('PhotodiodeOn');
+                    DiodFrame = CurrentFrame;
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('fixation_onset', blk_mat.task_relevance{tr}, ...
@@ -325,8 +326,9 @@ try
                 end
                 
                 % Present jitter
-                if elapsedTime > TRIAL_DURATION  - refRate*(2/3) && jitterLogged == FALSE
+                if elapsedTime > TRIAL_DURATION  - refRate*FRAME_ANTICIPATION && jitterLogged == FALSE
                     JitOnset = showFixation('PhotodiodeOn');
+                    DiodFrame = CurrentFrame;
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('jitter_onset', blk_mat.task_relevance{tr}, ...
@@ -345,10 +347,15 @@ try
                 
                 % Updating the frame counter:
                 CurrentFrame = floor(elapsedTime/refRate);
-                
+
                 % Check if a new frame started:
                 if CurrentFrame > PreviousFrame
                     FrameIndex = FrameIndex +1;
+
+                    % turn photodiode off again after diod duration
+                    if PHOTODIODE && (CurrentFrame - DiodFrame == DIOD_DURATION - 1)
+                        turnPhotoTrigger('off');
+                    end
                     PreviousFrame = CurrentFrame;
                 end
             end

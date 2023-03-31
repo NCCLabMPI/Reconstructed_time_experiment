@@ -1770,6 +1770,16 @@ for sub=1:n_subjects
         "category", "orientation","identity", "duration", "stim_jit", "SOA", "SOA_lock", "pitch"]);
     % Add these to the table:
     trial_mat_final = [practice_table; trial_mat_final];
+
+    % calculate SOA from onset
+    for tr = 1:length(trial_mat_final.trial)
+        if strcmp(trial_mat_final.SOA_lock{tr}, 'offset')
+            trial_mat_final.onset_SOA(tr) = trial_mat_final.SOA(tr) + (trial_mat_final.duration(tr));
+        else
+            trial_mat_final.onset_SOA(tr) = trial_mat_final.SOA(tr);
+        end
+    end
+
     
     % Save to file:
     % Create file name:

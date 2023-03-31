@@ -8,9 +8,9 @@
 % recorded to make sure we account for it when starting again!
 function [ key, Resp_Time ] = getInput()
 
-global compKbDevice RestartKey VIS_RESPONSE_KEY VIS_TARGET_KEY
+global compKbDevice abortKey VIS_RESPONSE_KEY VIS_TARGET_KEY
 global AUD_RESPONSE_KEY_HIGH HIGH_PITCH_KEY AUD_RESPONSE_KEY_LOW LOW_PITCH_KEY
-global WRONG_KEY NO_KEY RESTART_KEY
+global WRONG_KEY NO_KEY ABORT_KEY
 key = NO_KEY;
 
 [KeyIsDown, Resp_Time, Resp1] = KbCheck(compKbDevice);
@@ -22,8 +22,8 @@ if KeyIsDown
         key = HIGH_PITCH_KEY;
     elseif Resp1(AUD_RESPONSE_KEY_LOW)
         key = LOW_PITCH_KEY;
-    elseif Resp1(RestartKey)
-        key = RESTART_KEY;
+    elseif Resp1(abortKey)
+        key = ABORT_KEY;
     else
         key = WRONG_KEY;
     end

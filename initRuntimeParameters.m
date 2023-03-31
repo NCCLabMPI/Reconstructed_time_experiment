@@ -20,7 +20,7 @@ global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTIO
 % Legend: false = 0 | true = 1  
 LAB_ID = 'SX';
 %% Recording modalities
-EYE_TRACKER = 1; % Must be set to 1 if recording with Eyetracker
+EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
 
 %% Hardware and physical parameters:
@@ -35,7 +35,7 @@ HEAD_FIXED = 0; % Head fixed must be set to 0 if remote mode
 
 
 %% Photodiode parameters:
-PHOTODIODE = 0; % Must be set to 1 for the photodiode to be presented
+PHOTODIODE = 1; % Must be set to 1 for the photodiode to be presented
 DIOD_ON_COLOUR = 255; % Color of the photodiode when turned on (255 white, 0 black)
 DIOD_OFF_COLOUR = 1;  % Color of the photodiode when off (255 white, 0 black)
 DIOD_SIZE = 100; % Size of the square where the photodiode is presented (in pixels)
@@ -45,7 +45,7 @@ DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
 VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
-NO_PRACTICE = 0; % skip the practice run
+NO_PRACTICE = 1; % skip the practice run
 RESOLUTION_FORCE = 0; % the program will complain if optimal refresh rate is not possible on this screen
 NO_FULLSCREEN = 1; % enable windowed mode for dubugging
 NO_ERROR = 0; % Disable testing program error throws
