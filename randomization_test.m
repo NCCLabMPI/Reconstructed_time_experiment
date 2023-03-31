@@ -2,9 +2,12 @@
 global HIGH_PITCH LOW_PITCH
 HIGH_PITCH = 1000;
 LOW_PITCH = 1100;
-trial_mat = readtable("C:\Users\alexander.lepauvre\Documents\GitHub\Reconstructed_time_experiment\TrialMatrices\SX101_TrialMatrix.csv");
-% Add the soa and pitches:
-trial_mat = addAudStim(trial_mat);
+subID = 'SX111';
+task_type = 'prp';
+
+MatFolderName = [pwd,filesep,'TrialMatrices\'];
+TableName = ['sub-',subID,'_task-', task_type,'_trials.csv'];
+trial_mat = readtable(fullfile(MatFolderName, TableName));
 
 % Convert the numerical column to strings, then everything is easier to
 % handle:
@@ -12,10 +15,10 @@ trial_mat.duration = string(trial_mat.duration);
 trial_mat.SOA = string(trial_mat.SOA);
 trial_mat.pitch = string(trial_mat.pitch);
 % Remove the targets:
-trial_mat = trial_mat(~strcmp(trial_mat.trial_type, 'target'), :);
+trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'target'), :);
 
 % List the conditions of interest:
-conditions = ["duration", "category", "trial_type", "SOA", "pitch"];
+conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"];
 thresh = 2;
 
 %% Highest level check: counting trials for each level of each condition
