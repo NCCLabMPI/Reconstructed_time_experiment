@@ -175,7 +175,7 @@ try
 
         % Wait a random amount of time and show fixation:
         fixOnset = showFixation('PhotodiodeOff'); % 1
-        WaitSecs(rand*2);
+        WaitSecs(rand*2+0.5);
         
         %% Trials loop:
         for tr = 1:length(blk_mat.trial)
