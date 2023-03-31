@@ -1,6 +1,6 @@
 % INITEYETRACKER
 % This function initialize the eyetracker
-function [] = initEyetracker(subjectNum, blk)
+function [] = initEyetracker(subID, blk)
 global el edfFile w SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
 
 % Initializing eyelink
@@ -15,7 +15,7 @@ EyelinkUpdateDefaults(el);
 
 % name and open file to record data to
 %VERY IMPORTANT: THE NAME OF THE FILE SHOULD BE SHORT (5-6 CHARACTERS), OTHERWISE IT WILL GIVE AN ERROR AND IT WON\92T SAVE THE FILE!!!
-edfFile = sprintf('%d_%d.edf',subjectNum,blk);
+edfFile = sprintf('%s0%d.edf',subID,blk);
 Eyelink('Openfile', edfFile);
 
 s = Eyelink('command','camera_lens_focal_length = 16');

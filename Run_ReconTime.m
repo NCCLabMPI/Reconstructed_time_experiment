@@ -121,7 +121,7 @@ try
         % calibration:
         if EYE_TRACKER
             % Initialize the eyetracker:
-            initEyetracker(subjectNum, blk);
+            initEyetracker(subID, blk);
             % Show the calibration message to give the option to perform 
             % the eyetracker calibration if needed:
             showMessage(EYETRACKER_CALIBRATION_MESSAGE);
@@ -138,6 +138,8 @@ try
             end
             % Starting the recording
             Eyelink('StartRecording');
+            % Wait for the recording to have started:
+            WaitSecs(0.1);
         end
         
         % Extract the trial and log of this block only:
