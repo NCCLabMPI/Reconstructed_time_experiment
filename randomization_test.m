@@ -16,9 +16,12 @@ trial_mat.SOA = string(trial_mat.SOA);
 trial_mat.pitch = string(trial_mat.pitch);
 % Remove the targets:
 trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'target'), :);
+trial_mat = trial_mat(~trial_mat.is_practice, :);
 
 % List the conditions of interest:
-conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"];
+conditions = ["duration", "task_relevance", "category", "orientation", "identity"]; % visual conditions
+% conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"]; % sound conditions 
+
 thresh = 2;
 
 %% Highest level check: counting trials for each level of each condition

@@ -1,5 +1,5 @@
 %% Set constant parameters:
-n_subjects = 100;
+n_subjects = 11;
 lab_id = "SX";
 task = "prp";
 % List the tasks. Only the PRP requires randomization:
