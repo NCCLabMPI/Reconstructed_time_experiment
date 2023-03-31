@@ -205,7 +205,7 @@ try
             if EYE_TRACKER
                 trigger_str = get_et_trigger('vis_onset', blk_mat.task_relevance{tr}, ...
                     blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                    blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                    blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
                 Eyelink('Message',trigger_str);
             end
             
@@ -250,7 +250,7 @@ try
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('audio_onset', blk_mat.task_relevance{tr}, ...
                             blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                            blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
                         Eyelink('Message',trigger_str);
                     end
                     blk_mat.aud_stim_time(tr) = audio_start;
@@ -272,7 +272,7 @@ try
                         if EYE_TRACKER
                             trigger_str = get_et_trigger('response', blk_mat.task_relevance{tr}, ...
                                 blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                                blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                                blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
                             Eyelink('Message',trigger_str);
                         end
 
@@ -316,8 +316,8 @@ try
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('fixation_onset', blk_mat.task_relevance{tr}, ...
-                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                                blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                                blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
                         Eyelink('Message',trigger_str);
                     end
                     % log fixation in journal
@@ -332,8 +332,8 @@ try
                     % Sending response trigger for the eyetracker
                     if EYE_TRACKER
                         trigger_str = get_et_trigger('jitter_onset', blk_mat.task_relevance{tr}, ...
-                            blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
-                            blk_mat.onset_SOA(tr), blk_mat.pitch{tr});
+                                blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                                blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
                         Eyelink('Message',trigger_str);
                     end
                     
