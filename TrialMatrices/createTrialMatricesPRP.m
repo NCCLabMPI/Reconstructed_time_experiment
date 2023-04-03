@@ -1592,7 +1592,7 @@ for sub=1:n_subjects
                             end
                         end
                         % Randomly select soa and soa loc:
-                        tar_1_soa = [tar_1_soa; randsample([0, 0.116, 0.266, 0.466], 1)];
+                        tar_1_soa = [tar_1_soa; randsample([0, 0.116, 0.232, 0.466], 1)];
                         tar_1_soa_lock = [tar_1_soa_lock; randsample(["onset"; "offset"], 1)];
                         tar_1_pitch = [tar_1_pitch; randsample([1000, 1100], 1)];
                     end
@@ -1650,7 +1650,7 @@ for sub=1:n_subjects
                             end
                         end
                         % Randomly select soa and soa loc:
-                        tar_2_soa = [tar_2_soa; randsample([0, 0.116, 0.266, 0.466], 1)];
+                        tar_2_soa = [tar_2_soa; randsample([0, 0.116, 0.232, 0.466], 1)];
                         tar_2_soa_lock = [tar_2_soa_lock; randsample(["onset"; "offset"], 1)];
                         tar_2_pitch = [tar_2_pitch; randsample([1000, 1100], 1)];
                     end
