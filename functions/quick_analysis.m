@@ -16,9 +16,10 @@ elseif nargin<5
     plotting = 0;
 end
 %%
-global DATA_FOLDER LAB_ID
+global DATA_FOLDER LAB_ID refRate
 if isempty(DATA_FOLDER); DATA_FOLDER = 'data'; end
 if isempty(LAB_ID); LAB_ID = 'SX'; end
+if isempty(refRate); refRate = 1/144; end
 
 
 % make SUB_ID
@@ -98,6 +99,16 @@ output_struct.dur_diff = output_struct.real_dur - event_table.duration;
 output_struct.dur_diff_max = max(output_struct.dur_diff);
 output_struct.dur_diff_mean = mean(output_struct.dur_diff);
 
+% check currect frames 
+output_struct.correct_frame = sum(output_struct.dur_diff < (0.5*refRate) & output_struct.dur_diff > (-0.5*refRate));
+output_struct.one_frame_late = sum(output_struct.dur_diff > (0.5*refRate) & output_struct.dur_diff < (1.5*refRate));
+output_struct.two_frames_late = sum(output_struct.dur_diff > (1.5*refRate) & output_struct.dur_diff < (2.5*refRate));
+output_struct.three_frames_late = sum(output_struct.dur_diff > (2.5*refRate) & output_struct.dur_diff < (3.5*refRate));
+output_struct.one_frame_early = sum(output_struct.dur_diff < (-0.5*refRate) & output_struct.dur_diff > (-1.5*refRate));
+output_struct.two_frames_early = sum(output_struct.dur_diff < (-1.5*refRate) & output_struct.dur_diff > (-2.5*refRate));
+output_struct.three_frames_early = sum(output_struct.dur_diff < (-2.5*refRate) & output_struct.dur_diff > (-3.5*refRate));
+
+
 % control SOA
 output_struct.real_SOA = event_table.aud_stim_time - event_table.vis_stim_time;
 output_struct.SOA_diff = output_struct.real_SOA - event_table.onset_SOA;
@@ -112,7 +123,7 @@ output_struct.trial_dur_mean = mean(event_table.JitOnset - event_table.vis_stim_
 output_struct.real_trial_durs_plus_jitter = event_table.trial_end - event_table.vis_stim_time;
 output_struct.real_trial_dur_mean_plus_jitter = mean(output_struct.real_trial_durs_plus_jitter);
 output_struct.target_trial_durs_plus_jitter = 2 + event_table.stim_jit;
-output_struct.diff_trial_durs_plus_jitter = output_struct.real_trial_dur_mean_plus_jitter - output_struct.target_trial_durs_plus_jitter;
+output_struct.diff_trial_durs_plus_jitter = output_struct.real_trial_durs_plus_jitter - output_struct.target_trial_durs_plus_jitter;
 
 % control table
 output_table = table;
@@ -126,6 +137,7 @@ output_table.trial_dur = output_struct.trial_durs;
 output_table.real_trial_dur_plus_jitter = output_struct.real_trial_durs_plus_jitter;
 output_table.taregt_trial_dur_plus_jitter = output_struct.target_trial_durs_plus_jitter;
 output_table.diff_trial_dur_plus_jitter = output_struct.diff_trial_durs_plus_jitter;
+
 writetable(output_table, 'output_tabel.csv');
 
 %% plotting
@@ -160,6 +172,13 @@ if plotting
     legend('onset', 'offset')
     ylim([0.4, 0.8])
     hold off
+
+    figure(4)
+    if plotting
+        histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
+            0.5*refRate, 1.5*refRate, 2.5*refRate, 3.5*refRate])
+    end
+
 end
 
 
