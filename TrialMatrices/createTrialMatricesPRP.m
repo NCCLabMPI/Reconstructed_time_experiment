@@ -1780,7 +1780,19 @@ for sub=1:n_subjects
         end
     end
 
+    % add column with sub id
+    trial_mat_final.sub_id(:) = sprintf("%s%d", lab_id, 100 + sub);
     
+    % Reorder again:
+    trial_mat_final = table( trial_mat_final.sub_id, trial_mat_final.task, trial_mat_final.is_practice, trial_mat_final.block, ...
+        trial_mat_final.trial, trial_mat_final.target_01, trial_mat_final.target_02, trial_mat_final.task_relevance, ...
+        trial_mat_final.category,trial_mat_final.orientation, trial_mat_final.identity, ...
+        trial_mat_final.duration, trial_mat_final.stim_jit, trial_mat_final.SOA, trial_mat_final.onset_SOA,...
+        trial_mat_final.SOA_lock, trial_mat_final.pitch, ...
+        'VariableNames',["sub_id", "task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
+        "category", "orientation","identity", "duration", "stim_jit", "SOA", "onset_SOA", "SOA_lock", "pitch"]);
+
+
     % Save to file:
     % Create file name:
     file_name = fullfile(pwd, sprintf("sub-%s%d_task-%s_trials.csv", lab_id, 100 + sub, task));
