@@ -72,6 +72,12 @@ showMessage(LOADING_MESSAGE);
 loadStimuli() % visual
 [high_pitch_buff, low_pitch_buff] = init_audio_pitches(PITCH_DURATION, HIGH_PITCH_FREQ,  LOW_PITCH_FREQ); % auditory
 
+% make jitter multiple of refresh rate
+for tr_jit = 1:length(trial_mat.trial)
+    jit_multiplicator = round(trial_mat.stim_jit(tr_jit)/refRate);
+    trial_mat.stim_jit = refRate*jit_multiplicator;
+end
+
 %% Instructions and practice:
 % displays instructions
 if SHOW_INSTRUCTIONS
