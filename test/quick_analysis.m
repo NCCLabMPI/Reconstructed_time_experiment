@@ -3,16 +3,16 @@
 % sessions and the task type. It returns a structure that contains the
 % performances and some controls for the presentation of the stimuli
 
-function [output_struct] = quick_analysis(subjectNum, session, task, plotting)
+function [output_struct,refRate] = quick_analysis(subjectNum, session, task, plotting)
 
-if nargin<3
+if nargin<2
     session = 1;
     task = 'prp';
     plotting = 0;
-elseif nargin<4
+elseif nargin<3
     task = 'prp';
     plotting = 0;
-elseif nargin<5
+elseif nargin<4
     plotting = 0;
 end
 %%
@@ -25,8 +25,12 @@ if isempty(refRate); refRate = 1/144; end
 % make SUB_ID
 subID = sprintf('%s%d', LAB_ID, subjectNum);
 
+
 % make file name
-filename = string(fullfile(pwd,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)],...
+mydir  = pwd;
+idcs   = strfind(mydir,'\');
+data_dir = mydir(1:idcs(end)-1);
+filename = string(fullfile(data_dir,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)],...
     ['sub-', subID,'_ses-',num2str(session),'_run-all_task-', task,'_events.mat']));
 
 event_table = load(filename);
@@ -125,6 +129,8 @@ output_struct.real_trial_dur_mean_plus_jitter = mean(output_struct.real_trial_du
 output_struct.target_trial_durs_plus_jitter = 2 + event_table.stim_jit;
 output_struct.diff_trial_durs_plus_jitter = output_struct.real_trial_durs_plus_jitter - output_struct.target_trial_durs_plus_jitter;
 
+%% write table and save controls
+
 % control table
 output_table = table;
 output_table.real_dur = output_struct.real_dur;
@@ -138,10 +144,17 @@ output_table.real_trial_dur_plus_jitter = output_struct.real_trial_durs_plus_jit
 output_table.taregt_trial_dur_plus_jitter = output_struct.target_trial_durs_plus_jitter;
 output_table.diff_trial_dur_plus_jitter = output_struct.diff_trial_durs_plus_jitter;
 
-writetable(output_table, 'output_tabel.csv');
+% save contro
+test_data_dir = fullfile(mydir,'test_data',['sub-', subID],['ses-',num2str(session)]);
+
+if ~exist(test_data_dir, 'dir')
+    mkdir(test_data_dir);
+end
+
+output_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_test_output.csv']));
+writetable(output_table, output_filename);
 
 %% plotting
-plotting = 1;
 
 if plotting
 
@@ -174,10 +187,22 @@ if plotting
     hold off
 
     figure(4)
-    if plotting
-        histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
-            0.5*refRate, 1.5*refRate, 2.5*refRate, 3.5*refRate])
-    end
+    histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
+        0.5*refRate, 1.5*refRate, 2.5*refRate, 3.5*refRate]);
+    ylim([0, length(output_struct.dur_diff) + 50])
+    title(['Jitter in visual stimulus duration (Refresh rate: ', num2str(refRate), ' ms)'])
+    ylabel('Number of trials')
+    xlabel('Frames off')
+
+    h = gca;
+    h.XTick = [-3*refRate, -2*refRate, -refRate, 0, refRate, 2*refRate, 3*refRate];
+    h.XTickLabel = ["-3", "-2", "-1", "0", "+1", "+2", "+3"];
+
+    figure(5)
+    histogram(output_struct.SOA_diff*1000);
+    title('Jitter in SOA')
+    ylabel('Number of trials')
+    xlabel('ms off')
 
 end
 

@@ -242,7 +242,7 @@ try
             while elapsedTime < total_trial_duration
                 
                 %% Play audio stimulus
-                if elapsedTime >= (blk_mat.onset_SOA(tr) && pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
+                if elapsedTime >= blk_mat.onset_SOA(tr) && pitchPlayed == FALSE && ~strcmp(practice_type, 'visual')
                     % Select the right buffer
                     if blk_mat.pitch(tr) == 1000
                         pitch_buff = low_pitch_buff;
