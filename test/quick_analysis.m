@@ -29,18 +29,27 @@ subID = sprintf('%s%d', LAB_ID, subjectNum);
 % make file name
 mydir  = pwd;
 idcs   = strfind(mydir,'\');
-data_dir = mydir(1:idcs(end)-1);
-filename = string(fullfile(data_dir,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)],...
+parent_dir = mydir(1:idcs(end)-1);
+filename = string(fullfile(parent_dir,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)],...
     ['sub-', subID,'_ses-',num2str(session),'_run-all_task-', task,'_events.mat']));
 
 event_table = load(filename);
 event_table = event_table.input_table;
+
+
+if ~ ismember('RT_aud', event_table.Properties.VariableNames)
+% Add functions folder to path (when we separate all functions)
+function_folder = [parent_dir,filesep,'functions\'];
+addpath(function_folder)
+
+[event_table, ~] = compute_performance(event_table);
 
 % remove targets and practice
 practice_event_table = event_table(event_table.is_practice == 1, :);
 target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
 event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
 
+end 
 %% performances
 
 % performanance

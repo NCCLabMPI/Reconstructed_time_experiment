@@ -441,7 +441,10 @@ try
 
     end  % End of block loop
     
-    %% End of experiment
+    %% End of experiment    
+    
+    % compute performances of tasks
+    [log_all, performance_struct] = compute_performance(log_all);
     % Save the whole table:
     saveTable(log_all, task, "all");
     % Save the code:
@@ -453,9 +456,7 @@ try
     showMessage(SAVING_MESSAGE);
     % Mark the time of saving onset
     ttime = GetSecs;
-    
-    % compute performances of tasks
-    [log_all, performance_struct] = compute_performance(log_all);
+
     
     % save everything from command window
     Str = CmdWinTool('getText');
