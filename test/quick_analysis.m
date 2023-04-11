@@ -19,7 +19,7 @@ end
 global DATA_FOLDER LAB_ID refRate
 if isempty(DATA_FOLDER); DATA_FOLDER = 'data'; end
 if isempty(LAB_ID); LAB_ID = 'SX'; end
-if isempty(refRate); refRate = 1/144; end
+if isempty(refRate); refRate = 1/60; end
 
 
 % make SUB_ID
@@ -44,12 +44,13 @@ if ~ ismember('RT_aud', event_table.Properties.VariableNames)
 
     [event_table, ~] = compute_performance(event_table);
 
-    % remove targets and practice
-    practice_event_table = event_table(event_table.is_practice == 1, :);
-    target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
-    event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
-
 end
+
+% remove targets and practice
+practice_event_table = event_table(event_table.is_practice == 1, :);
+target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
+event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
+
 %% performances
 
 % performanance
