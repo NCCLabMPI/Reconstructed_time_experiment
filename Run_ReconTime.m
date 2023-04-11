@@ -75,7 +75,7 @@ loadStimuli() % visual
 % make jitter multiple of refresh rate
 for tr_jit = 1:length(trial_mat.trial)
     jit_multiplicator = round(trial_mat.stim_jit(tr_jit)/refRate);
-    trial_mat.stim_jit = refRate*jit_multiplicator;
+    trial_mat.stim_jit(tr_jit) = refRate*jit_multiplicator;
 end
 
 %% Instructions and practice:
