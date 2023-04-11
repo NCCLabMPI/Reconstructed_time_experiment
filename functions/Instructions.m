@@ -1,6 +1,5 @@
 function [ ] = Instructions(task_type)
 global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7
-global compKbDevice
 global RightKey LeftKey
 
 if strcmp(task_type, 'introspection')
@@ -15,9 +14,10 @@ InstructionSlideNum = 1;
 while InstructionSlideNum<= size(InstructionsPaths,1) % Looping until we went through all slides:
     % Showing instruction slide
     showInstructions(InstructionsPaths(InstructionSlideNum,:));
+    WaitSecs(1);
     CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
     while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
-        [~, InstructionsResp, ~] =KbWait(compKbDevice,3);
+        [~, ~, InstructionsResp] = KbCheck();
         if InstructionsResp(RightKey) % If the participant press the right key, increment by 1 the slide number
             InstructionSlideNum = InstructionSlideNum + 1;
             CorrectKey = 1;

@@ -35,11 +35,11 @@ try
     % STEP 3
     % Initialization of the connection with the Eyelink Gazetracker.
     % exit program if this fails.
-%     if ~EyelinkInit(dummymode, 1)
-%         fprintf('Eyelink Init aborted.\n');
-%         cleanup;  % cleanup function
-%         return;
-%     end
+    if ~EyelinkInit(dummymode, 1)
+        fprintf('Eyelink Init aborted.\n');
+        cleanup;  % cleanup function
+        return;
+    end
     
     [v vs]=Eyelink('GetTrackerVersion');
     fprintf('Running experiment on a ''%s'' tracker.\n', vs );

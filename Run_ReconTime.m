@@ -6,7 +6,7 @@ clear all;
 
 % Hardware parameters:
 global subjectNum TRUE FALSE refRate viewDistance compKbDevice
-global el EYE_TRACKER CalibrationKey spaceBar EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
+global el EYE_TRACKER CalibrationKey ValidationKey EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
@@ -86,7 +86,10 @@ end
 % calibration task
 if strcmp(task_type, 'introspection')
     showMessage(CALIBRATION_START_MESSAGE);
-    KbWait(compKbDevice,3);
+    wait_resp = 0; 
+    while wait_resp == 0
+        [~, ~, wait_resp] = KbCheck();
+    end
     handle = PsychPowerMate('Open'); % open dial
     cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
     saveTable(cali_log,'calibration', 1)
@@ -121,7 +124,10 @@ try
         % in the very first trial of the actual experiment show start message
         if blk == 1
             showMessage(EXPERIMET_START_MESSAGE);
-            KbWait(compKbDevice,3);
+            wait_resp = 0; 
+            while wait_resp == 0     
+                [~, ~, wait_resp] = KbCheck(); 
+            end
             start_message_flag = TRUE;
         end
 
@@ -135,12 +141,12 @@ try
             showMessage(EYETRACKER_CALIBRATION_MESSAGE);
             CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
             while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
-                [~, CalibrationResp, ~] =KbWait(compKbDevice,3);
+                [~, CalibrationResp, ~] = KbWait(compKbDevice,3);
                 if CalibrationResp(CalibrationKey)
                     % Run the calibration:
                     EyelinkDoTrackerSetup(el);
                     CorrectKey = 1;
-                elseif CalibrationResp(spaceBar)
+                elseif CalibrationResp(ValidationKey)
                     CorrectKey = 1;
                 end
             end
@@ -166,7 +172,10 @@ try
             practice_type = blk_mat.task(1);
             practice_start_msg = get_practice_instructions(practice_type);
             showMessage(practice_start_msg);
-            KbWait(compKbDevice,3);
+            wait_resp = 0; 
+            while wait_resp == 0     
+                [~, ~, wait_resp] = KbCheck(); 
+            end
 
         else
             % Otherwise, show the target screen:
@@ -176,7 +185,7 @@ try
         % Show the target screen at the beginning of each block (expect during auditory practice):
         if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
-            KbWait(compKbDevice,3,WaitSecs(0)+5);
+            KbWait([],3,WaitSecs(0)+5);
         end
 
         % Wait a random amount of time and show fixation:
@@ -429,7 +438,10 @@ try
                 block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
             end
             showMessage(block_message);
-            KbWait(compKbDevice,3);
+            wait_resp = 0; 
+            while wait_resp == 0
+                [~, ~, wait_resp] = KbCheck();
+            end
         end
 
         if is_practice

@@ -8,11 +8,13 @@ PsychStartup: The Psychtoolbox Screen() multimedia functions will fail to work u
 PsychStartup: this! Read 'help GStreamer' for instructions.
 
 >> Run_ReconTime
-Subject number [101-199, default 101]: 
+Subject number [101-199, default 101]: 101
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
 WELCOME TO initConstantsParameters
+Warning: This participant number and session was already attributed! 
+> In Run_ReconTime (line 54) 
 WELCOME to initPsychtooblox
 
 
@@ -22,7 +24,10 @@ PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
 PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
 PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
 PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
@@ -33,9 +38,330 @@ PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM
 
 PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
 PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944139 ms [144.006339 Hz].
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.939580 ms [144.100948 Hz].
 PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.948492 ms [143.916119 Hz]. (50 valid samples taken, stddev=0.053404 ms.)
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943772 ms [144.013945 Hz]. (50 valid samples taken, stddev=0.232292 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+
+WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
+
+
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
+
+One or more internal checks (see Warnings above) indicate that synchronization
+of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
+
+This will seriously impair proper stimulus presentation and stimulus presentation timing!
+Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
+You can force Psychtoolbox to continue, despite the severe problems, by adding the command
+Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
+
+
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10276.838309 secs, completed at 10276.791672 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10276.847117 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10276.852412 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10276.852839, scanline = 889
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 822, line_post_swaprequest = 852, time_post_swaprequest = 10276.852602
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 11, preflip_vbltimestamp = 10276.854171
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+WELCOME TO loadStimuli
+       44100
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
+Error using PsychPortAudio
+Usage:
+
+PsychPortAudio('Close' [, pahandle]);
+
+Error in safeExit (line 27)
+    PsychPortAudio('Close', padhandle);
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> clear
+>> close all
+>> sca
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.944153 ms [144.006042 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.937980 ms [144.134172 Hz]. (50 valid samples taken, stddev=0.328539 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+
+WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
+
+
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
+
+One or more internal checks (see Warnings above) indicate that synchronization
+of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
+
+This will seriously impair proper stimulus presentation and stimulus presentation timing!
+Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
+You can force Psychtoolbox to continue, despite the severe problems, by adding the command
+Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
+
+
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10329.652133 secs, completed at 10329.338729 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10330.894056 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10330.896938 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10330.897741, scanline = 573
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 446, line_post_swaprequest = 483, time_post_swaprequest = 10330.897170
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 54, preflip_vbltimestamp = 10330.421942
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+WELCOME TO loadStimuli
+       44100
+
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Error using Eyelink
+Usage:
+
+Eyelink('Stoprecording')
+
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> clear
+>> close all
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already
+attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.946737 ms [143.952483 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.947538 ms [143.935881 Hz]. (50 valid samples taken, stddev=0.183825 ms.)
 PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
 PTB-WARNING: ==============================================================================================================================
@@ -44,9 +370,733 @@ PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERF
 PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
 PTB-WARNING: ==============================================================================================================================
 PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 2294.642006 secs, completed at 2294.589216 secs]!
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10416.533022 secs, completed at 10416.099991 secs]!
 PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
 PTB-ERROR: Check your system setup!
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10416.551087 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10416.553176 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10416.553560, scanline = 384
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 323, line_post_swaprequest = 352, time_post_swaprequest = 10416.553367
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 69, preflip_vbltimestamp = 10416.551370
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+WELCOME TO loadStimuli
+       44100
+
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Error using Eyelink
+Usage:
+
+Eyelink('Stoprecording')
+
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> clear
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already
+attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.946073 ms [143.966228 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.945066 ms [143.987113 Hz]. (50 valid samples taken, stddev=0.183765 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10434.025997 secs, completed at 10433.474230 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10435.265739 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10435.269700 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10435.270445, scanline = 731
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 613, line_post_swaprequest = 650, time_post_swaprequest = 10435.269933
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 88, preflip_vbltimestamp = 10434.293601
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+WELCOME TO loadStimuli
+       44100
+
+7   Eyelink('Initialize');
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Error using Eyelink
+Usage:
+
+Eyelink('Stoprecording')
+
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> clear
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already
+attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.946867 ms [143.949776 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.944446 ms [143.999968 Hz]. (50 valid samples taken, stddev=0.171128 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10478.697819 secs, completed at 10478.028330 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10478.708793 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10478.714463 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10478.714965, scanline = 959
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 880, line_post_swaprequest = 937, time_post_swaprequest = 10478.714825
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 101, preflip_vbltimestamp = 10478.715815
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+WELCOME TO loadStimuli
+       44100
+
+Eyelink already initialized!
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Running the experiment on a 'EYELINK CL 5.15  ' tracker.
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Snd(): Initializing PsychPortAudio driver for sound output.
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
+
+ans =
+
+     0
+
+Receiving data file 'SX101098.edf'
+ReceiveFile status 271537/n
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
+
+Error using Eyelink
+Usage:
+
+Eyelink('Stoprecording')
+
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> clear
+>> close all
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already
+attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
+PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
+PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
+PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.943957 ms [144.010105 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.945436 ms [143.979442 Hz]. (50 valid samples taken, stddev=0.152734 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10569.847801 secs, completed at 10568.810371 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
+PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+WELCOME TO loadStimuli
+       44100
+
+
+
+PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10572.518355 secs, which would indicate that
+PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10572.521725 secs).
+
+PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10572.523781, scanline = 843
+PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 517, line_post_swaprequest = 557, time_post_swaprequest = 10572.521974
+PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 160, preflip_vbltimestamp = 10572.171258
+PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+
+PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
+PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
+PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
+
+PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
+PTB-ERROR: vertical blank interval VBL is not working properly.
+PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
+PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+Eyelink already initialized!
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Running the experiment on a 'EYELINK CL 5.15  ' tracker.
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Snd(): Initializing PsychPortAudio driver for sound output.
+
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
+
+
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
+483         saveTable(blk_mat, task, blk);
+
+ans =
+
+     0
+
+Receiving data file 'SX101098.edf'
+ReceiveFile status 469931/n
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+
+ans =
+
+     0
+
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+
+
+WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
+WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
+WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
+WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+>> clear
+>> sca
+>> Run_ReconTime
+Subject number [101-199, default 101]: 
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+Warning: This participant number and session was already attributed! 
+> In Run_ReconTime (line 54) 
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
+PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
+PTB-INFO: Measured monitor refresh interval from beamposition = 6.944335 ms [144.002276 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943118 ms [144.027510 Hz]. (50 valid samples taken, stddev=0.047266 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-WARNING: ==============================================================================================================================
+PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
+PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
+PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
+PTB-WARNING: ==============================================================================================================================
+PTB-INFO: Support for fast OffscreenWindows enabled.
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10701.634690 secs, completed at 10700.208817 secs]!
+PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
+PTB-ERROR: Check your system setup!
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
 PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
 
 Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
@@ -75,59 +1125,6 @@ INFO: Yep! Still, please fix the problem properly asap.
 WELCOME TO loadStimuli
        44100
 
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 425219/nWELCOME TO compute_performance
 Eyelink already initialized!
 
 ans =
@@ -175,30 +1172,25 @@ ans =
 
      0
 
+Snd(): Initializing PsychPortAudio driver for sound output.
 
-ans =
-
-     0
-
-Receiving data file 'SX101099.edf'
-ReceiveFile status 202163/n
-ans =
-
-     0
+Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
+for the exact terms of use for this dll.
 
 
-ans =
+Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
+Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
 
-     0
+Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
+Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
+483         saveTable(blk_mat, task, blk);
+
+PTB-INFO: Master-Abort key '@' pressed by user.
+PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
+PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
 
 
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: There are still 277 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
 PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
 PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
 PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
@@ -209,590 +1201,7 @@ PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to re
 
 
 INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 9 times out of a total of 20 flips during this session.
-
-INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
-INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
-INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
-INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
-INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
-INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
-
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 102
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.943461 ms [144.020391 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.948606 ms [143.913758 Hz]. (50 valid samples taken, stddev=0.036756 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 2432.358539 secs, completed at 2431.939321 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX102098.edf'
-ReceiveFile status 208968/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 5 times out of a total of 9 flips during this session.
-
-INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
-INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
-INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
-INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
-INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
-INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
-
->> clear
->> %% Initialize sound parameters
-    InitializePsychSound(1);
-    device = [];
-    mode = 1;
-    reqlatencyclass = 1;
-    freq = [];
-    channels = 2;
-    padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
->> high_pitch = repmat(MakeBeep(high_pitch_freq,pitch_dur,sr), 2, 1);
-Undefined function or variable 'high_pitch_freq'.
- 
->>     status = PsychPortAudio('GetStatus', padhandle);
-    % The sampling rate is a very important parameter to be able to display
-    % the sound
-    sr = status.SampleRate;
-high_pitch = repmat(MakeBeep(1000,2,sr), 2, 1);
->>                     PsychPortAudio('FillBuffer', padhandle, high_pitch);
-                    % Play the buffer
-                    audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> PsychPortAudio('Volumne', padhandle, 0.5);
-Error using PsychPortAudio
-Unknown or invalid subfunction name - Typo? Check spelling of the function name.  (error state H)
- 
->> PsychPortAudio('Volumne', padhandle, 0.5);
-Error using PsychPortAudio
-Unknown or invalid subfunction name - Typo? Check spelling of the function name.  (error state H)
- 
->> PsychPortAudio('Volume', padhandle, 0.5);
->> audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> PsychPortAudio('Volume', padhandle, 0.3);
-audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> PsychPortAudio('Volume', padhandle, 0.01);
-audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> PsychPortAudio('Volume', padhandle, 0.005);
-audio_start = PsychPortAudio('Start',padhandle, 1, 0);
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-Operation terminated by user during Run_ReconTime (line 18)
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 103
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944049 ms [144.008201 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.948638 ms [143.913095 Hz]. (50 valid samples taken, stddev=0.272703 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944039 ms [144.008412 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.936336 ms [144.168333 Hz]. (50 valid samples taken, stddev=0.369305 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-Error using Screen
-See error message printed above.
-
-Error in initPsychtooblox (line 56)
-            [w, wRect]  =  Screen('OpenWindow',screenNumber, gray);
-
-Error in Run_ReconTime (line 62)
-initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-Operation terminated by user during Run_ReconTime (line 18)
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 103
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944298 ms [144.003038 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.941756 ms [144.055769 Hz]. (50 valid samples taken, stddev=0.333522 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.942669 ms [144.036817 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.953182 ms [143.819046 Hz]. (50 valid samples taken, stddev=0.291020 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-Error using Screen
-See error message printed above.
-
-Error in initPsychtooblox (line 56)
-            [w, wRect]  =  Screen('OpenWindow',screenNumber, gray);
-
-Error in Run_ReconTime (line 62)
-initPsychtooblox(); % initializes psychtoolbox window at correct resolution and refresh rate
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-Error using Run_ReconTime (line 57)
-Program aborted by user
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 102
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.945631 ms [143.975408 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.940566 ms [144.080468 Hz]. (50 valid samples taken, stddev=0.129548 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 2997.966247 secs, completed at 2997.220848 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX102098.edf'
-ReceiveFile status 611459/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 19 times out of a total of 21 flips during this session.
+INFO: a total of 38 times out of a total of 5786 flips during this session.
 
 INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
 INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
@@ -807,294 +1216,13 @@ WARNING: This session of your experiment was run by you with the setting Screen(
 WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
 WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
 WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 102
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.945078 ms [143.986873 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.944072 ms [144.007723 Hz]. (50 valid samples taken, stddev=0.017512 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3100.525637 secs, completed at 3099.398363 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX102098.edf'
-ReceiveFile status 515959/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 12 times out of a total of 22 flips during this session.
-
-INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
-INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
-INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
-INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
-INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
-INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.941214 ms [144.067012 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.915286 ms [144.607179 Hz]. (50 valid samples taken, stddev=0.183524 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3199.113675 secs, completed at 3197.597017 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 3199.124487 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 3199.130155 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 3199.130941, scanline = 1007
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 883, line_post_swaprequest = 925, time_post_swaprequest = 3199.130424
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 223, preflip_vbltimestamp = 3199.131707
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-80      PsychPortAudio('Volume', padhandle, 0.005);
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
 
 ans =
 
      0
 
 Receiving data file 'SX101098.edf'
-ReceiveFile status 151900/n
+ReceiveFile status 4327011/n
 ans =
 
      0
@@ -1109,647 +1237,63 @@ ans =
 
      0
 
+Error in function OpenSerialPort: 	Missing argument
+	Discrepancy between a specified and supplied argument:
+		Specified Argument Description:
+			direction: Input
+			position: 1
+			presence:forbidden
+			formats allowed:
+				char
+			minimum M: 0
+			maximum M: unbounded
+			minimum N: 0
+			maximum N: unbounded
+			minimum P: 0
+			maximum P: 1
+		Provided Argument Description:
+			direction: Input
+			position: 1
+			presence: absent
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
 
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
 
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+Error in function StopRecording: 	Usage error
+Eyelink system is not connected!
 
+Error using Eyelink
+Usage:
 
+Eyelink('Stoprecording')
 
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+>> 
+>> 
 >> clear
 >> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944937 ms [143.989793 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943422 ms [144.021205 Hz]. (50 valid samples taken, stddev=0.204679 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3263.248219 secs, completed at 3261.504655 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 3263.268433 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 3263.270539 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 3263.271084, scanline = 412
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 326, line_post_swaprequest = 380, time_post_swaprequest = 3263.270883
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 258, preflip_vbltimestamp = 3263.275386
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 310066/nWELCOME TO compute_performance
-Eyelink already initialized!
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX101099.edf'
-ReceiveFile status 51547/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> blk_mat.onset_SOA(tr)
-
-ans =
-
-   NaN
-
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was
-already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.946724 ms [143.952736 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.946386 ms [143.959751 Hz]. (50 valid samples taken, stddev=0.293329 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3384.571425 secs, completed at 3382.459264 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 3384.584162 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 3384.589209 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 3384.589711, scanline = 862
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 783, line_post_swaprequest = 836, time_post_swaprequest = 3384.589547
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 309, preflip_vbltimestamp = 3384.591164
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-71  showMessage(LOADING_MESSAGE);
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 1023155/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 2 times out of a total of 6 flips during this session.
-
-INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
-INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
-INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
-INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
-INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
-INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 102
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944973 ms [143.989031 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.949622 ms [143.892718 Hz]. (50 valid samples taken, stddev=0.213768 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-
-WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
-
-
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
-
-One or more internal checks (see Warnings above) indicate that synchronization
-of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
-
-This will seriously impair proper stimulus presentation and stimulus presentation timing!
-Please read 'help SyncTrouble' for information about how to solve or work-around the problem.
-You can force Psychtoolbox to continue, despite the severe problems, by adding the command
-Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
-
-
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3634.542771 secs, completed at 3632.257451 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 3634.562772 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 3634.564881 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 3634.565515, scanline = 426
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 327, line_post_swaprequest = 389, time_post_swaprequest = 3634.565322
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 336, preflip_vbltimestamp = 3634.569683
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-71  showMessage(LOADING_MESSAGE);
-WELCOME TO loadStimuli
-       44100
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
->>   safeExit()
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-Error using Run_ReconTime (line 57)
-Program aborted by user
+Subject number [101-199, default 101]: 104
+Operation terminated by user during Run_ReconTime (line 17)
  
 >> clear
 >> Run_ReconTime
-Subject number [101-199, default 101]: 102
+Subject number [101-199, default 101]: 104
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
 WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
 WELCOME to initPsychtooblox
 
 
@@ -1760,20 +1304,22 @@ PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under 
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
 PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
 PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
 PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
 PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
 PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
 PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
 PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
 
 
 PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
 PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.943824 ms [144.012857 Hz].
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.666196 ms [60.001695 Hz].
 PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943978 ms [144.009673 Hz]. (50 valid samples taken, stddev=0.016034 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.665480 ms [60.004272 Hz]. (50 valid samples taken, stddev=0.168588 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
 PTB-WARNING: ==============================================================================================================================
 PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
@@ -1781,9 +1327,10 @@ PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERF
 PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
 PTB-WARNING: ==============================================================================================================================
 PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 3755.242125 secs, completed at 3752.746630 secs]!
+PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 11778.832252 secs, completed at 11582.330113 secs]!
 PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
 PTB-ERROR: Check your system setup!
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
 PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
 
 Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt

@@ -24,7 +24,7 @@ EYE_TRACKER = 1; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
 
 %% Hardware and physical parameters:
-REF_RATE_OPTIMAL = 144; % in Hz. Screen refresh rate.
+REF_RATE_OPTIMAL = 60; % in Hz. Screen refresh rate.
 VIEW_DISTANCE = 69.5; % Default viewing distance (if no viewDist argument sent with the function call)
 SCREEN_SIZE_CM = [53.2 29.8]; % screen [width, height] in centimeters, change it to fit your setting
 viewDistanceBottomTop = [70.2 70]; % IN CM!! Distance between the participant head and the top and bottom of the screen. Only needed if HEAD_FIXED on.
@@ -53,6 +53,6 @@ NO_ERROR = 0; % Disable testing program error throws
 % Q: Do I need to fill this out? Pixels? Yoav: only if you want the debug scree to be of a different size
 WINDOW_RESOLUTION = [10 10 1200 800];
 DIAL = 0; % 1 if dial is present
-RESPONSE_BOX = 0; % 1 if Cedrus RB-844 response box is present. 
+RESPONSE_BOX = 1; % 1 if Cedrus RB-844 response box is present. 
 
 end

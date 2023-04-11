@@ -8,12 +8,12 @@
 % recorded to make sure we account for it when starting again!
 function [ key, Resp_Time ] = getInput()
 
-global compKbDevice abortKey VIS_RESPONSE_KEY VIS_TARGET_KEY
+global abortKey VIS_RESPONSE_KEY VIS_TARGET_KEY
 global AUD_RESPONSE_KEY_HIGH HIGH_PITCH_KEY AUD_RESPONSE_KEY_LOW LOW_PITCH_KEY
 global WRONG_KEY NO_KEY ABORT_KEY
 key = NO_KEY;
 
-[KeyIsDown, Resp_Time, Resp1] = KbCheck(compKbDevice);
+[KeyIsDown, Resp_Time, Resp1] = KbCheck();
 
 if KeyIsDown
     if Resp1(VIS_RESPONSE_KEY)

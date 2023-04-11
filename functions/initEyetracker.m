@@ -13,6 +13,12 @@ el = EyelinkInitDefaults(w);
 el.backgroundcolour = [125 125 125];
 EyelinkUpdateDefaults(el);
 
+if ~EyelinkInit(0, 1)
+    ffprintf('Eyelink Init aborted!\n')
+    cleanup
+    return
+end
+
 % name and open file to record data to
 %VERY IMPORTANT: THE NAME OF THE FILE SHOULD BE SHORT (5-6 CHARACTERS), OTHERWISE IT WILL GIVE AN ERROR AND IT WON\92T SAVE THE FILE!!!
 if blk < 0

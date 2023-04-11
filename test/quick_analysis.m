@@ -38,18 +38,18 @@ event_table = event_table.input_table;
 
 
 if ~ ismember('RT_aud', event_table.Properties.VariableNames)
-% Add functions folder to path (when we separate all functions)
-function_folder = [parent_dir,filesep,'functions\'];
-addpath(function_folder)
+    % Add functions folder to path (when we separate all functions)
+    function_folder = [parent_dir,filesep,'functions\'];
+    addpath(function_folder)
 
-[event_table, ~] = compute_performance(event_table);
+    [event_table, ~] = compute_performance(event_table);
 
-% remove targets and practice
-practice_event_table = event_table(event_table.is_practice == 1, :);
-target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
-event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
+    % remove targets and practice
+    practice_event_table = event_table(event_table.is_practice == 1, :);
+    target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
+    event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
 
-end 
+end
 %% performances
 
 % performanance

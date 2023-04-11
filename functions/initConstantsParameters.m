@@ -109,7 +109,7 @@ function initConstantsParameters()
     MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
     EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press SPACE to continue...';
     CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press SPACE to continue...';
-    EYETRACKER_CALIBRATION_MESSAGE = 'Press C to proceed to perform the calibration \n\n Press SPACE to skip the calibration';
+    EYETRACKER_CALIBRATION_MESSAGE = 'Press C to proceed to perform the calibration \n\n Press v to skip the calibration';
     EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press SPACE to proceed to calibration...';
     GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press SPACE to continue...';
     AUD_FEEDBACK_MESSAGE = '\n\n\n\n Your score on the auditory task was: %s';
@@ -147,6 +147,7 @@ function initConstantsParameters()
     twoKey        =  KbName('2@');
     threeKey      =  KbName('3#');
     fourKey       =  KbName('4$');
+    ValidationKey = KbName('V');
 
     MINIBLOCK_RESTART_KEY = KbName('M');
     BLOCK_RESTART_KEY = KbName('B');
@@ -154,7 +155,6 @@ function initConstantsParameters()
     if RESPONSE_BOX
         RightKey =  KbName('H');
         LeftKey  =  KbName('G');
-        ValidationKey = KbName('H');
 
         if mod(subjectNum, 2) == 0
             VIS_RESPONSE_KEY = KbName('B');
@@ -174,7 +174,6 @@ function initConstantsParameters()
         VIS_RESPONSE_KEY = spaceBar;
         AUD_RESPONSE_KEY_HIGH = twoKey;
         AUD_RESPONSE_KEY_LOW = oneKey;
-        ValidationKey = KbName('V');
     end
 
     

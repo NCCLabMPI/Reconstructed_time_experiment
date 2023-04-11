@@ -1,8 +1,8 @@
 function [blk_add] = get_practice_feedback(block_mat, practice_type)
-global RestartKey spaceBar compKbDevice
+global RestartKey compKbDevice ValidationKey
 
 % Set the button press message:
-button_press_msg = sprintf('\n\n Press %s if you wish to continue \n\n press %s if you wish to repeat this practice', 'space', 'r');
+button_press_msg = sprintf('\n\n Press %s if you wish to continue \n\n press %s if you wish to repeat this practice', 'v', 'r');
 
 % Compute the scores of the practice block based on the block matrix:
 [~, perf] = compute_performance(block_mat);
@@ -29,7 +29,7 @@ while ~accepted_key
     if practice_feedback_key(RestartKey)
         blk_add=0;
         accepted_key = 1;
-    elseif practice_feedback_key(spaceBar)
+    elseif practice_feedback_key(ValidationKey)
         blk_add=1;
         accepted_key = 1;
     else

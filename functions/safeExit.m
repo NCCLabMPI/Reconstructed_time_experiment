@@ -25,9 +25,6 @@ catch
     end
     % Close the audio device
     PsychPortAudio('Close', padhandle);
-    if  RESPONSE_BOX
-        CedrusResponseBox('Open', response_box_handle);
-    end
     % Closing everything
     Priority(0);
     sca;
