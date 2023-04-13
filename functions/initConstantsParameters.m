@@ -200,17 +200,17 @@ function initConstantsParameters()
 
     % instruction slides addresses
     INSTRUCTIONS_FOLDER = 'instructions';
-    INSTRUCTIONS1 = 'instructions1_1.png';
+    INSTRUCTIONS1 = 'instructions1.0.png';
     if mod(subjectNum, 2) == 0
-        INSTRUCTIONS2 = 'instructions2_2.png';
-        INSTRUCTIONS3 = 'instructions3_2.png';
+        INSTRUCTIONS2 = 'instructions2.2.png';
+        INSTRUCTIONS3 = 'instructions3.2.png';
     else
-        INSTRUCTIONS2 = 'instructions2_1.png';
-        INSTRUCTIONS3 = 'instructions3_1.png';
+        INSTRUCTIONS2 = 'instructions2.1.png';
+        INSTRUCTIONS3 = 'instructions3.1.png';
     end
-    INSTRUCTIONS4 = 'instructions4_1.png';
-    INSTRUCTIONS5 = 'instructions5_1.png';
-    INSTRUCTIONS6 = 'instructions6_1.png';
-    INSTRUCTIONS7 = 'instructions7_1.png';
+    INSTRUCTIONS4 = 'instructions4.0.png';
+    INSTRUCTIONS5 = 'instructions5.0.png';
+    INSTRUCTIONS6 = 'instructions6.0.png';
+    INSTRUCTIONS7 = 'instructions7.0.png';
 
 end % end of initConstantParameters function

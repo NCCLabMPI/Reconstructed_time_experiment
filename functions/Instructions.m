@@ -14,7 +14,7 @@ InstructionSlideNum = 1;
 while InstructionSlideNum<= size(InstructionsPaths,1) % Looping until we went through all slides:
     % Showing instruction slide
     showInstructions(InstructionsPaths(InstructionSlideNum,:));
-    WaitSecs(1);
+    WaitSecs(0.2);
     CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
     while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
         [~, ~, InstructionsResp] = KbCheck();

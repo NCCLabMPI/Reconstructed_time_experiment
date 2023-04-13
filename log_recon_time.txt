@@ -1,58 +1,437 @@
-PsychStartup: Environment variable GSTREAMER_1_0_ROOT_X86_64 is undefined.
-PsychStartup: Either GStreamer-1.4 is not installed at all, or if it is installed then something
-PsychStartup: is botched. Trying various common locations for the GStreamer runtime to keep going.
 
-PsychStartup: Path to GStreamer runtime is undefined! This probably means that
-PsychStartup: the 64-Bit GStreamer 1.x runtime from www.gstreamer.net is not installed.
-PsychStartup: The Psychtoolbox Screen() multimedia functions will fail to work until you fix
-PsychStartup: this! Read 'help GStreamer' for instructions.
+PsychStartup: Adding path of installed GStreamer runtime to library path. [C:\gstreamer\1.0\msvc_x86_64\bin]
+>> quick_analysis(104,1,'prp',1);
+Unrecognized function or variable 'target_event_table'.
 
+Error in quick_analysis (line 56)
+output_struct.hits = sum(strcmp(target_event_table.trial_repsonse_vis, 'hit'));
+ 
+>> load('sub-SX104_ses-1_run-all_task-prp_events.mat')
+>> quick_analysis(104,1,'prp',1);
+>> global DATA_FOLDER LAB_ID refRate
+>> refRate = 1/60
+
+refRate =
+
+    0.0167
+
+>> global DATA_FOLDER LAB_ID refRate\
+ global DATA_FOLDER LAB_ID refRate\
+                                  ↑
+Invalid use of operator.
+ 
+>> global DATA_FOLDER LAB_ID refRate\
+ global DATA_FOLDER LAB_ID refRate\
+                                  ↑
+Invalid use of operator.
+ 
+>> global DATA_FOLDER LAB_ID refRate
+>> quick_analysis(104,1,'prp',1);
+>> quick_analysis(104,1,'prp',1);
+>> input_tbale = input_table(~strcm(input_table.task_relevance, 'target'))
+Unrecognized function or variable 'strcm'.
+ 
+Did you mean:
+>> input_tbale = input_table(~strcmp(input_table.task_relevance, 'target'))
+Error using  () 
+Subscripting into a table using one subscript (as in t(i)) is not supported. Specify a row subscript and a variable subscript, as
+in t(rows,vars). To select variables, use t(:,i) or for one variable t.(i). To select rows, use t(i,:).
+ 
+>> input_tbale = input_table(~strcmp(input_table.task_relevance, 'target'), :)
+
+input_tbale =
+
+  160×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    ______
+
+    {'SX104'}    {'prp'}         0           1        1      {'face_04'  }    {'object_03'    }    {'non-target'}    {'object'    }    {'center'}     {'object_20'    }      0.5        1.8833     0.232      0.732      {'offset'}    1000       210          12354              NaN                  0                  {'cr'}                2              12354           0               NaN                  NaN                      0                            0                 12354       12356        12357         NaN               NaN                  12351           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        3      {'face_04'  }    {'object_03'    }    {'non-target'}    {'face'      }    {'center'}     {'face_19'      }        1        1.6333     0.232      0.232      {'onset' }    1100        89          12360              NaN                  0                  {'cr'}                1              12360           0               NaN                  NaN                      0                            0                 12361       12362        12364         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        5      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'right' }     {'false_font_07'}      1.5          0.85     0.466      1.966      {'offset'}    1000       177          12367              NaN                  0                  {'cr'}                2              12369           0               NaN                  NaN                      0                            0                 12369       12369        12370         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        6      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'center'}     {'false_font_09'}        1           0.7     0.116      0.116      {'onset' }    1000       139          12370              NaN                  0                  {'cr'}                2              12370           0               NaN                  NaN                      0                            0                 12371       12372        12373         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        7      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_03'}      0.5          1.15     0.232      0.232      {'onset' }    1000       153          12373              NaN                  0                  {'cr'}                2              12373           0               NaN                  NaN                      0                            0                 12373       12375        12376         NaN               NaN                      0           NaN       NaN  
+
+        :           :            :           :        :            :                  :                  :                 :                :                 :               :           :          :          :            :           :         :             :                 :                   :                    :                   :                :             :                :                    :                       :                            :                   :           :            :            :                 :                     :              :         :   
+
+    {'SX104'}    {'prp'}         0           5       31      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.2833     0.116      0.116      {'onset' }    1100        30          13075              NaN                  0                  {'cr'}                1              13075           0               NaN                  NaN                      0                            0                 13075       13077        13078         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       32      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_01'    }        1           1.3         0          1      {'offset'}    1100       191          13078              NaN                  0                  {'cr'}                1              13079           0               NaN                  NaN                      0                            0                 13079       13080        13081         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       34      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'left'  }     {'object_02'    }      0.5       0.78333     0.116      0.116      {'onset' }    1100       212          13084              NaN                  0                  {'cr'}                1              13084           0               NaN                  NaN                      0                            0                 13085       13086        13087         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       35      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'false_font'}    {'left'  }     {'false_font_07'}      0.5          1.05         0          0      {'onset' }    1100       157          13087              NaN                  0                  {'cr'}                1              13087           0               NaN                  NaN                      0                            0                 13088       13089        13090         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       36      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_13'    }      0.5        1.0333     0.466      0.466      {'onset' }    1000        23          13090              NaN                  0                  {'cr'}                2              13091           0               NaN                  NaN                      0                            0                 13091       13092        13093         NaN               NaN                      0           NaN       NaN  
+
+	Display all 160 rows.
+
+>> inout_table = input_tbale
+
+inout_table =
+
+  160×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    ______
+
+    {'SX104'}    {'prp'}         0           1        1      {'face_04'  }    {'object_03'    }    {'non-target'}    {'object'    }    {'center'}     {'object_20'    }      0.5        1.8833     0.232      0.732      {'offset'}    1000       210          12354              NaN                  0                  {'cr'}                2              12354           0               NaN                  NaN                      0                            0                 12354       12356        12357         NaN               NaN                  12351           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        3      {'face_04'  }    {'object_03'    }    {'non-target'}    {'face'      }    {'center'}     {'face_19'      }        1        1.6333     0.232      0.232      {'onset' }    1100        89          12360              NaN                  0                  {'cr'}                1              12360           0               NaN                  NaN                      0                            0                 12361       12362        12364         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        5      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'right' }     {'false_font_07'}      1.5          0.85     0.466      1.966      {'offset'}    1000       177          12367              NaN                  0                  {'cr'}                2              12369           0               NaN                  NaN                      0                            0                 12369       12369        12370         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        6      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'center'}     {'false_font_09'}        1           0.7     0.116      0.116      {'onset' }    1000       139          12370              NaN                  0                  {'cr'}                2              12370           0               NaN                  NaN                      0                            0                 12371       12372        12373         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        7      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_03'}      0.5          1.15     0.232      0.232      {'onset' }    1000       153          12373              NaN                  0                  {'cr'}                2              12373           0               NaN                  NaN                      0                            0                 12373       12375        12376         NaN               NaN                      0           NaN       NaN  
+
+        :           :            :           :        :            :                  :                  :                 :                :                 :               :           :          :          :            :           :         :             :                 :                   :                    :                   :                :             :                :                    :                       :                            :                   :           :            :            :                 :                     :              :         :   
+
+    {'SX104'}    {'prp'}         0           5       31      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.2833     0.116      0.116      {'onset' }    1100        30          13075              NaN                  0                  {'cr'}                1              13075           0               NaN                  NaN                      0                            0                 13075       13077        13078         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       32      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_01'    }        1           1.3         0          1      {'offset'}    1100       191          13078              NaN                  0                  {'cr'}                1              13079           0               NaN                  NaN                      0                            0                 13079       13080        13081         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       34      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'left'  }     {'object_02'    }      0.5       0.78333     0.116      0.116      {'onset' }    1100       212          13084              NaN                  0                  {'cr'}                1              13084           0               NaN                  NaN                      0                            0                 13085       13086        13087         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       35      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'false_font'}    {'left'  }     {'false_font_07'}      0.5          1.05         0          0      {'onset' }    1100       157          13087              NaN                  0                  {'cr'}                1              13087           0               NaN                  NaN                      0                            0                 13088       13089        13090         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       36      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_13'    }      0.5        1.0333     0.466      0.466      {'onset' }    1000        23          13090              NaN                  0                  {'cr'}                2              13091           0               NaN                  NaN                      0                            0                 13091       13092        13093         NaN               NaN                      0           NaN       NaN  
+
+	Display all 160 rows.
+
+>> input_table = input_tbale
+
+input_table =
+
+  160×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    ______
+
+    {'SX104'}    {'prp'}         0           1        1      {'face_04'  }    {'object_03'    }    {'non-target'}    {'object'    }    {'center'}     {'object_20'    }      0.5        1.8833     0.232      0.732      {'offset'}    1000       210          12354              NaN                  0                  {'cr'}                2              12354           0               NaN                  NaN                      0                            0                 12354       12356        12357         NaN               NaN                  12351           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        3      {'face_04'  }    {'object_03'    }    {'non-target'}    {'face'      }    {'center'}     {'face_19'      }        1        1.6333     0.232      0.232      {'onset' }    1100        89          12360              NaN                  0                  {'cr'}                1              12360           0               NaN                  NaN                      0                            0                 12361       12362        12364         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        5      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'right' }     {'false_font_07'}      1.5          0.85     0.466      1.966      {'offset'}    1000       177          12367              NaN                  0                  {'cr'}                2              12369           0               NaN                  NaN                      0                            0                 12369       12369        12370         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        6      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'center'}     {'false_font_09'}        1           0.7     0.116      0.116      {'onset' }    1000       139          12370              NaN                  0                  {'cr'}                2              12370           0               NaN                  NaN                      0                            0                 12371       12372        12373         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           1        7      {'face_04'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_03'}      0.5          1.15     0.232      0.232      {'onset' }    1000       153          12373              NaN                  0                  {'cr'}                2              12373           0               NaN                  NaN                      0                            0                 12373       12375        12376         NaN               NaN                      0           NaN       NaN  
+
+        :           :            :           :        :            :                  :                  :                 :                :                 :               :           :          :          :            :           :         :             :                 :                   :                    :                   :                :             :                :                    :                       :                            :                   :           :            :            :                 :                     :              :         :   
+
+    {'SX104'}    {'prp'}         0           5       31      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.2833     0.116      0.116      {'onset' }    1100        30          13075              NaN                  0                  {'cr'}                1              13075           0               NaN                  NaN                      0                            0                 13075       13077        13078         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       32      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_01'    }        1           1.3         0          1      {'offset'}    1100       191          13078              NaN                  0                  {'cr'}                1              13079           0               NaN                  NaN                      0                            0                 13079       13080        13081         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       34      {'letter_15'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'left'  }     {'object_02'    }      0.5       0.78333     0.116      0.116      {'onset' }    1100       212          13084              NaN                  0                  {'cr'}                1              13084           0               NaN                  NaN                      0                            0                 13085       13086        13087         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       35      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'false_font'}    {'left'  }     {'false_font_07'}      0.5          1.05         0          0      {'onset' }    1100       157          13087              NaN                  0                  {'cr'}                1              13087           0               NaN                  NaN                      0                            0                 13088       13089        13090         NaN               NaN                      0           NaN       NaN  
+    {'SX104'}    {'prp'}         0           5       36      {'letter_15'}    {'false_font_01'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_13'    }      0.5        1.0333     0.466      0.466      {'onset' }    1000        23          13090              NaN                  0                  {'cr'}                2              13091           0               NaN                  NaN                      0                            0                 13091       13092        13093         NaN               NaN                      0           NaN       NaN  
+
+	Display all 160 rows.
+
+>> mean(ans.SOA_diff(input_table.SOA == 0))
+
+ans =
+
+   9.4791e-04
+
+>> mean(ans.SOA_diff(input_table.SOA ~= 0))
+Dot indexing is not supported for variables of this type.
+ 
+>> mean(ans.SOA_diff(input_table.SOA > 0))
+Dot indexing is not supported for variables of this type.
+ 
+>> mean(ans.SOA_diff(input_table.SOA == 0))
+Dot indexing is not supported for variables of this type.
+ 
+>> quick_analysis(104,1,'prp',1);
+'quick_analysis' is not found in the current folder or on the MATLAB path, but exists in:
+    C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test
+
+Change the MATLAB current folder or add its folder to the MATLAB path.
+ 
+>> cd 'C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test'
+>> cd 'C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test'
+>> quick_analysis(104,1,'prp',1);
+Error using quick_analysis
+Unable to open file
+'C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test\test_data\sub-SX104\ses-1\sub-SX104_ses-1_prp_test_output.csv'
+for writing:
+
+Permission denied
+ 
+>> quick_analysis(104,1,'prp',1);
+>> struct = nas
+Unrecognized function or variable 'nas'.
+ 
+Did you mean:
+>> struct = ans;
+>> mean(ans.SOA_diff(input_table.SOA ~= 0))
+
+ans =
+
+   1.7367e-04
+
+>> mean(ans.SOA_diff(input_table.SOA == 0))
+Dot indexing is not supported for variables of this type.
+ 
+>> mean(struct.SOA_diff(input_table.SOA == 0))
+
+ans =
+
+   9.4791e-04
+
+>> mean(struct.SOA_diff(input_table.SOA ~= 0))
+
+ans =
+
+   1.7367e-04
+
+>> min(struct.SOA_diff(input_table.SOA == 0))
+
+ans =
+
+   7.4067e-04
+
+>> max(struct.SOA_diff(input_table.SOA ~= 0))
+
+ans =
+
+   9.6276e-04
+
+>>     figure(6)
+>>     histogram(struct.SOA_diff(input_table.SOA ~= 0)*1000);
+>> figure(7)
+>> histogram(struct.SOA_diff(input_table.SOA == 0)*1000);
+>> quick_analysis(103,1,'prp',1);
+Unrecognized field name "input_table".
+
+Error in quick_analysis (line 37)
+event_table = event_table.input_table;
+ 
+>> clear all
+>> quick_analysis(103,1,'prp',1);
+Unrecognized field name "input_table".
+
+Error in quick_analysis (line 37)
+event_table = event_table.input_table;
+ 
+>> quick_analysis(103,1,'prp',1);
+Unrecognized field name "Properties".
+
+Error in quick_analysis (line 40)
+if ~ ismember('RT_aud', event_table.Properties.VariableNames)
+ 
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX103\ses-1\sub-SX103_ses-1_run-all_task-prp_events.mat')
+>> quick_analysis(103,1,'prp',1);
+'quick_analysis' is not found in the current folder or on the MATLAB path, but exists in:
+    C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test
+
+Change the MATLAB current folder or add its folder to the MATLAB path.
+ 
+>> cd 'C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\test'
+>> quick_analysis(103,1,'prp',1);
+>> dk = d(~isnan(d.RT_aud),:)
+
+dk =
+
+  1911×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud 
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    _______
+
+    {'SX103'}    {'prp'}         0           1        1      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'false_font'}    {'center'}     {'false_font_03'}        1        1.9653     0.116      1.116      {'offset'}    1100       133         1622.6              NaN                  0                  {'cr'}                1             1623.7          1100              1                  1624.4                   1100                          0                 1623.6      1624.6      1626.6         NaN               NaN                 1615.5           NaN      0.71937
+    {'SX103'}    {'prp'}         0           1        2      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'letter'    }    {'right' }     {'letter_08'    }      1.5        1.6042     0.466      1.966      {'offset'}    1000        58         1626.6              NaN                  0                  {'cr'}                2             1628.5          1000              1                    1629                   1000                          0                 1628.1      1628.6      1630.2         NaN               NaN                      0           NaN       0.4733
+    {'SX103'}    {'prp'}         0           1        3      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'false_font'}    {'center'}     {'false_font_09'}      0.5       0.79167     0.116      0.116      {'onset' }    1100       139         1630.2              NaN                  0                  {'cr'}                1             1630.3          1100              1                  1631.1                   1100                          0                 1630.7      1632.2        1633         NaN               NaN                      0           NaN      0.80066
+    {'SX103'}    {'prp'}         0           1        4      {'letter_07'}    {'false_font_16'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_17'    }      0.5       0.91667         0        0.5      {'offset'}    1100       207           1633              NaN                  0                  {'cr'}                1             1633.5          1100              1                  1633.9                   1100                          0                 1633.5        1635      1635.9         NaN               NaN                      0           NaN      0.44258
+    {'SX103'}    {'prp'}         0           1        5      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_15'    }        1       0.77778     0.232      1.232      {'offset'}    1100        25         1635.9              NaN                  0                  {'cr'}                1             1637.1          1100              1                  1637.7                   1100                          0                 1636.9      1637.9      1638.7         NaN               NaN                      0           NaN      0.60255
+
+        :           :            :           :        :            :                  :                  :                 :                :                 :               :           :          :          :            :           :         :             :                 :                   :                    :                   :                :             :                :                    :                       :                            :                   :           :            :            :                 :                     :              :          :   
+
+    {'SX103'}    {'prp'}         0          60       33      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_01'}        1        1.4792     0.116      1.116      {'offset'}    1100       151         9952.7              NaN                  0                  {'cr'}                1             9953.8          1100              1                  9954.2                   1100                          0                 9953.7      9954.7      9956.1         NaN               NaN                      0           NaN      0.44351
+    {'SX103'}    {'prp'}         0          60       34      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.4792     0.116      0.616      {'offset'}    1000        30         9956.2              NaN                  0                  {'cr'}                2             9956.8          1000              1                  9957.3                   1000                          0                 9956.7      9958.2      9959.6         NaN               NaN                      0           NaN      0.56905
+    {'SX103'}    {'prp'}         0          60       35      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'left'  }     {'letter_13'    }      1.5       0.79861     0.466      0.466      {'onset' }    1100        43         9959.6              NaN                  0                  {'cr'}                1             9960.1          1100              1                  9961.5                   1100                          0                 9961.2      9961.7      9962.4         NaN               NaN                      0           NaN       1.4335
+    {'SX103'}    {'prp'}         0          60       36      {'face_13'  }    {'object_18'    }    {'non-target'}    {'object'    }    {'center'}     {'object_03'    }        1        1.1597         0          0      {'onset' }    1000       193         9962.5              NaN                  0                  {'cr'}                2             9962.5          1000              1                    9963                   1000                          0                 9963.5      9964.5      9965.6         NaN               NaN                      0           NaN      0.58911
+    {'SX103'}    {'prp'}         0          60       37      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.2292     0.116      0.116      {'onset' }    1000        30         9965.6              NaN                  0                  {'cr'}                2             9965.7          1000              1                  9966.3                   1000                          0                 9966.1      9967.6      9968.8         NaN               NaN                      0           NaN      0.54756
+
+	Display all 1911 rows.
+
+>> dk = d(isnan(d.RT_aud),:)
+
+dk =
+
+  9×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    ______
+
+    {'SX103'}    {'prp'}         0           5       22      {'face_19'  }    {'object_16'    }    {'non-target'}    {'face'      }    {'center'}     {'face_11'      }      1.5        1.0069     0.232      1.732      {'offset'}    1100        81         2202.3             2203.8                1                  {'fa'}                1             2204.1             0             NaN                    NaN                      1                           0                2203.9      2204.4      2205.4         NaN               NaN                    0             1.434     NaN  
+    {'SX103'}    {'prp'}         0           5       23      {'face_19'  }    {'object_16'    }    {'irrelevant'}    {'letter'    }    {'right' }     {'letter_13'    }      0.5        1.4028     0.466      0.966      {'offset'}    1000        63         2205.4                NaN                0                  {'cr'}                2             2206.3          1100               0                 2205.8                   1100                        1000                2205.9      2207.4      2208.8         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          29       11      {'face_20'  }    {'object_05'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_15'}      1.5       0.76389     0.116      1.616      {'offset'}    1000       165         5319.5                NaN                0                  {'cr'}                2             5321.1             0             NaN                    NaN                      0                           0                  5321      5321.5      5322.3         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          29       12      {'face_20'  }    {'object_05'    }    {'non-target'}    {'object'    }    {'center'}     {'object_14'    }      1.5       0.93056     0.116      1.616      {'offset'}    1000       204         5322.3                NaN                0                  {'cr'}                2             5323.9          1000               1                 5322.9                   1000                           0                5323.8      5324.3      5325.2         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          33       16      {'letter_08'}    {'false_font_01'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_13'    }      1.5        1.8333     0.466      1.966      {'offset'}    1100       203         6398.9                NaN                0                  {'cr'}                1             6400.9             0             NaN                    NaN                      0                           0                6400.4      6400.9      6402.8         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          44       16      {'face_20'  }    {'object_03'    }    {'non-target'}    {'face'      }    {'right' }     {'face_19'      }      1.5        1.2847     0.232      1.732      {'offset'}    1000       129         7792.1             7792.9                1                  {'fa'}                2             7793.8             0             NaN                    NaN                      1                           0                7793.6      7794.1      7795.4         NaN               NaN                    0            0.7812     NaN  
+    {'SX103'}    {'prp'}         0          44       17      {'face_20'  }    {'object_03'    }    {'irrelevant'}    {'false_font'}    {'center'}     {'false_font_06'}      0.5        1.6597     0.232      0.232      {'onset' }    1100       136         7795.4                NaN                0                  {'cr'}                1             7795.6          1000               0                 7795.5                   1000                        1100                7795.9      7797.4        7799         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          44       27      {'face_20'  }    {'object_03'    }    {'non-target'}    {'face'      }    {'center'}     {'face_15'      }      1.5        1.0278     0.466      0.466      {'onset' }    1100        85           7827                NaN                0                  {'cr'}                1             7827.5          1000               0                 7827.3                   1000                        1100                7828.5        7829      7830.1         NaN               NaN                    0               NaN     NaN  
+    {'SX103'}    {'prp'}         0          51       25      {'face_16'  }    {'object_20'    }    {'irrelevant'}    {'false_font'}    {'center'}     {'false_font_07'}        1        1.4861     0.116      1.116      {'offset'}    1000       137         8730.9                NaN                0                  {'cr'}                2               8732          1000               1                 8731.8                   1000                           0                8731.9      8732.9      8734.4         NaN               NaN                    0               NaN     NaN  
+
+>> dk = d(~isnan(d.RT_aud),:)
+
+dk =
+
+  1911×37 table
+
+     sub_id       task      is_practice    block    trial      target_01          target_02        task_relevance       category       orientation        identity         duration    stim_jit     SOA     onset_SOA     SOA_lock     pitch    texture    vis_stim_time    time_of_resp_vis    has_repsonse_vis    trial_repsonse_vis    aud_stim_buff    aud_stim_time    aud_resp    trial_accuracy_aud    time_of_resp_aud    trial_first_button_press    trial_second_button_press    fix_time    JitOnset    trial_end    wrong_key    wrong_key_timestemp    TargetScreenOnset    RT_vis    RT_aud 
+    _________    _______    ___________    _____    _____    _____________    _________________    ______________    ______________    ___________    _________________    ________    ________    _____    _________    __________    _____    _______    _____________    ________________    ________________    __________________    _____________    _____________    ________    __________________    ________________    ________________________    _________________________    ________    ________    _________    _________    ___________________    _________________    ______    _______
+
+    {'SX103'}    {'prp'}         0           1        1      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'false_font'}    {'center'}     {'false_font_03'}        1        1.9653     0.116      1.116      {'offset'}    1100       133         1622.6              NaN                  0                  {'cr'}                1             1623.7          1100              1                  1624.4                   1100                          0                 1623.6      1624.6      1626.6         NaN               NaN                 1615.5           NaN      0.71937
+    {'SX103'}    {'prp'}         0           1        2      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'letter'    }    {'right' }     {'letter_08'    }      1.5        1.6042     0.466      1.966      {'offset'}    1000        58         1626.6              NaN                  0                  {'cr'}                2             1628.5          1000              1                    1629                   1000                          0                 1628.1      1628.6      1630.2         NaN               NaN                      0           NaN       0.4733
+    {'SX103'}    {'prp'}         0           1        3      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'false_font'}    {'center'}     {'false_font_09'}      0.5       0.79167     0.116      0.116      {'onset' }    1100       139         1630.2              NaN                  0                  {'cr'}                1             1630.3          1100              1                  1631.1                   1100                          0                 1630.7      1632.2        1633         NaN               NaN                      0           NaN      0.80066
+    {'SX103'}    {'prp'}         0           1        4      {'letter_07'}    {'false_font_16'}    {'irrelevant'}    {'object'    }    {'center'}     {'object_17'    }      0.5       0.91667         0        0.5      {'offset'}    1100       207           1633              NaN                  0                  {'cr'}                1             1633.5          1100              1                  1633.9                   1100                          0                 1633.5        1635      1635.9         NaN               NaN                      0           NaN      0.44258
+    {'SX103'}    {'prp'}         0           1        5      {'letter_07'}    {'false_font_16'}    {'non-target'}    {'letter'    }    {'center'}     {'letter_15'    }        1       0.77778     0.232      1.232      {'offset'}    1100        25         1635.9              NaN                  0                  {'cr'}                1             1637.1          1100              1                  1637.7                   1100                          0                 1636.9      1637.9      1638.7         NaN               NaN                      0           NaN      0.60255
+
+        :           :            :           :        :            :                  :                  :                 :                :                 :               :           :          :          :            :           :         :             :                 :                   :                    :                   :                :             :                :                    :                       :                            :                   :           :            :            :                 :                     :              :          :   
+
+    {'SX103'}    {'prp'}         0          60       33      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'false_font'}    {'left'  }     {'false_font_01'}        1        1.4792     0.116      1.116      {'offset'}    1100       151         9952.7              NaN                  0                  {'cr'}                1             9953.8          1100              1                  9954.2                   1100                          0                 9953.7      9954.7      9956.1         NaN               NaN                      0           NaN      0.44351
+    {'SX103'}    {'prp'}         0          60       34      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.4792     0.116      0.616      {'offset'}    1000        30         9956.2              NaN                  0                  {'cr'}                2             9956.8          1000              1                  9957.3                   1000                          0                 9956.7      9958.2      9959.6         NaN               NaN                      0           NaN      0.56905
+    {'SX103'}    {'prp'}         0          60       35      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'left'  }     {'letter_13'    }      1.5       0.79861     0.466      0.466      {'onset' }    1100        43         9959.6              NaN                  0                  {'cr'}                1             9960.1          1100              1                  9961.5                   1100                          0                 9961.2      9961.7      9962.4         NaN               NaN                      0           NaN       1.4335
+    {'SX103'}    {'prp'}         0          60       36      {'face_13'  }    {'object_18'    }    {'non-target'}    {'object'    }    {'center'}     {'object_03'    }        1        1.1597         0          0      {'onset' }    1000       193         9962.5              NaN                  0                  {'cr'}                2             9962.5          1000              1                    9963                   1000                          0                 9963.5      9964.5      9965.6         NaN               NaN                      0           NaN      0.58911
+    {'SX103'}    {'prp'}         0          60       37      {'face_13'  }    {'object_18'    }    {'irrelevant'}    {'letter'    }    {'center'}     {'letter_20'    }      0.5        1.2292     0.116      0.116      {'onset' }    1000        30         9965.6              NaN                  0                  {'cr'}                2             9965.7          1000              1                  9966.3                   1000                          0                 9966.1      9967.6      9968.8         NaN               NaN                      0           NaN      0.54756
+
+	Display all 1911 rows.
+
+>> mean(dk.RT_aud)
+
+ans =
+
+    0.4929
+
+>> std(dk.RT_aud)
+
+ans =
+
+    0.1750
+
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX102\ses-1\sub-SX102_ses-1_run-all_task-prp_events.mat')
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX102\ses-1\sub-SX102_ses-1_run-all_task-prp_events.mat')
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX102\ses-1\sub-SX102_ses-1_run-18_task-prp_events.mat')
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX104\ses-1\sub-SX104_ses-1_run-all_task-prp_events.mat')
+>> load('C:\Users\micha.engeser\Documents\GitHub\Reconstructed_time_experiment\data\sub-SX102\ses-1\sub-SX102_ses-1_run-all_task-prp_events.mat')
 >> Run_ReconTime
-Subject number [101-199, default 101]: 101
+Subject number [101-199, default 101]: 109
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
 WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
 WELCOME to initPsychtooblox
 
 
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
 PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
 PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
 PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
 PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
 PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
 PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
 
 
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.939580 ms [144.100948 Hz].
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.706341 ms [59.857512 Hz].
 PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943772 ms [144.013945 Hz]. (50 valid samples taken, stddev=0.232292 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.710746 ms [59.841733 Hz]. (50 valid samples taken, stddev=0.176779 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
+
+WARNING: Failed to load GetCharJava Java class. Most likely your Matlab
+WARNING: classpath.txt file is not up to date. I will try to auto-fix this for
+WARNING: the current session by executing the PsychJavaTrouble() command.
+WARNING: This may have bad side-effects, like clearing all your scripts variables
+WARNING: and functions! If it works, please read 'help PsychJavaTrouble'
+WARNING: for a proper and permanent fix to the problem.
+
+PsychJavaTrouble: Will now try to add the PsychJava folder to Matlabs dynamic classpath...
+PsychJavaTrouble: Added PsychJava folder to dynamic class path. Psychtoolbox Java commands should work now!
+INFO: Problem may be fixed for this session. Let's see...
+INFO: Yep! Still, please fix the problem properly asap.
+PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
+PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
+WELCOME TO loadStimuli
+       48000
+
+Warning: -----  Data could not be saved!  ------ 
+> In Run_ReconTime (line 497) 
+Invalid MEX-file 'C:\toolbox\Psychtoolbox\PsychBasic\MatlabWindowsFilesR2007a\Eyelink.mexw64': Das angegebene Modul wurde nicht
+gefunden.
+
+Error in endEyeTracker (line 8)
+Eyelink('StopRecording')
+
+Error in safeExit (line 24)
+        endEyeTracker();
+
+Error in Run_ReconTime (line 498)
+        safeExit()
+ 
+PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
+PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
+
+
+PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
+PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
+PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
+PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
+PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
+PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
+
+>> 
+>> 
+>> Run_ReconTime
+Subject number [101-199, default 101]: 109
+Session number [1-6, default 1]: 
+View Distance in cm [default 69.5]: 
+Introspective task [0: PRP only, 1: introspection, default 0]: 
+WELCOME TO initConstantsParameters
+WELCOME to initPsychtooblox
+
+
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
+
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFEFABE5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFEFABE5140. Setting thread priority to HIGHEST as a work-around...
+
+
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.706869 ms [59.855618 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.706024 ms [59.858647 Hz]. (50 valid samples taken, stddev=0.209654 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
 
 WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
 
 
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
 
 One or more internal checks (see Warnings above) indicate that synchronization
 of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
@@ -63,50 +442,55 @@ You can force Psychtoolbox to continue, despite the severe problems, by adding t
 Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
 
 
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10276.838309 secs, completed at 10276.791672 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
 
 
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10276.847117 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10276.852412 secs).
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10276.852839, scanline = 889
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 822, line_post_swaprequest = 852, time_post_swaprequest = 10276.852602
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 11, preflip_vbltimestamp = 10276.854171
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
 
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFEFABE5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFEFABE5140. Setting thread priority to HIGHEST as a work-around...
 
 
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.706390 ms [59.857337 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.704398 ms [59.864474 Hz]. (50 valid samples taken, stddev=0.152114 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFEFABE5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
+PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
+PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
 WELCOME TO loadStimuli
-       44100
+       48000
 
 Error in function OpenSerialPort: 	Missing argument
 	Discrepancy between a specified and supplied argument:
 		Specified Argument Description:
 			direction: Input
 			position: 1
-			presence:forbidden
+			presence:
 			formats allowed:
 				char
 			minimum M: 0
@@ -121,7 +505,7 @@ Error in function OpenSerialPort: 	Missing argument
 			presence: absent
 
 
-PTB-INFO: There are still 280 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: There are still 286 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
 PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
 PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
 PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
@@ -131,11 +515,17 @@ PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to re
 
 
 
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
+INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
+INFO: a total of 3 times out of a total of 15 flips during this session.
+
+INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
+INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
+INFO: If you called Screen('Flip', window); without the 'when' argument, this count is more of a ''mild'' indicator
+INFO: of timing behaviour than a hard reliable measurement. Large numbers may indicate problems and should at least
+INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
+INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
+
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
 Error in function Close: 	Usage error
 Invalid audio device handle provided.
 Warning: -----  Data could not be saved!  ------ 
@@ -155,11 +545,10 @@ Error in safeExit (line 27)
 Error in Run_ReconTime (line 498)
         safeExit()
  
->> clear
->> close all
->> sca
+>> 
+
 >> Run_ReconTime
-Subject number [101-199, default 101]: 
+Subject number [101-199, default 101]: 109
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
@@ -169,43 +558,42 @@ Warning: This participant number and session was already attributed!
 WELCOME to initPsychtooblox
 
 
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
 PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
 PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
 PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
 PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
 PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
 PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
 
 
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944153 ms [144.006042 Hz].
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.706355 ms [59.857461 Hz].
 PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.937980 ms [144.134172 Hz]. (50 valid samples taken, stddev=0.328539 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.680626 ms [59.949788 Hz]. (50 valid samples taken, stddev=0.226759 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
 
 WARNING: Couldn't compute a reliable estimate of monitor refresh interval! Trouble with VBL syncing?!?
 
 
------ ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----
+----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! -----
 
 One or more internal checks (see Warnings above) indicate that synchronization
 of Psychtoolbox to the vertical retrace (VBL) is not working on your setup.
@@ -216,68 +604,55 @@ You can force Psychtoolbox to continue, despite the severe problems, by adding t
 Screen('Preference', 'SkipSyncTests', 1); at the top of your script, if you really know what you are doing.
 
 
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10329.652133 secs, completed at 10329.338729 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
 
 
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
+PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
+PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
+PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
+PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
+PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
+PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
+PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
 
 
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10330.894056 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10330.896938 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10330.897741, scanline = 573
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 446, line_post_swaprequest = 483, time_post_swaprequest = 10330.897170
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 54, preflip_vbltimestamp = 10330.421942
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.706392 ms [59.857329 Hz].
+PTB-INFO: Will use beamposition query for accurate Flip time stamping.
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.707408 ms [59.853689 Hz]. (50 valid samples taken, stddev=0.157628 ms.)
+PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
+PTB-INFO: Small deviations between reported values are normal and no reason to worry.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
+PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
+PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
 WELCOME TO loadStimuli
-       44100
-
-Warning: -----  Data could not be saved!  ------ 
-> In Run_ReconTime (line 497) 
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
+       48000
 
 Error in function OpenSerialPort: 	Missing argument
 	Discrepancy between a specified and supplied argument:
 		Specified Argument Description:
 			direction: Input
 			position: 1
-			presence:forbidden
+			presence:
 			formats allowed:
 				char
 			minimum M: 0
@@ -292,905 +667,7 @@ Error in function OpenSerialPort: 	Missing argument
 			presence: absent
 
 
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error using Eyelink
-Usage:
-
-Eyelink('Stoprecording')
-
-Error in endEyeTracker (line 8)
-Eyelink('StopRecording')
-
-Error in safeExit (line 24)
-        endEyeTracker();
-
-Error in Run_ReconTime (line 498)
-        safeExit()
- 
->> clear
->> close all
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already
-attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.946737 ms [143.952483 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.947538 ms [143.935881 Hz]. (50 valid samples taken, stddev=0.183825 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10416.533022 secs, completed at 10416.099991 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10416.551087 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10416.553176 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10416.553560, scanline = 384
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 323, line_post_swaprequest = 352, time_post_swaprequest = 10416.553367
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 69, preflip_vbltimestamp = 10416.551370
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-Warning: -----  Data could not be saved!  ------ 
-> In Run_ReconTime (line 497) 
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Error in function OpenSerialPort: 	Missing argument
-	Discrepancy between a specified and supplied argument:
-		Specified Argument Description:
-			direction: Input
-			position: 1
-			presence:forbidden
-			formats allowed:
-				char
-			minimum M: 0
-			maximum M: unbounded
-			minimum N: 0
-			maximum N: unbounded
-			minimum P: 0
-			maximum P: 1
-		Provided Argument Description:
-			direction: Input
-			position: 1
-			presence: absent
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error using Eyelink
-Usage:
-
-Eyelink('Stoprecording')
-
-Error in endEyeTracker (line 8)
-Eyelink('StopRecording')
-
-Error in safeExit (line 24)
-        endEyeTracker();
-
-Error in Run_ReconTime (line 498)
-        safeExit()
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already
-attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.946073 ms [143.966228 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.945066 ms [143.987113 Hz]. (50 valid samples taken, stddev=0.183765 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10434.025997 secs, completed at 10433.474230 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10435.265739 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10435.269700 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10435.270445, scanline = 731
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 613, line_post_swaprequest = 650, time_post_swaprequest = 10435.269933
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 88, preflip_vbltimestamp = 10434.293601
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-WELCOME TO loadStimuli
-       44100
-
-7   Eyelink('Initialize');
-Warning: -----  Data could not be saved!  ------ 
-> In Run_ReconTime (line 497) 
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Error in function OpenSerialPort: 	Missing argument
-	Discrepancy between a specified and supplied argument:
-		Specified Argument Description:
-			direction: Input
-			position: 1
-			presence:forbidden
-			formats allowed:
-				char
-			minimum M: 0
-			maximum M: unbounded
-			minimum N: 0
-			maximum N: unbounded
-			minimum P: 0
-			maximum P: 1
-		Provided Argument Description:
-			direction: Input
-			position: 1
-			presence: absent
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error using Eyelink
-Usage:
-
-Eyelink('Stoprecording')
-
-Error in endEyeTracker (line 8)
-Eyelink('StopRecording')
-
-Error in safeExit (line 24)
-        endEyeTracker();
-
-Error in Run_ReconTime (line 498)
-        safeExit()
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already
-attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.946867 ms [143.949776 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.944446 ms [143.999968 Hz]. (50 valid samples taken, stddev=0.171128 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10478.697819 secs, completed at 10478.028330 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10478.708793 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10478.714463 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10478.714965, scanline = 959
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 880, line_post_swaprequest = 937, time_post_swaprequest = 10478.714825
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 101, preflip_vbltimestamp = 10478.715815
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-Eyelink already initialized!
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Snd(): Initializing PsychPortAudio driver for sound output.
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 271537/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Error in function OpenSerialPort: 	Missing argument
-	Discrepancy between a specified and supplied argument:
-		Specified Argument Description:
-			direction: Input
-			position: 1
-			presence:forbidden
-			formats allowed:
-				char
-			minimum M: 0
-			maximum M: unbounded
-			minimum N: 0
-			maximum N: unbounded
-			minimum P: 0
-			maximum P: 1
-		Provided Argument Description:
-			direction: Input
-			position: 1
-			presence: absent
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Warning: -----  Data could not be saved!  ------ 
-> In Run_ReconTime (line 497) 
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error using Eyelink
-Usage:
-
-Eyelink('Stoprecording')
-
-Error in endEyeTracker (line 8)
-Eyelink('StopRecording')
-
-Error in safeExit (line 24)
-        endEyeTracker();
-
-Error in Run_ReconTime (line 498)
-        safeExit()
- 
->> clear
->> close all
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already
-attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Most graphics cards will not support proper syncing to vertical retrace when
-PTB-INFO: running in windowed mode (non-fullscreen). If PTB aborts with 'Synchronization failure'
-PTB-INFO: you can disable the sync test via call to Screen('Preference', 'SkipSyncTests', 2); .
-PTB-INFO: You won't get proper stimulus onset timestamps though, so windowed mode may be of limited use.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.943957 ms [144.010105 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.945436 ms [143.979442 Hz]. (50 valid samples taken, stddev=0.152734 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10569.847801 secs, completed at 10568.810371 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-WELCOME TO loadStimuli
-       44100
-
-
-
-PTB-ERROR: Screen('Flip'); beamposition timestamping computed an *impossible stimulus onset value* of 10572.518355 secs, which would indicate that
-PTB-ERROR: stimulus onset happened *before* it was actually requested! (Earliest theoretically possible 10572.521725 secs).
-
-PTB-ERROR: Some more diagnostic values (only for experts): rawTimestamp = 10572.523781, scanline = 843
-PTB-ERROR: Some more diagnostic values (only for experts): line_pre_swaprequest = 517, line_post_swaprequest = 557, time_post_swaprequest = 10572.521974
-PTB-ERROR: Some more diagnostic values (only for experts): preflip_vblcount = 160, preflip_vbltimestamp = 10572.171258
-PTB-ERROR: Some more diagnostic values (only for experts): postflip_vblcount = 0, postflip_vbltimestamp = -1.000000, vbltimestampquery_retrycount = 0
-
-PTB-ERROR: This error can be due to either of the following causes (No way to discriminate):
-PTB-ERROR: Either something is broken in your systems beamposition timestamping. I've disabled high precision
-PTB-ERROR: timestamping for now. Returned timestamps will be less robust and accurate, but if that was the culprit it should be fixed.
-
-PTB-ERROR: An equally likely cause would be that Synchronization of stimulus onset (buffer swap) to the
-PTB-ERROR: vertical blank interval VBL is not working properly.
-PTB-ERROR: Please run the script PerceptualVBLSyncTest to check this. With non-working sync to VBL, all stimulus timing
-PTB-ERROR: becomes quite futile. Also read 'help SyncTrouble' !
-Eyelink already initialized!
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Snd(): Initializing PsychPortAudio driver for sound output.
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
-483         saveTable(blk_mat, task, blk);
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 469931/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Error in function OpenSerialPort: 	Missing argument
-	Discrepancy between a specified and supplied argument:
-		Specified Argument Description:
-			direction: Input
-			position: 1
-			presence:forbidden
-			formats allowed:
-				char
-			minimum M: 0
-			maximum M: unbounded
-			minimum N: 0
-			maximum N: unbounded
-			minimum P: 0
-			maximum P: 1
-		Provided Argument Description:
-			direction: Input
-			position: 1
-			presence: absent
-
-
-PTB-INFO: There are still 276 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
-PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
-PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
-PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
-PTB-INFO: stale objects linger around and can consume significant memory ressources, causing degraded performance,
-PTB-INFO: timing trouble (if the system has to resort to disk paging) and ultimately out of memory conditions or
-PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to release all textures and offscreen windows)
-
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
->> clear
->> sca
->> Run_ReconTime
-Subject number [101-199, default 101]: 
-Session number [1-6, default 1]: 
-View Distance in cm [default 69.5]: 
-Introspective task [0: PRP only, 1: introspection, default 0]: 
-WELCOME TO initConstantsParameters
-Warning: This participant number and session was already attributed! 
-> In Run_ReconTime (line 54) 
-WELCOME to initPsychtooblox
-
-
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
-PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
-PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
-PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
-
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
-PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
-PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
-PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
-PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-
-
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 6.944335 ms [144.002276 Hz].
-PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 6.943118 ms [144.027510 Hz]. (50 valid samples taken, stddev=0.047266 ms.)
-PTB-INFO: Reported monitor refresh interval from operating system = 6.944444 ms [144.000000 Hz].
-PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 10701.634690 secs, completed at 10700.208817 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
-
-WARNING: Failed to load GetCharJava Java class. Most likely your Matlab
-WARNING: classpath.txt file is not up to date. I will try to auto-fix this for
-WARNING: the current session by executing the PsychJavaTrouble() command.
-WARNING: This may have bad side-effects, like clearing all your scripts variables
-WARNING: and functions! If it works, please read 'help PsychJavaTrouble'
-WARNING: for a proper and permanent fix to the problem.
-
-PsychJavaTrouble: Will now try to add the PsychJava folder to Matlabs dynamic classpath...
-PsychJavaTrouble: Added PsychJava folder to dynamic class path. Psychtoolbox Java commands should work now!
-INFO: Problem may be fixed for this session. Let's see...
-INFO: Yep! Still, please fix the problem properly asap.
-WELCOME TO loadStimuli
-       44100
-
-Eyelink already initialized!
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Running the experiment on a 'EYELINK CL 5.15  ' tracker.
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Snd(): Initializing PsychPortAudio driver for sound output.
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-Snd(): PsychPortAudio already in use. Using old sound() fallback instead...
-483         saveTable(blk_mat, task, blk);
-
-PTB-INFO: Master-Abort key '@' pressed by user.
-PTB-INFO: Enforcing script abortion and restoring desktop by executing Screen('CloseAll') now!
-PTB-INFO: Please ignore the false error message (INTERNAL PSYCHTOOLBOX ERROR) caused by this...
-
-
-PTB-INFO: There are still 277 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
+PTB-INFO: There are still 286 textures, offscreen windows or proxy windows open. Screen('CloseAll') will auto-close them.
 PTB-INFO: This may be fine for studies where you only use a few textures or windows, but a large number of open
 PTB-INFO: textures or offscreen windows can be an indication that you forgot to dispose no longer needed items
 PTB-INFO: via a proper call to Screen('Close', [windowOrTextureIndex]); , e.g., at the end of each trial. These
@@ -1201,7 +678,7 @@ PTB-INFO: crashes. Please check your code. (Screen('Close') is a quick way to re
 
 
 INFO: PTB's Screen('Flip', 10) command seems to have missed the requested stimulus presentation deadline
-INFO: a total of 38 times out of a total of 5786 flips during this session.
+INFO: a total of 4 times out of a total of 15 flips during this session.
 
 INFO: This number is fairly accurate (and indicative of real timing problems in your own code or your system)
 INFO: if you provided requested stimulus onset times with the 'when' argument of Screen('Flip', window [, when]);
@@ -1210,86 +687,29 @@ INFO: of timing behaviour than a hard reliable measurement. Large numbers may in
 INFO: deserve your closer attention. Cfe. 'help SyncTrouble', the FAQ section at www.psychtoolbox.org and the
 INFO: examples in the PDF presentation in PsychDocumentation/Psychtoolbox3-Slides.pdf for more info and timing tips.
 
-
-
-WARNING: This session of your experiment was run by you with the setting Screen('Preference', 'SkipSyncTests', 1).
-WARNING: This means that some internal self-tests and calibrations were skipped. Your stimulus presentation timing
-WARNING: may have been wrong. This is fine for development and debugging of your experiment, but for running the real
-WARNING: study, please make sure to set Screen('Preference', 'SkipSyncTests', 0) for maximum accuracy and reliability.
-
-ans =
-
-     0
-
-Receiving data file 'SX101098.edf'
-ReceiveFile status 4327011/n
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-
-ans =
-
-     0
-
-Error in function OpenSerialPort: 	Missing argument
-	Discrepancy between a specified and supplied argument:
-		Specified Argument Description:
-			direction: Input
-			position: 1
-			presence:forbidden
-			formats allowed:
-				char
-			minimum M: 0
-			maximum M: unbounded
-			minimum N: 0
-			maximum N: unbounded
-			minimum P: 0
-			maximum P: 1
-		Provided Argument Description:
-			direction: Input
-			position: 1
-			presence: absent
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
 Warning: -----  Data could not be saved!  ------ 
 > In Run_ReconTime (line 497) 
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error in function StopRecording: 	Usage error
-Eyelink system is not connected!
-
-Error using Eyelink
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
+Error in function Close: 	Usage error
+Invalid audio device handle provided.
+Error using PsychPortAudio
 Usage:
 
-Eyelink('Stoprecording')
+PsychPortAudio('Close' [, pahandle]);
 
-Error in endEyeTracker (line 8)
-Eyelink('StopRecording')
-
-Error in safeExit (line 24)
-        endEyeTracker();
+Error in safeExit (line 27)
+    PsychPortAudio('Close', padhandle);
 
 Error in Run_ReconTime (line 498)
         safeExit()
  
 >> 
->> 
->> clear
 >> Run_ReconTime
-Subject number [101-199, default 101]: 104
-Operation terminated by user during Run_ReconTime (line 17)
- 
->> clear
->> Run_ReconTime
-Subject number [101-199, default 101]: 104
+Subject number [101-199, default 101]: 110
 Session number [1-6, default 1]: 
 View Distance in cm [default 69.5]: 
 Introspective task [0: PRP only, 1: introspection, default 0]: 
@@ -1297,54 +717,45 @@ WELCOME TO initConstantsParameters
 WELCOME to initPsychtooblox
 
 
-PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.12 - Build date: Aug 26 2014).
-PTB-INFO: Support status on this operating system release: Windows version 6.2 partially supported.
+PTB-INFO: This is Psychtoolbox-3 for Microsoft Windows, under Matlab 64-Bit (Version 3.0.18 - Build date: Jun 27 2022).
+PTB-INFO: OS support status: Windows 10 (Version 10.0) supported and tested to some limited degree.
 PTB-INFO: Type 'PsychtoolboxVersion' for more detailed version information.
 PTB-INFO: Most parts of the Psychtoolbox distribution are licensed to you under terms of the MIT License, with
 PTB-INFO: some restrictions. See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.
 
-PTB-INFO: Will disable DWM because a regular fullscreen onscreen window is opened -> We want best timing and performance.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: For information about paid support, support memberships and other commercial services, please type
+PTB-INFO: 'PsychPaidSupportAndServices'.
+
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
 PTB-INFO: The detected endline of the vertical blank interval is equal or lower than the startline. This indicates
 PTB-INFO: that i couldn't detect the duration of the vertical blank interval and won't be able to correct timestamps
 PTB-INFO: for it. This will introduce a very small and constant offset (typically << 1 msec). Read 'help BeampositionQueries'
 PTB-INFO: for how to correct this, should you really require that last few microseconds of precision.
 PTB-INFO: Btw. this can also mean that your systems beamposition queries are slightly broken. It may help timing precision to
-PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAM', section 'kPsychUseBeampositionQueryWorkaround'.
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: enable the beamposition workaround, as explained in 'help ConserveVRAMSettings', section 'kPsychUseBeampositionQueryWorkaround'.
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
 
 
-PTB-INFO: OpenGL-Renderer is NVIDIA Corporation :: GeForce GTX 1650/PCIe/SSE2 :: 4.6.0 NVIDIA 430.86
-PTB-INFO: VBL startline = 1080 , VBL Endline = 1079
-PTB-INFO: Measured monitor refresh interval from beamposition = 16.666196 ms [60.001695 Hz].
+PTB-INFO: OpenGL-Renderer is Intel :: Intel(R) HD Graphics 520 :: 4.5.0 - Build 25.20.100.6576
+PTB-INFO: VBL startline = 1080 , VBL Endline = 1080
+PTB-INFO: Measured monitor refresh interval from beamposition = 16.705482 ms [59.860591 Hz].
 PTB-INFO: Will use beamposition query for accurate Flip time stamping.
-PTB-INFO: Measured monitor refresh interval from VBLsync = 16.665480 ms [60.004272 Hz]. (50 valid samples taken, stddev=0.168588 ms.)
+PTB-INFO: Measured monitor refresh interval from VBLsync = 16.706662 ms [59.856361 Hz]. (50 valid samples taken, stddev=0.147857 ms.)
 PTB-INFO: Reported monitor refresh interval from operating system = 16.666667 ms [60.000000 Hz].
 PTB-INFO: Small deviations between reported values are normal and no reason to worry.
-PTB-WARNING: ==============================================================================================================================
-PTB-WARNING: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE! ALL FLIP STIMULUS ONSET TIMESTAMPS WILL BE VERY LIKELY UNRELIABLE AND LESS ACCURATE!
-PTB-WARNING: STIMULUS ONSET TIMING WILL BE UNRELIABLE AS WELL, AND GRAPHICS PERFORMANCE MAY BE SEVERELY REDUCED! STIMULUS IMAGES MAY NOT
-PTB-WARNING: SHOW UP AT ALL! DO NOT USE THIS MODE FOR RUNNING REAL EXPERIMENT SESSIONS WITH ANY REQUIREMENTS FOR ACCURATE TIMING!
-PTB-WARNING: ==============================================================================================================================
-PTB-INFO: Support for fast OffscreenWindows enabled.
-PTB-ERROR: OpenML timestamping reports that flip completed before it was scheduled [Scheduled no earlier than 11778.832252 secs, completed at 11582.330113 secs]!
-PTB-ERROR: This could mean that sync of bufferswaps to vertical retrace is broken or some other driver bug! Switching to alternative timestamping method.
-PTB-ERROR: Check your system setup!
-PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFD50632748. Setting thread priority to HIGHEST as a work-around...
-PTB-INFO: Using specially modified PortAudio engine, based on offical version: PortAudio V19-devel WITH-DIM
-
-Will use ASIO enhanced Portaudio driver DLL. See Psychtoolbox/PsychSound/PortAudioLICENSE.txt
-for the exact terms of use for this dll.
-
-
-Disclaimer: "ASIO is a trademark and software of Steinberg Media Technologies GmbH."
-Using "ASIO Interface Technology by Steinberg Media Technologies GmbH"
-
-Found at least one ASIO enabled soundcard in your system. Good, will use that in low-latency mode!
-PTB-INFO: New audio device with handle 0 opened as PortAudio stream:
-PTB-INFO: For 2 channels Playback: Audio subsystem is ASIO, Audio device name is ASIO Fireface USB
-PTB-INFO: Real samplerate 44100.000000 Hz. Input latency 1.723356 msecs, Output latency 2.108844 msecs.
+PTB-INFO: ==============================================================================================================================
+PTB-INFO: WINDOWS DWM DESKTOP COMPOSITOR IS ACTIVE. On this Windows-10 or later system, Psychtoolbox can no longer reliably detect if
+PTB-INFO: this will cause trouble for timing and integrity of visual stimuli or not. You might be just fine, or you could be in trouble.
+PTB-INFO: Use external measurement equipment and independent procedures to verify reliability of timing if you care about proper timing.
+PTB-INFO: ==============================================================================================================================
+PTB-WARNING: Call to PsychAvSetMmMaxThreadCharacteristics() for Vista-MMCSS scheduling failed for threadhandle 00007FFF557F5140. Setting thread priority to HIGHEST as a work-around...
+PTB-INFO: Using modified PortAudio V19.7.0-devel, revision unknown
+PTB-INFO: New audio device -1 with handle 0 opened as PortAudio stream:
+PTB-INFO: For 2 channels Playback: Audio subsystem is Windows WASAPI, Audio device name is Lautsprecher/Kopfhörer (Realtek High Definition Audio)
+PTB-INFO: Real samplerate 48000.000000 Hz. Input latency 0.000000 msecs, Output latency 22.000000 msecs.
+PTB-DEBUG: DrawText: Failed to load external drawtext plugin [Unknown error].
+PTB-INFO: DrawText: Failed to load external drawtext plugin 'libptbdrawtext_ftgl64.dll'. Reverting to legacy GDI text renderer. 'help DrawTextPlugin' for troubleshooting.
 WELCOME TO loadStimuli
-       44100
+       48000
 
 

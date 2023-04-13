@@ -34,7 +34,7 @@ filename = string(fullfile(parent_dir,DATA_FOLDER,['sub-', subID],['ses-',num2st
     ['sub-', subID,'_ses-',num2str(session),'_run-all_task-', task,'_events.mat']));
 
 event_table = load(filename);
-event_table = event_table.input_table;
+event_table = event_table.d;
 
 
 if ~ ismember('RT_aud', event_table.Properties.VariableNames)

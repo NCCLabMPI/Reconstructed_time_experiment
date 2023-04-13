@@ -20,7 +20,7 @@ global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTIO
 % Legend: false = 0 | true = 1  
 LAB_ID = 'SX';
 %% Recording modalities
-EYE_TRACKER = 1; % Must be set to 1 if recording with Eyetracker
+EYE_TRACKER = 0; % Must be set to 1 if recording with Eyetracker
 Behavior = 1; %Set to 1 if recording with Behavior only
 
 %% Hardware and physical parameters:
@@ -43,7 +43,7 @@ DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 
 %% DEBUG parameters
 DEBUG = 0; % 0 = no debug | 1 = regular debug | 2 = fast debug
-SHOW_INSTRUCTIONS = 0;
+SHOW_INSTRUCTIONS = 1;
 VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
 NO_PRACTICE = 0; % skip the practice run
