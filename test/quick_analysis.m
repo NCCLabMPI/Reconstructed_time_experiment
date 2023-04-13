@@ -34,8 +34,12 @@ filename = string(fullfile(parent_dir,DATA_FOLDER,['sub-', subID],['ses-',num2st
     ['sub-', subID,'_ses-',num2str(session),'_run-all_task-', task,'_events.mat']));
 
 event_table = load(filename);
-event_table = event_table.d;
 
+try
+    event_table = event_table.input_table;
+catch
+    event_table = event_table.d;
+end
 
 if ~ ismember('RT_aud', event_table.Properties.VariableNames)
     % Add functions folder to path (when we separate all functions)
@@ -168,51 +172,92 @@ writetable(output_table, output_filename);
 
 if plotting
 
+
+    SOAs = [0, 0.116, 0.232, 0.466];
+
     figure(1)
+    prp_effect = tiledlayout(1,3);
+    nexttile
     title('task relevant and irrelevant')
     hold on
-    SOAs = [0, 0.116, 0.232, 0.466];
     plot(SOAs,output_struct.RT_aud_on, 'b')
     plot(SOAs,output_struct.RT_aud_off, 'r')
-    legend('onset', 'offset')
     ylim([0.4, 0.8])
     hold off
 
-    figure(2)
+    nexttile
     title('task relevant')
     hold on
     plot(SOAs,output_struct.task_relevant.RT_aud_on, 'b')
     plot(SOAs,output_struct.task_relevant.RT_aud_off, 'r')
-    legend('onset', 'offset')
     ylim([0.4, 0.8])
     hold off
 
-    figure(3)
+    nexttile
     title('task irrelevant')
     hold on
     plot(SOAs,output_struct.task_irrelevant.RT_aud_on, 'b')
     plot(SOAs,output_struct.task_irrelevant.RT_aud_off, 'r')
-    legend('onset', 'offset')
     ylim([0.4, 0.8])
     hold off
 
-    figure(4)
+    lgd = legend('onset', 'offset');
+    lgd.Layout.Tile = 'east';
+
+    figure(2)
     histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
         0.5*refRate, 1.5*refRate, 2.5*refRate, 3.5*refRate]);
     ylim([0, length(output_struct.dur_diff) + 50])
-    title(['Jitter in visual stimulus duration (Refresh rate: ', num2str(refRate), ' ms)'])
+    title(['Jitter in visual stimulus duration (Refresh rate: ', num2str(refRate), ' s)'])
     ylabel('Number of trials')
     xlabel('Frames off')
 
-    h = gca;
-    h.XTick = [-3*refRate, -2*refRate, -refRate, 0, refRate, 2*refRate, 3*refRate];
-    h.XTickLabel = ["-3", "-2", "-1", "0", "+1", "+2", "+3"];
+    h1 = gca;
+    h1.XTick = [-3*refRate, -2*refRate, -refRate, 0, refRate, 2*refRate, 3*refRate];
+    h1.XTickLabel = ["-3", "-2", "-1", "0", "+1", "+2", "+3"];
 
-    figure(5)
+    fig_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_duration_jitter.fig']));
+    saveas(h1,fig_filename)
+    png_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_duration_jitter.png']));
+    saveas(h1,png_filename)
+
+    figure(3)
     histogram(output_struct.SOA_diff*1000);
     title('Jitter in SOA')
     ylabel('Number of trials')
     xlabel('ms off')
+
+    h2 = gca;
+    fig_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_all_SOA_jitter.fig']));
+    saveas(h2,fig_filename)
+    png_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_all_SOA_jitter.png']));
+    saveas(h2,png_filename)
+
+    figure(4)
+    single_soas = tiledlayout(2,2);
+    nbins = 8;
+    for sub_plot = 1:4
+        nexttile
+       
+        onset_data = (output_struct.SOA_diff(event_table.SOA == SOAs(sub_plot) & strcmp(event_table.SOA_lock, 'onset')))*1000;
+        offset_data = (output_struct.SOA_diff(event_table.SOA == SOAs(sub_plot) & strcmp(event_table.SOA_lock, 'offset')))*1000;
+        plot_data = nan(length(offset_data)*2, 2);
+        plot_data(1:length(onset_data),1) = onset_data;
+        plot_data(1:length(offset_data),2) = offset_data;
+        hist(plot_data,nbins);
+        title(['SOA: ', num2str(SOAs(sub_plot)), ' ms'])
+        ylabel('Number of trials')
+        xlabel('ms off')
+
+    end
+   
+    lgd = legend('offset', 'onset');
+    lgd.Layout.Tile = 'east';
+
+    fig_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_single_SOAs_jitter.fig']));
+    saveas(single_soas,fig_filename)
+    png_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_single_SOAs_jitter.png']));
+    saveas(single_soas,png_filename)
 
 end
 
