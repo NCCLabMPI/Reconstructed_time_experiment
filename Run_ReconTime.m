@@ -313,7 +313,7 @@ try
                         % store RT for visual task
                         if key == VIS_TARGET_KEY && hasInput_vis == FALSE % taget key was pressed
                             blk_mat.time_of_resp_vis(tr) =  Resp_Time;
-                            blk_mat.has_repsonse_vis(tr) = 1;
+                            blk_mat.has_response_vis(tr) = 1;
                             hasInput_vis = TRUE;
                             % store RT for auditory task
                         elseif (key == LOW_PITCH_KEY || key == HIGH_PITCH_KEY) && hasInput_aud == FALSE % auditory key was pressed

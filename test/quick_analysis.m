@@ -58,10 +58,10 @@ event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event
 %% performances
 
 % performanance
-output_struct.hits = sum(strcmp(target_event_table.trial_repsonse_vis, 'hit'));
-output_struct.misses = sum(strcmp(target_event_table.trial_repsonse_vis, 'miss'));
-output_struct.crs = sum(strcmp(event_table.trial_repsonse_vis, 'cr'));
-output_struct.fas = sum(strcmp(event_table.trial_repsonse_vis, 'fa'));
+output_struct.hits = sum(strcmp(target_event_table.trial_response_vis, 'hit'));
+output_struct.misses = sum(strcmp(target_event_table.trial_response_vis, 'miss'));
+output_struct.crs = sum(strcmp(event_table.trial_response_vis, 'cr'));
+output_struct.fas = sum(strcmp(event_table.trial_response_vis, 'fa'));
 
 output_struct.mean_aud_acc = mean(event_table.trial_accuracy_aud, 'omitnan');
 

@@ -15,17 +15,17 @@ for tr = 1:length(log_table.trial)
 
 
         % compute correctness visual task
-        if strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_repsonse_vis(tr) == 1
+        if strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_response_vis(tr) == 1
             performance_struct.hits = performance_struct.hits + 1;
-            log_table.trial_repsonse_vis{tr} ='hit';
-        elseif ~strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_repsonse_vis(tr) == 1
+            log_table.trial_response_vis{tr} ='hit';
+        elseif ~strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_response_vis(tr) == 1
             performance_struct.fa = performance_struct.fa + 1;
-            log_table.trial_repsonse_vis{tr} ='fa';
-        elseif ~strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_repsonse_vis(tr) == 0
+            log_table.trial_response_vis{tr} ='fa';
+        elseif ~strcmp(log_table.task_relevance{tr}, 'target') && log_table.has_response_vis(tr) == 0
             performance_struct.cr = performance_struct.cr + 1;
-            log_table.trial_repsonse_vis{tr} ='cr';
+            log_table.trial_response_vis{tr} ='cr';
         else
-            log_table.trial_repsonse_vis{tr} ='miss';
+            log_table.trial_response_vis{tr} ='miss';
             performance_struct.misses = performance_struct.misses + 1;
         end
 
@@ -69,9 +69,9 @@ end
 performance_struct.aud_mean_accuracy = mean(log_table.trial_accuracy_aud, 'omitnan');
 end
 
-% log_table.has_repsonse_vis(:) = 0;
+% log_table.has_response_vis(:) = 0;
 % for tr = 1:length(log_table.trial)
 %     if log_table.trial_first_button_press(tr) == 1 || log_table.trial_second_button_press(tr) == 1
-%         log_table.has_repsonse_vis(tr) = 1;
+%         log_table.has_response_vis(tr) = 1;
 %     end
 % end
