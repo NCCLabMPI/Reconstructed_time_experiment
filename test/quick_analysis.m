@@ -58,10 +58,10 @@ event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event
 %% performances
 
 % performanance
-output_struct.hits = sum(strcmp(target_event_table.trial_response_vis, 'hit'));
-output_struct.misses = sum(strcmp(target_event_table.trial_response_vis, 'miss'));
-output_struct.crs = sum(strcmp(event_table.trial_response_vis, 'cr'));
-output_struct.fas = sum(strcmp(event_table.trial_response_vis, 'fa'));
+% output_struct.hits = sum(strcmp(target_event_table.trial_response_vis, 'hit'));
+% output_struct.misses = sum(strcmp(target_event_table.trial_response_vis, 'miss'));
+% output_struct.crs = sum(strcmp(event_table.trial_response_vis, 'cr'));
+% output_struct.fas = sum(strcmp(event_table.trial_response_vis, 'fa'));
 
 output_struct.mean_aud_acc = mean(event_table.trial_accuracy_aud, 'omitnan');
 
@@ -180,25 +180,31 @@ if plotting
     nexttile
     title('task relevant and irrelevant')
     hold on
-    plot(SOAs,output_struct.RT_aud_on, 'b')
-    plot(SOAs,output_struct.RT_aud_off, 'r')
-    ylim([0.4, 0.8])
+    plot(SOAs*1000,output_struct.RT_aud_on*1000, 'b')
+    plot(SOAs*1000,output_struct.RT_aud_off*1000, 'r')
+    ylim([400, 800])
+    ylabel('Auditory reaction time [ms]')
+    xlabel('SOA [ms]')
     hold off
 
     nexttile
     title('task relevant')
     hold on
-    plot(SOAs,output_struct.task_relevant.RT_aud_on, 'b')
-    plot(SOAs,output_struct.task_relevant.RT_aud_off, 'r')
-    ylim([0.4, 0.8])
+    plot(SOAs*1000,output_struct.task_relevant.RT_aud_on*1000, 'b')
+    plot(SOAs*1000,output_struct.task_relevant.RT_aud_off*1000, 'r')
+    ylim([400, 800])
+    ylabel('Auditory reaction time [ms]')
+    xlabel('SOA [ms]')
     hold off
 
     nexttile
     title('task irrelevant')
     hold on
-    plot(SOAs,output_struct.task_irrelevant.RT_aud_on, 'b')
-    plot(SOAs,output_struct.task_irrelevant.RT_aud_off, 'r')
-    ylim([0.4, 0.8])
+    plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_on*1000, 'b')
+    plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_off*1000, 'r')
+    ylim([400, 800])
+    ylabel('Auditory reaction time [ms]')
+    xlabel('SOA [ms]')
     hold off
 
     lgd = legend('onset', 'offset');
