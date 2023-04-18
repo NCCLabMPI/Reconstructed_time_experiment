@@ -133,7 +133,8 @@ try
 
         % Initialize the eyetracker with the block number and run the
         % calibration:
-        if EYE_TRACKER
+
+        if EYE_TRACKER && (mod(blk, 4) == 0 || blk == 1)
             % Initialize the eyetracker:
             initEyetracker(subID, blk);
             % Show the calibration message to give the option to perform 
@@ -185,7 +186,7 @@ try
         % Show the target screen at the beginning of each block (expect during auditory practice):
         if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
-            KbWait([],3,WaitSecs(0)+5);
+            KbWait([],3);
         end
 
         % Wait a random amount of time and show fixation:

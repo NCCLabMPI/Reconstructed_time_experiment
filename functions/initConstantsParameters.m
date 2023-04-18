@@ -104,21 +104,21 @@ function initConstantsParameters()
     SAVING_MESSAGE = 'Saving...';
     CLEAN_EXIT_MESSAGE = 'Program aborted by user!';
     MINIBLOCK_TEXT = 'Press When These Appear:';
-    END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d.\n\n Press SPACE to continue...';
-    END_OF_BLOCK_MESSAGE = 'End of block %d out of %d.\n\n Feel free to take a break \n\n Press SPACE to continue...';
+    END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d.\n\n Press any button to continue...';
+    END_OF_BLOCK_MESSAGE = 'End of block %d out of %d.\n\n Feel free to take a break \n\n Press any button to continue...';
     MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
-    EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press SPACE to continue...';
-    CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press SPACE to continue...';
+    EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press any button to continue...';
+    CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press any button to continue...';
     EYETRACKER_CALIBRATION_MESSAGE = 'Press C to proceed to perform the calibration \n\n Press v to skip the calibration';
-    EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press SPACE to proceed to calibration...';
-    GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press SPACE to continue...';
+    EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press any button to proceed to calibration...';
+    GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press any button to continue...';
     AUD_FEEDBACK_MESSAGE = '\n\n\n\n Your score on the auditory task was: %s';
     RESP_ORDER_WARNING_MESSAGE = 'Please remember to \n\n respond to the visual first \n\n and to the auditory task second';
 
     INTROSPEC_QN_VIS = 'Visual task duration?';
     INTROSPEC_QN_AUD = 'Auditory task duration?';
 
-    PRESS_SPACE ='\nPress SPACE to continue...\n';
+    PRESS_SPACE ='\nPress any button to continue...\n';
     RESTART_MESSAGE='Are you sure you want to restart?';
 
     VIEWING_DISTANCE = viewDistance; % in centimeters

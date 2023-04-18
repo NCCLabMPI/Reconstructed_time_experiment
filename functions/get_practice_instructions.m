@@ -10,7 +10,7 @@ if RESPONSE_BOX
 
     else
         high_pitch_repsonse_button = 'red button';
-        low_pitch_repsonse_button = 'yellow button';
+        low_pitch_repsonse_button = 'white button';
         vis_target_respnse_button = 'green button';
     end
 
@@ -23,15 +23,15 @@ end
 
 % Practice start message
 if strcmp(practice_type, 'auditory')
-    msg = sprintf('We will start with the pratice \n\n of the auditory task. \n\n Press %s for low tone \n\n and %s for high tones \n\n Press space to continue...', ...
+    msg = sprintf('We will start with the pratice \n\n of the auditory task. \n\n Press %s for low tone \n\n and %s for high tones \n\n Press any button to continue...', ...
         low_pitch_repsonse_button, high_pitch_repsonse_button);
 elseif strcmp(practice_type, 'visual')
-    msg = sprintf('We will continue with the pratice \n\n of the visual task. \n\n Press %s when you see the target \n\n Press space to continue...', ...
+    msg = sprintf('We will continue with the pratice \n\n of the visual task. \n\n Press %s when you see the target \n\n Press any button to continue...', ...
         vis_target_respnse_button);
 elseif strcmp(practice_type, 'auditory_and_visual')
-    msg = 'We will continue with the pratice \n\n of both tasks at the same time. \n\n Press space to continue...';
+    msg = 'We will continue with the pratice \n\n of both tasks at the same time. \n\n Press any button to continue...';
 elseif strcmp(practice_type, 'introspection')
-    msg = 'We will continue with the \n\n estimation of reaction time. \n\n Use the dial to provide your repsonses \n\n Press space to continue...';
+    msg = 'We will continue with the \n\n estimation of reaction time. \n\n Use the dial to provide your repsonses \n\n Press any button to continue...';
 end
 
 end

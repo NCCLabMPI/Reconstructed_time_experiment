@@ -10,7 +10,7 @@ function [ key, Resp_Time ] = getInput()
 
 global abortKey VIS_RESPONSE_KEY VIS_TARGET_KEY
 global AUD_RESPONSE_KEY_HIGH HIGH_PITCH_KEY AUD_RESPONSE_KEY_LOW LOW_PITCH_KEY
-global WRONG_KEY NO_KEY ABORT_KEY
+global NO_KEY ABORT_KEY
 key = NO_KEY;
 
 [KeyIsDown, Resp_Time, Resp1] = KbCheck();
@@ -25,7 +25,7 @@ if KeyIsDown
     elseif Resp1(abortKey)
         key = ABORT_KEY;
     else
-        key = WRONG_KEY;
+        key = Resp1;
     end
 end
 if key == NO_KEY
