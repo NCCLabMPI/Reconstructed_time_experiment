@@ -434,7 +434,9 @@ try
         % Every 4 blocks, there is a longer break:
         if ~is_practice
             if mod(blk, 4) ==0
-                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4);
+                last_block = log_all(log_all.block > blk - 4, :);
+                [last_block, ~] = compute_performance(last_block);
+                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4,  mean(last_block.trial_accuracy_aud));
             else
                 block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
             end
