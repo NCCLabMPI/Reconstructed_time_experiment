@@ -30,7 +30,7 @@ Eyelink('Openfile', edfFile);
 s = Eyelink('command','camera_lens_focal_length = 16');
 
 % Setting the eyetracker to binocular
-% Eyelink('command','binocular_enabled = YES')
+Eyelink('command','binocular_enabled = YES')
 
 % Setting calibration to 13 dots
 Eyelink('command','calibration_type = HV13')
@@ -70,8 +70,8 @@ Eyelink('command', 'file_sample_data  = LEFT,RIGHT,GAZE,HREF,RAW,AREA,HTARGET,GA
 Eyelink('command', 'link_event_filter = LEFT,RIGHT,FIXATION,SACCADE,BLINK,MESSAGE,BUTTON,FIXUPDATE,INPUT');
 Eyelink('command', 'link_sample_data  = LEFT,RIGHT,GAZE,GAZERES,AREA,HTARGET,STATUS,INPUT');
 
-% Set the sampling rate to 1000Hz:
-Eyelink('command', 'sample_rate = 1000');
+% Set the sampling rate to 500Hz:
+Eyelink('command', 'sample_rate = 500');
 
 % Set the use of ellipse filter to no:
 Eyelink('command', 'use_ellipse_fitter = no');
