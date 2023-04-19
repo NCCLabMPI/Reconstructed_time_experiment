@@ -104,8 +104,8 @@ function initConstantsParameters()
     SAVING_MESSAGE = 'Saving...';
     CLEAN_EXIT_MESSAGE = 'Program aborted by user!';
     MINIBLOCK_TEXT = 'Press When These Appear:';
-    END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d.\n\n Press any button to continue...';
-    END_OF_BLOCK_MESSAGE = 'End of block %d out of %d.\n\n Your visual score is: %d %. \n\n Feel free to take a break \n\n Press any button to continue...';
+    END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d\n\n Press any button to continue...';
+    END_OF_BLOCK_MESSAGE = 'End of block %d out of %d\n\n Your visual score is: %d %% \n\n Feel free to take a break \n\n Press any button to continue...';
     MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
     EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press any button to continue...';
     CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press any button to continue...';

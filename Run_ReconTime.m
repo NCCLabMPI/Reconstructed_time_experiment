@@ -134,7 +134,7 @@ try
         % Initialize the eyetracker with the block number and run the
         % calibration:
 
-        if EYE_TRACKER && (mod(blk, 4) == 0 || blk == 1)
+        if EYE_TRACKER 
             % Initialize the eyetracker:
             initEyetracker(subID, blk);
             % Show the calibration message to give the option to perform 
@@ -149,7 +149,7 @@ try
                     CorrectKey = 1;
                 elseif CalibrationResp(ValidationKey)
                     CorrectKey = 1;
-                end
+                end 
             end
             % Starting the recording
             Eyelink('StartRecording');
@@ -186,7 +186,10 @@ try
         % Show the target screen at the beginning of each block (expect during auditory practice):
         if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
-            KbWait([],3);
+            wait_resp = 0; 
+            while wait_resp == 0     
+                [~, ~, wait_resp] = KbCheck(); 
+            end
         end
 
         % Wait a random amount of time and show fixation:
@@ -436,7 +439,7 @@ try
             if mod(blk, 4) ==0
                 last_block = log_all(log_all.block > blk - 4, :);
                 [last_block, ~] = compute_performance(last_block);
-                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4,  mean(last_block.trial_accuracy_aud));
+                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4, round(mean(last_block.trial_accuracy_aud, 'omitnan')*100));
             else
                 block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
             end

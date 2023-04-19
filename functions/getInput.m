@@ -25,7 +25,7 @@ if KeyIsDown
     elseif Resp1(abortKey)
         key = ABORT_KEY;
     else
-        key = Resp1;
+        key = find(Resp1);
     end
 end
 if key == NO_KEY

@@ -30,7 +30,7 @@ Eyelink('Openfile', edfFile);
 s = Eyelink('command','camera_lens_focal_length = 16');
 
 % Setting the eyetracker to binocular
-Eyelink('command','binocular_enabled = NO')
+% Eyelink('command','binocular_enabled = YES')
 
 % Setting calibration to 13 dots
 Eyelink('command','calibration_type = HV13')
