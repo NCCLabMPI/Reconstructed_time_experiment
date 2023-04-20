@@ -1,7 +1,7 @@
 % INITEYETRACKER
 % This function initialize the eyetracker
 function [] = initEyetracker(subID, blk)
-global el edfFile w SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER
+global el edfFile w SCREEN_SIZE_CM viewDistanceBottomTop  DISTANCE_SCREEN_TRACKER VIS_RESPONSE_KEY
 
 % Initializing eyelink
 Eyelink('Initialize');
@@ -11,6 +11,7 @@ Eyelink('Initialize');
 el = EyelinkInitDefaults(w);
 
 el.backgroundcolour = [125 125 125];
+el.space = VIS_RESPONSE_KEY;
 EyelinkUpdateDefaults(el);
 
 if ~EyelinkInit(0, 1)
