@@ -21,10 +21,8 @@ if isempty(DATA_FOLDER); DATA_FOLDER = 'data'; end
 if isempty(LAB_ID); LAB_ID = 'SX'; end
 if isempty(refRate); refRate = 1/60; end
 
-
 % make SUB_ID
 subID = sprintf('%s%d', LAB_ID, subjectNum);
-
 
 % make file name
 mydir  = pwd;
@@ -52,18 +50,57 @@ end
 
 % remove targets and practice
 practice_event_table = event_table(event_table.is_practice == 1, :);
-target_event_table = event_table(strcmp(event_table.task_relevance, 'target'),:);
+full_event_table = event_table;
 event_table = event_table(~strcmp(event_table.task_relevance, 'target') & ~event_table.is_practice,:);
 
 %% performances
 
 % performanance
-% output_struct.hits = sum(strcmp(target_event_table.trial_response_vis, 'hit'));
-% output_struct.misses = sum(strcmp(target_event_table.trial_response_vis, 'miss'));
-% output_struct.crs = sum(strcmp(event_table.trial_response_vis, 'cr'));
-% output_struct.fas = sum(strcmp(event_table.trial_response_vis, 'fa'));
+output_struct.hits = sum(strcmp(full_event_table.trial_response_vis, 'hit'));
+output_struct.misses = sum(strcmp(full_event_table.trial_response_vis, 'miss'));
+output_struct.crs = sum(strcmp(full_event_table.trial_response_vis, 'cr'));
+output_struct.fas = sum(strcmp(full_event_table.trial_response_vis, 'fa'));
 
 output_struct.mean_aud_acc = mean(event_table.trial_accuracy_aud, 'omitnan');
+
+% split by category 
+
+cates = {'face','object','letter','false_font'};
+for cate = 1:4
+
+output_struct.cate_hits(cate) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & strcmp(full_event_table.category, cates{cate}));
+output_struct.cate_misses(cate) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & strcmp(full_event_table.category, cates{cate}));
+output_struct.cate_crs(cate) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & strcmp(full_event_table.category, cates{cate}));
+output_struct.cate_fas(cate) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & strcmp(full_event_table.category, cates{cate}));    
+
+% auditory accuracy
+output_struct.mean_aud_acc_cate(cate) = mean(event_table.trial_accuracy_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
+
+% reaction time
+output_struct.mean_RT_aud_cate(cate) = mean(event_table.RT_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
+
+end 
+
+% split by picht
+
+pitches = [1000, 1100];
+for pitch = 1:2
+
+output_struct.pitch_hits(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & full_event_table.pitch == pitches(pitch));
+output_struct.pitch_misses(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & full_event_table.pitch == pitches(pitch));
+output_struct.pitch_crs(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & full_event_table.pitch == pitches(pitch));
+output_struct.pitch_fas(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & full_event_table.pitch == pitches(pitch));
+
+% auditory accuracy
+output_struct.mean_aud_acc_pitch(pitch) = mean(event_table.trial_accuracy_aud(event_table.pitch == pitches(pitch)), 'omitnan');
+
+% reaction time
+output_struct.mean_RT_aud_pitch(pitch) = mean(event_table.RT_aud(event_table.pitch == pitches(pitch)), 'omitnan');
+
+end 
+
+
+%% reaction time 
 
 % reaction time
 output_struct.mean_RT_aud = mean(event_table.RT_aud, 'omitnan');
@@ -143,30 +180,49 @@ output_struct.real_trial_dur_mean_plus_jitter = mean(output_struct.real_trial_du
 output_struct.target_trial_durs_plus_jitter = 2 + event_table.stim_jit;
 output_struct.diff_trial_durs_plus_jitter = output_struct.real_trial_durs_plus_jitter - output_struct.target_trial_durs_plus_jitter;
 
-%% write table and save controls
+%% performance table 
+perf_table = table('RowNames', {'hits', 'misses', 'cr', 'fas', 'aud_acc', 'mean_RT_aud'});
 
-% control table
-output_table = table;
-output_table.real_dur = output_struct.real_dur;
-output_table.target_dur = event_table.duration;
-output_table.dur_diff = output_struct.dur_diff;
-output_table.real_SOA = output_struct.real_SOA;
-output_table.target_SOA = event_table.onset_SOA;
-output_table.SOA_diff = output_struct.SOA_diff;
-output_table.trial_dur = output_struct.trial_durs;
-output_table.real_trial_dur_plus_jitter = output_struct.real_trial_durs_plus_jitter;
-output_table.taregt_trial_dur_plus_jitter = output_struct.target_trial_durs_plus_jitter;
-output_table.diff_trial_dur_plus_jitter = output_struct.diff_trial_durs_plus_jitter;
+perf_table.all = [output_struct.hits, output_struct.misses, output_struct.crs,...
+    output_struct.fas, output_struct.mean_aud_acc, output_struct.mean_RT_aud]';
 
-% save contro
+for cate = 1:4
+    perf_table.(cates{cate})(:) = [output_struct.cate_hits(cate), output_struct.cate_misses(cate), output_struct.cate_crs(cate),...
+        output_struct.cate_fas(cate), output_struct.mean_aud_acc_cate(cate), output_struct.mean_RT_aud_cate(cate)]';
+end
+
+pitches = {'low','high'};
+for pitch = 1:2
+    perf_table.(pitches{pitch})(:) = [output_struct.pitch_hits(pitch), output_struct.pitch_misses(pitch), output_struct.pitch_crs(pitch),...
+        output_struct.pitch_fas(pitch), output_struct.mean_aud_acc_pitch(pitch), output_struct.mean_RT_aud_pitch(pitch)]';
+end
+
+% save table
 test_data_dir = fullfile(mydir,'test_data',['sub-', subID],['ses-',num2str(session)]);
 
 if ~exist(test_data_dir, 'dir')
     mkdir(test_data_dir);
 end
 
-output_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_test_output.csv']));
-writetable(output_table, output_filename);
+perf_table_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_performance.csv']));
+writetable(perf_table, perf_table_filename);
+%% timing control
+
+% timing control table
+output_timing_table = table;
+output_timing_table.real_dur = output_struct.real_dur;
+output_timing_table.target_dur = event_table.duration;
+output_timing_table.dur_diff = output_struct.dur_diff;
+output_timing_table.real_SOA = output_struct.real_SOA;
+output_timing_table.target_SOA = event_table.onset_SOA;
+output_timing_table.SOA_diff = output_struct.SOA_diff;
+output_timing_table.trial_dur = output_struct.trial_durs;
+output_timing_table.real_trial_dur_plus_jitter = output_struct.real_trial_durs_plus_jitter;
+output_timing_table.taregt_trial_dur_plus_jitter = output_struct.target_trial_durs_plus_jitter;
+output_timing_table.diff_trial_dur_plus_jitter = output_struct.diff_trial_durs_plus_jitter;
+
+timing_output_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_test_timing.csv']));
+writetable(output_timing_table, timing_output_filename);
 
 %% plotting
 
@@ -174,41 +230,41 @@ if plotting
 
 
     SOAs = [0, 0.116, 0.232, 0.466];
-
-    figure(1)
-    prp_effect = tiledlayout(1,3);
-    nexttile
-    title('task relevant and irrelevant')
-    hold on
-    plot(SOAs*1000,output_struct.RT_aud_on*1000, 'b')
-    plot(SOAs*1000,output_struct.RT_aud_off*1000, 'r')
-    ylim([400, 800])
-    ylabel('Auditory reaction time [ms]')
-    xlabel('SOA [ms]')
-    hold off
-
-    nexttile
-    title('task relevant')
-    hold on
-    plot(SOAs*1000,output_struct.task_relevant.RT_aud_on*1000, 'b')
-    plot(SOAs*1000,output_struct.task_relevant.RT_aud_off*1000, 'r')
-    ylim([400, 800])
-    ylabel('Auditory reaction time [ms]')
-    xlabel('SOA [ms]')
-    hold off
-
-    nexttile
-    title('task irrelevant')
-    hold on
-    plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_on*1000, 'b')
-    plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_off*1000, 'r')
-    ylim([400, 800])
-    ylabel('Auditory reaction time [ms]')
-    xlabel('SOA [ms]')
-    hold off
-
-    lgd = legend('onset', 'offset');
-    lgd.Layout.Tile = 'east';
+% 
+%     figure(1)
+%     prp_effect = tiledlayout(1,3);
+%     nexttile
+%     title('task relevant and irrelevant')
+%     hold on
+%     plot(SOAs*1000,output_struct.RT_aud_on*1000, 'b')
+%     plot(SOAs*1000,output_struct.RT_aud_off*1000, 'r')
+%     ylim([400, 800])
+%     ylabel('Auditory reaction time [ms]')
+%     xlabel('SOA [ms]')
+%     hold off
+% 
+%     nexttile
+%     title('task relevant')
+%     hold on
+%     plot(SOAs*1000,output_struct.task_relevant.RT_aud_on*1000, 'b')
+%     plot(SOAs*1000,output_struct.task_relevant.RT_aud_off*1000, 'r')
+%     ylim([400, 800])
+%     ylabel('Auditory reaction time [ms]')
+%     xlabel('SOA [ms]')
+%     hold off
+% 
+%     nexttile
+%     title('task irrelevant')
+%     hold on
+%     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_on*1000, 'b')
+%     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_off*1000, 'r')
+%     ylim([400, 800])
+%     ylabel('Auditory reaction time [ms]')
+%     xlabel('SOA [ms]')
+%     hold off
+% 
+%     lgd = legend('onset', 'offset');
+%     lgd.Layout.Tile = 'east';
 
     figure(2)
     histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
