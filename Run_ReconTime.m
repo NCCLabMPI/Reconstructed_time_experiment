@@ -5,7 +5,7 @@ close all;
 clear all;
 
 % Hardware parameters:
-global subjectNum TRUE FALSE refRate viewDistance compKbDevice
+global subjectNum TRUE FALSE refRate compKbDevice
 global el EYE_TRACKER CalibrationKey ValidationKey EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
@@ -13,20 +13,21 @@ global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global ABORTED RESTART_KEY NO_KEY ABORT_KEY VIS_TARGET_KEY LOW_PITCH_KEY HIGH_PITCH_KEY
 global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
 
+
+% Add functions folder to path (when we separate all functions)
+function_folder = [pwd,filesep,'functions\'];
+addpath(function_folder)
+
 % prompt user for information
 subjectNum = input('Subject number [101-199, default 101]: '); if isempty(subjectNum); subjectNum = 101; end
-session = input('Session number [1-6, default 1]: '); if isempty(session); session = 1; end
-viewDistance = input('View Distance in cm [default 69.5]: '); if isempty(viewDistance); viewDistance = 69.5; end
+session = input('Session number [1-6, default 1]: '); if isempty(session); session = 70.2; end
 introspection = input('Introspective task [0: PRP only, 1: introspection, default 0]: '); if isempty(introspection); introspection = 0; end
+
 if introspection
     task_type = 'introspection';
 else
     task_type = 'prp';
 end
-
-% Add functions folder to path (when we separate all functions)
-function_folder = [pwd,filesep,'functions\'];
-addpath(function_folder)
 
 % initializing experimental parameters 
 initRuntimeParameters
@@ -414,14 +415,14 @@ try
         end  % End of trial loop
         
         % Save the data of this block:
-        saveTable(blk_mat, task, blk);
+         saveTable(blk_mat, task, blk);
         % Save the eyetracker data:
         if EYE_TRACKER
             saveEyetracker(task, blk);
         end
         
         % Append the block log to the overall log:
-        if blk == 1 
+        if ~exist('log_all', 'var') 
             log_all = blk_mat;
         elseif ~blk_mat.is_practice
             log_all = [log_all; blk_mat];  % Not the most efficient but it is in a non critical part
