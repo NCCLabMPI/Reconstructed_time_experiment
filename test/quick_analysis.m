@@ -63,44 +63,44 @@ output_struct.fas = sum(strcmp(full_event_table.trial_response_vis, 'fa'));
 
 output_struct.mean_aud_acc = mean(event_table.trial_accuracy_aud, 'omitnan');
 
-% split by category 
+% split by category
 
 cates = {'face','object','letter','false_font'};
 for cate = 1:4
 
-output_struct.cate_hits(cate) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & strcmp(full_event_table.category, cates{cate}));
-output_struct.cate_misses(cate) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & strcmp(full_event_table.category, cates{cate}));
-output_struct.cate_crs(cate) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & strcmp(full_event_table.category, cates{cate}));
-output_struct.cate_fas(cate) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & strcmp(full_event_table.category, cates{cate}));    
+    output_struct.cate_hits(cate) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & strcmp(full_event_table.category, cates{cate}));
+    output_struct.cate_misses(cate) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & strcmp(full_event_table.category, cates{cate}));
+    output_struct.cate_crs(cate) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & strcmp(full_event_table.category, cates{cate}));
+    output_struct.cate_fas(cate) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & strcmp(full_event_table.category, cates{cate}));
 
-% auditory accuracy
-output_struct.mean_aud_acc_cate(cate) = mean(event_table.trial_accuracy_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
+    % auditory accuracy
+    output_struct.mean_aud_acc_cate(cate) = mean(event_table.trial_accuracy_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
 
-% reaction time
-output_struct.mean_RT_aud_cate(cate) = mean(event_table.RT_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
+    % reaction time
+    output_struct.mean_RT_aud_cate(cate) = mean(event_table.RT_aud(strcmp(event_table.category, cates{cate})), 'omitnan');
 
-end 
+end
 
 % split by picht
 
 pitches = [1000, 1100];
 for pitch = 1:2
 
-output_struct.pitch_hits(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & full_event_table.pitch == pitches(pitch));
-output_struct.pitch_misses(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & full_event_table.pitch == pitches(pitch));
-output_struct.pitch_crs(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & full_event_table.pitch == pitches(pitch));
-output_struct.pitch_fas(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & full_event_table.pitch == pitches(pitch));
+    output_struct.pitch_hits(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'hit') & full_event_table.pitch == pitches(pitch));
+    output_struct.pitch_misses(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'miss') & full_event_table.pitch == pitches(pitch));
+    output_struct.pitch_crs(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'cr') & full_event_table.pitch == pitches(pitch));
+    output_struct.pitch_fas(pitch) = sum(strcmp(full_event_table.trial_response_vis, 'fa') & full_event_table.pitch == pitches(pitch));
 
-% auditory accuracy
-output_struct.mean_aud_acc_pitch(pitch) = mean(event_table.trial_accuracy_aud(event_table.pitch == pitches(pitch)), 'omitnan');
+    % auditory accuracy
+    output_struct.mean_aud_acc_pitch(pitch) = mean(event_table.trial_accuracy_aud(event_table.pitch == pitches(pitch)), 'omitnan');
 
-% reaction time
-output_struct.mean_RT_aud_pitch(pitch) = mean(event_table.RT_aud(event_table.pitch == pitches(pitch)), 'omitnan');
+    % reaction time
+    output_struct.mean_RT_aud_pitch(pitch) = mean(event_table.RT_aud(event_table.pitch == pitches(pitch)), 'omitnan');
 
-end 
+end
 
 
-%% reaction time 
+%% reaction time
 
 % reaction time
 output_struct.mean_RT_aud = mean(event_table.RT_aud, 'omitnan');
@@ -154,7 +154,7 @@ output_struct.dur_diff = output_struct.real_dur - event_table.duration;
 output_struct.dur_diff_max = max(output_struct.dur_diff);
 output_struct.dur_diff_mean = mean(output_struct.dur_diff);
 
-% check currect frames 
+% check currect frames
 output_struct.correct_frame = sum(output_struct.dur_diff < (0.5*refRate) & output_struct.dur_diff > (-0.5*refRate));
 output_struct.one_frame_late = sum(output_struct.dur_diff > (0.5*refRate) & output_struct.dur_diff < (1.5*refRate));
 output_struct.two_frames_late = sum(output_struct.dur_diff > (1.5*refRate) & output_struct.dur_diff < (2.5*refRate));
@@ -180,7 +180,7 @@ output_struct.real_trial_dur_mean_plus_jitter = mean(output_struct.real_trial_du
 output_struct.target_trial_durs_plus_jitter = 2 + event_table.stim_jit;
 output_struct.diff_trial_durs_plus_jitter = output_struct.real_trial_durs_plus_jitter - output_struct.target_trial_durs_plus_jitter;
 
-%% performance table 
+%% performance table
 perf_table = table('RowNames', {'hits', 'misses', 'cr', 'fas', 'aud_acc', 'mean_RT_aud'});
 
 perf_table.all = [output_struct.hits, output_struct.misses, output_struct.crs,...
@@ -228,44 +228,46 @@ writetable(output_timing_table, timing_output_filename);
 
 if plotting
 
-
     SOAs = [0, 0.116, 0.232, 0.466];
-% 
-%     figure(1)
-%     prp_effect = tiledlayout(1,3);
-%     nexttile
-%     title('task relevant and irrelevant')
-%     hold on
-%     plot(SOAs*1000,output_struct.RT_aud_on*1000, 'b')
-%     plot(SOAs*1000,output_struct.RT_aud_off*1000, 'r')
-%     ylim([400, 800])
-%     ylabel('Auditory reaction time [ms]')
-%     xlabel('SOA [ms]')
-%     hold off
-% 
-%     nexttile
-%     title('task relevant')
-%     hold on
-%     plot(SOAs*1000,output_struct.task_relevant.RT_aud_on*1000, 'b')
-%     plot(SOAs*1000,output_struct.task_relevant.RT_aud_off*1000, 'r')
-%     ylim([400, 800])
-%     ylabel('Auditory reaction time [ms]')
-%     xlabel('SOA [ms]')
-%     hold off
-% 
-%     nexttile
-%     title('task irrelevant')
-%     hold on
-%     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_on*1000, 'b')
-%     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_off*1000, 'r')
-%     ylim([400, 800])
-%     ylabel('Auditory reaction time [ms]')
-%     xlabel('SOA [ms]')
-%     hold off
-% 
-%     lgd = legend('onset', 'offset');
-%     lgd.Layout.Tile = 'east';
 
+
+    %
+    %     figure(1)
+    %     prp_effect = tiledlayout(1,3);
+    %     nexttile
+    %     title('task relevant and irrelevant')
+    %     hold on
+    %     plot(SOAs*1000,output_struct.RT_aud_on*1000, 'b')
+    %     plot(SOAs*1000,output_struct.RT_aud_off*1000, 'r')
+    %     ylim([400, 800])
+    %     ylabel('Auditory reaction time [ms]')
+    %     xlabel('SOA [ms]')
+    %     hold off
+    %
+    %     nexttile
+    %     title('task relevant')
+    %     hold on
+    %     plot(SOAs*1000,output_struct.task_relevant.RT_aud_on*1000, 'b')
+    %     plot(SOAs*1000,output_struct.task_relevant.RT_aud_off*1000, 'r')
+    %     ylim([400, 800])
+    %     ylabel('Auditory reaction time [ms]')
+    %     xlabel('SOA [ms]')
+    %     hold off
+    %
+    %     nexttile
+    %     title('task irrelevant')
+    %     hold on
+    %     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_on*1000, 'b')
+    %     plot(SOAs*1000,output_struct.task_irrelevant.RT_aud_off*1000, 'r')
+    %     ylim([400, 800])
+    %     ylabel('Auditory reaction time [ms]')
+    %     xlabel('SOA [ms]')
+    %     hold off
+    %
+    %     lgd = legend('onset', 'offset');
+    %     lgd.Layout.Tile = 'east';
+
+    %% timing plots
     figure(2)
     histogram(output_struct.dur_diff, [-3.5*refRate, -2.5*refRate, -1.5*refRate, -0.5*refRate, ...
         0.5*refRate, 1.5*refRate, 2.5*refRate, 3.5*refRate]);
@@ -300,7 +302,7 @@ if plotting
     nbins = 8;
     for sub_plot = 1:4
         nexttile
-       
+
         onset_data = (output_struct.SOA_diff(event_table.SOA == SOAs(sub_plot) & strcmp(event_table.SOA_lock, 'onset')))*1000;
         offset_data = (output_struct.SOA_diff(event_table.SOA == SOAs(sub_plot) & strcmp(event_table.SOA_lock, 'offset')))*1000;
         plot_data = nan(length(offset_data)*2, 2);
@@ -310,9 +312,8 @@ if plotting
         title(['SOA: ', num2str(SOAs(sub_plot)), ' ms'])
         ylabel('Number of trials')
         xlabel('ms off')
-
     end
-   
+
     lgd = legend('offset', 'onset');
     lgd.Layout.Tile = 'east';
 
@@ -320,6 +321,44 @@ if plotting
     saveas(single_soas,fig_filename)
     png_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_single_SOAs_jitter.png']));
     saveas(single_soas,png_filename)
+
+    %% performance plots
+    figure(5)
+    rot_table = rows2vars(perf_table);
+    perf_plots = tiledlayout(2,2);
+
+    nexttile
+    title('Misses and False Alarms')
+    bar([rot_table.fas,rot_table.misses])
+    set(gca,'XTickLabel', rot_table.OriginalVariableNames)
+    legend('false alarms', 'misses','Location','southoutside')
+    ylabel('Counts')
+
+    nexttile
+    title('Hits and correct rejects')
+    bar([rot_table.hits,rot_table.cr])
+    set(gca,'XTickLabel', rot_table.OriginalVariableNames)
+    legend('hits', 'correct rejects','Location','southoutside')
+    ylabel('Counts')
+
+    nexttile
+    title('Accuracy')
+    bar(rot_table.aud_acc)
+    set(gca,'XTickLabel', rot_table.OriginalVariableNames)
+    ylim([0.7,1])
+    ylabel('mean auditory accuracy')
+
+    nexttile
+    title('Reaction time')
+    bar((rot_table.mean_RT_aud)*1000)
+    set(gca,'XTickLabel', rot_table.OriginalVariableNames)
+    ylim([400,900])
+    ylabel('mean auditory reaction time [ms]')
+
+    fig_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_performance.fig']));
+    saveas(perf_plots,fig_filename)
+    png_filename = string(fullfile(test_data_dir, ['sub-', subID,'_ses-',num2str(session),'_', task,'_performance.png']));
+    saveas(perf_plots,png_filename)
 
 end
 
