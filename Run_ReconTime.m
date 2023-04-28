@@ -20,7 +20,7 @@ addpath(function_folder)
 
 % prompt user for information
 subjectNum = input('Subject number [101-199, default 101]: '); if isempty(subjectNum); subjectNum = 101; end
-session = input('Session number [1-6, default 1]: '); if isempty(session); session = 70.2; end
+session = input('Session number [1-6, default 1]: '); if isempty(session); session = 1; end
 introspection = input('Introspective task [0: PRP only, 1: introspection, default 0]: '); if isempty(introspection); introspection = 0; end
 
 if introspection
@@ -104,7 +104,6 @@ try
     %% save everything from command window
     Str = CmdWinTool('getText');
     dlmwrite(dfile,Str,'delimiter','');
-    
     
     %%  Experiment
     % Experiment Prep
@@ -422,9 +421,9 @@ try
         end
         
         % Append the block log to the overall log:
-        if ~exist('log_all', 'var') 
+        if ~exist('log_all', 'var') && ~blk_mat.is_practice(1)
             log_all = blk_mat;
-        elseif ~blk_mat.is_practice
+        elseif ~blk_mat.is_practice(1)
             log_all = [log_all; blk_mat];  % Not the most efficient but it is in a non critical part
         end
         
