@@ -61,6 +61,15 @@ output_struct.misses = sum(strcmp(full_event_table.trial_response_vis, 'miss'));
 output_struct.crs = sum(strcmp(full_event_table.trial_response_vis, 'cr'));
 output_struct.fas = sum(strcmp(full_event_table.trial_response_vis, 'fa'));
 
+% check if participant inclusion critera are violated
+if output_struct.hits/output_struct.misses < 4 
+    warning('less then 80 % hits')
+elseif output_struct.crs/output_struct.fas < 4
+    warning('more than 20 % false alarms')
+else 
+    display('No includsion criterion violated')
+end 
+
 output_struct.mean_aud_acc = mean(event_table.trial_accuracy_aud, 'omitnan');
 
 % split by category
