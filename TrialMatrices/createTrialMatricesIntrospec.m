@@ -1,5 +1,5 @@
 %% Set constant parameters:
-n_subjects = 1;
+n_subjects = 20;
 lab_id = "SX";
 task = "introspection";
 % List the tasks. Only the introspection requires randomization:
