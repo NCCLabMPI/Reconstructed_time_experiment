@@ -2,10 +2,10 @@
 global HIGH_PITCH LOW_PITCH
 HIGH_PITCH = 1000;
 LOW_PITCH = 1100;
-subID = 'SX111';
-task_type = 'prp';
+subID = 'SX101';
+task_type = 'introspection';
 
-MatFolderName = [pwd,filesep,'TrialMatrices\'];
+MatFolderName = pwd;
 TableName = ['sub-',subID,'_task-', task_type,'_trials.csv'];
 trial_mat = readtable(fullfile(MatFolderName, TableName));
 
@@ -19,8 +19,8 @@ trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'target'), :);
 trial_mat = trial_mat(~trial_mat.is_practice, :);
 
 % List the conditions of interest:
-conditions = ["duration", "task_relevance", "category", "orientation", "identity"]; % visual conditions
-% conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"]; % sound conditions 
+% conditions = ["duration", "task_relevance", "category", "orientation", "identity"]; % visual conditions
+conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"]; % sound conditions 
 
 thresh = 2;
 
