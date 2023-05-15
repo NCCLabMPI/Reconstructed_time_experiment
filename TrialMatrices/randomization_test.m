@@ -17,7 +17,7 @@ trial_mat.pitch = string(trial_mat.pitch);
 % Remove the targets:
 trial_mat = trial_mat(~strcmp(trial_mat.task_relevance, 'target'), :);
 trial_mat = trial_mat(~trial_mat.is_practice, :);
-
+    
 % List the conditions of interest:
 % conditions = ["duration", "task_relevance", "category", "orientation", "identity"]; % visual conditions
 conditions = ["duration", "task_relevance", "SOA_lock", "SOA", "pitch"]; % sound conditions 

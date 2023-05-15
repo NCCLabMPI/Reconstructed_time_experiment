@@ -29,11 +29,11 @@ exp_dist = makedist("Exponential", "mu", jitter_mean);
 jitter_distribution = truncate(exp_dist, jitter_min, jitter_max);
 % Counter balancing perfectly within the following conditions:
 counter_balance_conditions = ["task_relevance", "duration", "SOA", "SOA_lock"];
-% 16 trials within each of the counter balanced conditions:
-n_trials_each = 16;
+% 24 trials within each of the counter balanced conditions:
+n_trials_each = 24;
 % Experiment is divided in runs, each has 18 18 task relevant trials and 18
 % task irrelevant trials:
-n_trials_per_blk = 32;
+n_trials_per_blk = 36;
 
 % One last detail is that we should have twice as many trials for the
 % center orientation as the left and right:
@@ -81,7 +81,7 @@ for sub=1:n_subjects
     % There are 4 orientation combinations possible for the amount of
     % nesting we have. If they are added an equal amount of times, we have
     % balance:
-    orientations_ctr = struct('center', [1, 1, 2, 2], 'left', [1, 0, 0, 0], 'right', [0, 1, 0, 0]);
+    orientations_ctr = struct('center', [2, 2, 1, 1], 'left', [1, 0, 1, 1], 'right', [0, 1, 1, 1]);
     % Create a randomized vector dictating which we are using in each
     % iteration:
     orientation_vect = repmat([1; 2; 3; 4], (length(conditions_levels.task_relevance) *...
@@ -598,7 +598,7 @@ for sub=1:n_subjects
             
             %% Set the targets:
             % Setting the numbers for the target:
-            n_targets_per_blk = 4;
+            n_targets_per_blk = 4.5;
             min_n_targets = 2;
             max_n_targets = 6;
             % Determnine the total number of trials:
@@ -619,13 +619,13 @@ for sub=1:n_subjects
             % We need n target trials per category. We need between 2 and 6 target
             % trials per block. Generating vectors that go from 1 to 3 (2 to 6 when
             % combining two target categories) and randomizing them:
-            face_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            face_targets_ctr = repmat((1:3)', ceil(((height(trial_matrix) / 32) / 2) / 3), 1);
             face_targets_ctr = face_targets_ctr(randperm(length(face_targets_ctr)));
-            object_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            object_targets_ctr = repmat((1:3)', ceil(((height(trial_matrix) / 32) / 2) / 3), 1);
             object_targets_ctr = object_targets_ctr(randperm(length(object_targets_ctr)));
-            letter_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            letter_targets_ctr = repmat((1:3)', ceil(((height(trial_matrix) / 32) / 2) / 3), 1);
             letter_targets_ctr = letter_targets_ctr(randperm(length(letter_targets_ctr)));
-            false_font_targets_ctr = repmat((1:3)', ((height(trial_matrix) / 32) / 2) / 3, 1);
+            false_font_targets_ctr = repmat((1:3)', ceil(((height(trial_matrix) / 32) / 2) / 3), 1);
             false_font_targets_ctr = false_font_targets_ctr(randperm(length(false_font_targets_ctr)));
             % Split the data per block types:
             block_types = unique(trial_matrix.block_type);
@@ -1702,8 +1702,6 @@ for sub=1:n_subjects
                 "letter_false_font"; "letter_false_font"; ...
                 "face_object"; "face_object";...
                 ], ceil(length(blocks) / 8), 1);
-
-            blk_type_order(length(blocks)) = "letter_false_font";
         case 1
             blk_type_order = repmat([...
                 "letter_false_font"; "letter_false_font"; ...
@@ -1711,8 +1709,6 @@ for sub=1:n_subjects
                 "face_object"; "face_object";...
                 "letter_false_font"; "letter_false_font";...
                 ], ceil(length(blocks) / 8), 1);
-
-           blk_type_order(length(blocks)) = "face_object";
     end
     
     % Loop through each block:
