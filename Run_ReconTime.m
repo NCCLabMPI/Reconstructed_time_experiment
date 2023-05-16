@@ -191,6 +191,7 @@ try
             while wait_resp == 0     
                 [~, ~, wait_resp] = KbCheck(); 
             end
+            WaitSecs(0.1);
         end
 
         % Wait a random amount of time and show fixation:

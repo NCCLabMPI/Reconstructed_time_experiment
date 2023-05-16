@@ -22,7 +22,7 @@ disp('')
 global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INSTRUCTIONS6 INSTRUCTIONS7 TRUE FALSE SAVING_MESSAGE
 global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
 global EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR RESPONSE_BOX
-global AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE fontType fontSize fontColor
+global AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE fontType fontSize fontColor task_type
 global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
 % -----------------------------------------------------
 % Matrices info
@@ -159,7 +159,7 @@ if RESPONSE_BOX
     LeftKey  =  KbName('G');
 
     if mod(subjectNum, 2) == 0
-        if strcmp(task, 'introspection')
+        if strcmp(task_type, 'introspection')
             VIS_RESPONSE_KEY = KbName('B');
         else
             VIS_RESPONSE_KEY = KbName('E');
@@ -168,7 +168,7 @@ if RESPONSE_BOX
         AUD_RESPONSE_KEY_LOW = KbName('C');
         spaceBar =  KbName('D');
     else
-        if strcmp(task, 'introspection')
+        if strcmp(task_type, 'introspection')
             VIS_RESPONSE_KEY = KbName('A');
         else
             VIS_RESPONSE_KEY = KbName('F');
@@ -213,14 +213,14 @@ INSTRUCTIONS_FOLDER = 'instructions';
 INSTRUCTIONS1 = 'instructions1.0.png';
 if mod(subjectNum, 2) == 0
 
-    if strcmp(task, 'introspection')
+    if strcmp(task_type, 'introspection')
         INSTRUCTIONS2 = 'instructions2.4.png';
     else
         INSTRUCTIONS2 = 'instructions2.2.png';
     end
     INSTRUCTIONS3 = 'instructions3.2.png';
 else
-    if strcmp(task, 'introspection')
+    if strcmp(task_type, 'introspection')
         INSTRUCTIONS2 = 'instructions2.3.png';
     else
         INSTRUCTIONS2 = 'instructions2.1.png';
