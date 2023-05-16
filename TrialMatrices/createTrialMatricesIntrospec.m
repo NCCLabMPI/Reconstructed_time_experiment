@@ -1796,14 +1796,18 @@ for sub=1:n_subjects
         'VariableNames',["sub_id", "task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
         "category", "orientation","identity", "duration", "stim_jit", "SOA", "onset_SOA", "SOA_lock", "pitch"]);
 
-
-
-
+% split into two sessions 
+trial_mat_ses2 = trial_mat_final(trial_mat_final.block < 24,:);
+trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 24 | trial_mat_final.block < 1,:);
 
 %% save
     % Save to file:
     % Create file name:
-    file_name = fullfile(pwd, sprintf("sub-%s%d_task-%s_trials.csv", lab_id, 100 + sub, task));
-    writetable(trial_mat_final, file_name);
+    % session 2
+    file_name2 = fullfile(pwd, sprintf("sub-%s%d_task-%s2_trials.csv", lab_id, 100 + sub, task));
+    writetable(trial_mat_ses2, file_name2);
+    %session 3
+    file_name3 = fullfile(pwd, sprintf("sub-%s%d_task-%s3_trials.csv", lab_id, 100 + sub, task));
+    writetable(trial_mat_ses3, file_name3);
     
 end
