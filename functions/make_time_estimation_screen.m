@@ -49,7 +49,7 @@ elseif strcmp(introspec_question, 'aud')
 else % calibration
     question = 'Duration of tone?';
 end
-message = [question, '\n\n Your estimated duration is:\n\n', num2str(iT), ' ms \n\n press knob to confirm'];
+message = [question, ' ms \n\n press knob to confirm'];
 DrawFormattedText(w, textProcess(message), 'center' , ScreenHeight*(1/5), text.Color);
 
 % Flip to the screen
