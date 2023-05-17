@@ -1,7 +1,13 @@
 function [ iT ] = run_dial(introspec_question)
 clearvars -except introspec_question
 
-global RightKey LeftKey compKbDevice DIAL ValidationKey DIAL_SENSITIVITY_FACTOR
+global DIAL DIAL_SENSITIVITY_FACTOR ScreenWidth line_length right_end left_end
+
+% line coordinates
+left_end = ScreenWidth*(1/4);
+right_end = ScreenWidth*(3/4);
+line_length = right_end - left_end;
+
 
 % check if dial available
 iT = 500;
@@ -14,17 +20,14 @@ end
 
 % if no dial available
 if ~DIAL
-    key = 0;
+    buttons = [0,0,0];
 
-    while key ~= 1
-        [~, ~, Resp1] = KbCheck(compKbDevice);
-        if Resp1(ValidationKey)
-            key = 1;
-        elseif Resp1(RightKey)
-            iT = iT + 5;
-        elseif Resp1(LeftKey)
-            iT = iT - 5;
-        end
+    ShowCursor('Arrow')
+    while buttons(1) ~= 1
+
+        [x,~,buttons,~,~,~] = GetMouse();
+
+        iT = ((x-left_end)/line_length)*1000; 
         
         % restrict iT value to 0 to 1000
         if iT > 1000
@@ -34,6 +37,7 @@ if ~DIAL
         end
         make_time_estimation_screen(iT, introspec_question)
     end
+    HideCursor()
 
 else % if dial is available
     % get response parameters from dial

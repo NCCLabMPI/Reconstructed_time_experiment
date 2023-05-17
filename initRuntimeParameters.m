@@ -52,7 +52,7 @@ NO_FULLSCREEN = 0; % enable windowed mode for dubugging
 NO_ERROR = 0; % Disable testing program error throws
 % Q: Do I need to fill this out? Pixels? Yoav: only if you want the debug scree to be of a different size
 WINDOW_RESOLUTION = [10 10 1200 800];
-DIAL = 1; % 1 if dial is present
+DIAL = 0; % 1 if dial is present
 RESPONSE_BOX = 1; % 1 if Cedrus RB-844 response box is present. 
 
 end

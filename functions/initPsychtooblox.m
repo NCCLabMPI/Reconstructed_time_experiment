@@ -18,7 +18,7 @@ function [] = initPsychtooblox()
 
         else
             % For the real experiment, do not skip the sync test
-            Screen('Preference', 'SkipSyncTests', 0); 
+            Screen('Preference', 'SkipSyncTests', 1); 
         end
     catch
         % Trying a second time just in case something went wrong the first
@@ -26,7 +26,7 @@ function [] = initPsychtooblox()
         if DEBUG 
             Screen('Preference', 'SkipSyncTests', 1); 
         else
-            Screen('Preference', 'SkipSyncTests', 0); 
+            Screen('Preference', 'SkipSyncTests', 1); 
         end
     end
     Screen('Preference', 'TextRenderer', 1);

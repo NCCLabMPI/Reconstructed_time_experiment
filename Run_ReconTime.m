@@ -90,16 +90,16 @@ if SHOW_INSTRUCTIONS
 end
 
 % calibration task
-% if strcmp(task_type, 'introspection')
-%     showMessage(CALIBRATION_START_MESSAGE);
-%     wait_resp = 0;
-%     while wait_resp == 0
-%         [~, ~, wait_resp] = KbCheck();
-%     end
-%     handle = PsychPowerMate('Open'); % open dial
-%     cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
-%     saveTable(cali_log,'calibration', 1)
-% end
+if strcmp(task_type, 'introspection')
+    showMessage(CALIBRATION_START_MESSAGE);
+    wait_resp = 0;
+    while wait_resp == 0
+        [~, ~, wait_resp] = KbCheck();
+    end
+    handle = PsychPowerMate('Open'); % open dial
+    cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
+    saveTable(cali_log,'calibration', 1)
+end
 
 %% Main experimental loop:
 try
