@@ -27,7 +27,7 @@ if ~DIAL
 
         [x,~,buttons,~,~,~] = GetMouse();
 
-        iT = ((x-left_end)/line_length)*1000; 
+        iT = round(((x-left_end)/line_length)*1000);
         
         % restrict iT value to 0 to 1000
         if iT > 1000
