@@ -14,7 +14,7 @@ key = 0;
 number_of_cali_trails = 10;
 % [iT] = run_dial(introspec_question);
 
-calibration(5)
+calibration(5);
 
 % while key ~= 1
 % 

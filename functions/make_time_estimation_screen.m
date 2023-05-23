@@ -1,12 +1,9 @@
 function [] = make_time_estimation_screen(iT, introspec_question)
 
-global w ScreenWidth ScreenHeight center text fontSize gray  INTROSPEC_QN_VIS INTROSPEC_QN_AUD
+global w ScreenWidth ScreenHeight center text fontSize gray  INTROSPEC_QN_VIS INTROSPEC_QN_AUD line_height right_end left_end 
 
 
-% make line
-line_height = ScreenHeight*(4/5);
-left_end = [ScreenWidth*(1/4), line_height];
-right_end = [ScreenWidth*(3/4), line_height];
+% line settings
 color = [0 0 0];
 line_thinkness = 4;
 Screen('FillRect', w, gray);
