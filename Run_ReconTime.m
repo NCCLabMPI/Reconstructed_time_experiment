@@ -400,18 +400,47 @@ try
                 WaitSecs(0.2);
 
                 % introspective question 1 (RT visual task)
+                if EYE_TRACKER
+                    trigger_str = get_et_trigger('vis_qn_onset', blk_mat.task_relevance{tr}, ...
+                        blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                        blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
+                    Eyelink('Message',trigger_str);
+                end
+
                 if ~strcmp(practice_type, 'auditory')
                     introspec_question = 'vis';
                     blk_mat.iRT_vis(tr) = run_dial(introspec_question);
                 end
 
+                if EYE_TRACKER
+                    trigger_str = get_et_trigger('vis_qn_resp', blk_mat.task_relevance{tr}, ...
+                        blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                        blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
+                    Eyelink('Message',trigger_str);
+                end
+
                 showFixation('PhotodiodeOn');
                 WaitSecs(0.1);
 
+                % introspective question 2 (RT auditory task)
+
+                if EYE_TRACKER
+                    trigger_str = get_et_trigger('aud_qn_onset', blk_mat.task_relevance{tr}, ...
+                        blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                        blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
+                    Eyelink('Message',trigger_str);
+                end
+
                 if ~strcmp(practice_type, 'visual')
-                    % introspective question 2 (RT auditory task)
                     introspec_question = 'aud';
                     blk_mat.iRT_aud(tr) = run_dial(introspec_question);
+                end
+
+                if EYE_TRACKER
+                    trigger_str = get_et_trigger('aud_qn_resp', blk_mat.task_relevance{tr}, ...
+                        blk_mat.duration(tr), blk_mat.category{tr}, orientation, vis_stim_id, ...
+                        blk_mat.SOA(tr), blk_mat.SOA_lock(tr), blk_mat.pitch(tr));
+                    Eyelink('Message',trigger_str);
                 end
 
                 showFixation('PhotodiodeOn');
