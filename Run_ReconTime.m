@@ -83,13 +83,40 @@ for tr_jit = 1:length(trial_mat.trial)
     trial_mat.stim_jit(tr_jit) = refRate*jit_multiplicator;
 end
 
-%% Instructions and practice:
+%% Instructions
 % displays instructions
 if SHOW_INSTRUCTIONS
     Instructions(task_type);
 end
 
-% calibration task
+%% Calibration task
+
+% Initialize the eye-tracker with the block number and run the
+% calibration of the eye-tracker:
+
+if EYE_TRACKER
+    % Initialize the eyetracker:
+    initEyetracker(subID, -4);
+    % Show the calibration message to give the option to perform
+    % the eyetracker calibration if needed:
+    showMessage(EYETRACKER_CALIBRATION_MESSAGE);
+    CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
+    while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
+        [~, CalibrationResp, ~] = KbWait(compKbDevice,3);
+        if CalibrationResp(CalibrationKey)
+            % Run the calibration:
+            EyelinkDoTrackerSetup(el);
+            CorrectKey = 1;
+        elseif CalibrationResp(ValidationKey)
+            CorrectKey = 1;
+        end
+    end
+    % Starting the recording
+    Eyelink('StartRecording');
+    % Wait for the recording to have started:
+    WaitSecs(0.1);
+end
+
 if strcmp(task_type, 'introspection')
     showMessage(CALIBRATION_START_MESSAGE);
     wait_resp = 0;
@@ -99,6 +126,10 @@ if strcmp(task_type, 'introspection')
     handle = PsychPowerMate('Open'); % open dial
     cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
     saveTable(cali_log,'calibration', 1)
+end
+
+if EYE_TRACKER
+    saveEyetracker(task, -4);
 end
 
 %% Main experimental loop:

@@ -3,7 +3,7 @@ function [cali_log] = calibration(number_of_cali_trails)
 disp('WELCOME TO calibration')
 
 
-global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE padhandle
+global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE padhandle EYE_TRACKER
 introspec_question = 'cali';
 durations = [20,100,200,300,400,500,600,700,800,900,1000];
 cali_ms = repmat(durations,1,ceil(number_of_cali_trails/length(durations)));
@@ -21,16 +21,27 @@ for c = 1:length(cali_ms)
     WaitSecs(1);
 
     % make tone
-    [cali_pitch_buff, ~] = init_audio_pitches((cali_log.cali_ms(c)/1000), CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
+    tone_length = cali_log.cali_ms(c)/1000;
+    [cali_pitch_buff, ~] = init_audio_pitches(tone_length, CALIBRATION_PITCH_FREQ,  CALIBRATION_PITCH_FREQ); % auditory
     PsychPortAudio('FillBuffer', padhandle, cali_pitch_buff);
 
-    % And then you play the buffer. The function returns a time stamp.
-    % Here I don't use it but for our purpose we will want to log it:
+
+    if EYE_TRACKER
+        trigger_str = get_et_trigger('cali_tone_on', c, tone_length);
+        Eyelink('Message',trigger_str);
+    end
+
+    % And then you play the buffer:
     PsychPortAudio('Start',padhandle, 1, 0);
     WaitSecs(1.5);
 
     cali_log.iT(c) = run_dial(introspec_question);
     WaitSecs(0.2);
+
+    if EYE_TRACKER
+        trigger_str = get_et_trigger('cali_resp', c, tone_length);
+        Eyelink('Message',trigger_str);
+    end
 
     % Deliver feddback
     actual_time = ['The true duration: ', num2str(round(cali_log.cali_ms(c))), ' ms'];
