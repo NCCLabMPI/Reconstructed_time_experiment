@@ -5,9 +5,11 @@ disp('WELCOME TO calibration')
 
 global CALIBRATION_PITCH_FREQ ScreenHeight text w compKbDevice abortKey CLEAN_EXIT_MESSAGE padhandle EYE_TRACKER
 introspec_question = 'cali';
-durations = [20,100,200,300,400,500,600,700,800,900,1000];
-cali_ms = repmat(durations,1,ceil(number_of_cali_trails/length(durations)));
-cali_ms = cali_ms(1:number_of_cali_trails);
+
+% make the durations of tones 
+cali_ms = round(linspace(20,1000,number_of_cali_trails));
+
+% set up the log table
 cali_log = table;
 cali_log.cali_ms = ShuffleVector(cali_ms)';
 cali_log.iT = nan(1,number_of_cali_trails)';
