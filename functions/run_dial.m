@@ -8,7 +8,7 @@ line_height = ScreenHeight*(4/5);
 left_end = [ScreenWidth*(1/4), line_height];
 right_end = [ScreenWidth*(3/4), line_height];
 line_length = right_end(1) - left_end(1);
-
+iT = NaN;
 
 % check if dial available
 if DIAL

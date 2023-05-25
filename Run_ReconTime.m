@@ -129,7 +129,7 @@ if strcmp(task_type, 'introspection')
 end
 
 if EYE_TRACKER
-    saveEyetracker(task, -4);
+    saveEyetracker('calibration', -4);
 end
 
 %% Main experimental loop:

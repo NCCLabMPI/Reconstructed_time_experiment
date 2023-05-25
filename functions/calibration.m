@@ -27,7 +27,7 @@ for c = 1:length(cali_ms)
 
 
     if EYE_TRACKER
-        trigger_str = get_et_trigger('cali_tone_on', c, tone_length);
+        trigger_str = get_et_trigger('cali_tone_on','-',tone_length,'-','-','-', c,'-',1);
         Eyelink('Message',trigger_str);
     end
 
@@ -39,7 +39,7 @@ for c = 1:length(cali_ms)
     WaitSecs(0.2);
 
     if EYE_TRACKER
-        trigger_str = get_et_trigger('cali_resp', c, tone_length);
+        trigger_str = get_et_trigger('cali_resp','-',tone_length,'-','-','-', c,'-',1);
         Eyelink('Message',trigger_str);
     end
 

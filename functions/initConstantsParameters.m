@@ -160,18 +160,18 @@ if RESPONSE_BOX
 
     if mod(subjectNum, 2) == 0
         if strcmp(task_type, 'introspection')
-            VIS_RESPONSE_KEY = KbName('B');
-        else
             VIS_RESPONSE_KEY = KbName('E');
+        else
+            VIS_RESPONSE_KEY = KbName('B');
         end
         AUD_RESPONSE_KEY_HIGH = KbName('A');
         AUD_RESPONSE_KEY_LOW = KbName('C');
         spaceBar =  KbName('D');
     else
         if strcmp(task_type, 'introspection')
-            VIS_RESPONSE_KEY = KbName('A');
-        else
             VIS_RESPONSE_KEY = KbName('F');
+        else
+            VIS_RESPONSE_KEY = KbName('A');
         end
         AUD_RESPONSE_KEY_HIGH = KbName('B');
         AUD_RESPONSE_KEY_LOW = KbName('D');
