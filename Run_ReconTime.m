@@ -283,14 +283,9 @@ try
             %% TIME LOOP
             elapsedTime = 0;
 
-            % for introspective trial the jitter is moved out of the time loop
-            % and comes after the questions
-            if strcmp(task, 'introspection')
-                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + 1; 
-            else
-                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + blk_mat.stim_jit(tr);
-            end
-
+            % define total trial duration
+            total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + blk_mat.stim_jit(tr);
+            
             while elapsedTime < total_trial_duration
 
                 %% Play audio stimulus
@@ -477,7 +472,7 @@ try
                 end
 
                 showFixation('PhotodiodeOn');
-                WaitSecs(blk_mat.stim_jit(tr)-0.5);
+                WaitSecs(blk_mat.intro_jit(tr)-0.5);
             end
             %%
 

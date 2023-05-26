@@ -1796,6 +1796,9 @@ for sub=1:n_subjects
         'VariableNames',["sub_id", "task", "is_practice", "block", "trial", "target_01", "target_02", "task_relevance", ...
         "category", "orientation","identity", "duration", "stim_jit", "SOA", "onset_SOA", "SOA_lock", "pitch"]);
 
+% add introspective task jitter (500 ms shorter as stimulus jitter)
+trial_mat_final.intro_jit = random(jitter_distribution, height(trial_mat_final), 1) - 0.5;
+
 % split into two sessions 
 trial_mat_ses2 = trial_mat_final(trial_mat_final.block <= 24,:);
 trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 24 | trial_mat_final.block < 1,:);
