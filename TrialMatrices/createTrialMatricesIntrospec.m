@@ -1740,7 +1740,7 @@ for sub=1:n_subjects
     end
     % Add columns and reorder:
     trial_mat_final.is_practice(:) = 0;
-    trial_mat_final.task(:) = "prp";
+    trial_mat_final.task(:) = "introspection";
     trial_mat_final.trials = [];
     % Add the jitter:
     trial_mat_final.stim_jit = random(jitter_distribution, height(trial_mat_final), 1);
@@ -1800,6 +1800,7 @@ for sub=1:n_subjects
 trial_mat_ses2 = trial_mat_final(trial_mat_final.block <= 24,:);
 trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 24 | trial_mat_final.block < 1,:);
 
+trial_mat_ses3.block(trial_mat_ses3.block > 24) = trial_mat_ses3.block(trial_mat_ses3.block > 24) - 24;
 %% save
     % Save to file:
     % Create file name:

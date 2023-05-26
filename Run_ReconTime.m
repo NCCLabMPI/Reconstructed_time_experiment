@@ -151,6 +151,7 @@ try
 
     %% Block loop:
     blks = unique(trial_mat.block);
+
     if NO_PRACTICE
         blk = 1;
     else
@@ -285,7 +286,7 @@ try
             % for introspective trial the jitter is moved out of the time loop
             % and comes after the questions
             if strcmp(task, 'introspection')
-                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION);
+                total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + 1; 
             else
                 total_trial_duration = TRIAL_DURATION - (refRate*FRAME_ANTICIPATION) + blk_mat.stim_jit(tr);
             end
@@ -430,8 +431,7 @@ try
 
             %% introspective questions
             if introspection
-                WaitSecs(0.2);
-
+                
                 % introspective question 1 (RT visual task)
                 if EYE_TRACKER
                     trigger_str = get_et_trigger('vis_qn_onset', blk_mat.task_relevance{tr}, ...
@@ -453,7 +453,7 @@ try
                 end
 
                 showFixation('PhotodiodeOn');
-                WaitSecs(0.1);
+                WaitSecs(0.2);
 
                 % introspective question 2 (RT auditory task)
 
@@ -477,7 +477,7 @@ try
                 end
 
                 showFixation('PhotodiodeOn');
-                WaitSecs(blk_mat.stim_jit(tr));
+                WaitSecs(blk_mat.stim_jit(tr)-0.5);
             end
             %%
 
