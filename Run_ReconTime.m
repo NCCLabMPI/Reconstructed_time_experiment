@@ -224,11 +224,11 @@ try
         % Show the target screen at the beginning of each block (expect during auditory practice):
         if ~strcmp(practice_type, 'auditory')
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
+            WaitSecs(0.3);
             wait_resp = 0;
             while wait_resp == 0
                 [~, ~, wait_resp] = KbCheck();
             end
-            WaitSecs(0.1);
         end
 
         % Wait a random amount of time and show fixation:
