@@ -1,5 +1,5 @@
 %% Set constant parameters:
-n_subjects = 20;
+n_subjects = 50;
 lab_id = "SX";
 task = "introspection";
 % List the tasks. Only the introspection requires randomization:
@@ -1797,7 +1797,7 @@ for sub=1:n_subjects
         "category", "orientation","identity", "duration", "stim_jit", "SOA", "onset_SOA", "SOA_lock", "pitch"]);
 
 % split into two sessions 
-trial_mat_ses2 = trial_mat_final(trial_mat_final.block < 24,:);
+trial_mat_ses2 = trial_mat_final(trial_mat_final.block <= 24,:);
 trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 24 | trial_mat_final.block < 1,:);
 
 %% save

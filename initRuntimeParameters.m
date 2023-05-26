@@ -15,8 +15,8 @@ global DISTANCE_SCREEN_TRACKER HEAD_FIXED
 % Hardware parameters:
 global SCREEN_SIZE_CM REF_RATE_OPTIMAL viewDistanceBottomTop viewDistance 
 % Debugging and code parameters:
-global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS SHOW_INSTRUCTIONS
-
+global VERBOSE NO_PRACTICE DEBUG RESOLUTION_FORCE NO_FULLSCREEN WINDOW_RESOLUTION NO_ERROR VERBOSE_PLUS SHOW_INSTRUCTIONS NO_CALIBRATION_TASK
+ 
 % Legend: false = 0 | true = 1  
 LAB_ID = 'SX';
 %% Recording modalities
@@ -42,17 +42,18 @@ DIOD_SIZE = 100; % Size of the square where the photodiode is presented (in pixe
 DIOD_DURATION = 3; % Duration of the photodiode flash when turned on (in frames)
 
 %% DEBUG parameters
-DEBUG = 0; % 0 = no debug | 1 = regular debug | 2 = fast debug
+DEBUG = 1; % 0 = no debug | 1 = regular debug | 2 = fast debug
 SHOW_INSTRUCTIONS = 1;
+NO_CALIBRATION_TASK = 1;
 VERBOSE = 0; %
 VERBOSE_PLUS = 0; % for debugging duration balance only
-NO_PRACTICE = 0; % skip the practice run
+NO_PRACTICE = 1; % skip the practice run
 RESOLUTION_FORCE = 0; % the program will complain if optimal refresh rate is not possible on this screen
-NO_FULLSCREEN = 0; % enable windowed mode for dubugging
+NO_FULLSCREEN = 1; % enable windowed mode for dubugging
 NO_ERROR = 0; % Disable testing program error throws
 % Q: Do I need to fill this out? Pixels? Yoav: only if you want the debug scree to be of a different size
 WINDOW_RESOLUTION = [10 10 1200 800];
-DIAL = 0; % 1 if dial is present
+DIAL = 1; % 1 if dial is present
 RESPONSE_BOX = 1; % 1 if Cedrus RB-844 response box is present. 
 
 end

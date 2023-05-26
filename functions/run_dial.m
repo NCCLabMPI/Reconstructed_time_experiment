@@ -3,7 +3,11 @@ clearvars -except introspec_question
 
 global DIAL DIAL_SENSITIVITY_FACTOR line_height right_end left_end ScreenHeight ScreenWidth
 
-
+% line coordinates
+line_height = ScreenHeight*(4/5);
+left_end = [ScreenWidth*(1/4), line_height];
+right_end = [ScreenWidth*(3/4), line_height];
+line_length = right_end(1) - left_end(1);
 iT = NaN;
 
 % check if dial available
@@ -19,12 +23,6 @@ end
 % if no dial available
 if ~DIAL
 
-    % line coordinates
-    line_height = ScreenHeight*(4/5);
-    left_end = [ScreenWidth*(1/4), line_height];
-    right_end = [ScreenWidth*(3/4), line_height];
-    line_length = right_end(1) - left_end(1);
-    
     buttons = [0,0,0];
 
     % define random x starting position for cursor

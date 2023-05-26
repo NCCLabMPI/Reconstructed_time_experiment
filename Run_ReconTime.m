@@ -6,7 +6,7 @@ clear all;
 
 % Hardware parameters:
 global subjectNum TRUE FALSE refRate compKbDevice
-global el EYE_TRACKER CalibrationKey ValidationKey EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE session LAB_ID subID task_type
+global el EYE_TRACKER CalibrationKey ValidationKey EYETRACKER_CALIBRATION_MESSAGE NO_PRACTICE NO_CALIBRATION_TASK session LAB_ID subID task_type
 global TRIAL_DURATION DATA_FOLDER NUM_OF_TRIALS_CALIBRATION FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE CALIBRATION_START_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
@@ -91,47 +91,48 @@ end
 
 %% Calibration task
 
-% Initialize the eye-tracker with the block number and run the
-% calibration of the eye-tracker:
+if ~NO_CALIBRATION_TASK
+    % Initialize the eye-tracker with the block number and run the
+    % calibration of the eye-tracker:
 
-if EYE_TRACKER
-    % Initialize the eyetracker:
-    initEyetracker(subID, -4);
-    % Show the calibration message to give the option to perform
-    % the eyetracker calibration if needed:
-    showMessage(EYETRACKER_CALIBRATION_MESSAGE);
-    CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
-    while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
-        [~, CalibrationResp, ~] = KbWait(compKbDevice,3);
-        if CalibrationResp(CalibrationKey)
-            % Run the calibration:
-            EyelinkDoTrackerSetup(el);
-            CorrectKey = 1;
-        elseif CalibrationResp(ValidationKey)
-            CorrectKey = 1;
+    if EYE_TRACKER
+        % Initialize the eyetracker:
+        initEyetracker(subID, -4);
+        % Show the calibration message to give the option to perform
+        % the eyetracker calibration if needed:
+        showMessage(EYETRACKER_CALIBRATION_MESSAGE);
+        CorrectKey = 0; % Setting the CorrectKey to 0 to initiate the loop
+        while ~CorrectKey % As long as a non-accepted key is pressed, keep on asking
+            [~, CalibrationResp, ~] = KbWait(compKbDevice,3);
+            if CalibrationResp(CalibrationKey)
+                % Run the calibration:
+                EyelinkDoTrackerSetup(el);
+                CorrectKey = 1;
+            elseif CalibrationResp(ValidationKey)
+                CorrectKey = 1;
+            end
         end
+        % Starting the recording
+        Eyelink('StartRecording');
+        % Wait for the recording to have started:
+        WaitSecs(0.1);
     end
-    % Starting the recording
-    Eyelink('StartRecording');
-    % Wait for the recording to have started:
-    WaitSecs(0.1);
-end
 
-if strcmp(task_type, 'introspection')
-    showMessage(CALIBRATION_START_MESSAGE);
-    wait_resp = 0;
-    while wait_resp == 0
-        [~, ~, wait_resp] = KbCheck();
+    if strcmp(task_type, 'introspection')
+        showMessage(CALIBRATION_START_MESSAGE);
+        wait_resp = 0;
+        while wait_resp == 0
+            [~, ~, wait_resp] = KbCheck();
+        end
+        handle = PsychPowerMate('Open'); % open dial
+        cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
+        saveTable(cali_log,'calibration', 1)
     end
-    handle = PsychPowerMate('Open'); % open dial
-    cali_log = calibration(NUM_OF_TRIALS_CALIBRATION);
-    saveTable(cali_log,'calibration', 1)
-end
 
-if EYE_TRACKER
-    saveEyetracker('calibration', -4);
+    if EYE_TRACKER
+        saveEyetracker('calibration', -4);
+    end
 end
-
 %% Main experimental loop:
 try
 
@@ -427,6 +428,7 @@ try
                 warning_response_order = 1;
             end
 
+            %% introspective questions
             if introspection
                 WaitSecs(0.2);
 
@@ -477,6 +479,7 @@ try
                 showFixation('PhotodiodeOn');
                 WaitSecs(blk_mat.stim_jit(tr));
             end
+            %%
 
             if(key==RESTART_KEY)
                 break
@@ -504,19 +507,34 @@ try
             warning_response_order = 0;
         end
 
-        % Every 4 blocks, there is a longer break:
+        % Break after every 4 blocks in prp task and every 8 blocks in introspective task
+        if introspection
+            blk_break = 8;
+            miniblk_break = 2;
+        else
+            blk_break = 4;
+            miniblk_break = 1;
+        end
+
         if ~is_practice
-            if mod(blk, 4) ==0
-                last_block = log_all(log_all.block > blk - 4, :);
+            if mod(blk, blk_break) ==0
+                last_block = log_all(log_all.block > blk - blk_break, :);
                 [last_block, ~] = compute_performance(last_block);
-                block_message = sprintf(END_OF_BLOCK_MESSAGE, blk/4, trial_mat.block(end)/4, round(mean(last_block.trial_accuracy_aud, 'omitnan')*100));
-            else
-                block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, blk, trial_mat.block(end));
-            end
-            showMessage(block_message);
-            wait_resp = 0;
-            while wait_resp == 0
-                [~, ~, wait_resp] = KbCheck();
+                block_message = sprintf(END_OF_BLOCK_MESSAGE, round(blk/blk_break), round(trial_mat.block(end)/blk_break), round(mean(last_block.trial_accuracy_aud, 'omitnan')*100));
+                showMessage(block_message);
+
+                wait_resp = 0;
+                while wait_resp == 0
+                    [~, ~, wait_resp] = KbCheck();
+                end
+            elseif mod(blk, miniblk_break) ==0
+                block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, round(blk/miniblk_break), round(trial_mat.block(end)/miniblk_break));
+                showMessage(block_message);
+
+                wait_resp = 0;
+                while wait_resp == 0
+                    [~, ~, wait_resp] = KbCheck();
+                end
             end
         end
 

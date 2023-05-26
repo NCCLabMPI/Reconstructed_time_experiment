@@ -18,7 +18,7 @@ cali_log.estimation_error = nan(1,number_of_cali_trails)';
 for c = 1:length(cali_ms)
 
     % show gray screen
-    DrawFormattedText(w, textProcess('Wait for tone'), 'center' , ScreenHeight*(1/5), text.Color);
+    DrawFormattedText(w, textProcess('Wait for tone'), 'center' , 'center', text.Color);
     Screen('Flip', w);
     WaitSecs(1);
 
