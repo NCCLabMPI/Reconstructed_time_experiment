@@ -473,6 +473,19 @@ try
 
                 showFixation('PhotodiodeOn');
                 WaitSecs(blk_mat.intro_jit(tr)-0.5);
+
+
+                % Show the target screen in the beginning of each block (expect during auditory practice):
+                if ~strcmp(practice_type, 'auditory') && tr == round(length(blk_mat.trial)/2)
+                    blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
+                    WaitSecs(0.3);
+                    wait_resp = 0;
+                    while wait_resp == 0
+                        [~, ~, wait_resp] = KbCheck();
+                    end
+                end
+
+
             end
             %%
 
@@ -503,16 +516,12 @@ try
         end
 
         % Break after every 4 blocks in prp task and every 8 blocks in introspective task
-        if introspection
-            blk_break = 8;
-            miniblk_break = 2;
-        else
-            blk_break = 4;
-            miniblk_break = 1;
-        end
+
+        blk_break = 4;
+        miniblk_break = 1;
 
         if ~is_practice
-            if mod(blk, blk_break) ==0
+            if mod(blk, blk_break) == 0 
                 last_block = log_all(log_all.block > blk - blk_break, :);
                 [last_block, ~] = compute_performance(last_block);
                 block_message = sprintf(END_OF_BLOCK_MESSAGE, round(blk/blk_break), round(trial_mat.block(end)/blk_break), round(mean(last_block.trial_accuracy_aud, 'omitnan')*100));
@@ -522,7 +531,7 @@ try
                 while wait_resp == 0
                     [~, ~, wait_resp] = KbCheck();
                 end
-            elseif mod(blk, miniblk_break) ==0
+            elseif mod(blk, miniblk_break) == 0
                 block_message = sprintf(END_OF_MINIBLOCK_MESSAGE, round(blk/miniblk_break), round(trial_mat.block(end)/miniblk_break));
                 showMessage(block_message);
 

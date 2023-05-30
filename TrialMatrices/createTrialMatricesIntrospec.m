@@ -1726,9 +1726,6 @@ for sub=1:n_subjects
         block_mat = block_mat(randperm(height(block_mat)), :);
         block_mat.block(:) = block;
         block_mat.trial = (1:height(block_mat))';
-        % split block in half
-        block_mat.block(1:length(block_mat.block)/2) = block - 0.5;
-        block_mat.block = block_mat.block*2;
 
         if isempty(trial_mat_final)
             trial_mat_final = block_mat;
@@ -1800,10 +1797,10 @@ for sub=1:n_subjects
 trial_mat_final.intro_jit = random(jitter_distribution, height(trial_mat_final), 1) - 0.5;
 
 % split into two sessions 
-trial_mat_ses2 = trial_mat_final(trial_mat_final.block <= 24,:);
-trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 24 | trial_mat_final.block < 1,:);
+trial_mat_ses2 = trial_mat_final(trial_mat_final.block <= 12,:);
+trial_mat_ses3 = trial_mat_final(trial_mat_final.block > 12 | trial_mat_final.block < 1,:);
 
-trial_mat_ses3.block(trial_mat_ses3.block > 24) = trial_mat_ses3.block(trial_mat_ses3.block > 24) - 24;
+trial_mat_ses3.block(trial_mat_ses3.block > 12) = trial_mat_ses3.block(trial_mat_ses3.block > 12) - 12;
 %% save
     % Save to file:
     % Create file name:
