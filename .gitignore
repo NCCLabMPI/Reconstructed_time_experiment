@@ -1,3 +1,4 @@
 *.asv
+*.csv
 data/
 log_recon_time.txt
