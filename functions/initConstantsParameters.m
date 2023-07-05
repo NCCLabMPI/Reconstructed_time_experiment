@@ -29,7 +29,7 @@ global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE 
 global EXPERIMENT_NAME subjectNum
 % -----------------------------------------------------
 % Timing parameters
-global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION TRIAL_DURATION FRAME_ANTICIPATION
+global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION FRAME_ANTICIPATION
 % -----------------------------------------------------
 % Keys parameters
 global VIS_RESPONSE_KEY CalibrationKey ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey
@@ -67,7 +67,6 @@ if DEBUG FRAME_WIDTH = 1; end
 FRAME_COLOR = [39,241,44];
 
 % TIMING
-TRIAL_DURATION = 2.000; % Total trial duration in seconds, without jitter
 END_WAIT = 2.000; % time of "end of experiment" message (in s)
 FRAME_ANTICIPATION = 0.5; % used for excat timing in PTB
 

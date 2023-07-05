@@ -17,7 +17,7 @@ try
     Priority(0);
     sca;
     ShowCursor;
-    ListenChar(0);jhhhh
+    ListenChar(0);
     
 catch
     if EYE_TRACKER

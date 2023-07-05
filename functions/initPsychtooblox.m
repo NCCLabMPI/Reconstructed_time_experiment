@@ -1,9 +1,7 @@
-
-
 function [] = initPsychtooblox()
     global DEBUG ScreenHeight stimSizeHeight ScreenWidth refRate screenScaler fontType fontSize fontColor text gray w REF_RATE_OPTIMAL center
     global WINDOW_RESOLUTION debugFactor NO_FULLSCREEN  VIEWING_DISTANCE MAX_VISUAL_ANGEL STIM_DURATION TRIAL_DURATION ppd
-    global padhandle RESPONSE_BOX response_box_handle % These are required for the sound display
+    global padhandle
     disp('WELCOME to initPsychtooblox')
     
     %% Set preferences and open graphic window:
