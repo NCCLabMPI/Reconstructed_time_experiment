@@ -1,6 +1,6 @@
 function [] = make_time_estimation_screen(iT, introspec_question)
 
-global w ScreenWidth ScreenHeight center text fontSize gray  INTROSPEC_QN_VIS INTROSPEC_QN_AUD line_height right_end left_end 
+global w ScreenWidth ScreenHeight center text fontSize gray  INTROSPEC_QN_VIS INTROSPEC_QN_AUD line_height right_end left_end RESPONSE_BOX DIAL
 
 
 % line settings
@@ -46,9 +46,16 @@ elseif strcmp(introspec_question, 'aud')
 else % calibration
     question = 'Duration of tone?';
 end
-message = [question, ' ms \n\n press knob to confirm'];
-DrawFormattedText(w, textProcess(message), 'center' , ScreenHeight*(1/5), text.Color);
-
+if DIAL
+    message = [question, ' ms \n\n press knob to confirm'];
+    DrawFormattedText(w, textProcess(message), 'center' , ScreenHeight*(1/5), text.Color);
+elseif RESPONSE_BOX
+    message = [question, ' ms \n\n press knob to confirm'];
+    DrawFormattedText(w, textProcess(message), 'center' , ScreenHeight*(1/5), text.Color);
+else 
+    message = [question, ' ms \n\n press knob to confirm'];
+    DrawFormattedText(w, textProcess(message), 'center' , ScreenHeight*(1/5), text.Color);
+end
 % Flip to the screen
 Screen('Flip', w);
 

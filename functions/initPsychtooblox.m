@@ -90,10 +90,10 @@ function [] = initPsychtooblox()
     end
     % If we are not in debug mode and that the screen refresh rate does not
     % match the expected one, abort:
-    if ~DEBUG && round(hz) ~= REF_RATE_OPTIMAL
-        sca;
-        error("Error. \nThe refresh rate is %d and not equal to %d hz. Make sure you set your screen refresh rate to match the latter!", round(hz), REF_RATE_OPTIMAL)
-    end
+    %if ~DEBUG && round(hz) ~= REF_RATE_OPTIMAL
+    %    sca;
+    %    error("Error. \nThe refresh rate is %d and not equal to %d hz. Make sure you set your screen refresh rate to match the latter!", round(hz), REF_RATE_OPTIMAL)
+    %end
     
     % We can now actualize the stimuli duration:
     % It needs to be a multiple of the frame rate:

@@ -31,10 +31,11 @@ global EXPERIMENT_NAME subjectNum
 % Timing parameters
 global JITTER_RANGE_MEAN JITTER_RANGE_MIN JITTER_RANGE_MAX END_WAIT STIM_DURATION FRAME_ANTICIPATION
 % -----------------------------------------------------
-% Keys parameters
-global VIS_RESPONSE_KEY CalibrationKey ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey upKey downKey RightKey LeftKey MEGbreakKey PauseKey RestartKey YesKey
-global oneKey twoKey threeKey fourKey spaceBar MINIBLOCK_RESTART_KEY BLOCK_RESTART_KEY
-global CALIBRATION_PITCH_FREQ HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION HIGH_PITCH_KEY LOW_PITCH_KEY AUD_RESPONSE_KEY_HIGH AUD_RESPONSE_KEY_LOW
+% Keys parameters  
+global HIGH_PITCH LOW_PITCH VISUAL_TARGET INTRO_UP INTRO_DOWN NEXT_SLIDE PREVIOUS_SLIDE SPACE INTRO_CONFIRM
+global CalibrationKey ValidationKey VIS_TARGET_KEY WRONG_KEY NO_KEY RESTART_KEY ABORT_KEY abortKey MEGbreakKey PauseKey RestartKey
+global spaceBar
+global CALIBRATION_PITCH_FREQ HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION HIGH_PITCH_KEY LOW_PITCH_KEY
 % -----------------------------------------------------
 % Trials parameters
 global DEBUG FIXATION
@@ -78,11 +79,10 @@ PITCH_DURATION = 0.084;
 % calibration parameters
 NUM_OF_TRIALS_CALIBRATION = 100;
 CALIBRATION_PITCH_FREQ = 800;
-DIAL_SENSITIVITY_FACTOR = 5;
+DIAL_SENSITIVITY_FACTOR = 15;
 
 if DEBUG == 2 %fast debug
     STIM_DURATION = [6 12 18] * (1/60); % 1/60 to allow at least one frame to appear on screen
-    TRIAL_DURATION = 24 * (1/60); % leaves 3 frames for fixation
     JITTER_RANGE_MIN = 8 * (1/60);
     JITTER_RANGE_MAX = 24 * (1/60);
     JITTER_RANGE_MEAN = ((JITTER_RANGE_MIN+JITTER_RANGE_MAX)/2) * (1/60);
@@ -96,7 +96,7 @@ FIXATION_COLOR = [205 33 42];
 FIXATION_FONT_SIZE = 20;
 fontColor = 0; % black;
 
-% messages
+%% Messages
 END_OF_EXPERIMENT_MESSAGE = 'The End. Thank You!';
 FIXATION = 'o';
 LOADING_MESSAGE = 'Loading...';
@@ -104,7 +104,7 @@ SAVING_MESSAGE = 'Saving...';
 CLEAN_EXIT_MESSAGE = 'Program aborted by user!';
 MINIBLOCK_TEXT = 'Press When These Appear:';
 END_OF_MINIBLOCK_MESSAGE = 'End of miniblock %d out of %d\n\n Press any button to continue...';
-END_OF_BLOCK_MESSAGE = 'End of block %d out of %d\n\n Your auditory score is: %d %% \n\n Feel free to take a break \n\n Press any button to continue...';
+END_OF_BLOCK_MESSAGE = 'End of block %d out of %d\n\n Your auditory score is: %d %% \n\n Feel free to take a break \n\n Wait while the experimenter is saving the data...';
 MEG_BREAK_MESSAGE = 'We are saving the data, the experiment will proceed \n\n as soon as we are ready. \n\n Please wait';
 EXPERIMET_START_MESSAGE = 'The experiment starts now.\n\n Press any button to continue...';
 CALIBRATION_START_MESSAGE = 'The calibration task starts now.\n\n Press any button to continue...';
@@ -131,60 +131,40 @@ DIAMIN_FIXATION = 0.1; % diameter of inner circle (degrees)
 excelFormat = '.csv';
 excelFormatSummary = '.xls';
 
-% Response params
+%% Keys:
 KbName('UnifyKeyNames');
+
+% Experimenter keys:
 CalibrationKey = KbName('C');
-upKey         =  KbName('UpArrow');
-downKey       =  KbName('DownArrow');
 PauseKey      =  KbName('Q');
 RestartKey    =  KbName('R');
 abortKey      =  KbName('ESCAPE'); % ESC aborts experiment
-MEGbreakKey   =  KbName('F5');
-YesKey        =  KbName('Y');
+MEGbreakKey   =  KbName('F5'); 
 spaceBar      =  KbName('SPACE');
-oneKey        =  KbName('1!');
-twoKey        =  KbName('2@');
-threeKey      =  KbName('3#');
-fourKey       =  KbName('4$');
 ValidationKey = KbName('V');
 
-MINIBLOCK_RESTART_KEY = KbName('M');
-BLOCK_RESTART_KEY = KbName('B');
-
-
-
+% Responses keys:
 if RESPONSE_BOX
-    RightKey =  KbName('H');
-    LeftKey  =  KbName('G');
-
-    if mod(subjectNum, 2) == 0
-        if strcmp(task_type, 'introspection')
-            VIS_RESPONSE_KEY = KbName('E');
-        else
-            VIS_RESPONSE_KEY = KbName('B');
-        end
-        AUD_RESPONSE_KEY_HIGH = KbName('A');
-        AUD_RESPONSE_KEY_LOW = KbName('C');
-        spaceBar =  KbName('D');
-    else
-        if strcmp(task_type, 'introspection')
-            VIS_RESPONSE_KEY = KbName('F');
-        else
-            VIS_RESPONSE_KEY = KbName('A');
-        end
-        AUD_RESPONSE_KEY_HIGH = KbName('B');
-        AUD_RESPONSE_KEY_LOW = KbName('D');
-        spaceBar =  KbName('C');
-    end
-
+    HIGH_PITCH = KbName('4$');
+    LOW_PITCH = KbName('6^');
+    VISUAL_TARGET = KbName('7&');
+    INTRO_UP = KbName('8*');
+    INTRO_DOWN = KbName('2@');
+    INTRO_CONFIRM = KbName('7&');
+    NEXT_SLIDE = KbName('8*');
+    PREVIOUS_SLIDE = KbName('2@');
+    SPACE = KbName('7&');
 else
-    RightKey =  KbName('RightArrow');
-    LeftKey  =  KbName('LeftArrow');
-    VIS_RESPONSE_KEY = spaceBar;
-    AUD_RESPONSE_KEY_HIGH = twoKey;
-    AUD_RESPONSE_KEY_LOW = oneKey;
+    HIGH_PITCH = KbName('UpArrow');
+    LOW_PITCH = KbName('DownArrow');
+    VISUAL_TARGET = KbName('SPACE');
+    INTRO_UP = KbName('RightArrow');
+    INTRO_DOWN = KbName('LeftArrow');
+    INTRO_CONFIRM = KbName('Return');
+    NEXT_SLIDE = KbName('RightArrow');
+    PREVIOUS_SLIDE = KbName('LeftArrow');
+    SPACE = spaceBar;
 end
-
 
 %%  PARAMETERS THAT SHOULD NOT BE ALTERED, BUT SHOULD BE USED AS REFERENCE
 

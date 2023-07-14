@@ -101,7 +101,7 @@ n_combi = height(trial_pool);
 
 % Compute the number of trials we should have:
 n_trials_total = length(task_relevance) * length(duration) * length(soa) * ...
-    length(soa_lock) * length(pitch) * length(category) * 10;
+    length(soa_lock) * length(pitch) * length(category) * 20;
 % Repeat the trial matrix n times:
 trial_pool = repmat(trial_pool, n_trials_total/n_combi, 1);
 
@@ -112,7 +112,7 @@ for subject_i=1:n_subjects
     subject_id = sprintf("%s%d", lab_id, 100 + subject_i);
     disp(subject_id)
     % Create the visual first and the auditory first tables:
-    tasks = ["visual_first", "auditory_first", "visual_only", "visual_only", "visual_only", "auditory_only", "auditory_only", "auditory_only"];
+    tasks = ["auditory_only", "visual_only", "visual_first", "auditory_first"];
     visual_only_ctr = 1;
     audio_only_ctr = 1;
     
@@ -137,10 +137,10 @@ for subject_i=1:n_subjects
                 % Get the number of blocks of each target type:
                 n_block_types = n_blocks/2;
                 % Randomly select the face targets:
-                faces_targets = [face_identities(randperm(length(face_identities))), face_identities(randperm(length(face_identities)))];
-                object_targets = [object_identities(randperm(length(object_identities))), object_identities(randperm(length(object_identities)))];
-                letter_targets = [letter_identities(randperm(length(letter_identities))), letter_identities(randperm(length(letter_identities)))];
-                false_targets = [false_font_identities(randperm(length(false_font_identities))), false_font_identities(randperm(length(false_font_identities)))];
+                faces_targets = [face_identities(randperm(length(face_identities))), face_identities(randperm(length(face_identities))), face_identities(randperm(length(face_identities))), face_identities(randperm(length(face_identities)))];
+                object_targets = [object_identities(randperm(length(object_identities))), object_identities(randperm(length(object_identities))), object_identities(randperm(length(object_identities))), object_identities(randperm(length(object_identities)))];
+                letter_targets = [letter_identities(randperm(length(letter_identities))), letter_identities(randperm(length(letter_identities))), letter_identities(randperm(length(letter_identities))), letter_identities(randperm(length(letter_identities)))];
+                false_targets = [false_font_identities(randperm(length(false_font_identities))), false_font_identities(randperm(length(false_font_identities))), false_font_identities(randperm(length(false_font_identities))), false_font_identities(randperm(length(false_font_identities)))];
                 block_types = ["face_object", "letter_false_font"];
                 blk_ctr = 1;
                 for blk_type_i=1:length(block_types)
@@ -269,7 +269,7 @@ for subject_i=1:n_subjects
                         blk_table.intro_jit = random(intro_jitter_distribution, height(blk_table), 1);
                         % And the trial duration:
                         if strcmp(task, "auditory_only")
-                            blk_table.trial_duration(:) = 1.0;
+                            blk_table.trial_duration(:) = 3.0;
                         elseif strcmp(task, "visual_only")
                             blk_table.trial_duration(:) = 2.5;
                         else
@@ -300,40 +300,22 @@ for subject_i=1:n_subjects
                 blk_order_version = mod(subject_i, 2);
                 blocks = unique(subject_trial_matrix.block);
                 subject_trial_matrix_new = [];
-                if contains(task, "only")
-                    switch blk_order_version
-                        case 0
-                            blk_type_order = [...
-                                "face_object"; "face_object"; ...
-                                "letter_false_font"; "letter_false_font";...
-                                "letter_false_font"; "letter_false_font";...
-                                "face_object"; "face_object"
-                                ];
-                        case 1
-                            blk_type_order = [...
-                                "letter_false_font"; "letter_false_font";...
-                                "face_object"; "face_object"; ...
-                                "face_object"; "face_object"; ...
-                                "letter_false_font"; "letter_false_font"
-                                ];
-                    end
-                else
-                    switch blk_order_version
-                        case 0
-                            blk_type_order = repmat([...
-                                "face_object"; "face_object"; ...
-                                "letter_false_font"; "letter_false_font";...
-                                "letter_false_font"; "letter_false_font"; ...
-                                "face_object"; "face_object";...
-                                ], ceil(length(blocks) / 8), 1);
-                        case 1
-                            blk_type_order = repmat([...
-                                "letter_false_font"; "letter_false_font"; ...
-                                "face_object"; "face_object";...
-                                "face_object"; "face_object";...
-                                "letter_false_font"; "letter_false_font";...
-                                ], ceil(length(blocks) / 8), 1);
-                    end
+
+                switch blk_order_version
+                    case 0
+                        blk_type_order = repmat([...
+                            "face_object"; "face_object"; ...
+                            "letter_false_font"; "letter_false_font";...
+                            "letter_false_font"; "letter_false_font"; ...
+                            "face_object"; "face_object";...
+                            ], ceil(length(blocks) / 8), 1);
+                    case 1
+                        blk_type_order = repmat([...
+                            "letter_false_font"; "letter_false_font"; ...
+                            "face_object"; "face_object";...
+                            "face_object"; "face_object";...
+                            "letter_false_font"; "letter_false_font";...
+                            ], ceil(length(blocks) / 8), 1);
                 end
                 % Loop through each block to reorder:
                 for blk = 1:length(blocks)
@@ -361,57 +343,76 @@ for subject_i=1:n_subjects
                 switch task
                     case "visual_first"
                         % Add the introspection:
-                        subject_trial_matrix.introspection(:) = true;
-                        % This task should always happen last in the session:
-                        subject_trial_matrix.tasks_order(:) = 3;
+                        subject_trial_matrix.introspection(:) = true;                      
                         % The visual first is longer, so we split it in half:
                         n_blocks = subject_trial_matrix.block(end);
-                        ses_a_blks = subject_trial_matrix(subject_trial_matrix.block <= n_blocks/2, :);
-                        ses_b_blks = subject_trial_matrix(subject_trial_matrix.block > n_blocks/2, :);
-                        % Depending on the subject number, we change the order of
-                        % each task:
+                        ses_a_blks = subject_trial_matrix(subject_trial_matrix.block <= 21, :);
+                        ses_b_blks = subject_trial_matrix(subject_trial_matrix.block > 21 & subject_trial_matrix.block <= 42, :);
+                        ses_c_blks = subject_trial_matrix(subject_trial_matrix.block > 42, :);
+                        % Changing the task order depending on the subject
+                        % number:
                         ver = mod(subject_i, 3);
                         if ver == 1
-                            % Create the file name:
-                            file_name_1 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
-                            file_name_2 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 2, task);
+                            ses_a_blks.tasks_order(:) = 1;        
+                            ses_b_blks.tasks_order(:) = 1;     
+                            ses_c_blks.tasks_order(:) = 2;     
                         elseif ver == 2
-                            file_name_1 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
-                            file_name_2 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 3, task);
-                        elseif ver == 3
-                            file_name_1 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 2, task);
-                            file_name_2 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 3, task);
+                            ses_a_blks.tasks_order(:) = 1;        
+                            ses_b_blks.tasks_order(:) = 2;     
+                            ses_c_blks.tasks_order(:) = 1;  
+                        else
+                            ses_a_blks.tasks_order(:) = 2;        
+                            ses_b_blks.tasks_order(:) = 1;     
+                            ses_c_blks.tasks_order(:) = 1; 
                         end
+                        % Save:
+                        file_name_1 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
+                        file_name_2 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 2, task);
+                        file_name_3 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 3, task);
                         writetable(ses_a_blks, file_name_1);
                         writetable(ses_b_blks, file_name_2);
+                        writetable(ses_c_blks, file_name_3);
                     case "auditory_first"
                         % Add the introspection:
                         subject_trial_matrix.introspection(:) = true;
-                        % This task should always happen last in the session:
-                        subject_trial_matrix.tasks_order(:) = 3;
+                        % Splitting the auditory task in 3 as well
+                        n_blocks = subject_trial_matrix.block(end);
+                        ses_a_blks = subject_trial_matrix(subject_trial_matrix.block <= 11, :);
+                        ses_b_blks = subject_trial_matrix(subject_trial_matrix.block > 11 & subject_trial_matrix.block <= 22, :);
+                        ses_c_blks = subject_trial_matrix(subject_trial_matrix.block > 22, :);
+                        ver = mod(subject_i, 3);
                         if ver == 1
-                            % Create the file name:
-                            file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 3, task);
+                            ses_a_blks.tasks_order(:) = 2;        
+                            ses_b_blks.tasks_order(:) = 2;     
+                            ses_c_blks.tasks_order(:) = 1;     
                         elseif ver == 2
-                            file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 2, task);
-                        elseif ver == 3
-                            file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
+                            ses_a_blks.tasks_order(:) = 2;        
+                            ses_b_blks.tasks_order(:) = 1;     
+                            ses_c_blks.tasks_order(:) = 2;  
+                        else
+                            ses_a_blks.tasks_order(:) = 1;        
+                            ses_b_blks.tasks_order(:) = 2;     
+                            ses_c_blks.tasks_order(:) = 2; 
                         end
-                        writetable(subject_trial_matrix, file_name);
+                        file_name_1 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
+                        file_name_2 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 2, task);
+                        file_name_3 = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 3, task);
+                        writetable(ses_a_blks, file_name_1);
+                        writetable(ses_b_blks, file_name_2);
+                        writetable(ses_c_blks, file_name_3);
                     case "visual_only"
                         % This task should always happen first in the session:
                         subject_trial_matrix.tasks_order(:) = 1;
                         subject_trial_matrix.introspection(:) = false;
-                        file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, visual_only_ctr, task);
+                        file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
                         writetable(subject_trial_matrix, file_name);
-                        visual_only_ctr = visual_only_ctr + 1;
+                        
                     case "auditory_only"
                         % This task should always happen second in the session:
                         subject_trial_matrix.tasks_order(:) = 2;
                         subject_trial_matrix.introspection(:) = false;
-                        file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, audio_only_ctr, task);
+                        file_name = sprintf("sub-%s_ses-%d_task-%s.csv", subject_id, 1, task);
                         writetable(subject_trial_matrix, file_name);
-                        audio_only_ctr = audio_only_ctr + 1;
                 end
                 no_solution = 0;
             catch e

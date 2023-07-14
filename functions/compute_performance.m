@@ -2,7 +2,7 @@ function [log_table, performance_struct] = compute_performance(log_table)
 %%
 disp('WELCOME TO compute_performance');
 
-global LOW_PITCH_KEY HIGH_PITCH_KEY
+global LOW_PITCH HIGH_PITCH
 
 performance_struct.misses = 0;
 performance_struct.hits = 0;
@@ -47,12 +47,12 @@ for tr = 1:length(log_table.trial)
         end 
 
         % compute correctness auditory task
-        if (log_table.aud_resp(tr) == LOW_PITCH_KEY && log_table.pitch(tr) == 1000) ||...
-                (log_table.aud_resp(tr) == HIGH_PITCH_KEY && log_table.pitch(tr) == 1100)
+        if (log_table.aud_resp(tr) == LOW_PITCH && log_table.pitch(tr) == 1000) ||...
+                (log_table.aud_resp(tr) == HIGH_PITCH && log_table.pitch(tr) == 1100)
             log_table.trial_accuracy_aud(tr) = 1;
 
-        elseif (log_table.aud_resp(tr) == HIGH_PITCH_KEY && log_table.pitch(tr) == 1000) ||...
-                (log_table.aud_resp(tr) == LOW_PITCH_KEY && log_table.pitch(tr) == 1100)
+        elseif (log_table.aud_resp(tr) == LOW_PITCH && log_table.pitch(tr) == 1000) ||...
+                (log_table.aud_resp(tr) == HIGH_PITCH && log_table.pitch(tr) == 1100)
             log_table.trial_accuracy_aud(tr) = 0;
         else
             log_table.trial_accuracy_aud(tr) = nan;
@@ -68,10 +68,3 @@ for tr = 1:length(log_table.trial)
 end
 performance_struct.aud_mean_accuracy = mean(log_table.trial_accuracy_aud, 'omitnan');
 end
-
-% log_table.has_response_vis(:) = 0;
-% for tr = 1:length(log_table.trial)
-%     if log_table.trial_first_button_press(tr) == 1 || log_table.trial_second_button_press(tr) == 1
-%         log_table.has_response_vis(tr) = 1;
-%     end
-% end
