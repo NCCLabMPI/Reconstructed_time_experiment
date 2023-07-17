@@ -23,7 +23,7 @@ global INSTRUCTIONS1 INSTRUCTIONS2 INSTRUCTIONS3 INSTRUCTIONS4 INSTRUCTIONS5 INS
 global LOADING_MESSAGE  CLEAN_EXIT_MESSAGE  END_OF_EXPERIMENT_MESSAGE MINIBLOCK_TEXT END_OF_BLOCK_MESSAGE MEG_BREAK_MESSAGE
 global EXPERIMET_START_MESSAGE NUM_OF_TRIALS_CALIBRATION DIAL_SENSITIVITY_FACTOR RESPONSE_BOX
 global AUD_FEEDBACK_MESSAGE EYETRACKER_CALIBRATION_MESSAGE EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS PRESS_SPACE fontType fontSize fontColor task_type
-global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESP_ORDER_WARNING_MESSAGE INTROSPEC_QN_VIS INTROSPEC_QN_AUD
+global GENERAL_BREAK_MESSAGE CALIBRATION_START_MESSAGE END_OF_MINIBLOCK_MESSAGE RESTART_MESSAGE RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST INTROSPEC_QN_VIS INTROSPEC_QN_AUD
 % -----------------------------------------------------
 % Matrices info
 global EXPERIMENT_NAME subjectNum
@@ -112,7 +112,8 @@ EYETRACKER_CALIBRATION_MESSAGE = 'Press C to proceed to perform the calibration 
 EYETRACKER_CALIBRATION_MESSAGE_BETWEENBLOCKS = 'Before we proceed, we need to calibrate the eyetracker.\n\n\n Press any button to proceed to calibration...';
 GENERAL_BREAK_MESSAGE = 'Feel free to take a break now.\n\n Press any button to continue...';
 AUD_FEEDBACK_MESSAGE = '\n\n\n\n Your score on the auditory task was: %s';
-RESP_ORDER_WARNING_MESSAGE = 'Please remember to \n\n respond to the visual first \n\n and to the auditory task second';
+RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST = 'Please remember to \n\n respond to the visual first \n\n and to the auditory task second';
+RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST = 'Please remember to \n\n respond to the auditory first \n\n and to the visual task second';
 
 INTROSPEC_QN_VIS = 'Visual task duration?';
 INTROSPEC_QN_AUD = 'Auditory task duration?';
