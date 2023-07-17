@@ -38,9 +38,9 @@ for tr = 1:length(log_table.trial)
 
 
         % extract auditory response
-        if log_table.trial_first_button_press(tr) >= 1000 
+        if log_table.trial_first_button_press(tr) == LOW_PITCH || log_table.trial_first_button_press(tr) == HIGH_PITCH
             log_table.aud_resp(tr) = log_table.trial_first_button_press(tr);
-        elseif log_table.trial_second_button_press(tr) >= 1000
+        elseif log_table.trial_second_button_press(tr) == LOW_PITCH || log_table.trial_second_button_press(tr) == HIGH_PITCH
             log_table.aud_resp(tr) = log_table.trial_second_button_press(tr);
         else  
             log_table.aud_resp(tr) = 0; % No auditory response was provided
