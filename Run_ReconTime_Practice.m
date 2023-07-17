@@ -8,7 +8,7 @@ clear all;
 global subjectNum TRUE FALSE refRate
 global session LAB_ID subID
 global DATA_FOLDER FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
-global CLEAN_EXIT_MESSAGE
+global CLEAN_EXIT_MESSAGE END_OF_EXPERIMENT_MESSAGE RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST
 global EXPERIMET_START_MESSAGE LOADING_MESSAGE
 global ABORTED abortKey VISUAL_TARGET HIGH_PITCH LOW_PITCH PITCH_DURATION HIGH_PITCH_FREQ LOW_PITCH_FREQ
 global padhandle
@@ -46,6 +46,17 @@ for practice_i = 1:length(practices)
     % Grab a random trial number:
     blk_mat = trial_matrix(trial_matrix.block == datasample(trial_matrix.block, 1), :);
     
+    % Keep only 10 task relevant, 10 task irrelevant, one of each targets:
+    task_relevant_trials = blk_mat(strcmp(blk_mat.task_relevance, "non-target"), :);
+    task_irrelevant_trials = blk_mat(strcmp(blk_mat.task_relevance, "irrelevant"), :);
+    target_trials = blk_mat(strcmp(blk_mat.task_relevance, "target"), :);
+    task_relevant_trials = task_relevant_trials(1:4, :);
+    task_irrelevant_trials = task_irrelevant_trials(1:4, :);
+    target_trials = target_trials(1:2, :);
+    blk_mat = [task_relevant_trials; task_irrelevant_trials; target_trials];
+    % Randomize the order:
+    blk_mat = blk_mat(randperm(height(blk_mat)), :);
+    
     % Show the instructions:
     if SHOW_INSTRUCTIONS
         if practice_i == 1
@@ -54,7 +65,7 @@ for practice_i = 1:length(practices)
             Instructions("auditory_only");
         elseif practice_i == 3
             Instructions(practice_type);
-        elseif practice_i == 4  
+        elseif practice_i == 4
             Instructions(practice_type);
         end
     end
@@ -94,7 +105,7 @@ for practice_i = 1:length(practices)
         log_hasInputs_vis = nan(1,length(blk_mat.trial));
         
         % Show the target screen at the beginning of each block (expect if it is the auditory only task):
-        if ~strcmp(practice_type, 'auditory_only')
+        if practice_i ~= 2
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
             WaitSecs(0.3);
             wait_resp = 0;
@@ -215,11 +226,14 @@ for practice_i = 1:length(practices)
                         % logging of the same response:
                         if hasInputs > 0 && keyCode(blk_mat.trial_first_button_press(tr))
                             continue
-                        end                        
+                        end
                         if keyCode(abortKey) % If the experiment was aborted:
                             ABORTED = 1;
-                            sca
-                            clear
+                            PsychPortAudio('Close', padhandle);
+                            Priority(0);
+                            sca;
+                            ShowCursor;
+                            ListenChar(0);
                             error(CLEAN_EXIT_MESSAGE);
                         end
                         
@@ -263,7 +277,7 @@ for practice_i = 1:length(practices)
                 % Present jitter
                 if elapsedTime > trial_duration  - refRate*FRAME_ANTICIPATION && jitterLogged == FALSE
                     JitOnset = showFixation('PhotodiodeOn');
-                    DiodFrame = CurrentFrame;                    
+                    DiodFrame = CurrentFrame;
                     % log jitter started
                     blk_mat.JitOnset(tr) = JitOnset;
                     jitterLogged = TRUE;
@@ -302,15 +316,18 @@ for practice_i = 1:length(practices)
             if blk_mat.trial_first_button_press(tr) >= 1000 && blk_mat.trial_second_button_press(tr) == 1
                 warning_response_order = 1;
             end
-            
-            %% introspective questions
-            if introspection && practice_i > 2
-                % introspective question 1 (RT visual task)
-                blk_mat.iRT_vis(tr) = run_dial('vis');              
-                showFixation('PhotodiodeOn');
-                WaitSecs(blk_mat.intro_jit(tr));
-            end
         end  % End of trial loop
+        % Display the participant if they responded in the wrong order:
+        if warning_response_order == 1
+            if strcmp(practice_type, "auditory_first")
+                WARNING_MESSAGE = RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST;
+            elseif strcmp(practice_type, "visual_first")
+                WARNING_MESSAGE = RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST;
+            end
+            showMessage(WARNING_MESSAGE);
+            WaitSecs(3);
+            warning_response_order = 0;
+        end
         
         % Display the practice feedback:
         if practice_i == 1
@@ -322,8 +339,20 @@ for practice_i = 1:length(practices)
         end
         continue_practice = get_practice_feedback(blk_mat, feedback_type);
         repeat_practice = ~continue_practice;
-    end    
+    end
 end
+
+% Show the end of experiment message:
+showMessage(END_OF_EXPERIMENT_MESSAGE);
+WaitSecs(2);
+
+% Close everything:
+PsychPortAudio('Close', padhandle);
+Priority(0);
+sca;
+ShowCursor;
+ListenChar(0);
+clear
 
 
 
