@@ -67,9 +67,9 @@ for practice_i = 1:length(practices)
         elseif practice_i == 2
             Instructions("auditory_only", 'practice');
         elseif practice_i == 3
-            Instructions(practice_type);
+            Instructions(practice_type, 'practice');
         elseif practice_i == 4
-            Instructions(practice_type);
+            Instructions(practice_type, 'practice');
         end
     end
     
@@ -106,7 +106,8 @@ for practice_i = 1:length(practices)
         % Add the columns for logging:
         blk_mat = prepare_log(blk_mat);
         log_hasInputs_vis = nan(1,length(blk_mat.trial));
-        
+        % Set the warning for response order:
+        warning_response_order = 0;
         % Show the target screen at the beginning of each block (expect if it is the auditory only task):
         if practice_i ~= 2
             blk_mat.TargetScreenOnset(1) = showMiniBlockBeginScreen(blk_mat, 1);
