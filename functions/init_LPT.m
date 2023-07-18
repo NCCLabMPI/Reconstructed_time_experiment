@@ -10,4 +10,6 @@ function [ Object,LPT_address ] = init_LPT()
         disp ('fail')
         Object = [];
     end
+    % Set to state 0:
+    io64(Object,LPT_address,0);
 end

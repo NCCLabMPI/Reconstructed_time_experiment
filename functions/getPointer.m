@@ -15,6 +15,6 @@ global texture_struct
 
 vis_stim_num = str2double(extractBetween(vis_stim_id,strlength(vis_stim_id)-1,strlength(vis_stim_id)));
 vis_stim_cat = extractBetween(vis_stim_id,1,strlength(vis_stim_id)-3);
-texture_ptr = texture_struct.(vis_stim_cat{1}).(orientation)(vis_stim_num);
+texture_ptr = texture_struct.(vis_stim_cat{1}).(char(orientation))(char(vis_stim_num));
 
 end

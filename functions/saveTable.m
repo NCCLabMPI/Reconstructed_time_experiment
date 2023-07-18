@@ -12,9 +12,9 @@ function [] = saveTable(input_table, task, blk_num)
 global DATA_FOLDER subID session
 
 % Creating the directories if they don't already exist:
-dir = string(fullfile(pwd,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)]));
+dir = char(fullfile(pwd,DATA_FOLDER,['sub-', subID],['ses-',num2str(session)]));
 if ~exist(dir, 'dir')
-    mkdir(dir);
+    mkdir(char(dir));
 end
 if isnumeric(blk_num)
     if blk_num < 0
@@ -24,8 +24,8 @@ if isnumeric(blk_num)
 end
 
 % make files names 
-fileName_mat  = fullfile(dir, sprintf('sub-%s_ses-%d_run-%s_task-%s_events.mat', subID, session, blk_num, string(task)));
-fileName_csv  = fullfile(dir, sprintf('sub-%s_ses-%d_run-%s_task-%s_events.csv', subID, session, blk_num, string(task)));
+fileName_mat  = fullfile(dir, char(sprintf('sub-%s_ses-%d_run-%s_task-%s_events.mat', subID, session, blk_num, string(task))));
+fileName_csv  = fullfile(dir, char(sprintf('sub-%s_ses-%d_run-%s_task-%s_events.csv', subID, session, blk_num, string(task))));
 
 % check if they already exist and mark them aas repetitions
 repetition = 0;
