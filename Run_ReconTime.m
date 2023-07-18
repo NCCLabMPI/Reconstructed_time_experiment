@@ -118,7 +118,6 @@ for task_i=1:length(session_tasks)
     try
         % Experiment Prep
         previous_miniblock = 0;
-        warning_response_order = 0;
         start_message_flag = FALSE;
         showFixation('PhotodiodeOff');
         blk = 1;
@@ -126,6 +125,8 @@ for task_i=1:length(session_tasks)
         %% Block loop:
         blks = unique(task_trial_mat.block);
         while blk <= blks(end)
+            % Reset the warning of response order flag:
+            warning_response_order = 0;
             % in the very first trial of the actual experiment show start message
             if blk == 1
                 showMessage(EXPERIMET_START_MESSAGE);
@@ -202,7 +203,7 @@ for task_i=1:length(session_tasks)
                 vis_stim_id = blk_mat.identity{tr};
                 orientation = blk_mat.orientation{tr};
                 soa = blk_mat.onset_SOA(tr);
-                soa_raw = blk_mat.SOA(tr);
+                soa_raw = blk_mat.soa(tr);
                 trial_duration = blk_mat.trial_duration(tr);
                 vis_stim_dur = blk_mat.duration(tr);
                 jitter = blk_mat.stim_jit(tr);
