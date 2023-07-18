@@ -2,7 +2,7 @@ function [ ] = Instructions(task, subfolder)
 global NEXT_SLIDE PREVIOUS_SLIDE
 % Select the instructions to display:
 instructions_root = fullfile(pwd, "instructions", task, subfolder);
-instructions_files = dir(sprintf("%s%s*.PNG", instructions_root, filesep));
+instructions_files = dir(char(sprintf("%s%s*.PNG", instructions_root, filesep)));
 
 % Setting the slide number to 1 to initiate the while loop
 slide_i = 1;
