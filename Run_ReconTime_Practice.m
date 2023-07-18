@@ -11,7 +11,7 @@ global DATA_FOLDER FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global CLEAN_EXIT_MESSAGE END_OF_EXPERIMENT_MESSAGE RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST
 global EXPERIMET_START_MESSAGE LOADING_MESSAGE
 global ABORTED abortKey VISUAL_TARGET HIGH_PITCH LOW_PITCH PITCH_DURATION HIGH_PITCH_FREQ LOW_PITCH_FREQ
-global padhandle
+global padhandle RESPONSE_BOX
 
 
 % Add functions folder to path (when we separate all functions)
@@ -23,6 +23,9 @@ subjectNum = input('Subject number [101-199, default 101]: '); if isempty(subjec
 
 % initializing experimental parameters
 initRuntimeParameters
+% For the practice,  always use the keyboard, since it is run on the
+% laptop:
+RESPONSE_BOX = 0; % 1 if Cedrus RB-844 response box is present. 
 initConstantsParameters(); % defines all constants and initilizes parameters of the program
 
 subID = sprintf('%s%d', LAB_ID, subjectNum);
@@ -50,8 +53,8 @@ for practice_i = 1:length(practices)
     task_relevant_trials = blk_mat(strcmp(blk_mat.task_relevance, "non-target"), :);
     task_irrelevant_trials = blk_mat(strcmp(blk_mat.task_relevance, "irrelevant"), :);
     target_trials = blk_mat(strcmp(blk_mat.task_relevance, "target"), :);
-    task_relevant_trials = task_relevant_trials(1:4, :);
-    task_irrelevant_trials = task_irrelevant_trials(1:4, :);
+    task_relevant_trials = task_relevant_trials(1:10, :);
+    task_irrelevant_trials = task_irrelevant_trials(1:10, :);
     target_trials = target_trials(1:2, :);
     blk_mat = [task_relevant_trials; task_irrelevant_trials; target_trials];
     % Randomize the order:
@@ -60,9 +63,9 @@ for practice_i = 1:length(practices)
     % Show the instructions:
     if SHOW_INSTRUCTIONS
         if practice_i == 1
-            Instructions("visual_only");
+            Instructions("visual_only", 'practice');
         elseif practice_i == 2
-            Instructions("auditory_only");
+            Instructions("auditory_only", 'practice');
         elseif practice_i == 3
             Instructions(practice_type);
         elseif practice_i == 4
