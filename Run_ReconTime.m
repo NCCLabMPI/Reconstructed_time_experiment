@@ -70,7 +70,7 @@ for task_file_i=1:length(session_matrices_files)
 end
 
 % Order the session trial mat:
-session_trial_mat = sortrows(session_trial_mat, "tasks_order");
+session_trial_mat = sortrows(session_trial_mat, 22);
 
 %% Load and prepare the visual and audio stimuli:
 showMessage(LOADING_MESSAGE);
