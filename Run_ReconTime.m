@@ -92,7 +92,7 @@ for task_i=1:length(session_tasks)
     tic;  % Start the timer
     % Present the instructions for the current task:
     if SHOW_INSTRUCTIONS
-        Instructions(task);
+        Instructions(task, 'experiment');
     end
     % Get the task matrix:
     task_trial_mat = session_trial_mat(strcmp(session_trial_mat.task, task), :);
