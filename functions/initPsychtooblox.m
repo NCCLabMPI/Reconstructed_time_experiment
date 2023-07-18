@@ -75,7 +75,7 @@ function [] = initPsychtooblox()
     freq = [];
     channels = 2;
     padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
-    PsychPortAudio('Volume', padhandle, 0.1);
+    PsychPortAudio('Volume', padhandle, 0.2);
 
     %% Derive relevant parameters from setup information:
     % Extract screen parameters in pixels:
@@ -84,16 +84,17 @@ function [] = initPsychtooblox()
     center          =  [ScreenWidth/2; ScreenHeight/2];
     % Get hte refresh rate:
     hz = Screen('NominalFrameRate', w);
+    disp(hz)
     refRate = hz.^(-1);
     if DEBUG == 2 
         refRate = refRate / debugFactor ;
     end
     % If we are not in debug mode and that the screen refresh rate does not
     % match the expected one, abort:
-    %if ~DEBUG && round(hz) ~= REF_RATE_OPTIMAL
-    %    sca;
-    %    error("Error. \nThe refresh rate is %d and not equal to %d hz. Make sure you set your screen refresh rate to match the latter!", round(hz), REF_RATE_OPTIMAL)
-    %end
+    if ~DEBUG && round(hz) ~= REF_RATE_OPTIMAL
+        sca;
+        error("Error. \nThe refresh rate is %d and not equal to %d hz. Make sure you set your screen refresh rate to match the latter!", round(hz), REF_RATE_OPTIMAL)
+    end
     
     % We can now actualize the stimuli duration:
     % It needs to be a multiple of the frame rate:
