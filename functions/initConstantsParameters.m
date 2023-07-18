@@ -146,15 +146,15 @@ ValidationKey = KbName('V');
 
 % Responses keys:
 if RESPONSE_BOX
-    HIGH_PITCH = KbName('4$');
-    LOW_PITCH = KbName('6^');
-    VISUAL_TARGET = KbName('7&');
-    INTRO_UP = KbName('8*');
-    INTRO_DOWN = KbName('2@');
-    INTRO_CONFIRM = KbName('7&');
-    NEXT_SLIDE = KbName('8*');
-    PREVIOUS_SLIDE = KbName('2@');
-    SPACE = KbName('7&');
+    HIGH_PITCH = KbName('1!');
+    LOW_PITCH = KbName('9(');
+    VISUAL_TARGET = KbName('2@');
+    INTRO_UP = KbName('3#');
+    INTRO_DOWN = KbName('7&');
+    INTRO_CONFIRM = KbName('2@');
+    NEXT_SLIDE = KbName('3#');
+    PREVIOUS_SLIDE = KbName('7&');
+    SPACE = KbName('2@');
 else
     HIGH_PITCH = KbName('UpArrow');
     LOW_PITCH = KbName('DownArrow');
