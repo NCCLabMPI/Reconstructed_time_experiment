@@ -11,7 +11,7 @@ global DATA_FOLDER FRAME_ANTICIPATION PHOTODIODE DIOD_DURATION SHOW_INSTRUCTIONS
 global LOADING_MESSAGE CLEAN_EXIT_MESSAGE SAVING_MESSAGE END_OF_EXPERIMENT_MESSAGE
 global END_OF_MINIBLOCK_MESSAGE END_OF_BLOCK_MESSAGE EXPERIMET_START_MESSAGE
 global ABORTED abortKey VISUAL_TARGET HIGH_PITCH LOW_PITCH MEGbreakKey
-global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE padhandle
+global HIGH_PITCH_FREQ LOW_PITCH_FREQ PITCH_DURATION RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST padhandle
 
 
 % Add functions folder to path (when we separate all functions)
@@ -58,7 +58,7 @@ end
 %% Setup the trial matrix and log:
 % open trial matrix (form Experiment 1) and add auditory conditions
 MatRoot = [pwd,filesep,'TrialMatricesMEG\'];
-NamingConv = sprintf("%ssub-%s_ses-%s_task-*.csv", MatRoot, subID, session);
+NamingConv = sprintf("%ssub-%s_ses-%d_task-*.csv", MatRoot, subID, session);
 % Get trials matrices from this session:
 session_matrices_files = dir(NamingConv);
 for task_file_i=1:length(session_matrices_files)
@@ -202,6 +202,7 @@ for task_i=1:length(session_tasks)
                 vis_stim_id = blk_mat.identity{tr};
                 orientation = blk_mat.orientation{tr};
                 soa = blk_mat.onset_SOA(tr);
+                soa_raw = blk_mat.SOA(tr);
                 trial_duration = blk_mat.trial_duration(tr);
                 vis_stim_dur = blk_mat.duration(tr);
                 jitter = blk_mat.stim_jit(tr);
@@ -294,7 +295,7 @@ for task_i=1:length(session_tasks)
                         % Get the buffer time stamp:
                         audio_start = GetSecs();
                         % Sending the MEG trigger:
-                        if MEG && soa ~= 0 && strcmp(lock, "onset")
+                        if MEG && soa_raw ~= 0
                             trigCode = get_meg_trigger("audio");
                             LTP_State, megTrigOnset = sendMegTrig(trigCode,LPT_Object, LPT_address);
                         end
@@ -314,7 +315,7 @@ for task_i=1:length(session_tasks)
                         blk_mat.vis_stim_time(tr) = showStimuli(texture_ptr);
                         DiodFrame = 0;
                         % Sending the MEG trigger:
-                        if MEG
+                        if MEG && soa_raw ~= 0
                             trigCode = get_meg_trigger("visual");
                             LTP_State, megTrigOnset = sendMegTrig(trigCode,LPT_Object, LPT_address);
                         end
@@ -341,10 +342,18 @@ for task_i=1:length(session_tasks)
                             if hasInputs > 0 && keyCode(blk_mat.trial_first_button_press(tr))
                                 continue                                
                             end
-                            % Sending the MEG trigger:
+                            % Sending the MEG trigger. For the response, as it is user controlled, it can collide with other triggers:
                             if MEG
                                 trigCode = get_meg_trigger("response");
-                                LTP_State, megTrigOnset = sendMegTrig(trigCode,LPT_Object, LPT_address);
+                                try
+                                    LTP_State, megTrigOnset = sendMegTrig(trigCode,LPT_Object, LPT_address);
+                                catch ME
+                                    if contains(ME.message, 'Port occupied!')
+                                        disp("The response trigger could not be sent, because the LPT port was occupied!")
+                                    else 
+                                        rethrow ME
+                                    end
+                                end
                             end
                             % Sending response trigger for the eyetracker
                             if EYE_TRACKER
@@ -456,16 +465,13 @@ for task_i=1:length(session_tasks)
                 %% End of trial
                 % check order of responses
                 if strcmp(task, "auditory_first")
-                    if blk_mat.trial_first_button_press(tr) == VISUAL_TARGET
+                    if blk_mat.trial_second_button_press(tr) == VISUAL_TARGET || blk_mat.trial_first_button_press(tr) == LOW_PITCH
                         warning_response_order = 1;
                     end
                 elseif strcmp(task, "visual_first")
-                    if blk_mat.trial_first_button_press(tr) == HIGH_PITCH || blk_mat.trial_first_button_press(tr) == LOW_PITCH
+                    if blk_mat.trial_second_button_press(tr) == VISUAL_TARGET
                         warning_response_order = 1;
                     end
-                end
-                if blk_mat.trial_first_button_press(tr) >= 1000 && blk_mat.trial_second_button_press(tr) == 1
-                    warning_response_order = 1;
                 end
                 
                 %% introspective questions
@@ -508,7 +514,12 @@ for task_i=1:length(session_tasks)
             
             % order of responses reminder (if needed)
             if warning_response_order == 1
-                showMessage(RESP_ORDER_WARNING_MESSAGE);
+                if strcmp(task, "auditory_first")
+                    WARNING_MESSAGE = RESP_ORDER_WARNING_MESSAGE_AUDITORY_FIRST;
+                elseif strcmp(task, "visual_first")
+                    WARNING_MESSAGE = RESP_ORDER_WARNING_MESSAGE_VISUAL_FIRST;
+                end
+                showMessage(WARNING_MESSAGE);
                 WaitSecs(3);
                 warning_response_order = 0;
             end
@@ -543,7 +554,6 @@ for task_i=1:length(session_tasks)
         disp("Task time: ")
         disp(elapsedTime)
         disp("")
-        
         %% End of experiment
         % compute performances of tasks
         [log_all, performance_struct] = compute_performance(log_all);
