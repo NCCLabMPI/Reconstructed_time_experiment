@@ -50,9 +50,8 @@ for tr = 1:length(log_table.trial)
         if (log_table.aud_resp(tr) == LOW_PITCH && log_table.pitch(tr) == 1000) ||...
                 (log_table.aud_resp(tr) == HIGH_PITCH && log_table.pitch(tr) == 1100)
             log_table.trial_accuracy_aud(tr) = 1;
-
-        elseif (log_table.aud_resp(tr) == LOW_PITCH && log_table.pitch(tr) == 1000) ||...
-                (log_table.aud_resp(tr) == HIGH_PITCH && log_table.pitch(tr) == 1100)
+        elseif (log_table.aud_resp(tr) == LOW_PITCH && log_table.pitch(tr) == 1100) ||...
+                (log_table.aud_resp(tr) == HIGH_PITCH && log_table.pitch(tr) == 1000)
             log_table.trial_accuracy_aud(tr) = 0;
         else
             log_table.trial_accuracy_aud(tr) = nan;
