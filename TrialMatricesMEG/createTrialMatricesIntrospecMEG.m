@@ -45,8 +45,8 @@ intro_exp_dist = makedist("Exponential", "mu", intro_jitter_mean);
 intro_jitter_distribution = truncate(stim_exp_dist, intro_jitter_min, intro_jitter_max);
 
 % Set the trial duration:
-trial_duration_1task = 3.0;
-trial_duration_2task = 3.0;
+trial_duration_1task = 2.75;
+trial_duration_2task = 2.75;
 
 %% Create the trial pools:
 % Create the trials pool for the visual first task:
