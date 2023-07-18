@@ -75,7 +75,7 @@ function [] = initPsychtooblox()
     freq = [];
     channels = 2;
     padhandle = PsychPortAudio('Open', device, mode, reqlatencyclass, freq, channels);
-    PsychPortAudio('Volume', padhandle, 0.01);
+    PsychPortAudio('Volume', padhandle, 0.1);
 
     %% Derive relevant parameters from setup information:
     % Extract screen parameters in pixels:
